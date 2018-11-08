@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="两种传递都是相对于方法而言的，也就是Java中的方法参数。在Java中将方法参数传递给方法有值传递与引用传递。    值调用（call by value）   引用调用（call by reference）    值传递  方法接收的是调用者提供的值。方法不会修改传递给它的参数的参数变量的内容。     12345678910double percent = 5;li.raiseSalary(">
+<meta name="description" content="值传递（值调用）（call by value）是指在调用函数式将实际参数复制一份传递到函数中,这样在函数中如果对参数进行修改，将不会影响到实际参数。  引用传递（引用调用）（pass by reference）是指在调用函数时将实际参数的地址直接传递到函数中，那么在函数中对参数所进行的修改，将影响到实际参数。  误解 错解一：Java有引用传递。 错解二：区分值传递和引用传递的依据是方法参数的内">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java值传递与引用传递">
+<meta property="og:title" content="java的引传递用去哪里">
 <meta property="og:url" content="http://yoursite.com/2018/11/07/callByValueReference/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="两种传递都是相对于方法而言的，也就是Java中的方法参数。在Java中将方法参数传递给方法有值传递与引用传递。    值调用（call by value）   引用调用（call by reference）    值传递  方法接收的是调用者提供的值。方法不会修改传递给它的参数的参数变量的内容。     12345678910double percent = 5;li.raiseSalary(">
+<meta property="og:description" content="值传递（值调用）（call by value）是指在调用函数式将实际参数复制一份传递到函数中,这样在函数中如果对参数进行修改，将不会影响到实际参数。  引用传递（引用调用）（pass by reference）是指在调用函数时将实际参数的地址直接传递到函数中，那么在函数中对参数所进行的修改，将影响到实际参数。  误解 错解一：Java有引用传递。 错解二：区分值传递和引用传递的依据是方法参数的内">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-07T09:50:17.398Z">
+<meta property="og:updated_time" content="2018-11-08T04:21:38.195Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java值传递与引用传递">
-<meta name="twitter:description" content="两种传递都是相对于方法而言的，也就是Java中的方法参数。在Java中将方法参数传递给方法有值传递与引用传递。    值调用（call by value）   引用调用（call by reference）    值传递  方法接收的是调用者提供的值。方法不会修改传递给它的参数的参数变量的内容。     12345678910double percent = 5;li.raiseSalary(">
+<meta name="twitter:title" content="java的引传递用去哪里">
+<meta name="twitter:description" content="值传递（值调用）（call by value）是指在调用函数式将实际参数复制一份传递到函数中,这样在函数中如果对参数进行修改，将不会影响到实际参数。  引用传递（引用调用）（pass by reference）是指在调用函数时将实际参数的地址直接传递到函数中，那么在函数中对参数所进行的修改，将影响到实际参数。  误解 错解一：Java有引用传递。 错解二：区分值传递和引用传递的依据是方法参数的内">
 
 
 
@@ -125,7 +125,7 @@
 
 
 
-  <title>java值传递与引用传递 | Hexo</title>
+  <title>java的引传递用去哪里 | Hexo</title>
   
 
 
@@ -309,7 +309,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java值传递与引用传递</h1>
+          <h1 class="post-title" itemprop="name headline">java的引传递用去哪里</h1>
         
 
         <div class="post-meta">
@@ -359,16 +359,43 @@
       
 
       
-        <p>  两种传递都是相对于方法而言的，也就是Java中的方法参数。在Java中将方法参数传递给方法有值传递与引用传递。  </p>
-<ul>
-<li>值调用（call by value）  </li>
-<li>引用调用（call by reference）  </li>
+        <blockquote>
+<p>值传递（值调用）（call by value）是指在调用函数式将实际参数<strong>复制</strong>一份传递到函数中,这样在函数中如果对参数进行修改，将不会影响到实际参数。<br>  引用传递（引用调用）（pass by reference）是指在调用函数时将实际参数的地址<strong>直接传递</strong>到函数中，那么在函数中对参数所进行的修改，将影响到实际参数。</p>
+</blockquote>
+<h2 id="误解"><a href="#误解" class="headerlink" title="误解"></a>误解</h2><ul>
+<li>错解一：Java有引用传递。</li>
+<li>错解二：区分值传递和引用传递的依据是方法参数的内容，如果方法参数是值，就是值传递。如果方法参数引用，就是引用传递。</li>
+<li>错解三：方法参数如果是普通数据类型，那就是值传递。如果是对象，那就是引用传递。</li>
 </ul>
-<h3 id="值传递"><a href="#值传递" class="headerlink" title="值传递"></a>值传递</h3><p>  方法接收的是调用者提供的值。方法不会修改传递给它的参数的参数变量的内容。  </p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> percent = <span class="number">5</span>;</span><br><span class="line">li.raiseSalary(percent); <span class="comment">//在该方法调用后，percent值还是5.   </span></span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">doubleValue</span><span class="params">(<span class="keyword">int</span> value)</span></span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.value = <span class="number">3</span>*value;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> value = <span class="number">5</span>;</span><br><span class="line">doubleValue(value); <span class="comment">//该方法调用后，value值仍然为5.</span></span><br></pre></td></tr></table></figure>
-<p>可以看出：一个方法不可能修改一个基于基本数据类型的参数。  </p>
-<h3 id="引用传递"><a href="#引用传递" class="headerlink" title="引用传递"></a>引用传递</h3><p>与值传递不同，引用传递可以轻松的修改引用对象的属性。例如下面修改员工工资的例子中将雇员的薪金提高一倍的操作：  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">doubleSalary</span><span class="params">(Employ x)</span></span>&#123;</span><br><span class="line">  x.raiseSalary(<span class="number">2</span>);  <span class="comment">//将工资提高二倍</span></span><br><span class="line">&#125;</span><br><span class="line">xiaomi = <span class="keyword">new</span> Employee(······);</span><br><span class="line">doubleValue(migaoyang);</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">具体执行过程为：</span><br><span class="line"><span class="number">1</span>. x被初始化为xiaomi值的引用，这里是一个对象的引用。  </span><br><span class="line"><span class="number">2</span>. raiseSalary方法将用于这个对象的引用。x与xiaomi同时引用Employee对象的薪水提高一倍。  </span><br><span class="line"><span class="number">3</span>. 方法结束后，参数变量x不再使用。对象变量xiaomi继续引用那个薪水提高一倍的雇员对象。  </span><br><span class="line"></span><br><span class="line">###### 误区  </span><br><span class="line">许多程序员认为Java对对象采用的是引用调用，实际上这种理解是不对的，下面是一个反例：  </span><br><span class="line">首先编写一个交换两个雇员对象的方法：  </span><br><span class="line">```Java</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(Employee x,Employee y)</span></span>&#123;</span><br><span class="line">  employee temp = x;</span><br><span class="line">  x = y;</span><br><span class="line">  y = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="具体分析"><a href="#具体分析" class="headerlink" title="具体分析"></a>具体分析</h2><p>  方法参数是基本类型时，方法接收的是调用者提供的值。方法不会修改传递给它的参数的参数变量的内容。  </p>
+<pre><code class="java"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">doubleValue</span><span class="params">(<span class="keyword">int</span> value)</span></span>{
+  <span class="keyword">this</span>.value = <span class="number">2</span>*value;
+}  
+<span class="keyword">int</span> value = <span class="number">5</span>;
+doubleValue(value); <span class="comment">//该方法调用后，value值仍然为5.</span>
+</code></pre>
+<p>上面是一段最简单的代码，可以看出：一个方法不可能修改一个基于基本数据类型的参数。<br>下面的代码是修改员工工资，中将雇员的薪金提高一倍：  </p>
+<pre><code class="java"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">doubleSalary</span><span class="params">(Employ x)</span></span>{
+x.raiseSalary(<span class="number">2</span>);  <span class="comment">//将工资提高二倍</span>
+}
+xiaomi = <span class="keyword">new</span> Employee(······);
+doubleValue(migaoyang);
+</code></pre>
+<blockquote>
+<p>具体执行过程为：</p>
+<ol>
+<li>x被初始化为xiaomi值的<strong>拷贝</strong>，这里是一个对象的引用。  </li>
+<li>raiseSalary方法将用于这个对象的引用。x与xiaomi同时引用的那个Employee对象的薪水提高一倍。  </li>
+<li>方法结束后，参数变量x不再使用。对象变量xiaomi继续引用那个薪水提高一倍的雇员对象。  </li>
+</ol>
+</blockquote>
+<p>结果确实是修改了被传入的对象，因此许多程序员认为Java对对象采用的是引用调用，实际上这种理解是不对的，下面是一个反例：<br>首先编写一个交换两个雇员对象的方法：  </p>
+<pre><code class="Java"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(Employee x,Employee y)</span></span>{
+  employee temp = x;
+  x = y;
+  y = temp;
+}
+</code></pre>
 <p>如果Java对象采用的是按引用调用，那么上面的代码就能实现交换对象的效果。</p>
 <pre><code class="java">Employee a = <span class="keyword">new</span> Employee(<span class="string">"Alice"</span>······);
 Emplouee b = <span class="keyword">new</span> Emplouee(<span class="string">"bob"</span>······);
@@ -381,7 +408,9 @@ x = y;
 y = temp;
 <span class="comment">//now x reference to bob,y to Alice</span>
 </code></pre>
-<p>但是，在方法结束运行时参数变量x与y就被丢弃了。之前变量a与b仍然引用swap方法调用之前所引用的对象。</p>
+<p>但是，在方法结束运行时参数变量x与y就被丢弃了，而被丢弃的这俩x与y是a与b引用地址的拷贝，通过x与y确实能找到被引用的对象，进而可以修改所指向对象的属性。但是swap方法结束后x与y就会被丢弃，之前变量a与b仍然引用swap方法调用之前所引用的对象。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>比较上面的三个例子，最重要的是后两个例子，为什么都是对象，一个被传进去的对象被改变了而另一并不改变呢？我想许多人对Java是否有引用传递的疑惑就在在这里。再根据值传递与引用传递的定义来看，区分这两者的根本就是被传进去的参数是否是被<strong>复制</strong>的，我们再传一个对象给方法时候，实际是将这个对象引用的值复制了一份，然后再传进方法，方法里是通过这个被复制的引用的值去找对象的（此时也就是有两个对象的引用共同指向一个对象），所以从值传递与引用传递的定义来看，传递对象也是值引用。  </p>
+<p>再看开始的三个疑惑，其实区分值传递与引用传递的根本在于传递的参数是否有备份，Java里仅有值传递，方法参数是对象是也是值传递。</p>
 
       
     </div>
@@ -528,7 +557,7 @@ y = temp;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#值传递"><span class="nav-number">1.</span> <span class="nav-text">值传递</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用传递"><span class="nav-number">2.</span> <span class="nav-text">引用传递</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#误解"><span class="nav-number">1.</span> <span class="nav-text">误解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体分析"><span class="nav-number">2.</span> <span class="nav-text">具体分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
