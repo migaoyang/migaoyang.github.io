@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="值传递（值调用）（call by value）是指在调用函数式将实际参数复制一份传递到函数中,这样在函数中如果对参数进行修改，将不会影响到实际参数。  引用传递（引用调用）（pass by reference）是指在调用函数时将实际参数的地址直接传递到函数中，那么在函数中对参数所进行的修改，将影响到实际参数。  误解 错解一：Java有引用传递。 错解二：区分值传递和引用传递的依据是方法参数的内">
+<meta name="description" content="Java中非静态方法的调用过程，即通过对象来调用方法的过程主要有以下几个步骤。假设要调用x.f(args), 隐式参数 x 声明为类C的一个对象。具体调用流程如下： 1. 编译器得到所有可能被调用的候选方法。编译器查看对象的声明类型与方法名。假设调用x.f(param)，且隐式参数x声明为C类的对象。需要注意的是方法的重载（Overload）即：有可能存在多个名字为f，但是参数类型不一样的方法。例">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java的引传递用去哪了">
-<meta property="og:url" content="http://yoursite.com/2018/11/07/callByValueReference/index.html">
+<meta property="og:title" content="java的非静态方法调用过程">
+<meta property="og:url" content="http://yoursite.com/2018/11/13/callFunction/index.html">
 <meta property="og:site_name" content="migaoyang">
-<meta property="og:description" content="值传递（值调用）（call by value）是指在调用函数式将实际参数复制一份传递到函数中,这样在函数中如果对参数进行修改，将不会影响到实际参数。  引用传递（引用调用）（pass by reference）是指在调用函数时将实际参数的地址直接传递到函数中，那么在函数中对参数所进行的修改，将影响到实际参数。  误解 错解一：Java有引用传递。 错解二：区分值传递和引用传递的依据是方法参数的内">
+<meta property="og:description" content="Java中非静态方法的调用过程，即通过对象来调用方法的过程主要有以下几个步骤。假设要调用x.f(args), 隐式参数 x 声明为类C的一个对象。具体调用流程如下： 1. 编译器得到所有可能被调用的候选方法。编译器查看对象的声明类型与方法名。假设调用x.f(param)，且隐式参数x声明为C类的对象。需要注意的是方法的重载（Overload）即：有可能存在多个名字为f，但是参数类型不一样的方法。例">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-13T14:30:43.302Z">
+<meta property="og:updated_time" content="2018-11-13T14:30:32.616Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java的引传递用去哪了">
-<meta name="twitter:description" content="值传递（值调用）（call by value）是指在调用函数式将实际参数复制一份传递到函数中,这样在函数中如果对参数进行修改，将不会影响到实际参数。  引用传递（引用调用）（pass by reference）是指在调用函数时将实际参数的地址直接传递到函数中，那么在函数中对参数所进行的修改，将影响到实际参数。  误解 错解一：Java有引用传递。 错解二：区分值传递和引用传递的依据是方法参数的内">
+<meta name="twitter:title" content="java的非静态方法调用过程">
+<meta name="twitter:description" content="Java中非静态方法的调用过程，即通过对象来调用方法的过程主要有以下几个步骤。假设要调用x.f(args), 隐式参数 x 声明为类C的一个对象。具体调用流程如下： 1. 编译器得到所有可能被调用的候选方法。编译器查看对象的声明类型与方法名。假设调用x.f(param)，且隐式参数x声明为C类的对象。需要注意的是方法的重载（Overload）即：有可能存在多个名字为f，但是参数类型不一样的方法。例">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/07/callByValueReference/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/13/callFunction/">
 
 
 
 
 
-  <title>java的引传递用去哪了 | migaoyang</title>
+  <title>java的非静态方法调用过程 | migaoyang</title>
   
 
 
@@ -292,7 +292,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/07/callByValueReference/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/callFunction/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaomi">
@@ -309,7 +309,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java的引传递用去哪了</h1>
+          <h1 class="post-title" itemprop="name headline">java的非静态方法调用过程</h1>
         
 
         <div class="post-meta">
@@ -321,8 +321,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T00:00:00+08:00">
-                2018-11-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-13T00:00:00+08:00">
+                2018-11-13
               </time>
             
 
@@ -359,58 +359,17 @@
       
 
       
-        <blockquote>
-<p>值传递（值调用）（call by value）是指在调用函数式将实际参数<strong>复制</strong>一份传递到函数中,这样在函数中如果对参数进行修改，将不会影响到实际参数。<br>  引用传递（引用调用）（pass by reference）是指在调用函数时将实际参数的地址<strong>直接传递</strong>到函数中，那么在函数中对参数所进行的修改，将影响到实际参数。</p>
-</blockquote>
-<h2 id="误解"><a href="#误解" class="headerlink" title="误解"></a>误解</h2><ul>
-<li>错解一：Java有引用传递。</li>
-<li>错解二：区分值传递和引用传递的依据是方法参数的内容，如果方法参数是值，就是值传递。如果方法参数引用，就是引用传递。</li>
-<li>错解三：方法参数如果是普通数据类型，那就是值传递。如果是对象，那就是引用传递。</li>
-</ul>
-<h2 id="具体分析"><a href="#具体分析" class="headerlink" title="具体分析"></a>具体分析</h2><p>  方法参数是基本类型时，方法接收的是调用者提供的值。方法不会修改传递给它的参数的参数变量的内容。  </p>
-<pre><code class="java"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">doubleValue</span><span class="params">(<span class="keyword">int</span> value)</span></span>{
-  <span class="keyword">this</span>.value = <span class="number">2</span>*value;
-}  
-<span class="keyword">int</span> value = <span class="number">5</span>;
-doubleValue(value); <span class="comment">//该方法调用后，value值仍然为5.</span>
-</code></pre>
-<p>上面是一段最简单的代码，可以看出：一个方法不可能修改一个基于基本数据类型的参数。<br>下面的代码是修改员工工资，中将雇员的薪金提高一倍：  </p>
-<pre><code class="java"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">doubleSalary</span><span class="params">(Employ x)</span></span>{
-x.raiseSalary(<span class="number">2</span>);  <span class="comment">//将工资提高二倍</span>
-}
-xiaomi = <span class="keyword">new</span> Employee(······);
-doubleValue(migaoyang);
-</code></pre>
+        <p>Java中非静态方法的调用过程，即通过对象来调用方法的过程主要有以下几个步骤。<br>假设要调用x.f(args), <strong>隐式参数</strong> x 声明为类C的一个对象。具体调用流程如下：</p>
+<h3 id="1-编译器得到所有可能被调用的候选方法。"><a href="#1-编译器得到所有可能被调用的候选方法。" class="headerlink" title="1. 编译器得到所有可能被调用的候选方法。"></a>1. 编译器得到所有可能被调用的候选方法。</h3><p>编译器查看对象的声明类型与方法名。假设调用x.f(param)，且隐式参数x声明为C类的对象。需要注意的是方法的<strong>重载</strong>（Overload）即：有可能存在多个名字为f，但是<strong>参数类型不一样</strong>的方法。例如，可能存在f(int)和f(String)。编译器将会一一列举所有类C和其超类中访问属性为public且名为f的方法（超类的私有方法不可访问）。</p>
+<h3 id="2-重载解析（编译器得到需要调用的具体的一个方法）"><a href="#2-重载解析（编译器得到需要调用的具体的一个方法）" class="headerlink" title="2. 重载解析（编译器得到需要调用的具体的一个方法）"></a>2. 重载解析（编译器得到需要调用的具体的一个方法）</h3><p>接下来，编译器将查看调用方法时提供的参数类型。如果在所有名为f的方法中存在一个与提供的参数类型完全匹配，就选择这个方法。这个过程称为重载解析。如果编译器没有找到与参数类型匹配的方法，或者发现经过类型转换后有多个方法与之匹配，就会报告一个错误。<br>需要注意的是int可以转换为double，子类可以转换为父类，</p>
+<h3 id="3-静态绑定与动态绑定"><a href="#3-静态绑定与动态绑定" class="headerlink" title="3. 静态绑定与动态绑定"></a>3. 静态绑定与动态绑定</h3><p>如果是private方法、static方法、final方法或者构造器，那么编译器将可以准确地知道应该调用哪个方法，我们将这种调用方式称为静态绑定。与此对应的是，调用的方法依赖于隐式参数的实际类型，并且在运行时实现动态绑定。</p>
+<h3 id="4-使用动态绑定调用方法"><a href="#4-使用动态绑定调用方法" class="headerlink" title="4. 使用动态绑定调用方法"></a>4. 使用动态绑定调用方法</h3><p>当程序运行，并且采用动态绑定调用方法时，虚拟机一定调用与x所引用对象的实例类型最合适的那个类的方法。假设 x 的实际类型是D（子类），它是C类的子类，我们要调用f(String)。如果D类定义了方法f(String)，就直接调用它；否则将在D类的超类中寻找f(String)，以此类推。<br>每次调用方法都要进行方法搜索，时间开销相当大。因此，虚拟机预先为每个类创建一个方法表，其中列举了所有方法的签名和实际调用的方法。这样一来，在真正调用方法的时候，虚拟机仅查找这个表就行了。  </p>
 <blockquote>
-<p>具体执行过程为：</p>
-<ol>
-<li>x被初始化为xiaomi值的<strong>拷贝</strong>，这里是一个对象的引用。  </li>
-<li>raiseSalary方法将用于这个对象的引用。x与xiaomi同时引用的那个Employee对象的薪水提高一倍。  </li>
-<li>方法结束后，参数变量x不再使用。对象变量xiaomi继续引用那个薪水提高一倍的雇员对象。  </li>
-</ol>
+<p>动态绑定有一个很重要的特性：无需对现存的代码进行修改，就可以对程序进行扩展。假设新增一个类E，并且变量e可能引用这个类的对象，我们不需要对包含调用e.f()方法进行重新编译。如果e引用了一个E类的对象，就会自动地调用E.f()方法。  </p>
 </blockquote>
-<p>结果确实是修改了被传入的对象，因此许多程序员认为Java对对象采用的是引用调用，实际上这种理解是不对的，下面是一个反例：<br>首先编写一个交换两个雇员对象的方法：  </p>
-<pre><code class="Java"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(Employee x,Employee y)</span></span>{
-  employee temp = x;
-  x = y;
-  y = temp;
-}
-</code></pre>
-<p>如果Java对象采用的是按引用调用，那么上面的代码就能实现交换对象的效果。</p>
-<pre><code class="java">Employee a = <span class="keyword">new</span> Employee(<span class="string">"Alice"</span>······);
-Emplouee b = <span class="keyword">new</span> Emplouee(<span class="string">"bob"</span>······);
-swap(a,b)；
-</code></pre>
-<p>但是，swap方法并没有改变a与b中的对象引用。swap方法的参数x与y被初始化为两个队下对象引用的拷贝，swap方法交换的是这两个拷贝。</p>
-<pre><code class="java"><span class="comment">//x reference to Alice,y to bob</span>
-Employee temp = x;
-x = y;
-y = temp;
-<span class="comment">//now x reference to bob,y to Alice</span>
-</code></pre>
-<p>但是，在方法结束运行时参数变量x与y就被丢弃了，而被丢弃的这俩x与y是a与b引用地址的拷贝，通过x与y确实能找到被引用的对象，进而可以修改所指向对象的属性。但是swap方法结束后x与y就会被丢弃，之前变量a与b仍然引用swap方法调用之前所引用的对象。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>比较上面的三个例子，最重要的是后两个例子，为什么都是对象，一个被传进去的对象被改变了而另一并不改变呢？我想许多人对Java是否有引用传递的疑惑就在在这里。再根据值传递与引用传递的定义来看，区分这两者的根本就是被传进去的参数是否是被<strong>复制</strong>的，我们再传一个对象给方法时候，实际是将这个对象引用的值复制了一份，然后再传进方法，方法里是通过这个被复制的引用的值去找对象的（此时也就是有两个对象的引用共同指向一个对象），所以从值传递与引用传递的定义来看，传递对象也是值引用。  </p>
-<p>再看开始的三个疑惑，其实区分值传递与引用传递的根本在于传递的参数是否有备份，Java里仅有值传递，方法参数是对象是也是值传递。</p>
+<blockquote>
+<p>需要注意的是：在 <strong>覆盖</strong>（Override）一个方法的时候，子类方法的可见性不能低于超类方法的可见性。<strong>特别</strong>是如果超类的方法时public，那么子类方法一定要声明为public，否则编译器解释为默认的就会出错。  </p>
+</blockquote>
 
       
     </div>
@@ -435,8 +394,8 @@ y = temp;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/06/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/11/09/modifier/" rel="next" title="java修饰符的限制范围">
+                <i class="fa fa-chevron-left"></i> java修饰符的限制范围
               </a>
             
           </div>
@@ -444,10 +403,6 @@ y = temp;
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/09/modifier/" rel="prev" title="java修饰符的限制范围">
-                java修饰符的限制范围 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -561,7 +516,7 @@ y = temp;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#误解"><span class="nav-number">1.</span> <span class="nav-text">误解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体分析"><span class="nav-number">2.</span> <span class="nav-text">具体分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-编译器得到所有可能被调用的候选方法。"><span class="nav-number">1.</span> <span class="nav-text">1. 编译器得到所有可能被调用的候选方法。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-重载解析（编译器得到需要调用的具体的一个方法）"><span class="nav-number">2.</span> <span class="nav-text">2. 重载解析（编译器得到需要调用的具体的一个方法）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-静态绑定与动态绑定"><span class="nav-number">3.</span> <span class="nav-text">3. 静态绑定与动态绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-使用动态绑定调用方法"><span class="nav-number">4.</span> <span class="nav-text">4. 使用动态绑定调用方法</span></a></li></ol></div>
             
 
           </div>
