@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="多态：意味着允许不同类的对象对同一消息做出不同的响应。在Java中，按照广泛的范围来说，多态  可以分为 编译时多态（也叫设计时多态，一般通过方法的重载来实现） 与 运行时多态（直到ｊａｖａ程序运行时候，系统才能根据调用方法的实例的类型来去决定去具体调用哪个方法）。我们在Java中所说的多态就是运行时多态，在程序运行时动态决定调用哪个方法。两个必要条件：    满足继承关系   父类引用指向子类对">
+<meta name="description" content="多态（向上转型）多态：意味着允许不同类的对象对同一消息做出不同的响应。在Java中，按照广泛的范围来说，多态  可以分为 编译时多态（也叫设计时多态，一般通过方法的重载来实现） 与 运行时多态（直到ｊａｖａ程序运行时候，系统才能根据调用方法的实例的类型来去决定去具体调用哪个方法）。我们在Java中所说的多态就是运行时多态，在程序运行时动态决定调用哪个方法。两个必要条件：    满足继承关系   父">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java多态、向上转型、动态绑定">
+<meta property="og:title" content="java多态（向上转型、动态绑定、instanceof、抽象）">
 <meta property="og:url" content="http://yoursite.com/2018/11/14/polymorphic/index.html">
 <meta property="og:site_name" content="migaoyang">
-<meta property="og:description" content="多态：意味着允许不同类的对象对同一消息做出不同的响应。在Java中，按照广泛的范围来说，多态  可以分为 编译时多态（也叫设计时多态，一般通过方法的重载来实现） 与 运行时多态（直到ｊａｖａ程序运行时候，系统才能根据调用方法的实例的类型来去决定去具体调用哪个方法）。我们在Java中所说的多态就是运行时多态，在程序运行时动态决定调用哪个方法。两个必要条件：    满足继承关系   父类引用指向子类对">
+<meta property="og:description" content="多态（向上转型）多态：意味着允许不同类的对象对同一消息做出不同的响应。在Java中，按照广泛的范围来说，多态  可以分为 编译时多态（也叫设计时多态，一般通过方法的重载来实现） 与 运行时多态（直到ｊａｖａ程序运行时候，系统才能根据调用方法的实例的类型来去决定去具体调用哪个方法）。我们在Java中所说的多态就是运行时多态，在程序运行时动态决定调用哪个方法。两个必要条件：    满足继承关系   父">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-14T03:04:04.858Z">
+<meta property="og:updated_time" content="2018-11-15T04:09:56.340Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java多态、向上转型、动态绑定">
-<meta name="twitter:description" content="多态：意味着允许不同类的对象对同一消息做出不同的响应。在Java中，按照广泛的范围来说，多态  可以分为 编译时多态（也叫设计时多态，一般通过方法的重载来实现） 与 运行时多态（直到ｊａｖａ程序运行时候，系统才能根据调用方法的实例的类型来去决定去具体调用哪个方法）。我们在Java中所说的多态就是运行时多态，在程序运行时动态决定调用哪个方法。两个必要条件：    满足继承关系   父类引用指向子类对">
+<meta name="twitter:title" content="java多态（向上转型、动态绑定、instanceof、抽象）">
+<meta name="twitter:description" content="多态（向上转型）多态：意味着允许不同类的对象对同一消息做出不同的响应。在Java中，按照广泛的范围来说，多态  可以分为 编译时多态（也叫设计时多态，一般通过方法的重载来实现） 与 运行时多态（直到ｊａｖａ程序运行时候，系统才能根据调用方法的实例的类型来去决定去具体调用哪个方法）。我们在Java中所说的多态就是运行时多态，在程序运行时动态决定调用哪个方法。两个必要条件：    满足继承关系   父">
 
 
 
@@ -125,7 +125,7 @@
 
 
 
-  <title>java多态、向上转型、动态绑定 | migaoyang</title>
+  <title>java多态（向上转型、动态绑定、instanceof、抽象） | migaoyang</title>
   
 
 
@@ -309,7 +309,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java多态、向上转型、动态绑定</h1>
+          <h1 class="post-title" itemprop="name headline">java多态（向上转型、动态绑定、instanceof、抽象）</h1>
         
 
         <div class="post-meta">
@@ -359,11 +359,12 @@
       
 
       
-        <p>多态：意味着允许不同类的对象对同一消息做出不同的响应。<br>在Java中，按照广泛的范围来说，多态  可以分为 <strong>编译时多态</strong>（也叫设计时多态，<br>一般通过方法的重载来实现） 与 <strong>运行时多态</strong>（直到ｊａｖａ程序运行时候，系统才能根据调用方法的实例的类型来去决定去具体调用哪个方法）。<br>我们在Java中所说的多态就是<strong>运行时多态</strong>，在程序运行时动态决定调用哪个方法。<br>两个必要条件：  </p>
+        <h3 id="多态（向上转型）"><a href="#多态（向上转型）" class="headerlink" title="多态（向上转型）"></a>多态（向上转型）</h3><p>多态：意味着允许不同类的对象对同一消息做出不同的响应。<br>在Java中，按照广泛的范围来说，多态  可以分为 <strong>编译时多态</strong>（也叫设计时多态，<br>一般通过方法的重载来实现） 与 <strong>运行时多态</strong>（直到ｊａｖａ程序运行时候，系统才能根据调用方法的实例的类型来去决定去具体调用哪个方法）。<br>我们在Java中所说的多态就是<strong>运行时多态</strong>，在程序运行时动态决定调用哪个方法。<br>两个必要条件：  </p>
 <ul>
 <li>满足继承关系  </li>
 <li>父类引用指向子类对象  </li>
 </ul>
+<p>定义父类Animal：</p>
 <pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>{
   <span class="keyword">private</span> String name;
   <span class="keyword">private</span> <span class="keyword">int</span> month;
@@ -381,8 +382,9 @@
   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>{
     System.out.println(<span class="string">"动物吃东西"</span>);
   }
-}
+}  
 </code></pre>
+<p>定义子类Cat：</p>
 <pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>{
   <span class="keyword">private</span> <span class="keyword">double</span> weight；
   <span class="function"><span class="keyword">public</span> <span class="title">Cat</span><span class="params">()</span></span>{
@@ -406,6 +408,7 @@
   }
 }
 </code></pre>
+<p>定义子类Dog：</p>
 <pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>{
   <span class="keyword">private</span> String sex;
   <span class="function"><span class="keyword">public</span> <span class="title">Dog</span><span class="params">()</span></span>{
@@ -429,6 +432,7 @@
   }
 }  
 </code></pre>
+<p>编写测试类：</p>
 <pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>{
   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span></span>{
     Animal one = <span class="keyword">new</span> Animal();
@@ -444,20 +448,103 @@
 <blockquote>
 <p>动物吃东西<br>小猫吃鱼<br>小狗吃骨头  </p>
 </blockquote>
-<p>Animal two = new Cat();<br>此处为向上转型、隐式转型、自动转型 ———&gt;&gt; 父类引用指向子类实例，小类型转向大类型。可以调用子类重写父类的方法以及父类派生的方法。但是子类特有的方法无法使用。</p>
+<pre><code class="java">Animal two = <span class="keyword">new</span> Cat();
+</code></pre>
+<p>此处为向上转型、隐式转型、自动转型 ———&gt;&gt; 父类引用指向子类实例，小类型转向大类型。可以调用子类重写父类的方法以及父类派生的方法。但是子类特有的方法无法使用。</p>
+<p><strong>向上转型总结:</strong>  </p>
+<blockquote>
+<p>  向上转型是安全的,因为任何子类都继承并接受了父类的方法。从例子中也可以理解,所有的狗狗都属于狗的父类一动物 ,这是可行的,但是向下转型则不行,若说所有的动物都是狗狗就不成立了。(所以向下转型要通过强制类型转换)</p>
+</blockquote>
+<p><strong>向上转型应用：</strong>  </p>
+<ol>
+<li>当一个子类对象向上转型父类类型以后,就被当成了父类的对象,所能调用的方法会减少,只能调用子类重写了父类的方法以及父类派生的方法(如set、get方法),而不能调用子类独有的方法。</li>
+<li>父类中的静态方法不允许被子类重写。<br>如父类Pen中含有静态方法draw()<pre><code class="java"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>{
+System.out.println(<span class="string">"笔可以画画"</span>)
+}
+</code></pre>
+当子类Pencil中也定义同名方法时，此时draw()算做Pencile类自己特有的方法：  <pre><code class="java"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>{
+System.out.println(<span class="string">"铅笔可以素描"</span>)
+}
+</code></pre>
+测试类：<pre><code class="java">Pen pc = <span class="keyword">new</span> Pencil(); <span class="comment">//向上转型</span>
+pc.draw();
+</code></pre>
+结果如下，也就是实际上调用的是父类的静态方法deaw()<blockquote>
+<p>笔可以画画  </p>
+</blockquote>
+</li>
+</ol>
+<p>下面更改动物例子中测试类Test的编写：</p>
 <pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>{
   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span></span>{
     Animal one = <span class="keyword">new</span> Animal();
-    Animal two = <span class="keyword">new</span> Cat();  <span class="comment">//向上转型、隐式转型、自动转型》》父类引用指向子类实例，小类型转向大类型。</span>
+    Animal two = <span class="keyword">new</span> Cat();  
     Animal three = <span class="keyword">new</span> Dog();
-    one.eat();
-    two.eat();
-    three.eat();
+    Cat temp = (Cat)two;
+    temp.run();
   }
 }  
 </code></pre>
-<p>Cat temp = (Cat)two;<br>向下转型、强制类型转换 ———&gt;&gt;子类引用指向父类对象，此处必须进行强转，可以调用子类特有的方法。<br>不能Dog temp = (Dog)two；  </p>
-<p>two在引用的时候，指向的是Dog的实例空间，所以Cat temp = (Cat)two;  相当于还原为原来的类型。</p>
+<pre><code class="java">Cat temp = (Cat)two;  
+</code></pre>
+<p>此处为向下转型、强制类型转换 ———&gt;&gt;子类引用指向父类对象，此处必须进行强转，可以调用子类特有的方法。<br>不能Dog temp = (Dog)two；  </p>
+<h3 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h3><p>two在引用的时候，指向的是Dog的实例空间，所以Cat temp = (Cat)two;  相当于还原为原来的类型。为了避免编写程序时出现上面Dog temp = (Dog)two；这种情况，可以用<strong>instanceof</strong> 运算符。<br>instanceof：<strong>判断e对象是否是E类的实例</strong>。如果是返回true。使用如下：</p>
+<pre><code class="java"><span class="keyword">if</span> (two <span class="keyword">instanceof</span> Cat){
+  Cat temp = (Cat)two;
+  temp.eat();
+  temp.run();
+  temp.getMonth();
+}
+</code></pre>
+<h3 id="动态绑定"><a href="#动态绑定" class="headerlink" title="动态绑定"></a>动态绑定</h3><p>多态的实现可以通过向上转型和动态绑定机制来完成，问上转型实现了将子类对象向上转型为父类类型,而动态绑定机制能识别出对象转型前的类型,从而自动调用该类的方法，两者相辅相成。<br><strong>动态绑定:</strong><br>绑定就是将一个方法调用同一个方法所在的类连接到一起就是绑定。绑定分为静态绑定和动态绑定两种。<br>静态绑定:在程序运行之前进行绑定(由编译器和链接程序完成的),也叫做前期绑定。<br>动态绑定:在程序运行期间由JVM根据对象的类型自动的判断应该调用哪个方法,也叫做后期绑定。<br><strong>静态绑定的例子:</strong> 如有一类Human,它派生出来三个子类Chinese类、American 类和British类,三个子类中都重写了父类中的方法speak( ),在测试类中用静态绑定的方式调用方法speak( )。  </p>
+<pre><code class="java">Chinese ch = <span class="keyword">new</span> Chinese();
+ch.speak();
+American am = <span class="keyword">new</span> American();
+am.speak();
+British br = <span class="keyword">new</span> British();
+br.speak();
+</code></pre>
+<p>上面的调用方式是在代码里指定的，在编译时编译器就知道ch.speak()调用的是Chinese的speak（）。</p>
+<p><strong>动态绑定的例子</strong>:对测试类进行修改如下。  </p>
+<pre><code class="java"><span class="comment">//生成父类对象数组,数组长度为5  </span>
+Human[] human=<span class="keyword">new</span> Human[<span class="number">5</span>];
+<span class="keyword">int</span> n;
+<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;human.length;i++){
+  n=(<span class="keyword">int</span>)(Math. random() *<span class="number">3</span>);<span class="comment">//随机产生 从0到2中一个数</span>
+  <span class="keyword">switch</span>(n){
+    <span class="keyword">case</span> <span class="number">0</span>:human[i]=<span class="keyword">new</span> Chinese();<span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="number">1</span>:human[i]=<span class="keyword">new</span> American(); <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="number">2</span>:human[i]=<span class="keyword">new</span> British(); <span class="keyword">break</span>;
+  }
+}
+<span class="comment">//循环输出，循环体中每个对象分别调用speak()方法</span>
+<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt; human .length;i++){
+  human[i].speak();
+}
+</code></pre>
+<p>此时, Human类中随机生成Chinese类、American 类和British类的对象,编译器不能根据代码直接确定调用哪个类中的speak()方法,直到运行时才能根据产生的随机数n的值来确定humani到底代表哪一个子类的对象,这样才能最终确定调用的是哪个类中的speak()方法。  </p>
+<h3 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h3><p>最开始写的Animal类中的eat()方法真的有用吗，Animal类实例化有用吗？虽然语法本身没有问题，但是实例化的对象并没有意义， 程序逻辑存在一些问题。<br><strong>abstract</strong> 解决了上面的问题，使程序员编写符合实际意义的有效代码。(abstract 关键字位置可以与public位置交换）<br><strong>基本概念</strong><br>  在面向对象的概念中，所有的对象都是通过类来描述的，但不是所有的类都是用来描述对象的，当一个类中没有包含足够的信息以描述一个具体的对象时，这样的类就是抽象类。  </p>
+<p><strong>特点</strong>    </p>
+<ul>
+<li>类设置为抽象类时，就不能再被实例化，只能作为其它类的父类，<strong>但可以改过向上转型，使其指向子类的实例</strong>。    </li>
+<li>抽象方法只能有声明，不能有实现，即仅有方法头，而没有方法体与操作实现。（如：abstract double area(); ）   </li>
+</ul>
+<p><strong>定义抽象类的意义</strong></p>
+<ul>
+<li>为其子类提供一个公共的类型（父类引用指向子类对象，向上转型）</li>
+<li>封装子类中的重复内容（成员变量与方法）  </li>
+<li>将父类设置为抽象类后，既可以借由父子继承关系限制子类的设计随意性，在一定程度避免了无意义父类的实例化。  </li>
+</ul>
+<p><strong>注意</strong></p>
+<ul>
+<li>含有抽象方法的类，必须被定义为抽象类。  </li>
+<li>抽象类不一定包含抽象方法。（抽象方法在子类中必须被实现）  </li>
+<li>抽象类中的成员方法可以包含一般方法与抽象方法。  </li>
+<li>即使抽象类中不包含抽象方法，抽象类也不能被实例化，抽象类的构造方法主要是用于被其子类调用。</li>
+<li>一个类继承抽象类后，必须实现其所有抽象方法，否则要被定义为抽象类，不同子类对父类的抽象方法可以根据实际有不同的实现。  </li>
+<li>即使父类是具体的， 但其子类也可以是抽象的。例如Object是具体的，但可以创建抽象子类。  </li>
+<li>abstract方法不能用static、private修饰；对于abstract类，不能使用final修饰，因为final关键字使类不可继承，而abstract修饰的类如果不能被继承则没有意义。</li>
+</ul>
 
       
     </div>
@@ -491,6 +578,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/17/ArrayList/" rel="prev" title="jav源码-剖析ArrayList">
+                jav源码-剖析ArrayList <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -542,8 +633,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -558,7 +658,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -585,6 +685,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#多态（向上转型）"><span class="nav-number">1.</span> <span class="nav-text">多态（向上转型）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#instanceof"><span class="nav-number">2.</span> <span class="nav-text">instanceof</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态绑定"><span class="nav-number">3.</span> <span class="nav-text">动态绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#abstract"><span class="nav-number">4.</span> <span class="nav-text">abstract</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
