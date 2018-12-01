@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Java中非静态方法的调用过程，即通过对象来调用方法的过程主要有以下几个步骤。假设要调用x.f(args), 隐式参数 x 声明为类C的一个对象。具体调用流程如下： 1. 编译器得到所有可能被调用的候选方法。编译器查看对象的声明类型与方法名。假设调用x.f(param)，且隐式参数x声明为C类的对象。需要注意的是方法的重载（Overload）即：有可能存在多个名字为f，但是参数类型不一样的方法。例">
+<meta name="description" content="泛型来源前面用到了集合，可以存储自定义的对象然后进行遍历操作，由于可存储的对象可以是任意类型的，因此就可能在转换时出现类型转换异常，Java为了解决这个问题，提出了一种机制 – 泛型（Generic）。泛型把明确具体类型的工作提前到了编译时期。集合都是基于泛型的，泛型的基本思想与概念是简单的，但是泛型有一些比较令人费解的语法，细节和局限性。本文主要阐述泛型的基本概念与原理、通配符、泛型需要注意的一">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java的非静态方法调用过程">
-<meta property="og:url" content="http://yoursite.com/2018/11/13/callFunction/index.html">
+<meta property="og:title" content="java泛型">
+<meta property="og:url" content="http://yoursite.com/2018/11/22/Generic/index.html">
 <meta property="og:site_name" content="migaoyang">
-<meta property="og:description" content="Java中非静态方法的调用过程，即通过对象来调用方法的过程主要有以下几个步骤。假设要调用x.f(args), 隐式参数 x 声明为类C的一个对象。具体调用流程如下： 1. 编译器得到所有可能被调用的候选方法。编译器查看对象的声明类型与方法名。假设调用x.f(param)，且隐式参数x声明为C类的对象。需要注意的是方法的重载（Overload）即：有可能存在多个名字为f，但是参数类型不一样的方法。例">
+<meta property="og:description" content="泛型来源前面用到了集合，可以存储自定义的对象然后进行遍历操作，由于可存储的对象可以是任意类型的，因此就可能在转换时出现类型转换异常，Java为了解决这个问题，提出了一种机制 – 泛型（Generic）。泛型把明确具体类型的工作提前到了编译时期。集合都是基于泛型的，泛型的基本思想与概念是简单的，但是泛型有一些比较令人费解的语法，细节和局限性。本文主要阐述泛型的基本概念与原理、通配符、泛型需要注意的一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-13T14:30:32.616Z">
+<meta property="og:updated_time" content="2018-12-01T05:00:36.131Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java的非静态方法调用过程">
-<meta name="twitter:description" content="Java中非静态方法的调用过程，即通过对象来调用方法的过程主要有以下几个步骤。假设要调用x.f(args), 隐式参数 x 声明为类C的一个对象。具体调用流程如下： 1. 编译器得到所有可能被调用的候选方法。编译器查看对象的声明类型与方法名。假设调用x.f(param)，且隐式参数x声明为C类的对象。需要注意的是方法的重载（Overload）即：有可能存在多个名字为f，但是参数类型不一样的方法。例">
+<meta name="twitter:title" content="java泛型">
+<meta name="twitter:description" content="泛型来源前面用到了集合，可以存储自定义的对象然后进行遍历操作，由于可存储的对象可以是任意类型的，因此就可能在转换时出现类型转换异常，Java为了解决这个问题，提出了一种机制 – 泛型（Generic）。泛型把明确具体类型的工作提前到了编译时期。集合都是基于泛型的，泛型的基本思想与概念是简单的，但是泛型有一些比较令人费解的语法，细节和局限性。本文主要阐述泛型的基本概念与原理、通配符、泛型需要注意的一">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/13/callFunction/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/22/Generic/">
 
 
 
 
 
-  <title>java的非静态方法调用过程 | migaoyang</title>
+  <title>java泛型 | migaoyang</title>
   
 
 
@@ -292,7 +292,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/callFunction/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/22/Generic/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaomi">
@@ -309,7 +309,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java的非静态方法调用过程</h1>
+          <h1 class="post-title" itemprop="name headline">java泛型</h1>
         
 
         <div class="post-meta">
@@ -321,8 +321,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-13T00:00:00+08:00">
-                2018-11-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-22T00:00:00+08:00">
+                2018-11-22
               </time>
             
 
@@ -359,16 +359,43 @@
       
 
       
-        <p>Java中非静态方法的调用过程，即通过对象来调用方法的过程主要有以下几个步骤。<br>假设要调用x.f(args), <strong>隐式参数</strong> x 声明为类C的一个对象。具体调用流程如下：</p>
-<h3 id="1-编译器得到所有可能被调用的候选方法。"><a href="#1-编译器得到所有可能被调用的候选方法。" class="headerlink" title="1. 编译器得到所有可能被调用的候选方法。"></a>1. 编译器得到所有可能被调用的候选方法。</h3><p>编译器查看对象的声明类型与方法名。假设调用x.f(param)，且隐式参数x声明为C类的对象。需要注意的是方法的<strong>重载</strong>（Overload）即：有可能存在多个名字为f，但是<strong>参数类型不一样</strong>的方法。例如，可能存在f(int)和f(String)。编译器将会一一列举所有类C和其超类中访问属性为public且名为f的方法（超类的私有方法不可访问）。</p>
-<h3 id="2-重载解析（编译器得到需要调用的具体的一个方法）"><a href="#2-重载解析（编译器得到需要调用的具体的一个方法）" class="headerlink" title="2. 重载解析（编译器得到需要调用的具体的一个方法）"></a>2. 重载解析（编译器得到需要调用的具体的一个方法）</h3><p>接下来，编译器将查看调用方法时提供的参数类型。如果在所有名为f的方法中存在一个与提供的参数类型完全匹配，就选择这个方法。这个过程称为重载解析。如果编译器没有找到与参数类型匹配的方法，或者发现经过类型转换后有多个方法与之匹配，就会报告一个错误。<br>需要注意的是int可以转换为double，子类可以转换为父类，</p>
-<h3 id="3-静态绑定与动态绑定"><a href="#3-静态绑定与动态绑定" class="headerlink" title="3. 静态绑定与动态绑定"></a>3. 静态绑定与动态绑定</h3><p>如果是private方法、static方法、final方法或者构造器，那么编译器将可以准确地知道应该调用哪个方法，我们将这种调用方式称为静态绑定。与此对应的是，调用的方法依赖于隐式参数的实际类型，并且在运行时实现动态绑定。</p>
-<h3 id="4-使用动态绑定调用方法"><a href="#4-使用动态绑定调用方法" class="headerlink" title="4. 使用动态绑定调用方法"></a>4. 使用动态绑定调用方法</h3><p>当程序运行，并且采用动态绑定调用方法时，虚拟机一定调用与x所引用对象的实例类型最合适的那个类的方法。假设 x 的实际类型是D（子类），它是C类的子类，我们要调用f(String)。如果D类定义了方法f(String)，就直接调用它；否则将在D类的超类中寻找f(String)，以此类推。<br>每次调用方法都要进行方法搜索，时间开销相当大。因此，虚拟机预先为每个类创建一个方法表，其中列举了所有方法的签名和实际调用的方法。这样一来，在真正调用方法的时候，虚拟机仅查找这个表就行了。  </p>
+        <h3 id="泛型来源"><a href="#泛型来源" class="headerlink" title="泛型来源"></a>泛型来源</h3><p>前面用到了集合，可以存储自定义的对象然后进行遍历操作，由于可存储的对象可以是任意类型的，因此就可能在转换时出现类型转换异常，Java为了解决这个问题，提出了一种机制 – 泛型（Generic）。<br>泛型把明确具体类型的工作提前到了编译时期。<br>集合都是基于泛型的，泛型的基本思想与概念是简单的，但是泛型有一些比较令人费解的语法，细节和局限性。本文主要阐述泛型的基本概念与原理、通配符、泛型需要注意的一些细节与局限性。  </p>
+<h3 id="泛型基本概念与原理"><a href="#泛型基本概念与原理" class="headerlink" title="泛型基本概念与原理"></a>泛型基本概念与原理</h3><p>泛型的字面意思就是广泛的类型。类、接口与方法都可以应用于很广泛的类型。 <strong>代码与他们能够操作的数据类型不再紧密的绑定在一起</strong>，同一段代码可以处理不同的数据类型，有代码复用、降低耦合、提高代码的可读性与安全性的优点。  </p>
+<h3 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h3><p>泛型类（Generic Class）时，我们只关注泛型，而不用专注于数据存储的细节。  </p>
+<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Pair</span>&lt;<span class="title">T</span>&gt;</span>{
+  T first;
+  T second;
+  <span class="function"><span class="keyword">public</span> <span class="title">Pair</span><span class="params">(T first, T second)</span></span>{
+    <span class="keyword">this</span>.first = first;
+    <span class="keyword">this</span>.second = second;
+  }
+  <span class="function"><span class="keyword">public</span> T <span class="title">getFirst</span><span class="params">()</span></span>{
+    <span class="keyword">return</span> first;
+  }
+  <span class="function"><span class="keyword">public</span> T <span class="title">getSecond</span><span class="params">()</span></span>{
+    <span class="keyword">return</span> second;
+  }
+}
+</code></pre>
+<p>所定义的泛型类Pair与普通类有以下区别：  </p>
+<ul>
+<li>类名后加了<t>;  </t></li>
+<li>成员变量first与second的类型为T；  </li>
+</ul>
+<p>T表示 <strong>类型参数</strong> ，<strong>泛型就是类型参数化，处理的数据类型不是固定的，而是可以作为参数传入。</strong><br>需要注意的是，T只是一个符号，编译器会把T统一的进行修改。T也可以替换为Ti，s等等，只要一致就可以。但是对于泛型的类型参数一般使用大写字母，并且比较短，在Java的标准类库中变量E表示集合的元素，符号K与V分别表示表的关键字与关键字与值的类型，字母T或者U、S表示任意类型。  </p>
+<pre><code class="java"><span class="comment">//java泛型类的具体使用</span>
+Pair&lt;Integer&gt; minmax = <span class="keyword">new</span> Pair&lt;Integer&gt;(<span class="number">100</span>,<span class="number">50</span>);   <span class="comment">//后面尖括号里的类型可以省略</span>
+Integer min = minmax.getFirst();
+Integer max = minmax.getSecond();
+</code></pre>
+<p>当然在定义泛型类时候也可以定义多个类型参数，例如：</p>
+<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Pair</span>&lt;<span class="title">T</span>,<span class="title">S</span>,<span class="title">V</span>&gt;</span>{
+<span class="comment">//......</span>
+}
+</code></pre>
+<h3 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h3><p>泛型的类型参数T到底是什么？为什么不直接定义一个Object类（在对象里使用时再使用向下转型也就是强制类型转换）而要再次定义类型参数呢？<br>实际上，Java泛型的内部原理是这样的：</p>
 <blockquote>
-<p>动态绑定有一个很重要的特性：无需对现存的代码进行修改，就可以对程序进行扩展。假设新增一个类E，并且变量e可能引用这个类的对象，我们不需要对包含调用e.f()方法进行重新编译。如果e引用了一个E类的对象，就会自动地调用E.f()方法。  </p>
-</blockquote>
-<blockquote>
-<p>需要注意的是：在 <strong>覆盖</strong>（Override）一个方法的时候，子类方法的可见性不能低于超类方法的可见性。<strong>特别</strong>是如果超类的方法时public，那么子类方法一定要声明为public，否则编译器解释为默认的就会出错。  </p>
+<p>众所周知，编译器将Java源代码转换为.class问文件，虚拟机加载并运行.class问文件。而对于泛型类，编译器会将泛型类的代码转换为普通的非泛型代码</p>
 </blockquote>
 
       
@@ -394,8 +421,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/09/modifier/" rel="next" title="java修饰符的限制范围">
-                <i class="fa fa-chevron-left"></i> java修饰符的限制范围
+              <a href="/2018/11/17/ArrayList/" rel="next" title="java源码-剖析ArrayList">
+                <i class="fa fa-chevron-left"></i> java源码-剖析ArrayList
               </a>
             
           </div>
@@ -404,8 +431,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/14/polymorphic/" rel="prev" title="java多态（向上转型、动态绑定、instanceof、抽象）">
-                java多态（向上转型、动态绑定、instanceof、抽象） <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/01/LinkedList/" rel="prev" title="java源码-剖析LinkedList">
+                java源码-剖析LinkedList <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -520,7 +547,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-编译器得到所有可能被调用的候选方法。"><span class="nav-number">1.</span> <span class="nav-text">1. 编译器得到所有可能被调用的候选方法。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-重载解析（编译器得到需要调用的具体的一个方法）"><span class="nav-number">2.</span> <span class="nav-text">2. 重载解析（编译器得到需要调用的具体的一个方法）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-静态绑定与动态绑定"><span class="nav-number">3.</span> <span class="nav-text">3. 静态绑定与动态绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-使用动态绑定调用方法"><span class="nav-number">4.</span> <span class="nav-text">4. 使用动态绑定调用方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#泛型来源"><span class="nav-number">1.</span> <span class="nav-text">泛型来源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#泛型基本概念与原理"><span class="nav-number">2.</span> <span class="nav-text">泛型基本概念与原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#泛型类"><span class="nav-number">3.</span> <span class="nav-text">泛型类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本原理"><span class="nav-number">4.</span> <span class="nav-text">基本原理</span></a></li></ol></div>
             
 
           </div>
