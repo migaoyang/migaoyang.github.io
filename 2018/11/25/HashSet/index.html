@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Map接口中的keySet方法与entrySet方法返回值类型的都是Set。   HashSet的Set接口Set表示的是没有重复元素、且不保证顺序的容器接口 ，它扩展了Collection接口，Set接口虽然没有再定义一些自己的新的方法，但是Set接口对于Collection接口中的一些方法，它有自己的规范。Set接口的定义为：1234567891011121314151617public in">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java源码-剖析HashSet">
+<meta property="og:url" content="http://yoursite.com/2018/11/25/HashSet/index.html">
+<meta property="og:site_name" content="migaoyang">
+<meta property="og:description" content="Map接口中的keySet方法与entrySet方法返回值类型的都是Set。   HashSet的Set接口Set表示的是没有重复元素、且不保证顺序的容器接口 ，它扩展了Collection接口，Set接口虽然没有再定义一些自己的新的方法，但是Set接口对于Collection接口中的一些方法，它有自己的规范。Set接口的定义为：1234567891011121314151617public in">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-01T13:19:52.266Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java源码-剖析HashSet">
+<meta name="twitter:description" content="Map接口中的keySet方法与entrySet方法返回值类型的都是Set。   HashSet的Set接口Set表示的是没有重复元素、且不保证顺序的容器接口 ，它扩展了Collection接口，Set接口虽然没有再定义一些自己的新的方法，但是Set接口对于Collection接口中的一些方法，它有自己的规范。Set接口的定义为：1234567891011121314151617public in">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/25/HashSet/">
+
+
+
+
+
+  <title>java源码-剖析HashSet | migaoyang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">migaoyang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/25/HashSet/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaomi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="migaoyang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java源码-剖析HashSet</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-25T00:00:00+08:00">
+                2018-11-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Map接口中的keySet方法与entrySet方法返回值类型的都是Set。  </p>
+<h3 id="HashSet的Set接口"><a href="#HashSet的Set接口" class="headerlink" title="HashSet的Set接口"></a>HashSet的Set接口</h3><p><strong>Set表示的是没有重复元素、且不保证顺序的容器接口</strong> ，它扩展了Collection接口，Set接口虽然没有再定义一些自己的新的方法，但是Set接口对于Collection接口中的一些方法，它有自己的规范。<br>Set接口的定义为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Set</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">Collection</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Object o)</span></span>;</span><br><span class="line">    <span class="function">Iterator&lt;E&gt; <span class="title">iterator</span><span class="params">()</span></span>;</span><br><span class="line">    Object[] toArray();</span><br><span class="line">    &lt;T&gt; T[] toArray(T[] a);</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(Object o)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">containsAll</span><span class="params">(Collection&lt;?&gt; c)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(Collection&lt;? extends E&gt; c)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">retainAll</span><span class="params">(Collection&lt;?&gt; c)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">removeAll</span><span class="params">(Collection&lt;?&gt; c)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>与Collection接口中定义的方法是一样的，不过，一些方法有一些不同的规范要求。</p>
+<h4 id="添加元素-add（E-e）方法"><a href="#添加元素-add（E-e）方法" class="headerlink" title="添加元素 add（E e）方法"></a>添加元素 add（E e）方法</h4><pre><code class="java"><span class="function"><span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span></span>;
+</code></pre>
+<p>只会添加集合中不存在的元素并返回true，否则直接返回false。  </p>
+<h4 id="批量添加"><a href="#批量添加" class="headerlink" title="批量添加"></a>批量添加</h4><pre><code class="java"><span class="function"><span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(Collection&lt;? extends E&gt; c)</span></span>;
+</code></pre>
+<p>只添加不重复的，如果集合有变化，返回true，没变化返回false。  </p>
+<h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h4><pre><code class="java"><span class="function">Iterator&lt;E&gt; <span class="title">iterator</span><span class="params">()</span></span>;
+</code></pre>
+<p>遍历时，元素之间没有特别的顺序。  </p>
+<h3 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h3><p>与HashMap类似，HashSet的构造方法有：  </p>
+<pre><code class="java"><span class="function"><span class="keyword">public</span> <span class="title">HashSet</span><span class="params">()</span></span>
+<span class="function"><span class="keyword">public</span> <span class="title">HashSet</span><span class="params">(<span class="keyword">int</span> initialCapacity)</span></span>
+<span class="function"><span class="keyword">public</span> <span class="title">HashSet</span><span class="params">(<span class="keyword">int</span> initialCapacity, <span class="keyword">float</span> loadFactor)</span></span>
+<span class="function"><span class="keyword">public</span> <span class="title">HashSet</span><span class="params">(Collection&lt;? extends E&gt; c)</span>  </span>
+</code></pre>
+<p>HashSet的平常用法如下：</p>
+<pre><code class="java">Set&lt;String&gt; set = <span class="keyword">new</span> HashSet&lt;String&gt;();
+set.add(<span class="string">"hello"</span>);
+set.add(<span class="string">"world"</span>);
+set.addAll(Arrays.asList(<span class="keyword">new</span> String[]{<span class="string">"hello"</span>,<span class="string">"java"</span>}));
+
+<span class="keyword">for</span>(String s : set){
+    System.out.print(s+<span class="string">" "</span>);
+}
+</code></pre>
+<pre><code class="java"><span class="comment">//输出为：</span>
+hello java world
+<span class="string">"hello"</span>被添加了两次，但只会保存一份。
+</code></pre>
+<h4 id="hashCode与equals"><a href="#hashCode与equals" class="headerlink" title="hashCode与equals"></a>hashCode与equals</h4><p>与HashMap类似，HashSet要求元素重写hashCode和equals方法，且对两个对象，equals相同，则hashCode也必须相同，如果元素是自定义的类，需要注意这一点。<br>比如说，有一个表示规格的类Spec，有大小和颜色两个属性：  </p>
+<pre><code class="java"><span class="class"><span class="keyword">class</span> <span class="title">Spec</span> </span>{
+    String size;
+    String color;
+    <span class="function"><span class="keyword">public</span> <span class="title">Spec</span><span class="params">(String size, String color)</span> </span>{
+        <span class="keyword">this</span>.size = size;
+        <span class="keyword">this</span>.color = color;
+    }
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> <span class="string">"[size="</span> + size + <span class="string">", color="</span> + color + <span class="string">"]"</span>;
+</code></pre>
+<pre><code class="java"><span class="comment">//看一个Spec的Set：</span>
+Set&lt;Spec&gt; set = <span class="keyword">new</span> HashSet&lt;Spec&gt;();
+set.add(<span class="keyword">new</span> Spec(<span class="string">"M"</span>,<span class="string">"red"</span>));
+set.add(<span class="keyword">new</span> Spec(<span class="string">"M"</span>,<span class="string">"red"</span>));
+System.out.println(set);
+</code></pre>
+<p>输出为：</p>
+<pre><code class="java">[[size=M, color=red], [size=M, color=red]]  
+</code></pre>
+<p>同一个规格输出了两次，为避免这一点，需要为Spec重写hashCode和equals方法，利用IDE开发工具往往可以自动生成这两个方法，比如Eclipse中，可以通过”Source”-&gt;”Generate hashCode() and equals() …”。</p>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>HashSet有很多应用场景，比如说：</p>
+<ol>
+<li>排重，如果对排重后的元素没有顺序要求，则HashSet可以方便的用于排重。</li>
+<li>保存特殊值，Set可以用于保存各种特殊值，程序处理用户请求或数据记录时，根据是否为特殊值，进行特殊处理，比如保存IP地址的黑名单或白名单。</li>
+<li>集合运算，使用Set可以方便的进行数学集合中的运算，如交集、并集等运算，这些运算有一些很现实的意义。比如用户标签计算，每个用户都有一些标签，两个用户的标签交集就表示他们的共同特征，交集大小除以并集大小可以表示他们的相似长度。  </li>
+</ol>
+<h3 id="HashSet实现原理"><a href="#HashSet实现原理" class="headerlink" title="HashSet实现原理"></a>HashSet实现原理</h3><h4 id="内部组成"><a href="#内部组成" class="headerlink" title="内部组成"></a>内部组成</h4><p>HashSet内部是用HashMap实现的，它内部有一个HashMap实例变量，如下所示：  </p>
+<pre><code class="java"><span class="keyword">private</span> <span class="keyword">transient</span> HashMap&lt;E,Object&gt; map;
+</code></pre>
+<p><strong>Map有键和值，HashSet相当于只有键(要存的元素、对象)，值都是相同的固定值</strong>，这个值的定义为：</p>
+<pre><code class="java"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Object PRESENT = <span class="keyword">new</span> Object();
+</code></pre>
+<h4 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h4><p>HashSet的构造方法，主要就是调用了对应的HashMap的构造方法，比如：  </p>
+<pre><code class="java"><span class="function"><span class="keyword">public</span> <span class="title">HashSet</span><span class="params">(<span class="keyword">int</span> initialCapacity, <span class="keyword">float</span> loadFactor)</span> </span>{
+    map = <span class="keyword">new</span> HashMap&lt;&gt;(initialCapacity, loadFactor);
+}
+<span class="function"><span class="keyword">public</span> <span class="title">HashSet</span><span class="params">(<span class="keyword">int</span> initialCapacity)</span> </span>{
+    map = <span class="keyword">new</span> HashMap&lt;&gt;(initialCapacity);
+}
+<span class="function"><span class="keyword">public</span> <span class="title">HashSet</span><span class="params">()</span> </span>{
+    map = <span class="keyword">new</span> HashMap&lt;&gt;();
+}
+</code></pre>
+<p>接受Collection参数的构造方法稍微不一样，代码为：</p>
+<pre><code class="java"><span class="function"><span class="keyword">public</span> <span class="title">HashSet</span><span class="params">(Collection&lt;? extends E&gt; c)</span> </span>{
+    map = <span class="keyword">new</span> HashMap&lt;&gt;(Math.max((<span class="keyword">int</span>) (c.size()/.<span class="number">75f</span>) + <span class="number">1</span>, <span class="number">16</span>));
+    addAll(c);
+}
+</code></pre>
+<p>也很容易理解，</p>
+<pre><code class="java">c.size()/.<span class="number">75f</span>用于计算initialCapacity，<span class="number">0.75f</span>是loadFactor的默认值。
+</code></pre>
+<h4 id="添加元素"><a href="#添加元素" class="headerlink" title="添加元素"></a>添加元素</h4><p>我们看add方法的代码：</p>
+<pre><code class="java"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>{
+    <span class="keyword">return</span> map.put(e, PRESENT)==<span class="keyword">null</span>;
+}
+</code></pre>
+<p>就是调用map的put方法，元素e用于键，值就是那个固定值PRESENT，put返回null表示原来没有对应的键，添加成功了。HashMap中一个键只会保存一份，所以重复添加HashMap不会变化。</p>
+<h4 id="检查是否包含元素"><a href="#检查是否包含元素" class="headerlink" title="检查是否包含元素"></a>检查是否包含元素</h4><p>代码为：</p>
+<pre><code class="java"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Object o)</span> </span>{
+    <span class="keyword">return</span> map.containsKey(o);
+}
+</code></pre>
+<p>就是检查map中是否包含对应的键。</p>
+<h4 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h4><p>代码为：</p>
+<pre><code class="java"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(Object o)</span> </span>{
+    <span class="keyword">return</span> map.remove(o)==PRESENT;
+}
+</code></pre>
+<p>就是调用map的remove方法，返回值为PRESENT表示原来有对应的键且删除成功了。</p>
+<p>迭代器</p>
+<p>代码为：</p>
+<pre><code class="java"><span class="function"><span class="keyword">public</span> Iterator&lt;E&gt; <span class="title">iterator</span><span class="params">()</span> </span>{
+    <span class="keyword">return</span> map.keySet().iterator();
+}
+</code></pre>
+<p>就是返回map的keySet的迭代器。</p>
+<h3 id="HashSet总结"><a href="#HashSet总结" class="headerlink" title="HashSet总结"></a>HashSet总结</h3><p>HashSet实现了Set接口，内部是通过HashMap实现的，这决定了它有如下特点：</p>
+<ol>
+<li>没有重复元素</li>
+<li>可以高效的添加、删除元素、判断元素是否存在，效率都为O(1)。</li>
+<li>没有顺序<br>如果需求正好符合这些特点，那HashSet就是一个理想的选择。  </li>
+</ol>
+<p>HashSet实现了Set接口，不含重复元素，内部实现利用了HashMap，可以方便高效地实现如去重、集合运算等功能。同HashMap一样，HashSet<strong>没有顺序</strong>，如果要保持添加的顺序，可以使用<strong>HashSet的一个子类LinkedHashSet</strong>。Set还有一个重要的实现类，<strong>TreeSet</strong>，它可以排序。HashMap和HashSet的共同实现机制是哈希表，Map和Set还有一个重要的共同实现机制，<strong>树</strong>，实现类分别是<strong>TreeMap</strong>和<strong>TreeSet</strong> 。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/25/HashMap/" rel="next" title="java源码-剖析HashMap">
+                <i class="fa fa-chevron-left"></i> java源码-剖析HashMap
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaomi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet的Set接口"><span class="nav-number">1.</span> <span class="nav-text">HashSet的Set接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加元素-add（E-e）方法"><span class="nav-number">1.1.</span> <span class="nav-text">添加元素 add（E e）方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#批量添加"><span class="nav-number">1.2.</span> <span class="nav-text">批量添加</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迭代器"><span class="nav-number">1.3.</span> <span class="nav-text">迭代器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet"><span class="nav-number">2.</span> <span class="nav-text">HashSet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#hashCode与equals"><span class="nav-number">2.1.</span> <span class="nav-text">hashCode与equals</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用场景"><span class="nav-number">3.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet实现原理"><span class="nav-number">4.</span> <span class="nav-text">HashSet实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内部组成"><span class="nav-number">4.1.</span> <span class="nav-text">内部组成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造方法"><span class="nav-number">4.2.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加元素"><span class="nav-number">4.3.</span> <span class="nav-text">添加元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检查是否包含元素"><span class="nav-number">4.4.</span> <span class="nav-text">检查是否包含元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除元素"><span class="nav-number">4.5.</span> <span class="nav-text">删除元素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet总结"><span class="nav-number">5.</span> <span class="nav-text">HashSet总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaomi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
