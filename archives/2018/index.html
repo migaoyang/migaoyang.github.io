@@ -56,10 +56,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/32.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/16.png?v=5.1.4">
 
 
   <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
@@ -79,13 +79,16 @@
 
 
 
+<meta name="description" content="既然目标是地平线，留给世界的便只能是背影。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="migaoyang">
 <meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
 <meta property="og:site_name" content="migaoyang">
+<meta property="og:description" content="既然目标是地平线，留给世界的便只能是背影。">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="migaoyang">
+<meta name="twitter:description" content="既然目标是地平线，留给世界的便只能是背影。">
 
 
 
@@ -95,7 +98,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -179,27 +182,13 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
             首页
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            关于
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+          <a href="/tags" rel="section">
             
             标签
           </a>
@@ -207,9 +196,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+          <a href="/categories" rel="section">
             
             分类
           </a>
@@ -217,41 +204,9 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+          <a href="/archives" rel="section">
             
             归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-schedule">
-          <a href="/schedule/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
-            
-            日程表
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-sitemap">
-          <a href="/sitemap.xml" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
-            
-            站点地图
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
-            
-            公益404
           </a>
         </li>
       
@@ -287,7 +242,7 @@
         
           
         
-        嗯..! 目前共计 11 篇日志。 继续努力。
+        嗯..! 目前共计 12 篇日志。 继续努力。
       </span>
 
       
@@ -311,7 +266,7 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/11/25/HashSet/" itemprop="url">
+            <a class="post-title-link" href="/2018/11/30/HashSet/" itemprop="url">
               
                 <span itemprop="name">java源码-剖析HashSet</span>
               
@@ -320,8 +275,8 @@
       </h2>
 
       <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-25T00:00:00+08:00" content="2018-11-25">
-          11-25
+        <time class="post-time" itemprop="dateCreated" datetime="2018-11-30T00:00:00+08:00" content="2018-11-30">
+          11-30
         </time>
       </div>
 
@@ -591,9 +546,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/11/07/callByValueReference/" itemprop="url">
+            <a class="post-title-link" href="/2018/11/07/Object/" itemprop="url">
               
-                <span itemprop="name">java的引传递用去哪了</span>
+                <span itemprop="name">java的Object（equals、hashCode、toString、clone）</span>
               
             </a>
         
@@ -626,17 +581,17 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/11/06/hello-world/" itemprop="url">
+            <a class="post-title-link" href="/2018/11/07/callByValueReference/" itemprop="url">
               
-                <span itemprop="name">Hello World</span>
+                <span itemprop="name">java的引传递用去哪了</span>
               
             </a>
         
       </h2>
 
       <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-06T14:47:20+08:00" content="2018-11-06">
-          11-06
+        <time class="post-time" itemprop="dateCreated" datetime="2018-11-07T00:00:00+08:00" content="2018-11-07">
+          11-07
         </time>
       </div>
 
@@ -691,8 +646,10 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">xiaomi</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="米高扬">
+            
+              <p class="site-author-name" itemprop="name">米高扬</p>
+              <p class="site-description motion-element" itemprop="description">既然目标是地平线，留给世界的便只能是背影。</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -700,16 +657,34 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
             
 
           </nav>
@@ -747,7 +722,7 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">xiaomi</span>
+  <span class="author" itemprop="copyrightHolder">米高扬</span>
 
   
 </div>
