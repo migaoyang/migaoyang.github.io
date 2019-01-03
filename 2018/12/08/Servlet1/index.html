@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="java基础,">
+  <meta name="keywords" content="Servlet,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Java中非静态方法的调用过程，即通过对象来调用方法的过程主要有以下几个步骤。假设要调用x.f(args), 隐式参数 x 声明为类C的一个对象。具体调用流程如下： 1. 编译器得到所有可能被调用的候选方法。编译器查看对象的声明类型与方法名。假设调用x.f(param)，且隐式参数x声明为C类的对象。需要注意的是方法的重载（Overload）即：有可能存在多个名字为f，但是参数类型不一样的方法。例">
-<meta name="keywords" content="java基础">
+<meta name="description" content="提要：Servlet执行过程、执行周期。   在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 .class 。在Servlet/JSP中，web容器（Container）是Servlet/JSP唯一认识的HTTP服务器。我们需要知道Servlet/JSP与web容器是如何沟通的，web容器如何管理Servlet/JSP的各种对象等问题。   Hello Servlet 新">
+<meta name="keywords" content="Servlet">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java的非静态方法调用过程">
-<meta property="og:url" content="http://yoursite.com/2018/11/13/callFunction/index.html">
+<meta property="og:title" content="Servlet（一）">
+<meta property="og:url" content="http://yoursite.com/2018/12/08/Servlet1/index.html">
 <meta property="og:site_name" content="migaoyang">
-<meta property="og:description" content="Java中非静态方法的调用过程，即通过对象来调用方法的过程主要有以下几个步骤。假设要调用x.f(args), 隐式参数 x 声明为类C的一个对象。具体调用流程如下： 1. 编译器得到所有可能被调用的候选方法。编译器查看对象的声明类型与方法名。假设调用x.f(param)，且隐式参数x声明为C类的对象。需要注意的是方法的重载（Overload）即：有可能存在多个名字为f，但是参数类型不一样的方法。例">
+<meta property="og:description" content="提要：Servlet执行过程、执行周期。   在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 .class 。在Servlet/JSP中，web容器（Container）是Servlet/JSP唯一认识的HTTP服务器。我们需要知道Servlet/JSP与web容器是如何沟通的，web容器如何管理Servlet/JSP的各种对象等问题。   Hello Servlet 新">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-07T04:56:30.119Z">
+<meta property="og:updated_time" content="2018-12-13T13:10:03.539Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java的非静态方法调用过程">
-<meta name="twitter:description" content="Java中非静态方法的调用过程，即通过对象来调用方法的过程主要有以下几个步骤。假设要调用x.f(args), 隐式参数 x 声明为类C的一个对象。具体调用流程如下： 1. 编译器得到所有可能被调用的候选方法。编译器查看对象的声明类型与方法名。假设调用x.f(param)，且隐式参数x声明为C类的对象。需要注意的是方法的重载（Overload）即：有可能存在多个名字为f，但是参数类型不一样的方法。例">
+<meta name="twitter:title" content="Servlet（一）">
+<meta name="twitter:description" content="提要：Servlet执行过程、执行周期。   在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 .class 。在Servlet/JSP中，web容器（Container）是Servlet/JSP唯一认识的HTTP服务器。我们需要知道Servlet/JSP与web容器是如何沟通的，web容器如何管理Servlet/JSP的各种对象等问题。   Hello Servlet 新">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/13/callFunction/">
+  <link rel="canonical" href="http://yoursite.com/2018/12/08/Servlet1/">
 
 
 
 
 
-  <title>java的非静态方法调用过程 | migaoyang</title>
+  <title>Servlet（一） | migaoyang</title>
   
 
 
@@ -245,7 +245,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/callFunction/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/08/Servlet1/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="米高扬">
@@ -262,7 +262,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java的非静态方法调用过程</h1>
+          <h1 class="post-title" itemprop="name headline">Servlet（一）</h1>
         
 
         <div class="post-meta">
@@ -274,8 +274,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-13T00:00:00+08:00">
-                2018-11-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-08T00:00:00+08:00">
+                2018-12-08
               </time>
             
 
@@ -297,8 +297,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
+                  <a href="/categories/Servlet/" itemprop="url" rel="index">
+                    <span itemprop="name">Servlet</span>
                   </a>
                 </span>
 
@@ -334,17 +334,104 @@
       
 
       
-        <p>Java中非静态方法的调用过程，即通过对象来调用方法的过程主要有以下几个步骤。<br>假设要调用x.f(args), <strong>隐式参数</strong> x 声明为类C的一个对象。具体调用流程如下：</p>
-<h3 id="1-编译器得到所有可能被调用的候选方法。"><a href="#1-编译器得到所有可能被调用的候选方法。" class="headerlink" title="1. 编译器得到所有可能被调用的候选方法。"></a>1. 编译器得到所有可能被调用的候选方法。</h3><p>编译器查看对象的声明类型与方法名。假设调用x.f(param)，且隐式参数x声明为C类的对象。需要注意的是方法的<strong>重载</strong>（Overload）即：有可能存在多个名字为f，但是<strong>参数类型不一样</strong>的方法。例如，可能存在f(int)和f(String)。编译器将会一一列举所有类C和其超类中访问属性为public且名为f的方法（超类的私有方法不可访问）。</p>
-<h3 id="2-重载解析（编译器得到需要调用的具体的一个方法）"><a href="#2-重载解析（编译器得到需要调用的具体的一个方法）" class="headerlink" title="2. 重载解析（编译器得到需要调用的具体的一个方法）"></a>2. 重载解析（编译器得到需要调用的具体的一个方法）</h3><p>接下来，编译器将查看调用方法时提供的参数类型。如果在所有名为f的方法中存在一个与提供的参数类型完全匹配，就选择这个方法。这个过程称为重载解析。如果编译器没有找到与参数类型匹配的方法，或者发现经过类型转换后有多个方法与之匹配，就会报告一个错误。<br>需要注意的是int可以转换为double，子类可以转换为父类，</p>
-<h3 id="3-静态绑定与动态绑定"><a href="#3-静态绑定与动态绑定" class="headerlink" title="3. 静态绑定与动态绑定"></a>3. 静态绑定与动态绑定</h3><p>如果是private方法、static方法、final方法或者构造器，那么编译器将可以准确地知道应该调用哪个方法，我们将这种调用方式称为静态绑定。与此对应的是，调用的方法依赖于隐式参数的实际类型，并且在运行时实现动态绑定。</p>
-<h3 id="4-使用动态绑定调用方法"><a href="#4-使用动态绑定调用方法" class="headerlink" title="4. 使用动态绑定调用方法"></a>4. 使用动态绑定调用方法</h3><p>当程序运行，并且采用动态绑定调用方法时，虚拟机一定调用与x所引用对象的实例类型最合适的那个类的方法。假设 x 的实际类型是D（子类），它是C类的子类，我们要调用f(String)。如果D类定义了方法f(String)，就直接调用它；否则将在D类的超类中寻找f(String)，以此类推。<br>每次调用方法都要进行方法搜索，时间开销相当大。因此，虚拟机预先为每个类创建一个方法表，其中列举了所有方法的签名和实际调用的方法。这样一来，在真正调用方法的时候，虚拟机仅查找这个表就行了。  </p>
+        <p>提要：Servlet执行过程、执行周期。  </p>
+<p>在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 <strong>.class</strong> 。<br>在Servlet/JSP中，web容器（Container）是Servlet/JSP唯一认识的HTTP服务器。我们需要知道Servlet/JSP与web容器是如何沟通的，web容器如何管理Servlet/JSP的各种对象等问题。  </p>
+<h3 id="Hello-Servlet"><a href="#Hello-Servlet" class="headerlink" title="Hello Servlet"></a>Hello Servlet</h3><ol>
+<li>新建一个类， 实现Servlet接口</li>
+<li><p>配置Servlet ， 用意： 告诉服务器，我们的应用有这么些个servlet。<br>在webContent/WEB-INF/web.xml里面写上以下内容。    </p>
+<pre><code class="java">&lt;!-- 向tomcat报告， 这个应用里面有这个servlet， 名字叫做HelloServlet , 具体的路径是com.itheima.servlet.HelloServlet --&gt;
+&lt;servlet&gt;
+   &lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;
+   &lt;servlet-<span class="class"><span class="keyword">class</span>&gt;<span class="title">com</span>.<span class="title">itheima</span>.<span class="title">servlet</span>.<span class="title">HelloServlet</span>&lt;/<span class="title">servlet</span>-<span class="title">class</span>&gt;</span>
+<span class="class">&lt;/<span class="title">servlet</span>&gt;</span>
+<span class="class"></span>
+&lt;!-- 注册servlet的映射。  servletName : 找到上面注册的具体servlet，  url-pattern: 在地址栏上的path 一定要以/打头 --&gt;
+&lt;servlet-mapping&gt;
+   &lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;
+   &lt;url-pattern&gt;/a&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;  
+</code></pre>
+</li>
+<li>在地址栏上输入 <a href="http://localhost:8080/项目名称/a" target="_blank" rel="noopener">http://localhost:8080/项目名称/a</a></li>
+</ol>
+<h3 id="Servlet执行过程（xml方式）"><a href="#Servlet执行过程（xml方式）" class="headerlink" title="Servlet执行过程（xml方式）"></a>Servlet执行过程（xml方式）</h3><p><a href="http://localhost:8080/HelloServlet/a" target="_blank" rel="noopener">http://localhost:8080/HelloServlet/a</a></p>
+<ol>
+<li>tomcat应用</li>
+<li>找到具体项目</li>
+<li>找到web.xml，在Servlet-mapping部分找url-pattern与a相对应的servlet-name。</li>
+<li>在servlet部分找到servlet-name相对应的servlet-class</li>
+<li>找到具体的类后创建该类实例</li>
+<li>执行Servlet中的service方法  </li>
+</ol>
+<h3 id="Servlet的通用写法"><a href="#Servlet的通用写法" class="headerlink" title="Servlet的通用写法"></a>Servlet的通用写法</h3><blockquote>
+<pre><code>Servlet (接口)
+     |
+     |
+ GenericServlet
+     |
+     |
+ HttpServlet （用于处理http的请求）  
+</code></pre></blockquote>
+<p>例如： 定义一个类，继承HttpServlet 复写doGet 和 doPost</p>
+<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloServlet02</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>{
+       <span class="comment">//Get请求会来这个方法</span>
+       <span class="meta">@Override</span>
+       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>{
+           System.out.println(<span class="string">"get---"</span>);
+       }
+
+       <span class="comment">//POST请求会来这个方法</span>
+       <span class="meta">@Override</span>
+       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>{
+           System.out.println(<span class="string">"post----"</span>);
+       }
+   }
+</code></pre>
+<p>在service方法中的主要工作是判断是该使用doGet方法、doPost方法或者其他方法。  </p>
+<h3 id="Servlet的生命周期"><a href="#Servlet的生命周期" class="headerlink" title="Servlet的生命周期"></a>Servlet的生命周期</h3><ul>
+<li>生命周期</li>
+</ul>
 <blockquote>
-<p>动态绑定有一个很重要的特性：无需对现存的代码进行修改，就可以对程序进行扩展。假设新增一个类E，并且变量e可能引用这个类的对象，我们不需要对包含调用e.f()方法进行重新编译。如果e引用了一个E类的对象，就会自动地调用E.f()方法。  </p>
+<p>从创建到销毁的一段时间</p>
 </blockquote>
+<ul>
+<li>生命周期方法</li>
+</ul>
 <blockquote>
-<p>需要注意的是：在 <strong>覆盖</strong>（Override）一个方法的时候，子类方法的可见性不能低于超类方法的可见性。<strong>特别</strong>是如果超类的方法时public，那么子类方法一定要声明为public，否则编译器解释为默认的就会出错。  </p>
+<p>从创建到销毁，所调用的那些方法。</p>
 </blockquote>
+<ul>
+<li><p>init方法</p>
+<pre><code>在创建该servlet的实例时，就执行该方法。
+一个servlet只会初始化一次， init方法只会执行一次
+默认情况下是 ： 初次访问该servlet，才会创建实例。
+</code></pre></li>
+<li><p>service方法</p>
+<pre><code>只要客户端来了一个请求，那么就执行这个方法了。
+  该方法可以被执行很多次。 一次请求，对应一次service方法的调用
+</code></pre></li>
+<li><p>destroy方法<br>servlet销毁的时候，就会执行该方法</p>
+<pre><code>1. 该项目从tomcat的里面移除。
+2. 正常关闭tomcat就会执行 shutdown.bat
+</code></pre></li>
+</ul>
+<blockquote>
+<p>doGet 和 doPost不算生命周期方法，所谓的生命周期方法是指，从对象的创建到销毁一定会执行的方法， 但是这两个方法，不一定会执行。</p>
+</blockquote>
+<h3 id="让Servlet创建实例的时机提前。"><a href="#让Servlet创建实例的时机提前。" class="headerlink" title="让Servlet创建实例的时机提前。"></a>让Servlet创建实例的时机提前。</h3><ol>
+<li><p>默认情况下，只有在初次访问servlet的时候，才会执行init方法。 有的时候，我们可能需要在这个方法里面执行一些初始化工作，甚至是做一些比较耗时的逻辑。</p>
+</li>
+<li><p>那么这个时候，初次访问，可能会在init方法中逗留太久的时间。 那么改变思路，使用其他办法可以让这个初始化的时机提前一点。</p>
+</li>
+<li><p>在配置的时候， 使用load-on-startup元素来指定， 给定的数字越小，启动的时机就越早。 一般不写负数， 从2开始即可。</p>
+</li>
+</ol>
+<pre><code class="java">&lt;servlet&gt;
+      &lt;servlet-name&gt;HelloServlet04&lt;/servlet-name&gt;
+      &lt;servlet-<span class="class"><span class="keyword">class</span>&gt;<span class="title">com</span>.<span class="title">itheima</span>.<span class="title">servlet</span>.<span class="title">HelloServlet04</span>&lt;/<span class="title">servlet</span>-<span class="title">class</span>&gt;</span>
+<span class="class">      &lt;<span class="title">load</span>-<span class="title">on</span>-<span class="title">startup</span>&gt;2&lt;/<span class="title">load</span>-<span class="title">on</span>-<span class="title">startup</span>&gt;</span>
+<span class="class">  &lt;/<span class="title">servlet</span>&gt;</span>
+</code></pre>
 
       
     </div>
@@ -362,7 +449,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java基础/" rel="tag"># java基础</a>
+            <a href="/tags/Servlet/" rel="tag"># Servlet</a>
           
         </div>
       
@@ -375,8 +462,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/09/modifier/" rel="next" title="java修饰符的限制范围">
-                <i class="fa fa-chevron-left"></i> java修饰符的限制范围
+              <a href="/2018/12/08/Http/" rel="next" title="HTTP协议">
+                <i class="fa fa-chevron-left"></i> HTTP协议
               </a>
             
           </div>
@@ -385,8 +472,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/14/polymorphic/" rel="prev" title="java多态（向上转型、动态绑定、instanceof、抽象）">
-                java多态（向上转型、动态绑定、instanceof、抽象） <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/08/Servlet2/" rel="prev" title="Servlet（二）">
+                Servlet（二） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -521,7 +608,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-编译器得到所有可能被调用的候选方法。"><span class="nav-number">1.</span> <span class="nav-text">1. 编译器得到所有可能被调用的候选方法。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-重载解析（编译器得到需要调用的具体的一个方法）"><span class="nav-number">2.</span> <span class="nav-text">2. 重载解析（编译器得到需要调用的具体的一个方法）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-静态绑定与动态绑定"><span class="nav-number">3.</span> <span class="nav-text">3. 静态绑定与动态绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-使用动态绑定调用方法"><span class="nav-number">4.</span> <span class="nav-text">4. 使用动态绑定调用方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hello-Servlet"><span class="nav-number">1.</span> <span class="nav-text">Hello Servlet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Servlet执行过程（xml方式）"><span class="nav-number">2.</span> <span class="nav-text">Servlet执行过程（xml方式）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Servlet的通用写法"><span class="nav-number">3.</span> <span class="nav-text">Servlet的通用写法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Servlet的生命周期"><span class="nav-number">4.</span> <span class="nav-text">Servlet的生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#让Servlet创建实例的时机提前。"><span class="nav-number">5.</span> <span class="nav-text">让Servlet创建实例的时机提前。</span></a></li></ol></div>
             
 
           </div>

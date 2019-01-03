@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Servlet,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="提要：Servlet配置路径、ServletConfig、ServletContext、 1. Servlet配置路径（xml或者注解）假设项目名称为a。    全路径匹配    以 / 开始　/a/aa/bblocalhost:8080/项目名称/aa/bb     路径匹配 , 前半段匹配      以/ 开始 , 但是以 * 结束 　　   / a / */*符号 * 其实是一个通配符，匹配">
+<meta name="keywords" content="Servlet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Servlet（二）">
+<meta property="og:url" content="http://yoursite.com/2018/12/08/Servlet2/index.html">
+<meta property="og:site_name" content="migaoyang">
+<meta property="og:description" content="提要：Servlet配置路径、ServletConfig、ServletContext、 1. Servlet配置路径（xml或者注解）假设项目名称为a。    全路径匹配    以 / 开始　/a/aa/bblocalhost:8080/项目名称/aa/bb     路径匹配 , 前半段匹配      以/ 开始 , 但是以 * 结束 　　   / a / */*符号 * 其实是一个通配符，匹配">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-14T03:22:05.854Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Servlet（二）">
+<meta name="twitter:description" content="提要：Servlet配置路径、ServletConfig、ServletContext、 1. Servlet配置路径（xml或者注解）假设项目名称为a。    全路径匹配    以 / 开始　/a/aa/bblocalhost:8080/项目名称/aa/bb     路径匹配 , 前半段匹配      以/ 开始 , 但是以 * 结束 　　   / a / */*符号 * 其实是一个通配符，匹配">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/08/Servlet2/">
+
+
+
+
+
+  <title>Servlet（二） | migaoyang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">migaoyang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/08/Servlet2/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="米高扬">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="migaoyang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Servlet（二）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-08T00:00:00+08:00">
+                2018-12-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Servlet/" itemprop="url" rel="index">
+                    <span itemprop="name">Servlet</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>提要：Servlet配置路径、ServletConfig、ServletContext、</p>
+<h3 id="1-Servlet配置路径（xml或者注解）"><a href="#1-Servlet配置路径（xml或者注解）" class="headerlink" title="1. Servlet配置路径（xml或者注解）"></a>1. Servlet配置路径（xml或者注解）</h3><p>假设项目名称为a。  </p>
+<ol>
+<li><p><strong>全路径匹配</strong>  </p>
+<blockquote>
+<p>以 / 开始　/a/aa/bb<br>localhost:8080/项目名称/aa/bb  </p>
+</blockquote>
+</li>
+<li><p><strong>路径匹配 , 前半段匹配</strong>   </p>
+<blockquote>
+<p> 以/ 开始 , 但是以 * 结束 　　   / a / */*<br>符号 * 其实是一个通配符，匹配任意文字<br>localhost:8080/项目名称/aa/bb</p>
+</blockquote>
+</li>
+<li><p><strong>以扩展名匹配</strong>    </p>
+<blockquote>
+<p>写法： 没有/　以 * 开始　　*.扩展名　　*.aa　　*.bb</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="2-ServletConfig"><a href="#2-ServletConfig" class="headerlink" title="2. ServletConfig"></a>2. ServletConfig</h3><p>单个Servlet类的配置对象，通过这个对象，可以获取servlet在配置的时候一些信息  </p>
+<h4 id="2-1-ServletConfig作用"><a href="#2-1-ServletConfig作用" class="headerlink" title="2.1 ServletConfig作用"></a>2.1 ServletConfig作用</h4><p>可以获取、设置单个servlet类的配置参数。例如当使用jar文件（class）放在自己的servlet类里面时，配置参数不固定，就可以使用ServletConfig方便的设置配置参数。  </p>
+<h4 id="2-2-使用方法"><a href="#2-2-使用方法" class="headerlink" title="2.2 使用方法"></a>2.2 使用方法</h4><pre><code class="java"><span class="comment">//1. 得到servlet配置对象 专门用于在配置servlet的信息  </span>
+ServletConfig config = getServletConfig();  
+
+<span class="comment">//获取到的是配置servlet里面servlet-name 的文本内容  </span>
+String servletName = config.getServletName();  
+System.out.println(<span class="string">"servletName="</span>+servletName);  
+
+<span class="comment">//2、 可以获取具体的某一个参数。  </span>
+String address = config.getInitParameter(<span class="string">"address"</span>);  
+System.out.println(<span class="string">"address="</span>+address);  
+
+<span class="comment">//3.获取所有的参数名称  </span>
+Enumeration&lt;String&gt; names = config.getInitParameterNames();  
+<span class="comment">//遍历取出所有的参数名称  </span>
+<span class="keyword">while</span> (names.hasMoreElements()) {  
+    String key = (String) names.nextElement();  
+    String value = config.getInitParameter(key);  
+    System.out.println(<span class="string">"key==="</span>+key + <span class="string">"   value="</span>+value);  
+}  
+</code></pre>
+<h3 id="3-ServletContext"><a href="#3-ServletContext" class="headerlink" title="3. ServletContext"></a>3. ServletContext</h3><p>每个web工程都只有一个ServletContext对象。也就是不管在哪个servlet里面，获取到的这个类的对象都是同一个。  </p>
+<h4 id="3-1-ServletContext的作用"><a href="#3-1-ServletContext的作用" class="headerlink" title="3.1 ServletContext的作用"></a>3.1 ServletContext的作用</h4><ol>
+<li>获取全局配置参数</li>
+<li>获取web工程中的资源</li>
+<li>存取数据，servlet间共享数据域对象  </li>
+</ol>
+<h5 id="3-1-1-ServletContext获取全局配置参数的方法"><a href="#3-1-1-ServletContext获取全局配置参数的方法" class="headerlink" title="3.1.1 ServletContext获取全局配置参数的方法()"></a>3.1.1 ServletContext获取全局配置参数的方法()</h5><pre><code class="java">&lt;!--  web.xml文件里面 全局参数 ： 任何servlet都可以用，ServletContext --&gt;
+ &lt;context-param&gt;
+   &lt;param-name&gt;address&lt;/param-name&gt;
+   &lt;param-value&gt;深圳宝安&lt;/param-value&gt;
+ &lt;/context-param&gt;
+</code></pre>
+<p>获取全局参数</p>
+<pre><code class="java"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>{
+    doGet(request, response);
+    <span class="comment">//1. 获取对象</span>
+    ServletContext context = getServletContext();
+    String address = context.getInitParameter(<span class="string">"address"</span>);
+    System.out.println(<span class="string">"这是01获取的数据：：address="</span>+address);
+}
+</code></pre>
+<h5 id="3-1-2-可以获取Web应用中的资源"><a href="#3-1-2-可以获取Web应用中的资源" class="headerlink" title="3.1.2 可以获取Web应用中的资源"></a>3.1.2 可以获取Web应用中的资源</h5><ol>
+<li>获取资源在tomcat里面的绝对路径<br> 先得到路径，然后自己new InpuStream  <pre><code>context.getRealPath(&quot;&quot;) //这里得到的是项目在tomcat里面的根目录。
+D:\tomcat\apache-tomcat-7.0.52\apache-tomcat-7.0.52\wtpwebapps\Demo03\  
+String path = context.getRealPath(&quot;file/config.properties&quot;);
+D:\tomcat\apache-tomcat-7.0.52\apache-tomcat-7.0.52\wtpwebapps\Demo03\file\config.properties
+</code></pre></li>
+</ol>
+<ol start="2">
+<li>getResourceAsStream 获取资源流对象。<br>直接给相对的路径，然后获取流对象。  <pre><code class="java"><span class="comment">//获取web工程下的资源，转化为流对象。</span>
+InputStream is = context.getResouceAsStream(<span class="string">"file/config.properties"</span>)
+</code></pre>
+</li>
+</ol>
+<h4 id="3-2-ServletContext周期"><a href="#3-2-ServletContext周期" class="headerlink" title="3.2 ServletContext周期"></a>3.2 ServletContext周期</h4><p>服务器启动的时候，会为托管的每一个web应用程序，创建一个ServletContext对象。<br>销毁该对象的方法：从服务器移除托管，或者是关闭服务器。   </p>
+<h4 id="3-3-ServletContext的作用范围"><a href="#3-3-ServletContext的作用范围" class="headerlink" title="3.3 ServletContext的作用范围"></a>3.3 ServletContext的作用范围</h4><p>只要在同一个web项目里面，也就是同一个ServletContext对象，都可以取。</p>
+<h3 id="4-HttpServletRequset"><a href="#4-HttpServletRequset" class="headerlink" title="4. HttpServletRequset"></a>4. HttpServletRequset</h3><p>HttpServletRequset类对象封装了客户端提交的一切数据。  </p>
+<h4 id="4-1-可以获取客户端请求头信息"><a href="#4-1-可以获取客户端请求头信息" class="headerlink" title="4.1. 可以获取客户端请求头信息"></a>4.1. 可以获取客户端请求头信息</h4><pre><code class="java"><span class="comment">//得到一个枚举集合  </span>
+Enumeration&lt;String&gt; headerNames = request.getHeaderNames();
+<span class="keyword">while</span> (headerNames.hasMoreElements()) {
+      String name = (String) headerNames.nextElement();
+      String value = request.getHeader(name);
+      System.out.println(name+<span class="string">"="</span>+value);        
+}
+</code></pre>
+<h4 id="4-2-获取客户端提交过来的数据"><a href="#4-2-获取客户端提交过来的数据" class="headerlink" title="4.2. 获取客户端提交过来的数据"></a>4.2. 获取客户端提交过来的数据</h4><pre><code class="java">String name = request.getParameter(<span class="string">"name"</span>);
+String address = request.getParameter(<span class="string">"address"</span>);
+System.out.println(<span class="string">"name="</span>+name);
+System.out.println(<span class="string">"address="</span>+address);
+<span class="comment">//-------------------------------------------------</span>
+<span class="comment">//name=zhangsan&amp;name=lisi&amp;name=wangwu 一个key可以对应多个值。</span>
+Map&lt;String, String[]&gt; map = request.getParameterMap();
+Set&lt;String&gt; keySet = map.keySet();
+Iterator&lt;String&gt; iterator = keySet.iterator();
+<span class="keyword">while</span> (iterator.hasNext()) {
+        String key = (String) iterator.next();
+        System.out.println(<span class="string">"key="</span>+key + <span class="string">"--的值总数有："</span>+map.get(key).length);
+        String value = map.get(key)[<span class="number">0</span>];
+        String value1 = map.get(key)[<span class="number">1</span>];
+        String value2 = map.get(key)[<span class="number">2</span>];
+        System.out.println(key+<span class="string">" ======= "</span>+ value + <span class="string">"="</span> + value1 + <span class="string">"="</span>+ value2);
+}
+</code></pre>
+<h3 id="5-request获取中文数据乱码"><a href="#5-request获取中文数据乱码" class="headerlink" title="5. request获取中文数据乱码"></a>5. request获取中文数据乱码</h3><p>客户端提交数据给服务器端，如果数据中带有中文的话，有可能会出现乱码情况。  </p>
+<ul>
+<li><p><strong>GET方式</strong>  </p>
+<ol>
+<li><p>转码代码</p>
+<pre><code class="java">String username = request.getParameter(<span class="string">"username"</span>);
+String password = request.getParameter(<span class="string">"password"</span>);
+System.out.println(<span class="string">"userName="</span>+username+<span class="string">"==password="</span>+password);
+<span class="comment">//get请求过来的数据，在url地址栏上就已经经过编码了，所以我们取到的就是乱码，</span>
+<span class="comment">//tomcat收到了这批数据，getParameter 默认使用ISO-8859-1去解码</span>
+
+<span class="comment">//先让文字回到ISO-8859-1对应的字节数组 ， 然后再按utf-8组拼字符串</span>
+username = <span class="keyword">new</span> String(username.getBytes(<span class="string">"ISO-8859-1"</span>) , <span class="string">"UTF-8"</span>);
+System.out.println(<span class="string">"userName="</span>+username+<span class="string">"==password="</span>+password);
+</code></pre>
+</li>
+<li>可以在tomcat里面做设置处理，以后get请求过来的数据永远都是用UTF-8编码。<br>conf/server.xml 加上URIEncoding=”utf-8”<pre><code class="java">&lt;Connector connectionTimeout=<span class="string">"20000"</span> port=<span class="string">"8080"</span> protocol=<span class="string">"HTTP/1.1"</span>  redirectPort=<span class="string">"8443"</span> URIEncoding=<span class="string">"UTF-8"</span>/&gt;
+</code></pre>
+</li>
+</ol>
+</li>
+<li><p><strong>POST方式</strong><br>需要设置请求体里面的文字编码。<br><strong>request.setCharacterEncoding(“UTF-8”);</strong><br>这行设置一定要写在getParameter方法之前之前。  </p>
+</li>
+</ul>
+<h3 id="6-HttpServletResponse"><a href="#6-HttpServletResponse" class="headerlink" title="6. HttpServletResponse"></a>6. HttpServletResponse</h3><p>负责返回数据给客户端。</p>
+<ul>
+<li><p>输出数据到页面上</p>
+<pre><code class="java"><span class="comment">//以字符流的方式写数据</span>
+response.getWriter().write(<span class="string">"&lt;h1&gt;hello response...&lt;/h1&gt;"</span>);
+<span class="comment">//以字节流的方式写数据</span>
+response.getOutputStream().write(<span class="string">"hello response2222..."</span>.getBytes());
+</code></pre>
+<h4 id="响应的数据中有中文，则有可能出现中文乱码情况"><a href="#响应的数据中有中文，则有可能出现中文乱码情况" class="headerlink" title="响应的数据中有中文，则有可能出现中文乱码情况"></a>响应的数据中有中文，则有可能出现中文乱码情况</h4></li>
+<li><p>以字符流输出    </p>
+<blockquote>
+<p>response.getWriter()<br><code>`</code>java<br>//1. 指定输出到客户端的时候，这些文字使用UTF-8编码<br>response.setCharacterEncoding(“UTF-8”);</p>
+</blockquote>
+</li>
+</ul>
+<p>//2. 直接规定浏览器看这份数据的时候，使用什么编码来看。<br>response.setHeader(“Content-Type”, “text/html; charset=UTF-8”);</p>
+<p>response.getWriter().write(“响应…”);</p>
+<pre><code>
++ 以字节流输出
+
+&gt; response.getOutputStream()
+
+```java  
+//1. 指定浏览器看这份数据使用的码表
+response.setHeader(&quot;Content-Type&quot;, &quot;text/html;charset=UTF-8&quot;);
+
+//2. 指定输出的中文用的码表
+response.getOutputStream().write(&quot;响应..&quot;.getBytes(&quot;UTF-8&quot;));
+</code></pre><p><strong>不管是字节流还是字符流，直接使用下面一行代码就可以了。</strong><br><strong>response.setContentType(“text/html;charset=UTF-8”);</strong> 然后在写数据即可。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Servlet/" rel="tag"># Servlet</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/08/Servlet1/" rel="next" title="Servlet（一）">
+                <i class="fa fa-chevron-left"></i> Servlet（一）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/20/InnerClass/" rel="prev" title="java内部类">
+                java内部类 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="米高扬">
+            
+              <p class="site-author-name" itemprop="name">米高扬</p>
+              <p class="site-description motion-element" itemprop="description">既然目标是地平线，留给世界的便只能是背影。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Servlet配置路径（xml或者注解）"><span class="nav-number">1.</span> <span class="nav-text">1. Servlet配置路径（xml或者注解）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-ServletConfig"><span class="nav-number">2.</span> <span class="nav-text">2. ServletConfig</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-ServletConfig作用"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 ServletConfig作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-使用方法"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 使用方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-ServletContext"><span class="nav-number">3.</span> <span class="nav-text">3. ServletContext</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-ServletContext的作用"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 ServletContext的作用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-1-ServletContext获取全局配置参数的方法"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1 ServletContext获取全局配置参数的方法()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-2-可以获取Web应用中的资源"><span class="nav-number">3.1.2.</span> <span class="nav-text">3.1.2 可以获取Web应用中的资源</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-ServletContext周期"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 ServletContext周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-ServletContext的作用范围"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 ServletContext的作用范围</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-HttpServletRequset"><span class="nav-number">4.</span> <span class="nav-text">4. HttpServletRequset</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-可以获取客户端请求头信息"><span class="nav-number">4.1.</span> <span class="nav-text">4.1. 可以获取客户端请求头信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-获取客户端提交过来的数据"><span class="nav-number">4.2.</span> <span class="nav-text">4.2. 获取客户端提交过来的数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-request获取中文数据乱码"><span class="nav-number">5.</span> <span class="nav-text">5. request获取中文数据乱码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-HttpServletResponse"><span class="nav-number">6.</span> <span class="nav-text">6. HttpServletResponse</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#响应的数据中有中文，则有可能出现中文乱码情况"><span class="nav-number">6.1.</span> <span class="nav-text">响应的数据中有中文，则有可能出现中文乱码情况</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaomi</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
