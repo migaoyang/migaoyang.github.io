@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Servlet,">
+  <meta name="keywords" content="java高级,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="提要：Servlet执行过程、执行周期。   在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 .class 。在Servlet/JSP中，web容器（Container）是Servlet/JSP唯一认识的HTTP服务器。我们需要知道Servlet/JSP与web容器是如何沟通的，web容器如何管理Servlet/JSP的各种对象等问题。   Hello Servlet 新">
-<meta name="keywords" content="Servlet">
+<meta name="description" content="数据库连接池 数据库连接的对象创建，比较消耗性能。      一开始现在内存中开辟一块空间（以集合存起来）， 一开先往Pool里面放置多个连接对象。以后需要连接的话，直接从Pool里面取。不需要自己用到时再重头开始建立了。使用完毕，需要归还连接，确保连接对象能循环利用。    常用的开源连接池有DBCP（Apache）与C3P0   DBCP首先导入jar文件。方式一 不使用配置文件：    pu">
+<meta name="keywords" content="java高级">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Servlet（一）">
-<meta property="og:url" content="http://yoursite.com/2018/12/08/Servlet1/index.html">
+<meta property="og:title" content="连接池">
+<meta property="og:url" content="http://yoursite.com/2019/01/03/ConnectionPool/index.html">
 <meta property="og:site_name" content="migaoyang">
-<meta property="og:description" content="提要：Servlet执行过程、执行周期。   在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 .class 。在Servlet/JSP中，web容器（Container）是Servlet/JSP唯一认识的HTTP服务器。我们需要知道Servlet/JSP与web容器是如何沟通的，web容器如何管理Servlet/JSP的各种对象等问题。   Hello Servlet 新">
+<meta property="og:description" content="数据库连接池 数据库连接的对象创建，比较消耗性能。      一开始现在内存中开辟一块空间（以集合存起来）， 一开先往Pool里面放置多个连接对象。以后需要连接的话，直接从Pool里面取。不需要自己用到时再重头开始建立了。使用完毕，需要归还连接，确保连接对象能循环利用。    常用的开源连接池有DBCP（Apache）与C3P0   DBCP首先导入jar文件。方式一 不使用配置文件：    pu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-13T13:10:03.539Z">
+<meta property="og:updated_time" content="2019-01-04T03:22:00.009Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Servlet（一）">
-<meta name="twitter:description" content="提要：Servlet执行过程、执行周期。   在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 .class 。在Servlet/JSP中，web容器（Container）是Servlet/JSP唯一认识的HTTP服务器。我们需要知道Servlet/JSP与web容器是如何沟通的，web容器如何管理Servlet/JSP的各种对象等问题。   Hello Servlet 新">
+<meta name="twitter:title" content="连接池">
+<meta name="twitter:description" content="数据库连接池 数据库连接的对象创建，比较消耗性能。      一开始现在内存中开辟一块空间（以集合存起来）， 一开先往Pool里面放置多个连接对象。以后需要连接的话，直接从Pool里面取。不需要自己用到时再重头开始建立了。使用完毕，需要归还连接，确保连接对象能循环利用。    常用的开源连接池有DBCP（Apache）与C3P0   DBCP首先导入jar文件。方式一 不使用配置文件：    pu">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/08/Servlet1/">
+  <link rel="canonical" href="http://yoursite.com/2019/01/03/ConnectionPool/">
 
 
 
 
 
-  <title>Servlet（一） | migaoyang</title>
+  <title>连接池 | migaoyang</title>
   
 
 
@@ -245,7 +245,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/08/Servlet1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/03/ConnectionPool/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="米高扬">
@@ -262,7 +262,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Servlet（一）</h1>
+          <h1 class="post-title" itemprop="name headline">连接池</h1>
         
 
         <div class="post-meta">
@@ -274,8 +274,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-08T00:00:00+08:00">
-                2018-12-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-03T00:00:00+08:00">
+                2019-01-03
               </time>
             
 
@@ -297,8 +297,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Servlet/" itemprop="url" rel="index">
-                    <span itemprop="name">Servlet</span>
+                  <a href="/categories/JDBC/" itemprop="url" rel="index">
+                    <span itemprop="name">JDBC</span>
                   </a>
                 </span>
 
@@ -334,103 +334,145 @@
       
 
       
-        <p>提要：Servlet执行过程、执行周期。  </p>
-<p>在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 <strong>.class</strong> 。<br>在Servlet/JSP中，web容器（Container）是Servlet/JSP唯一认识的HTTP服务器。我们需要知道Servlet/JSP与web容器是如何沟通的，web容器如何管理Servlet/JSP的各种对象等问题。  </p>
-<h3 id="Hello-Servlet"><a href="#Hello-Servlet" class="headerlink" title="Hello Servlet"></a>Hello Servlet</h3><ol>
-<li>新建一个类， 实现Servlet接口</li>
-<li><p>配置Servlet ， 用意： 告诉服务器，我们的应用有这么些个servlet。<br>在webContent/WEB-INF/web.xml里面写上以下内容。    </p>
-<pre><code class="java">&lt;!-- 向tomcat报告， 这个应用里面有这个servlet， 名字叫做HelloServlet , 具体的路径是com.itheima.servlet.HelloServlet --&gt;
-&lt;servlet&gt;
-   &lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;
-   &lt;servlet-<span class="class"><span class="keyword">class</span>&gt;<span class="title">com</span>.<span class="title">itheima</span>.<span class="title">servlet</span>.<span class="title">HelloServlet</span>&lt;/<span class="title">servlet</span>-<span class="title">class</span>&gt;</span>
-<span class="class">&lt;/<span class="title">servlet</span>&gt;</span>
-<span class="class"></span>
-&lt;!-- 注册servlet的映射。  servletName : 找到上面注册的具体servlet，  url-pattern: 在地址栏上的path 一定要以/打头 --&gt;
-&lt;servlet-mapping&gt;
-   &lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;
-   &lt;url-pattern&gt;/a&lt;/url-pattern&gt;
-&lt;/servlet-mapping&gt;  
-</code></pre>
-</li>
-<li>在地址栏上输入 <a href="http://localhost:8080/项目名称/a" target="_blank" rel="noopener">http://localhost:8080/项目名称/a</a></li>
+        <h3 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h3><ol>
+<li>数据库连接的对象创建，比较消耗性能。     </li>
+<li>一开始现在内存中开辟一块空间（以集合存起来）， 一开先往Pool里面放置多个连接对象。以后需要连接的话，直接从Pool里面取。不需要自己用到时再重头开始建立了。使用完毕，需要归还连接，确保连接对象能循环利用。  </li>
 </ol>
-<h3 id="Servlet执行过程（xml方式）"><a href="#Servlet执行过程（xml方式）" class="headerlink" title="Servlet执行过程（xml方式）"></a>Servlet执行过程（xml方式）</h3><p><a href="http://localhost:8080/HelloServlet/a" target="_blank" rel="noopener">http://localhost:8080/HelloServlet/a</a></p>
-<ol>
-<li>tomcat应用</li>
-<li>找到具体项目</li>
-<li>找到web.xml，在Servlet-mapping部分找url-pattern与a相对应的servlet-name。</li>
-<li>在servlet部分找到servlet-name相对应的servlet-class</li>
-<li>找到具体的类后创建该类实例</li>
-<li>执行Servlet中的service方法  </li>
-</ol>
-<h3 id="Servlet的通用写法"><a href="#Servlet的通用写法" class="headerlink" title="Servlet的通用写法"></a>Servlet的通用写法</h3><blockquote>
-<pre><code>Servlet (接口)
-     |
-     |
- GenericServlet
-     |
-     |
- HttpServlet （用于处理http的请求）  
-</code></pre></blockquote>
-<p>例如： 定义一个类，继承HttpServlet 复写doGet 和 doPost</p>
-<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloServlet02</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>{
-       <span class="comment">//Get请求会来这个方法</span>
-       <span class="meta">@Override</span>
-       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>{
-           System.out.println(<span class="string">"get---"</span>);
-       }
+<p>常用的开源连接池有DBCP（Apache）与C3P0  </p>
+<h4 id="DBCP"><a href="#DBCP" class="headerlink" title="DBCP"></a>DBCP</h4><p>首先导入jar文件。<br><strong>方式一 不使用配置文件：</strong>   </p>
+<pre><code class="java"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testDBCP01</span><span class="params">()</span></span>{
+    Connection conn = <span class="keyword">null</span>;
+    PreparedStatement ps = <span class="keyword">null</span>;
+    <span class="keyword">try</span> {
 
-       <span class="comment">//POST请求会来这个方法</span>
-       <span class="meta">@Override</span>
-       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>{
-           System.out.println(<span class="string">"post----"</span>);
-       }
-   }
+        <span class="comment">//1. 构建数据源对象</span>
+        BasicDataSource dataSource = <span class="keyword">new</span> BasicDataSource();
+        <span class="comment">//连的是什么类型的数据库， 访问的是哪个数据库 ， 用户名， 密码</span>
+        <span class="comment">//jdbc:mysql://localhost/bank 主协议：子协议 ://地址/数据库</span>
+        dataSource.setDriverClassName(<span class="string">"com.mysql.jdbc.Driver"</span>);
+        dataSource.setUrl(<span class="string">"jdbc:mysql://localhost/bank"</span>);
+        dataSource.setUsername(<span class="string">"root"</span>);
+        dataSource.setPassword(<span class="string">"123456"</span>);
+
+            <span class="comment">//2. 得到连接对象</span>
+            conn = dataSource.getConnection();
+            String sql = <span class="string">"insert into account values(null , ? , ?)"</span>;
+            ps = conn.prepareStatement(sql);
+            ps.setString(<span class="number">1</span>, <span class="string">"admin"</span>);
+            ps.setInt(<span class="number">2</span>, <span class="number">1000</span>);
+
+            ps.executeUpdate();
+
+        } <span class="keyword">catch</span> (SQLException e) {
+            e.printStackTrace();
+        }<span class="keyword">finally</span> {
+            JDBCUtil.release(conn, ps);
+        }
+
+    }
 </code></pre>
-<p>在service方法中的主要工作是判断是该使用doGet方法、doPost方法或者其他方法。  </p>
-<h3 id="Servlet的生命周期"><a href="#Servlet的生命周期" class="headerlink" title="Servlet的生命周期"></a>Servlet的生命周期</h3><ul>
-<li>生命周期</li>
-</ul>
-<blockquote>
-<p>从创建到销毁的一段时间</p>
-</blockquote>
-<ul>
-<li>生命周期方法</li>
-</ul>
-<blockquote>
-<p>从创建到销毁，所调用的那些方法。</p>
-</blockquote>
-<ul>
-<li><p>init方法</p>
-<pre><code>在创建该servlet的实例时，就执行该方法。
-一个servlet只会初始化一次， init方法只会执行一次
-默认情况下是 ： 初次访问该servlet，才会创建实例。
-</code></pre></li>
-<li><p>service方法</p>
-<pre><code>只要客户端来了一个请求，那么就执行这个方法了。
-  该方法可以被执行很多次。 一次请求，对应一次service方法的调用
-</code></pre></li>
-<li><p>destroy方法<br>servlet销毁的时候，就会执行该方法</p>
-<pre><code>1. 该项目从tomcat的里面移除。
-2. 正常关闭tomcat就会执行 shutdown.bat
-</code></pre></li>
-</ul>
-<blockquote>
-<p>doGet 和 doPost不算生命周期方法，所谓的生命周期方法是指，从对象的创建到销毁一定会执行的方法， 但是这两个方法，不一定会执行。</p>
-</blockquote>
-<h3 id="让Servlet创建实例的时机提前。"><a href="#让Servlet创建实例的时机提前。" class="headerlink" title="让Servlet创建实例的时机提前。"></a>让Servlet创建实例的时机提前。</h3><ol>
-<li><p>默认情况下，只有在初次访问servlet的时候，才会执行init方法。 有的时候，我们可能需要在这个方法里面执行一些初始化工作，甚至是做一些比较耗时的逻辑。</p>
-</li>
-<li><p>那么这个时候，初次访问，可能会在init方法中逗留太久的时间。 那么改变思路，使用其他办法可以让这个初始化的时机提前一点。</p>
-</li>
-<li><p>在配置的时候， 使用load-on-startup元素来指定， 给定的数字越小，启动的时机就越早。 一般不写负数， 从2开始即可。</p>
-</li>
-</ol>
-<pre><code class="java">&lt;servlet&gt;
-      &lt;servlet-name&gt;HelloServlet04&lt;/servlet-name&gt;
-      &lt;servlet-<span class="class"><span class="keyword">class</span>&gt;<span class="title">com</span>.<span class="title">itheima</span>.<span class="title">servlet</span>.<span class="title">HelloServlet04</span>&lt;/<span class="title">servlet</span>-<span class="title">class</span>&gt;</span>
-<span class="class">      &lt;<span class="title">load</span>-<span class="title">on</span>-<span class="title">startup</span>&gt;2&lt;/<span class="title">load</span>-<span class="title">on</span>-<span class="title">startup</span>&gt;</span>
-<span class="class">  &lt;/<span class="title">servlet</span>&gt;</span>
+<p> <strong>方式二 使用配置文件方式</strong>   </p>
+<pre><code class="java">#dbcpconfig.properties 配置文件
+#连接设置
+driverClassName=com.mysql.jdbc.Driver
+url=jdbc:mysql:<span class="comment">//localhost:3306/jdbc</span>
+username=root
+password=<span class="number">123456</span>
+
+#&lt;!-- 初始化连接 --&gt;
+initialSize=<span class="number">10</span>
+
+#最大连接数量
+maxActive=<span class="number">50</span>
+
+#&lt;!-- 最大空闲连接 --&gt;
+maxIdle=<span class="number">20</span>
+
+#&lt;!-- 最小空闲连接 --&gt;
+minIdle=<span class="number">5</span>
+
+#&lt;!-- 超时等待时间以毫秒为单位 6000毫秒/1000等于60秒 --&gt;
+maxWait=<span class="number">60000</span>
+
+
+#JDBC驱动建立连接时附带的连接属性属性的格式必须为这样：[属性名=property;]
+#注意："user" 与 "password" 两个属性会被明确地传递，因此这里不需要包含他们。
+connectionProperties=useUnicode=<span class="keyword">true</span>;characterEncoding=gbk
+
+#指定由连接池所创建的连接的自动提交（auto-commit）状态。
+defaultAutoCommit=<span class="keyword">true</span>
+
+#driver default 指定由连接池所创建的连接的事务级别（TransactionIsolation）。
+#可用值为下列之一：（详情可见javadoc。）NONE,READ_UNCOMMITTED, READ_COMMITTED, REPEATABLE_READ, SERIALIZABLE
+defaultTransactionIsolation=READ_UNCOMMITTED
+</code></pre>
+<pre><code class="java">Connection conn = <span class="keyword">null</span>;
+PreparedStatement ps = <span class="keyword">null</span>;
+<span class="keyword">try</span> {
+    BasicDataSourceFactory factory = <span class="keyword">new</span> BasicDataSourceFactory();
+    Properties properties = <span class="keyword">new</span> Properties();
+    InputStream is = <span class="keyword">new</span> FileInputStream(<span class="string">"src//dbcpconfig.properties"</span>);
+    properties.load(is);
+    DataSource dataSource = factory.createDataSource(properties);
+
+    <span class="comment">//2. 得到连接对象</span>
+    conn = dataSource.getConnection();
+    String sql = <span class="string">"insert into account values(null , ? , ?)"</span>;
+    ps = conn.prepareStatement(sql);
+    ps.setString(<span class="number">1</span>, <span class="string">"liangchaowei"</span>);
+    ps.setInt(<span class="number">2</span>, <span class="number">100</span>);
+
+    ps.executeUpdate();
+
+} <span class="keyword">catch</span> (Exception e) {
+    e.printStackTrace();
+}<span class="keyword">finally</span> {
+    JDBCUtil.release(conn, ps);
+}
+</code></pre>
+<h3 id="C3P0（重要）"><a href="#C3P0（重要）" class="headerlink" title="C3P0（重要）"></a>C3P0（重要）</h3><p>拷贝jar文件到lib目录。<br><strong>方式一 不使用配置文件方式</strong>（不常用）   </p>
+<pre><code class="java">Connection conn = <span class="keyword">null</span>;
+PreparedStatement ps = <span class="keyword">null</span>;
+<span class="keyword">try</span> {
+    <span class="comment">//1. 创建datasource</span>
+    ComboPooledDataSource dataSource = <span class="keyword">new</span> ComboPooledDataSource();
+    <span class="comment">//2. 设置连接数据库的信息</span>
+    dataSource.setDriverClass(<span class="string">"com.mysql.jdbc.Driver"</span>);
+    dataSource.setJdbcUrl(<span class="string">"jdbc:mysql://localhost/bank"</span>);
+    dataSource.setUser(<span class="string">"root"</span>);
+    dataSource.setPassword(<span class="string">"root"</span>);
+
+    <span class="comment">//2. 得到连接对象</span>
+    conn = dataSource.getConnection();
+    String sql = <span class="string">"insert into account values(null , ? , ?)"</span>;
+    ps = conn.prepareStatement(sql);
+    ps.setString(<span class="number">1</span>, <span class="string">"admi234n"</span>);
+    ps.setInt(<span class="number">2</span>, <span class="number">103200</span>);
+
+    ps.executeUpdate();
+
+} <span class="keyword">catch</span> (Exception e) {
+    e.printStackTrace();
+}<span class="keyword">finally</span> {
+    JDBCUtil.release(conn, ps);
+}
+</code></pre>
+<p><strong>方式二 使用配置文件方式</strong><br>C3P0配置文件支持properties与XML（用的较多）两种方式。 xml配置文件具体的内容资料或者官网都有，直接复制内容<br>即可，但是名字必须叫 c3p0-config.xml。  </p>
+<pre><code class="java"><span class="comment">//默认会找 xml 中的 default-config 分支。</span>
+ComboPooledDataSource dataSource = <span class="keyword">new</span> ComboPooledDataSource();
+<span class="comment">//2. 设置连接数据的信息</span>
+<span class="comment">// dataSource.setDriverClass("com.mysql.jdbc.Driver");</span>
+<span class="comment">// dataSource.setJdbcUrl("jdbc:mysql://localhost/bank");</span>
+<span class="comment">// dataSource.setUser("root");</span>
+<span class="comment">// dataSource.setPassword("root");</span>
+
+<span class="comment">//2. 得到连接对象</span>
+conn = dataSource.getConnection();
+String sql = <span class="string">"insert into account values(null , ? , ?)"</span>;
+ps = conn.prepareStatement(sql);
+ps.setString(<span class="number">1</span>, <span class="string">"admi234n"</span>);
+ps.setInt(<span class="number">2</span>, <span class="number">103200</span>);
+ps.executeUpdate();
 </code></pre>
 
       
@@ -449,7 +491,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Servlet/" rel="tag"># Servlet</a>
+            <a href="/tags/java高级/" rel="tag"># java高级</a>
           
         </div>
       
@@ -462,8 +504,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/30/HashSet/" rel="next" title="java源码-剖析HashSet">
-                <i class="fa fa-chevron-left"></i> java源码-剖析HashSet
+              <a href="/2019/01/03/Transaction/" rel="next" title="事务">
+                <i class="fa fa-chevron-left"></i> 事务
               </a>
             
           </div>
@@ -472,8 +514,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/08/Http/" rel="prev" title="HTTP协议">
-                HTTP协议 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/04/DBUtils/" rel="prev" title="DBUtils">
+                DBUtils <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -608,7 +650,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hello-Servlet"><span class="nav-number">1.</span> <span class="nav-text">Hello Servlet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Servlet执行过程（xml方式）"><span class="nav-number">2.</span> <span class="nav-text">Servlet执行过程（xml方式）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Servlet的通用写法"><span class="nav-number">3.</span> <span class="nav-text">Servlet的通用写法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Servlet的生命周期"><span class="nav-number">4.</span> <span class="nav-text">Servlet的生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#让Servlet创建实例的时机提前。"><span class="nav-number">5.</span> <span class="nav-text">让Servlet创建实例的时机提前。</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库连接池"><span class="nav-number">1.</span> <span class="nav-text">数据库连接池</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DBCP"><span class="nav-number">1.1.</span> <span class="nav-text">DBCP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C3P0（重要）"><span class="nav-number">2.</span> <span class="nav-text">C3P0（重要）</span></a></li></ol></div>
             
 
           </div>
