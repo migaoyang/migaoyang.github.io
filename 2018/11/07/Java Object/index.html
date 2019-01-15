@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java基础,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Object位于java.lang包，是所有java类的父类，不用明确的写 extends Object。         返回值 方法 作用     boolean equals(Object obj) Indicates whether some other object is “equal to” this one.   int hashCode() Returns a hash code">
+<meta name="keywords" content="java基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java的Object（equals、hashCode、toString、clone）">
+<meta property="og:url" content="http://yoursite.com/2018/11/07/Java Object/index.html">
+<meta property="og:site_name" content="migaoyang">
+<meta property="og:description" content="Object位于java.lang包，是所有java类的父类，不用明确的写 extends Object。         返回值 方法 作用     boolean equals(Object obj) Indicates whether some other object is “equal to” this one.   int hashCode() Returns a hash code">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-07T04:56:06.331Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java的Object（equals、hashCode、toString、clone）">
+<meta name="twitter:description" content="Object位于java.lang包，是所有java类的父类，不用明确的写 extends Object。         返回值 方法 作用     boolean equals(Object obj) Indicates whether some other object is “equal to” this one.   int hashCode() Returns a hash code">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/07/Java Object/">
+
+
+
+
+
+  <title>java的Object（equals、hashCode、toString、clone） | migaoyang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">migaoyang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/07/Java Object/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="米高扬">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="migaoyang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java的Object（equals、hashCode、toString、clone）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T00:00:00+08:00">
+                2018-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Object位于java.lang包，是所有java类的父类，不用明确的写 extends Object。     </p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>equals(Object obj)</td>
+<td>Indicates whether some other object is “equal to” this one.</td>
+</tr>
+<tr>
+<td>int</td>
+<td>hashCode()</td>
+<td>Returns a hash code value for the object.</td>
+</tr>
+<tr>
+<td>String</td>
+<td>toString()</td>
+<td>Returns a string representation of the object.</td>
+</tr>
+<tr>
+<td>protected Object</td>
+<td>clone()</td>
+<td>Creates and returns a copy of this object.</td>
+</tr>
+<tr>
+<td>protected void</td>
+<td>finalize()</td>
+<td>Called by the garbage collector on an object when garbage collection determines that there are no more references to the object.</td>
+</tr>
+<tr>
+<td>Class&lt;?&gt;</td>
+<td>getClass()</td>
+<td>Returns the runtime class of this Object.</td>
+</tr>
+<tr>
+<td>void</td>
+<td>notify()</td>
+<td>Wakes up a single thread that is waiting on this object’s monitor.</td>
+</tr>
+<tr>
+<td>void</td>
+<td>notifyAll()</td>
+<td>Wakes up all threads that are waiting on this object’s monitor.</td>
+</tr>
+<tr>
+<td>void</td>
+<td>wait()</td>
+<td>Causes the current thread to wait until another thread invokes the notify() method or the notifyAll() method for this object.</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+<tr>
+<td>void</td>
+<td>wait(long timeout)</td>
+<td>Causes the current thread to wait until either another thread invokes the notify() method or the notifyAll() method for this object, or a specified amount of time has elapsed.</td>
+</tr>
+<tr>
+<td>void</td>
+<td>wait(long timeout, int nanos)</td>
+<td>Causes the current thread to wait until another thread invokes the notify() method or the notifyAll() method for this object, or some other thread interrupts the current thread, or a certain amount of real time has elapsed.</td>
+</tr>
+</tbody>
+</table>
+<p>本文将会主要阐述equals、hashCode方法以及这两者的关系和toString、clone方法。   </p>
+<h3 id="equals方法"><a href="#equals方法" class="headerlink" title="equals方法"></a>equals方法</h3><p>首先需要明白比较符号 <strong>==</strong> 的使用：</p>
+<ol>
+<li>比较对象时，判断两对象的引用地址是否相等。</li>
+<li>比较基本数据类型时，比较字面值是否相等。  </li>
+</ol>
+<p>equals比较的是对象，Object类中的equals方法默认就是只用 <strong>==</strong> 比较，根据实际情况，只根据引用地址是否相等就来判定两个对象是否相等没有实际意义，我们更新在意的是对象的个个特征（成员变量）是否相等，所以几乎所有的类都要重写equals方法。<br>java规定重写的equals方法需要实现以下特征：( on non-null object references:)</p>
+<ol>
+<li>reflexive(自反性): for any non-null reference value ，x.equals(x)} should return true.  </li>
+<li>symmetric(对称性): for any non-null reference values  x and y, x.equals(y) should return true if and only if y.equals(x)} returns  true.  </li>
+<li>transitive（传递性）: for any non-null reference values x, y, and z, if x.equals(y) returns true and y.equals(z) returns d true, then  x.equals(z) should return true.  </li>
+<li>consistent(一致性): for any non-null reference values x and  y, multiple invocations o x.equals(y) consistently return true  or consistently return  false, provided no information used in  equals comparisons on the objects is modified.</li>
+<li>For any non-null reference value  x, x.equals(null) should return false.  </li>
+</ol>
+<p>上面的规则设计避免了开发者是调用x.equals(y)还是y.equals(x)的问题。<br>但是针对于第二条也就是自反性，在使用时要考虑一个问题：两个对象不是一个类时，可能出错。例如manager extends employee，e.equals(m)没有错，因为m属于employee，e有的成员变量m都有，而m有着自身特有的变量，所以在调用m.equals(e)时就会返回false。这就使manager类受到了限制，而这种比较在实际中也是有很实际的意义。所以我们仅在比较之前进行instanceOf比较并不能解决所有的问题。而使用getClass可能会与实际意义不符（例如两个子类之间的成员变量并没什么特殊，可能只是操作不同，这俩子类的对象实际是可以进行equals方法的，也符合自反性，但是getClass就会直接判断这俩对象不等）。 所以针对instanceOf与getClass可以根据具体的情况使用：  </p>
+<ul>
+<li>如果两个子类中至少有一个有着自己的特殊成员变量，那么为了实现自反性，就必须要使用getClass比较，比如employee与manager。</li>
+<li>如果两个子类都没自己再定义自己的成员变量，那么就可以使用instanceOf进行检测。</li>
+</ul>
+<p>以下是 <strong>java核心技术卷一第十版给出的一个编写完美的equals方法的建议</strong> ：  </p>
+<blockquote>
+<ol>
+<li>显示命名参数otherObject，稍后需要将它转换成另一个叫做other的变量</li>
+<li>检测this与otherObject是否引用同一个对象：<pre><code class="java"><span class="keyword">if</span> (<span class="keyword">this</span> == otherObject) <span class="keyword">return</span> <span class="keyword">true</span>;
+</code></pre>
+这条语句只是一个优化，实际上，这是一种经常采用的形式。因为计算这个等式要比一个一个地比较类中的域所付出的代价小得多。</li>
+<li>检测 otherObject 是否为null，如果为null，返回false。这项检测是很有必要的。<pre><code class="java"><span class="keyword">if</span> (otherObject == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;
+</code></pre>
+</li>
+<li>比较this与otherObject是否属于同一个类。如果equls的语义在每个子类中有所改变，就使用getClass检测：<pre><code class="java"><span class="keyword">if</span> (getClass() != otherObject.getClass()) <span class="keyword">return</span> <span class="keyword">false</span>;
+</code></pre>
+如果所有的子类都拥有统一的语义，就是用instanceof检测：<pre><code class="java"><span class="keyword">if</span> (!(otherObject <span class="keyword">instanceof</span> ClassName)) <span class="keyword">return</span> <span class="keyword">false</span>;
+</code></pre>
+</li>
+<li>将otherObject转换为响应类的类型变量：<pre><code class="java">ClassName other = (ClassName) otherObject
+</code></pre>
+</li>
+<li>现在开始对所有需要比较的域进行比较。使用 == 比较基本类型域，使用equals比较对象域。如果所有的域都匹配，就返回true；否则返回false。<pre><code class="java"><span class="keyword">return</span> filed1 == other.filed1 &amp;&amp; Object.equals(filed2, other.filed2) &amp;&amp; ,..;
+</code></pre>
+如果在子类中重新定义equals，就要在其中包含调用 super.equals(other)。  </li>
+</ol>
+</blockquote>
+<h3 id="hashCode方法"><a href="#hashCode方法" class="headerlink" title="hashCode方法"></a>hashCode方法</h3><p>hash值（散列码）是一个整数，可正可负，<strong>两个相等的对象要返回相等的hash值</strong> 。因为Object类定义类了hashCode方法，所以每个实例化的对象都有一个自己默认的hash值。其值就是自身的存储地址，</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java基础/" rel="tag"># java基础</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/07/Java CallByValueReference/" rel="next" title="java的引传递用去哪了">
+                <i class="fa fa-chevron-left"></i> java的引传递用去哪了
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/09/Java Modifier/" rel="prev" title="java修饰符的限制范围">
+                java修饰符的限制范围 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="米高扬">
+            
+              <p class="site-author-name" itemprop="name">米高扬</p>
+              <p class="site-description motion-element" itemprop="description">既然目标是地平线，留给世界的便只能是背影。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#equals方法"><span class="nav-number">1.</span> <span class="nav-text">equals方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hashCode方法"><span class="nav-number">2.</span> <span class="nav-text">hashCode方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaomi</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

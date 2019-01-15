@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="java基础,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="Java中非静态方法的调用过程，即通过对象来调用方法的过程主要有以下几个步骤。假设要调用x.f(args), 隐式参数 x 声明为类C的一个对象。具体调用流程如下： 1. 编译器得到所有可能被调用的候选方法。编译器查看对象的声明类型与方法名。假设调用x.f(param)，且隐式参数x声明为C类的对象。需要注意的是方法的重载（Overload）即：有可能存在多个名字为f，但是参数类型不一样的方法。例">
+<meta name="keywords" content="java基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2018/11/06/hello-world/index.html">
+<meta property="og:title" content="java的非静态方法调用过程">
+<meta property="og:url" content="http://yoursite.com/2018/11/13/Java CallFunction/index.html">
 <meta property="og:site_name" content="migaoyang">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="Java中非静态方法的调用过程，即通过对象来调用方法的过程主要有以下几个步骤。假设要调用x.f(args), 隐式参数 x 声明为类C的一个对象。具体调用流程如下： 1. 编译器得到所有可能被调用的候选方法。编译器查看对象的声明类型与方法名。假设调用x.f(param)，且隐式参数x声明为C类的对象。需要注意的是方法的重载（Overload）即：有可能存在多个名字为f，但是参数类型不一样的方法。例">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-06T06:47:20.028Z">
+<meta property="og:updated_time" content="2018-12-07T04:56:30.119Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="java的非静态方法调用过程">
+<meta name="twitter:description" content="Java中非静态方法的调用过程，即通过对象来调用方法的过程主要有以下几个步骤。假设要调用x.f(args), 隐式参数 x 声明为类C的一个对象。具体调用流程如下： 1. 编译器得到所有可能被调用的候选方法。编译器查看对象的声明类型与方法名。假设调用x.f(param)，且隐式参数x声明为C类的对象。需要注意的是方法的重载（Overload）即：有可能存在多个名字为f，但是参数类型不一样的方法。例">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/06/hello-world/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/13/Java CallFunction/">
 
 
 
 
 
-  <title>Hello World | migaoyang</title>
+  <title>java的非静态方法调用过程 | migaoyang</title>
   
 
 
@@ -244,7 +245,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/Java CallFunction/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="米高扬">
@@ -261,7 +262,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">java的非静态方法调用过程</h1>
         
 
         <div class="post-meta">
@@ -273,8 +274,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-06T14:47:20+08:00">
-                2018-11-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-13T00:00:00+08:00">
+                2018-11-13
               </time>
             
 
@@ -283,6 +284,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -311,15 +334,17 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>Java中非静态方法的调用过程，即通过对象来调用方法的过程主要有以下几个步骤。<br>假设要调用x.f(args), <strong>隐式参数</strong> x 声明为类C的一个对象。具体调用流程如下：</p>
+<h3 id="1-编译器得到所有可能被调用的候选方法。"><a href="#1-编译器得到所有可能被调用的候选方法。" class="headerlink" title="1. 编译器得到所有可能被调用的候选方法。"></a>1. 编译器得到所有可能被调用的候选方法。</h3><p>编译器查看对象的声明类型与方法名。假设调用x.f(param)，且隐式参数x声明为C类的对象。需要注意的是方法的<strong>重载</strong>（Overload）即：有可能存在多个名字为f，但是<strong>参数类型不一样</strong>的方法。例如，可能存在f(int)和f(String)。编译器将会一一列举所有类C和其超类中访问属性为public且名为f的方法（超类的私有方法不可访问）。</p>
+<h3 id="2-重载解析（编译器得到需要调用的具体的一个方法）"><a href="#2-重载解析（编译器得到需要调用的具体的一个方法）" class="headerlink" title="2. 重载解析（编译器得到需要调用的具体的一个方法）"></a>2. 重载解析（编译器得到需要调用的具体的一个方法）</h3><p>接下来，编译器将查看调用方法时提供的参数类型。如果在所有名为f的方法中存在一个与提供的参数类型完全匹配，就选择这个方法。这个过程称为重载解析。如果编译器没有找到与参数类型匹配的方法，或者发现经过类型转换后有多个方法与之匹配，就会报告一个错误。<br>需要注意的是int可以转换为double，子类可以转换为父类，</p>
+<h3 id="3-静态绑定与动态绑定"><a href="#3-静态绑定与动态绑定" class="headerlink" title="3. 静态绑定与动态绑定"></a>3. 静态绑定与动态绑定</h3><p>如果是private方法、static方法、final方法或者构造器，那么编译器将可以准确地知道应该调用哪个方法，我们将这种调用方式称为静态绑定。与此对应的是，调用的方法依赖于隐式参数的实际类型，并且在运行时实现动态绑定。</p>
+<h3 id="4-使用动态绑定调用方法"><a href="#4-使用动态绑定调用方法" class="headerlink" title="4. 使用动态绑定调用方法"></a>4. 使用动态绑定调用方法</h3><p>当程序运行，并且采用动态绑定调用方法时，虚拟机一定调用与x所引用对象的实例类型最合适的那个类的方法。假设 x 的实际类型是D（子类），它是C类的子类，我们要调用f(String)。如果D类定义了方法f(String)，就直接调用它；否则将在D类的超类中寻找f(String)，以此类推。<br>每次调用方法都要进行方法搜索，时间开销相当大。因此，虚拟机预先为每个类创建一个方法表，其中列举了所有方法的签名和实际调用的方法。这样一来，在真正调用方法的时候，虚拟机仅查找这个表就行了。  </p>
+<blockquote>
+<p>动态绑定有一个很重要的特性：无需对现存的代码进行修改，就可以对程序进行扩展。假设新增一个类E，并且变量e可能引用这个类的对象，我们不需要对包含调用e.f()方法进行重新编译。如果e引用了一个E类的对象，就会自动地调用E.f()方法。  </p>
+</blockquote>
+<blockquote>
+<p>需要注意的是：在 <strong>覆盖</strong>（Override）一个方法的时候，子类方法的可见性不能低于超类方法的可见性。<strong>特别</strong>是如果超类的方法时public，那么子类方法一定要声明为public，否则编译器解释为默认的就会出错。  </p>
+</blockquote>
 
       
     </div>
@@ -335,6 +360,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/java基础/" rel="tag"># java基础</a>
+          
+        </div>
+      
 
       
       
@@ -344,8 +375,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/10/mdyufa/" rel="next" title="new article">
-                <i class="fa fa-chevron-left"></i> new article
+              <a href="/2018/11/09/Java Modifier/" rel="next" title="java修饰符的限制范围">
+                <i class="fa fa-chevron-left"></i> java修饰符的限制范围
               </a>
             
           </div>
@@ -354,8 +385,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/07/Java CallByValueReference/" rel="prev" title="java的引传递用去哪了">
-                java的引传递用去哪了 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/14/Java Polymorphic/" rel="prev" title="java多态（向上转型、动态绑定、instanceof、抽象）">
+                java多态（向上转型、动态绑定、instanceof、抽象） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -490,7 +521,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-编译器得到所有可能被调用的候选方法。"><span class="nav-number">1.</span> <span class="nav-text">1. 编译器得到所有可能被调用的候选方法。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-重载解析（编译器得到需要调用的具体的一个方法）"><span class="nav-number">2.</span> <span class="nav-text">2. 重载解析（编译器得到需要调用的具体的一个方法）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-静态绑定与动态绑定"><span class="nav-number">3.</span> <span class="nav-text">3. 静态绑定与动态绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-使用动态绑定调用方法"><span class="nav-number">4.</span> <span class="nav-text">4. 使用动态绑定调用方法</span></a></li></ol></div>
             
 
           </div>

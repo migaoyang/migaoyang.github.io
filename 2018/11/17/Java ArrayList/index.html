@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java基础,java源码,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="容器类(集合)，顾名思义就是用来容纳其它数据的类。在泛型的那篇笔记中，实现了一个简单的动态数组的容器类–DynamicArray,本篇主要阐述Java中真正的动态数组（数组列表）容器类ArrayList（Java 7）的基本用法、迭代操作、实现的一些Interface（Collection、List与RandAccess）、特点与应用场景。   基本用法ArrayList是一个泛型类，使用时需要实">
+<meta name="keywords" content="java基础,java源码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java源码-剖析ArrayList">
+<meta property="og:url" content="http://yoursite.com/2018/11/17/Java ArrayList/index.html">
+<meta property="og:site_name" content="migaoyang">
+<meta property="og:description" content="容器类(集合)，顾名思义就是用来容纳其它数据的类。在泛型的那篇笔记中，实现了一个简单的动态数组的容器类–DynamicArray,本篇主要阐述Java中真正的动态数组（数组列表）容器类ArrayList（Java 7）的基本用法、迭代操作、实现的一些Interface（Collection、List与RandAccess）、特点与应用场景。   基本用法ArrayList是一个泛型类，使用时需要实">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-07T04:56:19.748Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java源码-剖析ArrayList">
+<meta name="twitter:description" content="容器类(集合)，顾名思义就是用来容纳其它数据的类。在泛型的那篇笔记中，实现了一个简单的动态数组的容器类–DynamicArray,本篇主要阐述Java中真正的动态数组（数组列表）容器类ArrayList（Java 7）的基本用法、迭代操作、实现的一些Interface（Collection、List与RandAccess）、特点与应用场景。   基本用法ArrayList是一个泛型类，使用时需要实">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/17/Java ArrayList/">
+
+
+
+
+
+  <title>java源码-剖析ArrayList | migaoyang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">migaoyang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/17/Java ArrayList/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="米高扬">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="migaoyang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java源码-剖析ArrayList</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-17T00:00:00+08:00">
+                2018-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>容器类(集合)，顾名思义就是用来容纳其它数据的类。在泛型的那篇笔记中，实现了一个简单的动态数组的容器类–DynamicArray,本篇主要阐述Java中真正的动态数组（数组列表）容器类ArrayList（Java 7）的基本用法、迭代操作、实现的一些Interface（Collection、List与RandAccess）、特点与应用场景。  </p>
+<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>ArrayList是一个泛型类，使用时需要实例化泛型参数，比如  </p>
+<pre><code class="java">ArrayList&lt;Integer&gt; intList = <span class="keyword">new</span> ArrayList&lt;Integer&gt;(); <span class="comment">//new ArrayList&lt;Integer&gt;()中尖括号的类型Java7后可以省略  </span>
+ArrayList&lt;String&gt;  strList = <span class="keyword">new</span> ArrayList&lt;String&gt;();
+</code></pre>
+<p>ArrayList常用的方法有：  </p>
+<pre><code class="Java"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span>  <span class="comment">//将新元素添加到末尾</span></span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> <span class="comment">//判断数组列表是否为空</span></span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span>  <span class="comment">//获取当前的长度</span></span>
+<span class="function"><span class="keyword">public</span> E <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span>  <span class="comment">// 访问（获取）指定位置元素</span></span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">indexOf</span><span class="params">(Object o)</span>  <span class="comment">//查找给定元素，找到返回索引值，否之返回-1</span></span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lastIndexOf</span><span class="params">(Object o)</span>  <span class="comment">//从后往前查找</span></span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contain</span><span class="params">(Object o)</span>  <span class="comment">//是否包含指定元素，依据时equals方法的返回值</span></span>
+<span class="function"><span class="keyword">public</span> E <span class="title">remove</span><span class="params">(<span class="keyword">int</span> index)</span>  <span class="comment">//删除指定位置元素，返回被删的元素  </span></span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(Object o)</span>  <span class="comment">//删除指定元素，只删除一个相同的元素，返回值表示是否删除了元素</span></span>
+<span class="function"><span class="comment">//如果o为null，则删除值为null的元素</span></span>
+<span class="function"></span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clean</span><span class="params">()</span>  <span class="comment">//删除所有元素</span></span>
+<span class="function"><span class="keyword">public</span> vod <span class="title">add</span><span class="params">(<span class="keyword">int</span> index, E element)</span>  <span class="comment">//在指定位置插入元素，index=0表示插在最前面(如果在中间插入，原有的将会整体往后顺移)</span></span>
+<span class="function">publi  E <span class="title">set</span> <span class="params">(<span class="keyword">int</span> index, E element)</span>   <span class="comment">//修改指定位置的元素</span></span>
+</code></pre>
+<h3 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h3><p>ArrayList原理与我们之前写的DynamicArray类似，其内部有一个数组elementData，整数size记录实际的元素个数。如下所示：</p>
+<pre><code class="java"><span class="keyword">private</span> <span class="keyword">transient</span> Object[] elementData;
+<span class="keyword">private</span> <span class="keyword">int</span> size;
+</code></pre>
+<p>类中各种public方法的内部操作其实都是对这个数组与整型的操作，elementData会根据实际元素的个数的增加而动态的<strong>重新</strong>分配，整数size记录实际的元素个数。<br>以下是add方法实现的主要代码：  </p>
+<pre><code class="java"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">()</span></span>{
+  ensureCapacityInternal(size + <span class="number">1</span>);  <span class="comment">// Increments modCount!!</span>
+  elementData[size++] = e;
+  <span class="keyword">return</span> <span class="keyword">true</span>;
+}
+</code></pre>
+<p>首先调用ensureCapacityInternal方法的目的是确保这次添加元素时候，数组的容量是足够的。ensureCapacityInternal的代码如下：  </p>
+<pre><code class="java"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureCapacityInternal</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>{
+  <span class="keyword">if</span> (elementData == EMPTY_ELEMENTDATA) {
+    minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);
+  }
+  ensureExplicitCapacity(minCapacity);
+}
+</code></pre>
+<p>ensureCapacityInternal方法首先判断数组elementData是否为空，DEFAULT_CAPACITY的值为10，然后调用ensureExplicitCapacity方法，主要代码如下：  </p>
+<pre><code class="java"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureExplicitCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>{
+  modCount++;
+  <span class="comment">// overflow-conscious code</span>
+  <span class="keyword">if</span> (minCapacity - elementData.length &gt; <span class="number">0</span>) grow(minCapacity);
+}
+</code></pre>
+<p>modCount表示内部的修改次数，如果需要的长度大于当前数组elementData的长度，则调用grow()，主要代码如下：  </p>
+<pre><code class="java"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>{
+<span class="comment">// overflow-conscious code</span>
+  <span class="keyword">int</span> oldCapacity = elementData.length;
+  <span class="keyword">int</span> newCapacity = oldCapacity + (oldCapacity &gt;&gt; <span class="number">1</span>);
+  <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)
+     newCapacity = minCapacity;
+  <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)
+      newCapacity = hugeCapacity(minCapacity);
+<span class="comment">// minCapacity is usually close to size, so this is a win:</span>
+  elementData = Arrays.copyOf(elementData, newCapacity);
+}
+</code></pre>
+<p>grow（）的作用就是先确定扩容的长度，然后使用copyOf方法。里面需要注意的时移位运算，newCapacity相当于1.5倍的oldCapacity。<br>以下为remove方法的代码：</p>
+<pre><code class="java"><span class="function"><span class="keyword">public</span> E <span class="title">remove</span><span class="params">(<span class="keyword">int</span> index)</span> </span>{
+  rangeCheck(index);
+  modCount++;
+  E oldValue = elementData(index);
+  <span class="keyword">int</span> numMoved = size - index - <span class="number">1</span>;  <span class="comment">//计算要移动的元素个数</span>
+  <span class="keyword">if</span> (numMoved &gt; <span class="number">0</span>)
+      System.arraycopy(elementData, index+<span class="number">1</span>, elementData, index, numMoved);
+  elementData[--size] = <span class="keyword">null</span>; <span class="comment">// clear to let GC do its work 将size减1，同时释放引用以便原对象被垃圾回收</span>
+  <span class="keyword">return</span> oldValue;
+}
+</code></pre>
+<p>remove方法里也有一个modCount变量，然后numMoved计算要移动的元素个数，从index往后的元素都往前移动一位，调用了 System.arraycopy 方法来移动元素。 elementData[–size] = null; 这行代码将size减1（索引0开始），同时将最后一个位置设为null，因为设为null之后也就不再继续引用原来的对象，其就可以被垃圾回收。<br>其它的方法大多也比较简单。 　　</p>
+<h3 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h3><p>迭代是ArrayList常见的操作，以下是一个迭代操作的例子，循环打印ArrayList的每个元素（ArrayList因为底层操作是数组所以支持foreach语法,增强for循环适用与各种容器，相比普通for循环，更为通用）：</p>
+<pre><code class="java">ArrayList&lt;Integer&gt; intList = <span class="keyword">new</span> ArrayList&lt;&gt;();
+intList.add(<span class="number">1</span>);
+intList.add(<span class="number">2</span>);
+intList.add(<span class="number">3</span>);
+<span class="keyword">for</span>(Integer a:intList){
+  System.out.println(a);
+}
+</code></pre>
+<p>这样的foreach语法背后是怎么实现的呢？其实编译器会将它转换为类似下面的代码：</p>
+<pre><code class="java">Iterator&lt;Integer&gt; it = intList.iterator();
+<span class="keyword">while</span>(it.hasNext()){
+    System.out.println(it.next());
+}
+</code></pre>
+<h4 id="迭代器接口"><a href="#迭代器接口" class="headerlink" title="迭代器接口"></a>迭代器接口</h4><p>ArrayList实现了Iterable接口，在Java7中，Iterable如下定义：  </p>
+<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Iterable</span>&lt;<span class="title">T</span>&gt; </span>{
+  <span class="function">Iterator&lt;T&gt; <span class="title">iterator</span><span class="params">()</span></span>;
+}
+</code></pre>
+<p>其中，iterator返回一个实现了Iterator接口的对象，在Java7中，Iterator接口的定义如下：</p>
+<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt; </span>{
+  <span class="function"><span class="keyword">boolean</span> <span class="title">hashNext</span><span class="params">()</span></span>;
+  E next;
+  <span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span></span>;
+}
+</code></pre>
+<p>其中，hasNext（）判断是否还有元素未访问，next（）返回下一个元素，remove（）删除最后返回的元素，只读访问的基本模式类似于：  </p>
+<pre><code class="java">Iterator&lt;Integer&gt; it = intList.iterator();
+<span class="keyword">while</span>(it.hasNext()){
+    System.out.println(it.next());
+}
+</code></pre>
+<p><strong>注意：</strong> foreach也就是增强for循环可以与任何实现了接口Iterable（只包含抽象方法itrrator（） ）的对象一起工作。<br><strong>接口Iterable的注意：</strong>   </p>
+<ul>
+<li>Iterable表示对象可以被迭代，并返回Iterator对象。ArrayList中，因为接口Collection继承了接口Iterable，在ArrayList中实现了接口Collection。所以ArrayList可以使用迭代器的方法进行遍历。同时标准类库中的任何容器类也因此都可以使用foreach。  </li>
+<li>对象如果要使用增强for循环，就必须要实现接口Iterable。</li>
+</ul>
+<blockquote>
+<p>ArrayList通过内部类实现接口Iterator。  </p>
+</blockquote>
+<h4 id="ListIterator"><a href="#ListIterator" class="headerlink" title="ListIterator"></a>ListIterator</h4><p>接口ListIterator扩展了接口Iterator，使其增加了向前遍历，添加、修改元素，返回索引元素等方法。  </p>
+<h4 id="迭代器使用的常见错误"><a href="#迭代器使用的常见错误" class="headerlink" title="迭代器使用的常见错误"></a>迭代器使用的常见错误</h4><p>在使用迭代器时候，有一种常见的错误，就是在迭代的中间调用容器（集合）的删除方法。比如要删除整型ArrayList中所有的负数，直觉上可以这样写：  </p>
+<pre><code class="java"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(ArrayList&lt;Integer&gt; list)</span></span>{
+  <span class="keyword">for</span>(Integer a : list){
+    <span class="keyword">if</span>(a &lt; <span class="number">0</span>){
+      list.remove(a);
+    }
+  }
+}
+</code></pre>
+<p>但是运行时会抛出如下异常：</p>
+<blockquote>
+<p>java.util.ConcurrentModificationException    </p>
+</blockquote>
+<p>为何会发生并发修改异常呢？</p>
+<blockquote>
+<p>因为迭代器内部会维护一些与索引位置相关的数据，要求在迭代过程中，容器（集合）不能发生结构性改变，否则这些索引位置就失效了。结构性变化就是指： 插入、删除元素，而只修改元素的内容不算结构性变化。    </p>
+</blockquote>
+<p><strong> 如何避免并发修改异常？ </strong> 可以使用迭代器的remove方法，具体如下：  </p>
+<pre><code class="java"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(ArrayList&lt;Ingeter&gt; list)</span></span>{
+  Iterator&lt;Integer&gt; it = list.iterator();
+  <span class="keyword">while</span>(it.hasNext()){
+    <span class="keyword">if</span>(it.next &lt; <span class="number">0</span>){
+      it.remove();
+    }
+  }
+}
+</code></pre>
+<h4 id="迭代器实现原理"><a href="#迭代器实现原理" class="headerlink" title="迭代器实现原理"></a>迭代器实现原理</h4><p>迭代器是如何知道发生了结构性改变，然后抛出了异常呢？为何自己的remove方法又能使用呢？<br>以下为ArrayList中Iterator方法的实现：  </p>
+<pre><code class="java"><span class="function"><span class="keyword">public</span> Iterator&lt;E&gt; <span class="title">iterator</span><span class="params">()</span></span>{
+  <span class="keyword">return</span> <span class="keyword">new</span> Itr();
+}
+</code></pre>
+<p><strong> Itr  </strong>  是一个成员内部类，实现了接口Iterator，声明如下：  </p>
+<blockquote>
+<p>private class Itr <strong>implements</strong> Iterator   </p>
+</blockquote>
+<p>它有三个实例成员变量：  </p>
+<pre><code class="java"><span class="keyword">int</span> cursor;  <span class="comment">//下一个要返回的元素位置</span>
+<span class="keyword">int</span> lastTRet = -<span class="number">1</span>;  <span class="comment">// 最后一个返回的索引位置，如果没有为 -1</span>
+<span class="keyword">int</span> expectedModCount = modCount;
+</code></pre>
+<p><strong>expectedModCount*</strong> 变量表示期望的修改次数，初始化为外部类当前的修改次数 <strong>modCount</strong> （成员内部类可以直接访问外部类的实例成员变量）。每次发生<strong>结构性变化</strong>的时候modCount都会增加，而每次迭代器操作的时候都会检查expectedModCount是否与modCount，这样就能检测出是否发生了结构性变化。  </p>
+<p>以下将会阐述内部类 <strong>Itr</strong> 如何实现接口Iterator接口中的每个方法的。hasNext()方法的代码如下：</p>
+<pre><code class="java"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>{
+    <span class="keyword">return</span> cursor != size; <span class="comment">//cursor与size比较，很简单</span>
+}
+</code></pre>
+<p>next()方法代码如下：  </p>
+<pre><code class="java"><span class="function"><span class="keyword">public</span> E <span class="title">next</span><span class="params">()</span> </span>{
+  checkForComodification();
+  <span class="keyword">int</span> i = cursor;
+  <span class="keyword">if</span> (i &gt;= size)
+      <span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();
+  Object[] elementData = ArrayList.<span class="keyword">this</span>.elementData;
+  <span class="keyword">if</span> (i &gt;= elementData.length)
+      <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();
+  cursor = i + <span class="number">1</span>;
+  <span class="keyword">return</span> (E) elementData[lastRet = i];
+}
+</code></pre>
+<p>首先调用了checkForComodification，它的代码为：</p>
+<pre><code class="java"><span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">checkForComodification</span><span class="params">()</span> </span>{
+  <span class="keyword">if</span> (modCount != expectedModCount)
+     <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();
+}
+</code></pre>
+<p>所以，next()前面部分主要目的就是在检查是否发生了结构性变化，如果没有变化，就更新cursor和lastRet的值，以保持其语义，然后返回对应的元素。<br>remove（）方法的代码如下：  </p>
+<pre><code class="java"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span> </span>{
+  <span class="keyword">if</span> (lastRet &lt; <span class="number">0</span>)
+     <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException();
+  checkForComodification();
+    <span class="keyword">try</span> {
+        ArrayList.<span class="keyword">this</span>.remove(lastRet);
+        cursor = lastRet;
+        lastRet = -<span class="number">1</span>;
+        expectedModCount = modCount;
+    } <span class="keyword">catch</span> (IndexOutOfBoundsException ex) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();
+    }
+}
+</code></pre>
+<p>它调用了ArrayList的remove方法，但同时更新了cursor, lastRet和expectedModCount的值，所以它可以正确删除。不过，需要注意的是，调用remove方法前必须先调用next，比如，通过迭代器删除所有元素，直觉上，可以这么写：  </p>
+<pre><code class="Java"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">removeAll</span><span class="params">(ArrayList&lt;Integer&gt; list)</span></span>{
+  Iterator&lt;Integer&gt; it = list.iterator();
+  <span class="keyword">while</span>(it.hasNext()){
+        it.remove();    
+  }
+}
+</code></pre>
+<p>实际运行，会抛出异常：</p>
+<blockquote>
+<p>java.lang.IllegalStateException</p>
+</blockquote>
+<p>正确写法是：  </p>
+<pre><code class="Java"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">removeAll</span><span class="params">(ArrayList&lt;Integer&gt; list)</span></span>{
+  Iterator&lt;Integer&gt; it = list.iterator();
+  <span class="keyword">while</span>(it.hasNext()){
+        it.next();
+        it.remove();
+  }
+}
+</code></pre>
+<p>当然，如果只是要删除所有元素，ArrayList有现成的方法clear()。<br>listIterator()的实现使用了另一个内部类ListItr，它继承自Itr，基本思路类似。  </p>
+<h4 id="迭代器的优点"><a href="#迭代器的优点" class="headerlink" title="迭代器的优点"></a>迭代器的优点</h4><p>使用普通的for（int i = 0；i &lt; arrs.size()； i++）再加上ArrayList的get（）方法虽然在一些场景中与使用迭代器（增强for循环）效果并没有什么区别，但是使用迭代器（增强for）可以增强可读性，更重要的是更为通用，可以适用于所有的容器（集合）类。<br>此外，迭代器表示了一种关注点相分离的思想，将数据的实际组织方式与数据的迭代遍历相分离，是一种常见的设计模式。需要访问容器元素的代码只需要一个Iterator接口，不需要关注数据的实际组织方式，可以使用一致与统一的方式进行访问。<br>而提供的Iterator接口的代码了解数据的组织方式，可以提供更高效的实现。在ArrayList中，size/get(index)语法与迭代器的性能是差不多的，但是在其他的容器类中则不一定，比如LinkedList，迭代器的性能则高许多。  </p>
+<blockquote>
+<p>从封装的思路来讲，迭代器封装了各种数据组织方式的迭代操作，提供了简单和一致的接口。  </p>
+</blockquote>
+<h3 id="ArrayList实现的接口"><a href="#ArrayList实现的接口" class="headerlink" title="ArrayList实现的接口"></a>ArrayList实现的接口</h3><p>ArrayList实现了三个主要的接口： Collection、List、RandomAccess。<br>接口Collection继承了接口Iterable，表示一个数据集合，数据没有位置或者顺序的概念。<br>接口List表示有顺序或者位置的数据集合，它扩展了Collection。<br>接口RandomAccess没有定义任何的代码。这种没有代码的接口在Java中被称为<strong>标记接口</strong> ，用于声明类的一种属性。</p>
+<h3 id="ArrayList的特点"><a href="#ArrayList的特点" class="headerlink" title="ArrayList的特点"></a>ArrayList的特点</h3><ol>
+<li>可以随机访问（数组是一块连续的内存空间，可以根据索引随机访问），使用索引进行随机访问效率很高，时间复杂度为O(1)。  </li>
+<li>普通未排序的ArrayList按内容查找的效率很低，时间复杂度为O(n)。  </li>
+<li>末尾 <strong>添加</strong> 元素的效率还可以，重新分配与复制数组的开销可以被平摊了。 <strong>插入</strong> 与 <strong>删除</strong> 元素效率很低，因为还要移动元素，时间复杂度为O（n）。    </li>
+<li>ArrayList <strong>不是线程安全</strong> 的，实现线程安全的一种方式是使用接口Collection提供的方法装饰ArrayList类。此外，还有一个类 <strong>Vector</strong> ，它是Java早期实现的容器（集合）类之一。也实现了接口List，但基本原理与ArrayList类似，内部使用了 <strong>synchronized</strong> 实现了线程安全。在不需要线程安全的情况下，可优先考虑使用ArrayList。</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java基础/" rel="tag"># java基础</a>
+          
+            <a href="/tags/java源码/" rel="tag"># java源码</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/14/Java Polymorphic/" rel="next" title="java多态（向上转型、动态绑定、instanceof、抽象）">
+                <i class="fa fa-chevron-left"></i> java多态（向上转型、动态绑定、instanceof、抽象）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/20/Java LinkedList/" rel="prev" title="java源码-剖析LinkedList">
+                java源码-剖析LinkedList <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="米高扬">
+            
+              <p class="site-author-name" itemprop="name">米高扬</p>
+              <p class="site-description motion-element" itemprop="description">既然目标是地平线，留给世界的便只能是背影。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本用法"><span class="nav-number">1.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本原理"><span class="nav-number">2.</span> <span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代"><span class="nav-number">3.</span> <span class="nav-text">迭代</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#迭代器接口"><span class="nav-number">3.1.</span> <span class="nav-text">迭代器接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ListIterator"><span class="nav-number">3.2.</span> <span class="nav-text">ListIterator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迭代器使用的常见错误"><span class="nav-number">3.3.</span> <span class="nav-text">迭代器使用的常见错误</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迭代器实现原理"><span class="nav-number">3.4.</span> <span class="nav-text">迭代器实现原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迭代器的优点"><span class="nav-number">3.5.</span> <span class="nav-text">迭代器的优点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList实现的接口"><span class="nav-number">4.</span> <span class="nav-text">ArrayList实现的接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList的特点"><span class="nav-number">5.</span> <span class="nav-text">ArrayList的特点</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaomi</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

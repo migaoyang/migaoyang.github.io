@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java高级,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Ajax “Asynchronous Javascript And XML”（异步JavaScript和XML），其实ajax并不是新的技术，只是把以下原有的技术，整合到一起而已。1.使用CSS和XHTML来表示。2.使用DOM模型来交互和动态显示。3.使用XMLHttpRequest来和服务器进行异步通信。4.使用javascript来绑定和调用。作用　　未使用Ajax时，如果网页想要刷新局部内">
+<meta name="keywords" content="java高级">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ajax&amp;JQuery">
+<meta property="og:url" content="http://yoursite.com/2019/01/12/Java Web  Ajax&JQuery/index.html">
+<meta property="og:site_name" content="migaoyang">
+<meta property="og:description" content="Ajax “Asynchronous Javascript And XML”（异步JavaScript和XML），其实ajax并不是新的技术，只是把以下原有的技术，整合到一起而已。1.使用CSS和XHTML来表示。2.使用DOM模型来交互和动态显示。3.使用XMLHttpRequest来和服务器进行异步通信。4.使用javascript来绑定和调用。作用　　未使用Ajax时，如果网页想要刷新局部内">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-15T01:33:48.613Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ajax&amp;JQuery">
+<meta name="twitter:description" content="Ajax “Asynchronous Javascript And XML”（异步JavaScript和XML），其实ajax并不是新的技术，只是把以下原有的技术，整合到一起而已。1.使用CSS和XHTML来表示。2.使用DOM模型来交互和动态显示。3.使用XMLHttpRequest来和服务器进行异步通信。4.使用javascript来绑定和调用。作用　　未使用Ajax时，如果网页想要刷新局部内">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/12/Java Web  Ajax&JQuery/">
+
+
+
+
+
+  <title>Ajax&JQuery | migaoyang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">migaoyang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/12/Java Web  Ajax&JQuery/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="米高扬">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="migaoyang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Ajax&JQuery</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-12T00:00:00+08:00">
+                2019-01-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JDBC/" itemprop="url" rel="index">
+                    <span itemprop="name">JDBC</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h3><p> “Asynchronous Javascript And XML”（异步JavaScript和XML），其实ajax并不是新的技术，只是把以下原有的技术，整合到一起而已。<br>1.使用CSS和XHTML来表示。<br>2.使用DOM模型来交互和动态显示。<br>3.使用XMLHttpRequest来和服务器进行异步通信。<br>4.使用javascript来绑定和调用。<br><strong>作用</strong><br>　　未使用Ajax时，如果网页想要刷新局部内容，那么需要重新载入整个网页，用户体验不好。Ajax就是为了解决局部刷新的问题。保持其他部分不动，只刷新某些地方。</p>
+<h4 id="Get方式请求"><a href="#Get方式请求" class="headerlink" title="Get方式请求"></a>Get方式请求</h4><ol>
+<li>创建ajaxFunction对象的代码　 （写在JSP文件中，直接复制以下代码块即可）<pre><code class="java"><span class="function">function  <span class="title">ajaxFunction</span><span class="params">()</span></span>{
+<span class="keyword">var</span> xmlHttp;
+<span class="keyword">try</span>{ <span class="comment">// Firefox, Opera 8.0+, Safari</span>
+     xmlHttp=<span class="keyword">new</span> XMLHttpRequest();
+ }
+ <span class="keyword">catch</span> (e){
+    <span class="keyword">try</span>{<span class="comment">// Internet Explorer</span>
+          xmlHttp=<span class="keyword">new</span> ActiveXObject(<span class="string">"Msxml2.XMLHTTP"</span>);
+       }
+     <span class="keyword">catch</span> (e){
+       <span class="keyword">try</span>{
+          xmlHttp=<span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);
+       }
+       <span class="keyword">catch</span> (e){}
+       }
+ }
+ <span class="keyword">return</span> xmlHttp;
+}
+</code></pre>
+</li>
+<li><p>发送请求</p>
+<pre><code class="java"> <span class="comment">//执行get请求</span>
+<span class="function">function <span class="title">get</span><span class="params">()</span> </span>{  <span class="comment">//get()名为自己创建，在input里面的onClick调用get方法  </span>
+ <span class="comment">//1. 创建xmlhttprequest 对象</span>
+ <span class="keyword">var</span> request = ajaxFunction();
+ <span class="comment">/*</span>
+<span class="comment">     参数一： 请求类型  GET or  POST</span>
+<span class="comment">     参数二： 请求的路径</span>
+<span class="comment">     参数三： 是否异步， true  or false</span>
+<span class="comment"> */</span>
+ request.open(<span class="string">"GET"</span> ,<span class="string">"/day16/DemoServlet01"</span> ,<span class="keyword">true</span> );
+ request.send();
+}
+</code></pre>
+<p>如果不仅需要向后端异步传送数据，还需要异步的从后台接受数据，上面的代码可以修改为如下：  </p>
+<pre><code class="java"><span class="comment">//执行get请求</span>
+<span class="function">function <span class="title">get</span><span class="params">()</span> </span>{
+ <span class="comment">//1. 创建xmlhttprequest 对象</span>
+ <span class="keyword">var</span> request = ajaxFunction();
+
+ <span class="comment">//2. 发送请求</span>
+ request.open(<span class="string">"GET"</span> ,<span class="string">"/day16/DemoServlet01?name=aa&amp;age=18"</span> ,<span class="keyword">true</span> );
+
+ <span class="comment">//3. 获取响应数据 注册监听的意思。  一会准备的状态发生了改变，那么就执行 = 号右边的方法</span>
+ request.onreadystatechange = function(){
+     <span class="comment">//前半段表示 已经能够正常处理。  再判断状态码是否是200</span>
+     <span class="keyword">if</span>(request.readyState == <span class="number">4</span> &amp;&amp; request.status == <span class="number">200</span>){
+         <span class="comment">//弹出响应的信息</span>
+         alert(request.responseText);
+     }
+ }
+ request.send();
+}
+</code></pre>
+</li>
+</ol>
+<h4 id="数据请求-Post"><a href="#数据请求-Post" class="headerlink" title="数据请求 Post"></a>数据请求 Post</h4><ol>
+<li><p>创建ajaxFunction对象的代码　与get方式时的ajaxFunction()代码一样 （写在JSP文件中，直接复制以下代码块即可）</p>
+<pre><code class="java"><span class="function">function  <span class="title">ajaxFunction</span><span class="params">()</span></span>{
+<span class="keyword">var</span> xmlHttp;
+<span class="keyword">try</span>{ <span class="comment">// Firefox, Opera 8.0+, Safari</span>
+     xmlHttp=<span class="keyword">new</span> XMLHttpRequest();
+ }
+ <span class="keyword">catch</span> (e){
+    <span class="keyword">try</span>{<span class="comment">// Internet Explorer</span>
+          xmlHttp=<span class="keyword">new</span> ActiveXObject(<span class="string">"Msxml2.XMLHTTP"</span>);
+       }
+     <span class="keyword">catch</span> (e){
+       <span class="keyword">try</span>{
+          xmlHttp=<span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);
+       }
+       <span class="keyword">catch</span> (e){}
+       }
+ }
+
+ <span class="keyword">return</span> xmlHttp;
+}
+</code></pre>
+</li>
+<li><p>发送请求</p>
+<pre><code class="java"><span class="function">function <span class="title">post</span><span class="params">()</span> </span>{
+ <span class="comment">//1. 创建对象</span>
+ <span class="keyword">var</span> request = ajaxFunction();
+
+ <span class="comment">//2. 发送请求</span>
+ request.open( <span class="string">"POST"</span>, <span class="string">"/day16/DemoServlet01"</span>, <span class="keyword">true</span> );
+
+ <span class="comment">//如果不带数据，写这行就可以了</span>
+ <span class="comment">//request.send();</span>
+
+ <span class="comment">//如果想带数据，就写下面的两行</span>
+ <span class="comment">//如果使用的是post方式带数据，那么 这里要添加头， 说明提交的数据类型是一个经过url编码的form表单数据</span>
+ request.setRequestHeader(<span class="string">"Content-type"</span>,<span class="string">"application/x-www-form-urlencoded"</span>);
+ <span class="comment">//带数据过去  ， 在send方法里面写表单数据。</span>
+ request.send(<span class="string">"name=aobama&amp;age=19"</span>);
+}
+</code></pre>
+<p>上面的一段代码包括发送时是否带数据，同时从后端获取结果为以下代码块：</p>
+<pre><code class="java"><span class="function">function <span class="title">post</span><span class="params">()</span> </span>{
+    <span class="comment">//1. 创建对象</span>
+    <span class="keyword">var</span> request = ajaxFunction();
+
+    <span class="comment">//2. 发送请求</span>
+    request.open( <span class="string">"POST"</span>, <span class="string">"/day16/DemoServlet01"</span>, <span class="keyword">true</span> );
+
+    <span class="comment">//想获取服务器传送过来的数据， 加一个状态的监听。</span>
+    request.onreadystatechange=function(){
+        <span class="keyword">if</span>(request.readyState==<span class="number">4</span> &amp;&amp; request.status == <span class="number">200</span>){
+
+            alert(<span class="string">"post："</span>+request.responseText);
+        }
+    }
+
+    <span class="comment">//如果使用的是post方式带数据，那么 这里要添加头， 说明提交的数据类型是一个经过url编码的form表单数据</span>
+    request.setRequestHeader(<span class="string">"Content-type"</span>,<span class="string">"application/x-www-form-urlencoded"</span>);
+    <span class="comment">//带数据过去  ， 在send方法里面写表单数据。</span>
+    request.send(<span class="string">"name=aobama&amp;age=19"</span>);
+}
+</code></pre>
+<h4 id="Ajax小结"><a href="#Ajax小结" class="headerlink" title="Ajax小结"></a>Ajax小结</h4><p>　　需要区分get方式与post方式请求时所携带数据的方式不同，get方时直接接在servlet的后面接?.参数名.&amp;.值.（均为字符串的形式）即可，例如：DemoServlet01?name=aa&amp;age=18,而post方式需要一行特定的代码： <strong>request.setRequestHeader(“Content-type”,”application/x-www-form-urlencoded”);</strong> 来添加HTTP的一个头，说明提交的数据类型是一个经过url编码的form表单数据。<br>　　无论是get方式还是post方式，上面的代码段应该全部写在下面script标签的中间。  </p>
+<script type="text/javascript"> </script>
+
+</li>
+</ol>
+<h4 id="Ajax例子－－校验用户名是否可用"><a href="#Ajax例子－－校验用户名是否可用" class="headerlink" title="Ajax例子－－校验用户名是否可用"></a>Ajax例子－－校验用户名是否可用</h4><p>jsp的部分代码</p>
+<pre><code class="java">​    <span class="function">function <span class="title">checkUserName</span><span class="params">()</span> </span>{
+    <span class="comment">//获取输入框的值 document 整个网页</span>
+    <span class="keyword">var</span> name = document.getElementById(<span class="string">"name"</span>).value; <span class="comment">// value  value() val val()</span>
+    <span class="comment">//1. 创建对象</span>
+    <span class="keyword">var</span> request = ajaxFunction();
+
+    <span class="comment">//2. 发送请求</span>
+    request.open(<span class="string">"POST"</span>  ,<span class="string">"/day16/CheckUserNameServlet"</span> , <span class="keyword">true</span> );
+
+    <span class="comment">//注册状态改变监听，获取服务器传送过来的数据</span>
+    request.onreadystatechange = function(){
+
+        <span class="keyword">if</span>(request.readyState == <span class="number">4</span> &amp;&amp; request.status == <span class="number">200</span>){
+            <span class="comment">//alert(request.responseText);</span>
+            <span class="keyword">var</span> data = request.responseText;
+            <span class="keyword">if</span>(data == <span class="number">1</span>){
+                <span class="comment">//alert("用户名已存在");</span>
+                document.getElementById(<span class="string">"span01"</span>).innerHTML = <span class="string">"&lt;font color='red'&gt;用户名已存在!&lt;/font&gt;"</span>;
+            }<span class="keyword">else</span>{
+                document.getElementById(<span class="string">"span01"</span>).innerHTML = <span class="string">"&lt;font color='green'&gt;用户名可用!&lt;/font&gt;"</span>;
+                <span class="comment">//alert("用户名未存在");</span>
+            }
+        }
+
+    }
+    request.setRequestHeader(<span class="string">"Content-type"</span>,<span class="string">"application/x-www-form-urlencoded"</span>);
+    request.send(<span class="string">"name="</span>+name);
+}
+</code></pre>
+<h3 id="JQuery"><a href="#JQuery" class="headerlink" title="JQuery"></a>JQuery</h3><p>jQuery是一个轻量级的”写的少，做的多”的JavaScript库。<br>jQuery库包含以下功能：  </p>
+<ul>
+<li>HTML 元素选取</li>
+<li>HTML 元素操作</li>
+<li>CSS 操作</li>
+<li>HTML 事件函数</li>
+<li>JavaScript 特效和动画</li>
+<li>HTML DOM 遍历和修改</li>
+<li>AJAX</li>
+<li>Utilities</li>
+</ul>
+<p>　　JQery中经常使用 <strong>$(“#aaa”)</strong> 这样的写法，和document.getElementById(“aaa”)的作用一样，去找到这个输入框，然后再使用.val(name)去赋值。  </p>
+<h4 id="load"><a href="#load" class="headerlink" title="load"></a>load</h4><pre><code class="java">&lt;a href="" onclick="load()"&gt;使用JQuery执行load方法&lt;/a&gt;
+<span class="comment">/**</span>
+<span class="comment">有两次刷新，  先走 onClick的方法，取到数据回来之后，赋值显示。</span>
+<span class="comment">接着 走 href=""的路径，但是这个属性没有给值，所以会把当前的页</span>
+<span class="comment">面重新再刷新一次。所以导致看不见值。**/</span>
+
+<span class="comment">//找到这个元素， 去执行加载的动作， 加载/day16/DemoServlet02 ， 得到的数据，赋值显示</span>
+$(<span class="string">"#aaa"</span>).load(<span class="string">"/day16/DemoServlet02"</span> , function(responseText , statusTXT  , xhr) {
+        <span class="comment">//找到id为text01的元素， 设置它的value属性值为 responseText 对应的值</span>
+        $(<span class="string">"#aaa"</span>).val(responseText);
+    });
+</code></pre>
+<h4 id="Get"><a href="#Get" class="headerlink" title="Get"></a>Get</h4><pre><code class="java">$.get(<span class="string">"/day16/DemoServlet02"</span>  , function(data ,status) {
+        $(<span class="string">"#div01"</span>).text(data);
+    });
+</code></pre>
+<p>赋值显示  </p>
+<ul>
+<li><p>val(“aa”);</p>
+<blockquote>
+<p>只能放那些标签带有value属性</p>
+</blockquote>
+</li>
+<li><p>html(“aa”); —写html代码</p>
+</li>
+<li>text(“aa”);</li>
+</ul>
+<blockquote>
+<p>其实没有什么区别，如果想针对这分数据做html样式处理（使用font标签），那么只能用html()</p>
+</blockquote>
+<h4 id="load-amp-get-amp-post"><a href="#load-amp-get-amp-post" class="headerlink" title="load &amp; get &amp; post"></a>load &amp; get &amp; post</h4><ul>
+<li>load<br>$(“#元素id”).load(url地址);<pre><code>$(&quot;#div1&quot;).load(serlvet); ---&gt; 使用的get请求，回来赋值的时候， 使用text（）;去赋值
+</code></pre></li>
+<li>get<br>语法格式 ： $.get(URL,callback);<br>使用案例：  <pre><code class="java">$.get(<span class="string">"/day16/DemoServlet02"</span>  , function(data ,status) {
+$(<span class="string">"#div01"</span>).text(data);
+  });
+</code></pre>
+</li>
+<li>post<br>语法格式：$.post(URL,data,callback);  <pre><code class="java"><span class="function">function <span class="title">post</span><span class="params">()</span> </span>{
+  $.post(<span class="string">"/day16/DemoServlet02"</span>, {name:<span class="string">"zhangsan"</span>,age:<span class="number">18</span>},function(data,status) {
+      <span class="comment">//想要放数据到div里面去。 --- 找到div</span>
+      $(<span class="string">"#div01"</span>).html(data);
+  });
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="JQuery例子－－实现校验用户名"><a href="#JQuery例子－－实现校验用户名" class="headerlink" title="JQuery例子－－实现校验用户名"></a>JQuery例子－－实现校验用户名</h4><p>jsp的部分代码:  </p>
+<pre><code class="java"><span class="function">function <span class="title">checkUserName</span><span class="params">()</span> </span>{
+    <span class="comment">//1. 获取输入框的内容</span>
+    <span class="keyword">var</span> name = $(<span class="string">"#name"</span>).val();
+
+    <span class="comment">//2. 发送请求</span>
+    $.post(<span class="string">"/day16/CheckUserNameServlet"</span> , {name:name} , function(data , status){
+        <span class="comment">//alert(data);</span>
+        <span class="keyword">if</span>(data == <span class="number">1</span>){<span class="comment">//用户名存在</span>
+            <span class="comment">//alert("用户名存在");</span>
+            $(<span class="string">"#span01"</span>).html(<span class="string">"&lt;font color='red'&gt;用户名已被注册&lt;/font&gt;"</span>);
+        }<span class="keyword">else</span>{
+            <span class="comment">//alert("用户名可用");</span>
+            $(<span class="string">"#span01"</span>).html(<span class="string">"&lt;font color='green'&gt;用户名可以使用&lt;/font&gt;"</span>);
+        }
+    } );
+    <span class="comment">//3. 输出响应的数据到页面上。</span>
+}
+</code></pre>
+<h4 id="JQuery例子－－实现搜索框的提示"><a href="#JQuery例子－－实现搜索框的提示" class="headerlink" title="JQuery例子－－实现搜索框的提示"></a>JQuery例子－－实现搜索框的提示</h4><p>jsp的部分代码:  </p>
+<p>###搭建环境</p>
+<ol>
+<li><p>定义首页</p>
+<pre><code class="java">&lt;body&gt;
+    &lt;center&gt;
+      &lt;h2&gt;黑马&lt;/h2&gt;
+        &lt;input type=<span class="string">"text"</span> name=<span class="string">"word"</span> id=<span class="string">"word"</span> style=<span class="string">"width: 600px ; height: 50px  ;font-size: 20px;"</span>&gt;
+        &lt;input type=<span class="string">"button"</span> value=<span class="string">"搜索"</span>  style=<span class="string">"height: 55px ; width: 100px ; "</span>&gt;
+        &lt;div id="div01" style="position:relative; left : -54px; width: 600px; height: 200px ; border:  1px solid blue; display: none"&gt;&lt;/div&gt;
+    &lt;/center&gt;
+  &lt;/body&gt;
+</code></pre>
+<p>捕获键盘弹起</p>
+<pre><code class="java">$(function(){
+​    $(<span class="string">"#word"</span>).keyup(function() {
+​        alert(<span class="string">"键盘弹起了.."</span>);
+​    })
+});
+</code></pre>
+<p>JS请求  </p>
+<pre><code class="java">$(function(){
+ $(<span class="string">"#word"</span>).keyup(function() {
+     <span class="comment">//2。 获取输入框的值</span>
+     <span class="comment">//var word = $("#word").val();</span>
+     <span class="comment">//this  对应就是执行这个方法的那个对象， $("#word")</span>
+     <span class="keyword">var</span> word = $(<span class="keyword">this</span>).val();
+
+     <span class="keyword">if</span>(word == <span class="string">""</span>){
+         $(<span class="string">"#div01"</span>).hide();
+     }<span class="keyword">else</span>{
+         <span class="comment">//3. 请求数据。</span>
+         $.post(<span class="string">"find"</span>,{word:word} ,function(data , status){
+             <span class="comment">//alert(data);</span>
+             $(<span class="string">"#div01"</span>).show();
+             $(<span class="string">"#div01"</span>).html(data);
+         });
+     }
+
+ })
+});
+</code></pre>
+<p>Servlet代码</p>
+</li>
+</ol>
+<pre><code class="java"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>{
+    request.setCharacterEncoding(<span class="string">"utf-8"</span>);
+    <span class="keyword">try</span> {
+        <span class="comment">//1. 先获取参数</span>
+        String word = request.getParameter(<span class="string">"word"</span>);
+        System.out.println(<span class="string">"word="</span>+word);
+
+        <span class="comment">//2. 让dao执行查询</span>
+        WordsDao dao = <span class="keyword">new</span> WordsDaoImpl();
+        List&lt;WordBean&gt; list = dao.findWords(word);
+
+        <span class="keyword">for</span> (WordBean wordBean : list) {
+            System.out.println(<span class="string">"==="</span>+wordBean.toString());
+        }
+
+        request.setAttribute(<span class="string">"list"</span>, list);
+
+        <span class="comment">//3. 返回数据</span>
+        response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);
+        <span class="comment">//response.getWriter().write("数据是：");</span>
+        request.getRequestDispatcher(<span class="string">"list.jsp"</span>).forward(request, response);
+    } <span class="keyword">catch</span> (SQLException e) {
+        e.printStackTrace();
+    }
+}
+</code></pre>
+<p>list.jsp</p>
+<pre><code class="java">    &lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span>
+        pageEncoding=<span class="string">"UTF-8"</span>%&gt;
+     &lt;%@ taglib uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span>  prefix=<span class="string">"c"</span>%&gt;
+​        
+<span class="comment">//......</span>
+&lt;table style=<span class="string">"width: 100%"</span>&gt;
+​            &lt;c:forEach items=<span class="string">"${list }"</span> <span class="keyword">var</span>=<span class="string">"wordBean"</span>&gt;
+​                &lt;tr&gt;
+​                    &lt;td&gt;${wordBean.words}&lt;/td&gt;
+​                &lt;/tr&gt;
+​            &lt;/c:forEach&gt;
+​&lt;/table&gt;
+</code></pre>
+<h4 id="JQuery例子－－省市联动"><a href="#JQuery例子－－省市联动" class="headerlink" title="JQuery例子－－省市联动"></a>JQuery例子－－省市联动</h4><pre><code class="java">    &lt;script type="text/javascript" src="js/jquery-1.11.3.min.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" src="js/city.js"&gt;&lt;/script&gt;
+        &lt;/head&gt;
+&lt;body&gt;
+省份: &lt;select name=<span class="string">"province"</span> id =<span class="string">"province"</span>&gt;
+        &lt;option value=<span class="string">""</span> &gt;-请选择 -
+        &lt;option value=<span class="string">"1"</span> &gt;广东
+        &lt;option value=<span class="string">"2"</span> &gt;湖南
+        &lt;option value=<span class="string">"3"</span> &gt;湖北
+        &lt;option value=<span class="string">"4"</span> &gt;四川
+    &lt;/select&gt;
+城市:
+    &lt;select name=<span class="string">"city"</span> id=<span class="string">"city"</span>&gt;
+        &lt;option value=<span class="string">""</span> &gt;-请选择 -
+    &lt;/select&gt;
+&lt;/body&gt;
+</code></pre>
+<p>XStream的使用</p>
+<pre><code class="java"><span class="comment">//3. 返回数据。手动拼  ---&gt; XStream  转化 bean对象成 xml</span>
+    XStream xStream = <span class="keyword">new</span> XStream();
+
+    <span class="comment">//想把id做成属性</span>
+    xStream.useAttributeFor(CityBean.class, <span class="string">"id"</span>);
+
+    <span class="comment">//设置别名</span>
+    xStream.alias(<span class="string">"city"</span>, CityBean.class);
+
+    <span class="comment">//转化一个对象成xml字符串</span>
+    String xml = xStream.toXML(list);
+</code></pre>
+<p>JS代码  </p>
+<pre><code class="java">    $(function() {
+    <span class="comment">//1。找到省份的元素</span>
+    $(<span class="string">"#province"</span>).change(function() {
+        <span class="comment">//2. 一旦里面的值发生了改变，那么就去请求该省份的城市数据</span>
+        <span class="comment">//$("#province").varl();</span>
+        <span class="keyword">var</span> pid = $(<span class="keyword">this</span>).val();
+
+        <span class="comment">/*&lt;list&gt;</span>
+<span class="comment">            &lt;city&gt;</span>
+<span class="comment">                &lt;id&gt;1&lt;id&gt;</span>
+<span class="comment">                &lt;pid&gt;1&lt;/pid&gt;</span>
+<span class="comment">                &lt;cname&gt;深圳&lt;/cname&gt;</span>
+<span class="comment">            &lt;/city&gt;</span>
+<span class="comment">            &lt;city &gt;</span>
+<span class="comment">                &lt;id&gt;2&lt;id&gt;</span>
+<span class="comment">                &lt;pid&gt;1&lt;/pid&gt;</span>
+<span class="comment">                &lt;cname&gt;东莞&lt;/cname&gt;</span>
+<span class="comment">            &lt;/city&gt;</span>
+<span class="comment">        &lt;/list&gt;*/</span>
+
+        $.post( <span class="string">"CityServlet"</span>,{pid:pid} ,function(data,status){
+            <span class="comment">//alert("回来数据了:"+data);</span>
+
+            <span class="comment">//先清空以前的值：</span>
+            $(<span class="string">"#city"</span>).html(<span class="string">"&lt;option value='' &gt;-请选择-"</span>)
+            <span class="comment">//遍历：</span>
+            <span class="comment">//从data数据里面找出所有的city  ， 然后遍历所有的city。</span>
+            <span class="comment">//遍历一个city，就执行一次function方法</span>
+            $(data).find(<span class="string">"city"</span>).each(function() {
+
+                <span class="comment">//遍历出来的每一个city，取它的孩子。 id , cname</span>
+                <span class="keyword">var</span> id = $(<span class="keyword">this</span>).children(<span class="string">"id"</span>).text();
+                <span class="keyword">var</span> cname = $(<span class="keyword">this</span>).children(<span class="string">"cname"</span>).text();
+
+                $(<span class="string">"#city"</span>).append(<span class="string">"&lt;option value='"</span>+id+<span class="string">"' &gt;"</span>+cname)
+            });
+        } );
+
+    });
+});
+</code></pre>
+<p>服务器和客户端数据传输的方式</p>
+<ul>
+<li>xml<pre><code class="java">&lt;list&gt;
+  &lt;city&gt;
+      &lt;id&gt;<span class="number">1</span>&lt;id&gt;
+      &lt;pid&gt;1&lt;/pid&gt;
+      &lt;cname&gt;深圳&lt;/cname&gt;
+  &lt;/city&gt;
+  &lt;city &gt;
+      &lt;id&gt;<span class="number">2</span>&lt;id&gt;
+      &lt;pid&gt;1&lt;/pid&gt;
+      &lt;cname&gt;东莞&lt;/cname&gt;
+  &lt;/city&gt;
+&lt;/list&gt;
+</code></pre>
+</li>
+<li><p>json</p>
+<p>阅读性更好 、 容量更小。</p>
+<p>{“name”:”aaa” , “age”:19}</p>
+</li>
+</ul>
+<pre><code class="java">把javaBean转化成 json数据
+
+<span class="comment">//3. 把list ---&gt; json数据</span>
+    <span class="comment">//JSONArray ---&gt; 变成数组 ， 集合  []</span>
+    <span class="comment">//JSONObject ---&gt; 变成简单的数据  { name : zhangsan , age:18}</span>
+
+    JSONArray jsonArray = JSONArray.fromObject(list);
+    String json = jsonArray.toString();
+</code></pre>
+<p> 使用json格式数据显示省市联动效果<br>​    serlvet代码：</p>
+<pre><code class="java"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>{
+
+<span class="keyword">try</span> {
+    <span class="comment">//1. 获取参数</span>
+    <span class="keyword">int</span> pid = Integer.parseInt(request.getParameter(<span class="string">"pid"</span>));
+
+    <span class="comment">//2 找出所有的城市</span>
+    CityDao dao = <span class="keyword">new</span> CityDaoImpl();
+    List&lt;CityBean&gt; list = dao.findCity(pid);
+
+    <span class="comment">//3. 把list ---&gt; json数据</span>
+    <span class="comment">//JSONArray ---&gt; 变成数组 ， 集合  []</span>
+    <span class="comment">//JSONObject ---&gt; 变成简单的数据  { name : zhangsan , age:18}</span>
+
+    JSONArray jsonArray = JSONArray.fromObject(list);
+    String json = jsonArray.toString();
+</code></pre>
+<pre><code class="java">response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);
+response.getWriter().write(json);
+</code></pre>
+<pre><code class="java">    } <span class="keyword">catch</span> (SQLException e) {
+        <span class="comment">// TODO Auto-generated catch block</span>
+        e.printStackTrace();
+    };
+}
+</code></pre>
+<p>js代码</p>
+<pre><code class="java">$(function() {
+    <span class="comment">//1. 找到省份的元素</span>
+    $(<span class="string">"#province"</span>).change(function() {
+        <span class="comment">//2. 一旦里面的值发生了改变，那么就去请求该省份的城市数据</span>
+        <span class="comment">//$("#province").varl();</span>
+        <span class="keyword">var</span> pid = $(<span class="keyword">this</span>).val();
+
+        <span class="comment">/*[</span>
+<span class="comment">            {</span>
+<span class="comment">                "cname": "深圳",</span>
+<span class="comment">                "id": 1,</span>
+<span class="comment">                "pid": 1</span>
+<span class="comment">            },</span>
+<span class="comment">            {</span>
+<span class="comment">                "cname": "东莞",</span>
+<span class="comment">                "id": 2,</span>
+<span class="comment">                "pid": 1</span>
+<span class="comment">            }</span>
+<span class="comment">            ...</span>
+<span class="comment">        ]*/</span>
+        $.post( <span class="string">"CityServlet02"</span>,{pid:pid} ,function(data,status){
+
+            <span class="comment">//先清空</span>
+            $(<span class="string">"#city"</span>).html(<span class="string">"&lt;option value='' &gt;-请选择-"</span>);
+            <span class="comment">//再遍历，追加</span>
+            $(data).each(function(index , c) {
+                $(<span class="string">"#city"</span>).append(<span class="string">"&lt;option value='"</span>+c.id+<span class="string">"' &gt;"</span>+c.cname)
+            });
+        },<span class="string">"json"</span> );
+
+    });
+});
+</code></pre>
+<p>前后端传送数据的两种方式：  </p>
+<ol>
+<li>服务器返回xml数据  </li>
+<li>服务器返回json数据</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java高级/" rel="tag"># java高级</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/04/Java Web  DBUtils/" rel="next" title="DBUtils">
+                <i class="fa fa-chevron-left"></i> DBUtils
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="米高扬">
+            
+              <p class="site-author-name" itemprop="name">米高扬</p>
+              <p class="site-description motion-element" itemprop="description">既然目标是地平线，留给世界的便只能是背影。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ajax"><span class="nav-number">1.</span> <span class="nav-text">Ajax</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Get方式请求"><span class="nav-number">1.1.</span> <span class="nav-text">Get方式请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据请求-Post"><span class="nav-number">1.2.</span> <span class="nav-text">数据请求 Post</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ajax小结"><span class="nav-number">1.3.</span> <span class="nav-text">Ajax小结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ajax例子－－校验用户名是否可用"><span class="nav-number">1.4.</span> <span class="nav-text">Ajax例子－－校验用户名是否可用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JQuery"><span class="nav-number">2.</span> <span class="nav-text">JQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#load"><span class="nav-number">2.1.</span> <span class="nav-text">load</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Get"><span class="nav-number">2.2.</span> <span class="nav-text">Get</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#load-amp-get-amp-post"><span class="nav-number">2.3.</span> <span class="nav-text">load &amp; get &amp; post</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JQuery例子－－实现校验用户名"><span class="nav-number">2.4.</span> <span class="nav-text">JQuery例子－－实现校验用户名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JQuery例子－－实现搜索框的提示"><span class="nav-number">2.5.</span> <span class="nav-text">JQuery例子－－实现搜索框的提示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JQuery例子－－省市联动"><span class="nav-number">2.6.</span> <span class="nav-text">JQuery例子－－省市联动</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaomi</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
