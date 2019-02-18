@@ -1,342 +1,397 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<html lang="zh-CN">
 
 
-
-  
-
-
-<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/32.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/16.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="java基础,">
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="众所周知，每一个Java类都生成一个class文件。内部类是在一个类中再定义一个类，被包含着的类就称为内部类，包含内部类的相比之下就称为外部类。内部类与外部类之间有着紧密的联系，而内部类与其它的类关系不大。这也是内部类的一个优点：被完全隐藏起来，有着更好的封装性（可以声明为private对外界完全隐藏），减少了代码量（可轻松访问外部类的私有变量），使其更为简洁。虽然内部类被包含在外部类中，看起来是">
-<meta name="keywords" content="java基础">
-<meta property="og:type" content="article">
-<meta property="og:title" content="java内部类">
-<meta property="og:url" content="http://yoursite.com/2018/12/20/Java InnerClass/index.html">
-<meta property="og:site_name" content="migaoyang">
-<meta property="og:description" content="众所周知，每一个Java类都生成一个class文件。内部类是在一个类中再定义一个类，被包含着的类就称为内部类，包含内部类的相比之下就称为外部类。内部类与外部类之间有着紧密的联系，而内部类与其它的类关系不大。这也是内部类的一个优点：被完全隐藏起来，有着更好的封装性（可以声明为private对外界完全隐藏），减少了代码量（可轻松访问外部类的私有变量），使其更为简洁。虽然内部类被包含在外部类中，看起来是">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-21T07:16:32.978Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java内部类">
-<meta name="twitter:description" content="众所周知，每一个Java类都生成一个class文件。内部类是在一个类中再定义一个类，被包含着的类就称为内部类，包含内部类的相比之下就称为外部类。内部类与外部类之间有着紧密的联系，而内部类与其它的类关系不大。这也是内部类的一个优点：被完全隐藏起来，有着更好的封装性（可以声明为private对外界完全隐藏），减少了代码量（可轻松访问外部类的私有变量），使其更为简洁。虽然内部类被包含在外部类中，看起来是">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/2018/12/20/Java InnerClass/">
-
-
-
-
-
-  <title>java内部类 | migaoyang</title>
-  
-
-
-
-
-
-
-
-
-</head>
-
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
+    <meta charset="utf-8">
+    <meta name="keywords" content="java内部类, migaoyang">
+    <meta name="description" content="众所周知，每一个Java类都生成一个class文件。内部类是在一个类中再定义一个类，被包含着的类就称为内部类，包含内部类的相比之下就称为外部类。内部类与外部类之间有着紧密的联系，而内部类与其它的类关系不大。这也是内部类的一个优点：被完全隐藏">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>java内部类 | migaoyang</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span">migaoyang</span>
+                    </a>
+                </div>
+                
+
+<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
     
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
     
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
+        </a>
+    </li>
 
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">migaoyang</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">migaoyang</div>
+        <div class="logo-desc">
+            
+            既然目标是地平线，留给世界的便只能是背影。
+            
+        </div>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+    </ul>
+
+    <div class="social-link">
+    <a href="https://github.com/migaoyang" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:xiaomiaichirou@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=602479493" class="tooltipped" data-tooltip="QQ联系我: 602479493" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
 </div>
 
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/20/Java InnerClass/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="米高扬">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="migaoyang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">java内部类</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-20T00:00:00+08:00">
-                2018-12-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+            </div>
         </div>
-      </header>
-    
+
+        
+    </nav>
+</header>
+
+
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        java内部类
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1,
+    #articleContent h2,
+    #articleContent h3,
+    #articleContent h4,
+    #articleContent h5,
+    #articleContent h6 {
+        padding-top: 76px;
+        margin-top: -76px;
+    }
 
-      
-      
+    #articleContent h1 {
+        line-height: 3.5rem;
+    }
 
-      
-        <p>众所周知，每一个Java类都生成一个class文件。内部类是在一个类中再定义一个类，被包含着的类就称为内部类，包含内部类的相比之下就称为外部类。内部类与外部类之间有着紧密的联系，而内部类与其它的类关系不大。这也是内部类的一个优点：被完全隐藏起来，有着更好的封装性（可以声明为private对外界完全隐藏），减少了代码量（可轻松访问外部类的私有变量），使其更为简洁。<br>虽然内部类被包含在外部类中，看起来是一个类，但这只是从java编译器的角度来看的，在java虚拟机层面看到的（与泛型类似）其实还是两个类，也就是说，每个内部类最后都会被编译为一个独立的类，生成一个独立的字节码文件。下面的一段代码中实际会生成两个类：Outer与Outer$StaticInner。<br><strong>内部类可以被定义为private，仅外部类可以实例化该内部类与使用其方法，仅有内部类可以被定义为private、static</strong><br>分为静态内部类、成员内部类、方法（局部）内部类与匿名内部类。  </p>
+    #articleContent h2 {
+        line-height: 3.2rem;
+    }
+
+    #articleContent h3 {
+        line-height: 2.8rem;
+    }
+
+    #articleContent h4 {
+        line-height: 2.5rem;
+    }
+
+    #articleContent h5 {
+        line-height: 2.2rem;
+    }
+
+    #articleContent h6 {
+        line-height: 1.9rem;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/java基础/" target="_blank">
+                                <span class="chip bg-color">java基础</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/java/" class="post-category" target="_blank">
+                                java
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-12-20
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        3.5k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        12 分
+                    </div>
+                    
+                
+				
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>众所周知，每一个Java类都生成一个class文件。内部类是在一个类中再定义一个类，被包含着的类就称为内部类，包含内部类的相比之下就称为外部类。内部类与外部类之间有着紧密的联系，而内部类与其它的类关系不大。这也是内部类的一个优点：被完全隐藏起来，有着更好的封装性（可以声明为private对外界完全隐藏），减少了代码量（可轻松访问外部类的私有变量），使其更为简洁。<br>虽然内部类被包含在外部类中，看起来是一个类，但这只是从java编译器的角度来看的，在java虚拟机层面看到的（与泛型类似）其实还是两个类，也就是说，每个内部类最后都会被编译为一个独立的类，生成一个独立的字节码文件。下面的一段代码中实际会生成两个类：Outer与Outer$StaticInner。<br><strong>内部类可以被定义为private，仅外部类可以实例化该内部类与使用其方法，仅有内部类可以被定义为private、static</strong><br>分为静态内部类、成员内部类、方法（局部）内部类与匿名内部类。  </p>
 <h3 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h3><h4 id="特征：-带有static关键字。"><a href="#特征：-带有static关键字。" class="headerlink" title="特征： 带有static关键字。"></a><strong>特征：</strong> 带有<strong>static</strong>关键字。</h4><p>在java中，只有一种情况类前可以加static关键字–静态内部类。  </p>
-<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span></span>{  <span class="comment">//定义外部类</span>
+<pre class="line-numbers language-java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span></span>{  <span class="comment"><code class="language-java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span></span>{  <span class="comment">//定义外部类</span>
   <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> outInt = <span class="number">10</span>;  <span class="comment">//定义外部类的静态变量，类变量</span>
   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>{
     StaticInner si = <span class="keyword">new</span> StaticInner();
@@ -349,7 +404,7 @@
     }
   }
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></span></pre>
 <h4 id="静态内部类使用方式"><a href="#静态内部类使用方式" class="headerlink" title="静态内部类使用方式"></a>静态内部类使用方式</h4><ol>
 <li>一个静态内部类可以拥有 <strong>静态变量，静态方法，成员变量，成员方法，构造方法等。</strong>    </li>
 <li>静态内部类只能只能访问外部类的静态（类）变量与静态（类）方法，不能访问实例变量与实例方法。  </li>
@@ -362,7 +417,7 @@
 <h4 id="静态内部类细节"><a href="#静态内部类细节" class="headerlink" title="静态内部类细节"></a>静态内部类细节</h4><p>既然是生成了两个类，那么为何能访问到另一个类的私有成员呢？例如上面的outInt变量。<br>java的解决方案是：自动为Outer类生成一个非私有的访问方法access$0,这个方法返回私有静态变量outInt。  </p>
 <h4 id="静态内部类的使用场景"><a href="#静态内部类的使用场景" class="headerlink" title="静态内部类的使用场景"></a>静态内部类的使用场景</h4><p>当一个类与外部类关系紧密且不依赖外部类实例的时候，可以考虑定义为静态内部类，例如要返回多个返回值，可以考虑使用内部类。<br><strong>LinkedList</strong><br>1、非静态内部类是不可以声明静态成员的（属性和方法），使用静态类就可以声明静态成员，而这招体现在实际的工作中，也许可以让你避免绕许多圈子。<br>2、非静态内部类，可以随意的访问外部类中的成员变量与成员方法，即便它们是私有的也可以（这是它活下来的重要手段之一，呵呵）。<br>     但静态内部类对外部类的访问是有局限的，如不能访问外部类的非静态成员与变量（这是它的最大限制，也是使用频率上输给普通内部类的原因）<br>3、普通内部类把它理解为与外部类绑定了，创建普通内部类对象一定要通过外部类的对象new才行。而静态内部类是不需要的。</p>
 <h3 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h3><h4 id="特点：-相比静态内部类，没有static修饰。"><a href="#特点：-相比静态内部类，没有static修饰。" class="headerlink" title="特点： 相比静态内部类，没有static修饰。"></a>特点： 相比静态内部类，没有static修饰。</h4><p>虽然成员内部类与静态内部类在定义上只差了一个static修饰符，但具体的含义与使用有着巨大的不同。  </p>
-<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span></span>{  <span class="comment">//定义外部类</span>
+<pre class="line-numbers language-java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span></span>{  <span class="comment"><code class="language-java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span></span>{  <span class="comment">//定义外部类</span>
   <span class="keyword">private</span> <span class="keyword">int</span> outInt = <span class="number">10</span>;  <span class="comment">//定义外部类的静态变量，类变量</span>
   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">action</span><span class="params">()</span></span>{
     System.out.println(<span class="string">"this is Outer`s action"</span>);
@@ -379,23 +434,23 @@
     }
   }
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></span></pre>
 <h4 id="成员内部类使用方式"><a href="#成员内部类使用方式" class="headerlink" title="成员内部类使用方式"></a>成员内部类使用方式</h4><ol>
 <li>与静态内部类不同，一个成员内部类拥有 <strong>成员变量、成员方法、构造方法</strong>    </li>
 <li>在静态内部类中，内部类只能访问外部类的静态变量与静态方法。但是在成员内部类中，除了可以访问外部类的静态变量与静态方法，还可以直接访问外部类的实例变量与实例方法。例如：在Inner类中的innerMethod方法可以直接访问外部类的私有实例变量outInt，在成员内部类Inner中可以通过 <strong>“外部类.this.xxx”</strong> 的方式来使用外部类的实例变量与实例方法，例如 <strong>“Outer.this.action();”</strong> 。既然要用  <strong>“外部类.this.xxx”</strong> 这种形式来访问外部类的实例变量与实例方法，那么在上面的代码中，在Inner类中为什么只用访问外部类的action方法时才用这种方法，而访问实例变量outInt时确直接就访问了呢？因为在不引起异议的前提下，可以省略 <strong>“外部类.this”</strong>  而直接使用外部类的实例变量或实例方法即可，也就是说内部类使用action方法时，其前面的 <strong>“Outer.this”</strong> 也可省略。    </li>
 <li>在外部类里使用内部类的成员时，成员内部类与静态内部类的使用方式是一样， <strong>直接使用即可</strong> 如test（）方法所示。</li>
-<li>与静态内部类所不同的是 <strong>成员内部类对象总是与一个外部类对象相连，在外部使用时（外部类之外），它不能通过 new Outer.Inner() 的方式创建对象，而是要先创建一个Outer对象。</strong>    <pre><code class="java"><span class="comment">//外部（外部类之外）使用内部类的方式    </span>
+<li>与静态内部类所不同的是 <strong>成员内部类对象总是与一个外部类对象相连，在外部使用时（外部类之外），它不能通过 new Outer.Inner() 的方式创建对象，而是要先创建一个Outer对象。</strong>    <pre class="line-numbers language-java"><span class="comment"><code class="language-java"><span class="comment">//外部（外部类之外）使用内部类的方式    </span>
 Outer outer = <span class="keyword">new</span> Outer();
 Outer.Inner inner = outer.new Inner();
 inner.innerMethod();
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></span></pre>
 如上面代码段所示，在外部使用成员内部类的方式。  </li>
 </ol>
 <h4 id="成员内部类细节"><a href="#成员内部类细节" class="headerlink" title="成员内部类细节"></a>成员内部类细节</h4><p>静态内部类可以定义静态变量与静态方法，但是在成员内部类中不可以定义这两个（final除外，因为它等同于常量）。并且在方法内部类与匿名内部类也不可以定义静态变量与静态方法。我们可以这样理解：之所以不让定义，是因为这些内部类不应该单独使用，不应该定义类的变量与方法。</p>
 <h4 id="成员内部类使用场景与源码举例"><a href="#成员内部类使用场景与源码举例" class="headerlink" title="成员内部类使用场景与源码举例"></a>成员内部类使用场景与源码举例</h4><p>当内部类与外部类关系密切，需要访问外部类的实例变量与实例方法时，可以考虑定义为成员内部类。这个内部类还可以定义为private，对外部完全隐藏。例如LinkedList中的listIterator方法，其返回值为接口Iterator，listIterator内部使用了成员内部类ListItr。<br>LinkedList  </p>
 <hr>
 <h3 id="方法内部类"><a href="#方法内部类" class="headerlink" title="方法内部类"></a>方法内部类</h3><h4 id="方法内部类特征"><a href="#方法内部类特征" class="headerlink" title="方法内部类特征"></a>方法内部类特征</h4><p>在一个方法中定义一个类。  </p>
-<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span></span>{  <span class="comment">//定义外部类</span>
+<pre class="line-numbers language-java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span></span>{  <span class="comment"><code class="language-java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span></span>{  <span class="comment">//定义外部类</span>
   <span class="keyword">private</span> <span class="keyword">void</span> test{<span class="keyword">final</span> <span class="keyword">int</span> param}{  <span class="comment">//在方法中定义一个内部类</span>
     <span class="keyword">final</span> String str = <span class="string">"xiaomi"</span>;
 
@@ -411,7 +466,7 @@ inner.innerMethod();
     }
   }
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></span></pre>
 <h4 id="方法内部类的使用方式"><a href="#方法内部类的使用方式" class="headerlink" title="方法内部类的使用方式"></a>方法内部类的使用方式</h4><ol>
 <li>在Outer类中的test方法中定义一个内部类Inner， <strong>方法内部类只能在定义的方法内被使用。</strong>    </li>
 <li>方法内部类可以直接访问方法的方法参数与方法中的局部变量，  <strong>但是这些方法里的局部变量必须被声明为final，如上面的innerMethod方法所示，可直接访问param与final的str。</strong>  </li>
@@ -420,17 +475,17 @@ inner.innerMethod();
 </ol>
 <h4 id="方法内部类的思考"><a href="#方法内部类的思考" class="headerlink" title="方法内部类的思考"></a>方法内部类的思考</h4><p>似乎方法内部类有些多余，因为方法内部类能做的成员内部类也可以做到，至于方法参数也可以作为参数传递给成员内部类，我个人认为方法内部类的设计可能是出于能更好封装的目的，只能在被定义的方法中使用。  </p>
 <h3 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h3><h4 id="匿名内部类的特征"><a href="#匿名内部类的特征" class="headerlink" title="匿名内部类的特征"></a>匿名内部类的特征</h4><p>与静态内部类、成员内部类、方法内部类不同，匿名内部类没有单独的定义，它在创建对象的同时定义类。  </p>
-<pre><code class="java"><span class="keyword">new</span> 父类（参数列表）｛
+<pre class="line-numbers language-java"><span class="keyword"><code class="language-java"><span class="keyword">new</span> 父类（参数列表）｛
 <span class="comment">//匿名内部类的实现</span>
 ｝
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></span></pre>
 <p>或者如下使用：  </p>
-<pre><code class="java"><span class="keyword">new</span> 父接口（）｛
+<pre class="line-numbers language-java"><span class="keyword"><code class="language-java"><span class="keyword">new</span> 父接口（）｛
 <span class="comment">//匿名内部类的实现</span>
 ｝
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></span></pre>
 <h4 id="匿名内部类的使用方式"><a href="#匿名内部类的使用方式" class="headerlink" title="匿名内部类的使用方式"></a>匿名内部类的使用方式</h4><p>匿名内部类是与new相关联的，在创建对象的时候定义类，new + 父类/父接口 +（） +｛｝，其中圆括号是传递给父类构造方法的参数，大括号里为类的定义。  </p>
-<pre><code class="java"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span> x,<span class="keyword">final</span> <span class="keyword">int</span> y)</span></span>{
+<pre class="line-numbers language-java"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span> x,<span class="keyword">final</span> <span class="keyword"><code class="language-java"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span> x,<span class="keyword">final</span> <span class="keyword">int</span> y)</span></span>{
   Point p = <span class="keyword">new</span> Point(<span class="number">2</span>,<span class="number">3</span>){  <span class="comment">//匿名内部类，其父类是Point。  </span>
     <span class="meta">@Override</span>
     <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">distance</span><span class="params">()</span></span>{
@@ -439,7 +494,7 @@ inner.innerMethod();
   }
   System.out.println(p.distance());
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></span></span></span></pre>
 <p>创建Point对象的时候，定义了一个匿名内部类，这个类的父类是Point，创建对象的时候，给父类构造方法传递了参数2与参数3，重写了distance方法，在方法中访问了外部方法final参数x与y。   </p>
 <ol>
 <li>匿名内部类只能被使用一次,用来创建一个对象。</li>
@@ -448,14 +503,14 @@ inner.innerMethod();
 <li>匿名内部类因为没有构造方法,它自己无法接受参数,如果必须要参数,则应该使用其他内部类。与方法内部类一样,匿名内部类也可以访问外部类的所有变量和方法,可以访问方法中的final参数和局部变量。  </li>
 </ol>
 <h4 id="匿名内部类实现原理"><a href="#匿名内部类实现原理" class="headerlink" title="匿名内部类实现原理"></a>匿名内部类实现原理</h4><p>匿名内部类也都被生成为一个独立的类，只是类的名字以外部类加数字编号，是一个没有什么具体意义的名字。上面的代码段会产生两个类Outer和Outer$1，代码大概如下所示：</p>
-<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span> </span>{
+<pre class="line-numbers language-java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title"><code class="language-java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span> </span>{
     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span> x, <span class="keyword">final</span> <span class="keyword">int</span> y)</span></span>{
         Point p = <span class="keyword">new</span> Outer$<span class="number">1</span>(<span class="keyword">this</span>,<span class="number">2</span>,<span class="number">3</span>,x,y);                                            
         System.out.println(p.distance());        
     }
 }
-</code></pre>
-<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span>$1 <span class="keyword">extends</span> <span class="title">Point</span> </span>{
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></span></span></pre>
+<pre class="line-numbers language-java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span>$1 <span class="keyword">extends</span> <span class="title"><code class="language-java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span>$1 <span class="keyword">extends</span> <span class="title">Point</span> </span>{
     <span class="keyword">int</span> x2;
     <span class="keyword">int</span> y2;
     Outer outer;
@@ -472,11 +527,11 @@ inner.innerMethod();
         <span class="keyword">return</span> distance(<span class="keyword">new</span> Point(<span class="keyword">this</span>.x2,y2));     
     }   
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></span></span></pre>
 <p>与方法内部类类似，外部实例this，方法参数x和y都作为参数传递给了内部类构造方法。此外，new时的参数2和3也传递给了构造方法，内部类构造方法又将它们传递给了父类构造方法。</p>
 <h4 id="匿名内部类使用场景"><a href="#匿名内部类使用场景" class="headerlink" title="匿名内部类使用场景"></a>匿名内部类使用场景</h4><p>匿名内部类能做的，方法内部类都能做。但如果对象只会创建一次，且不需要构造方法来接受参数，则可以使用匿名内部类，代码书写上更为简洁。<br>在调用方法时，很多方法需要一个接口参数，比如说Arrays.sort方法，它可以接受一个数组，以及一个Comparator接口参数，Comparator有一个方法compare用于比较两个对象。<br>比如说，我们要对一个字符串数组不区分大小写排序，可以使用Arrays.sort方法，但需要传递一个实现了Comparator接口的对象，这时就可以使用匿名内部类，代码如下所示：</p>
-<pre><code class="java"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sortIgnoreCase</span><span class="params">(String[] strs)</span></span>{
-    Arrays.sort(strs, <span class="keyword">new</span> Comparator&lt;String&gt;() {
+<pre class="line-numbers language-java"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sortIgnoreCase</span><span class="params"><code class="language-java"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sortIgnoreCase</span><span class="params">(String[] strs)</span></span>{
+    Arrays.sort(strs, <span class="keyword">new</span> Comparator<string>() {
 
         <span class="meta">@Override</span>
         <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String o1, String o2)</span> </span>{
@@ -484,398 +539,407 @@ inner.innerMethod();
         }
     });
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></string></code></span></span></pre>
 <p>Comparator后面的<stirng>与泛型有关，表示比较的对象是字符串类型，后续文章会讲解泛型。<br>匿名内部类还经常用于事件处理程序中，用于响应某个事件，比如说一个Button，处理点击事件的代码可能类似如下：</stirng></p>
-<pre><code class="java">Button bt = <span class="keyword">new</span> Button();
+<pre class="line-numbers language-java">Button bt = <span class="keyword"><code class="language-java">Button bt = <span class="keyword">new</span> Button();
 bt.addActionListener(<span class="keyword">new</span> ActionListener(){
     <span class="meta">@Override</span>
     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent e)</span> </span>{
         <span class="comment">//处理事件</span>
     }
 });
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></span></pre>
 <p>调用addActionListener将事件处理程序注册到了Button对象bt中，当事件发生时，会调用actionPerformed方法，并传递事件详情ActionEvent作为参数。<br>以上Arrays.sort和Button都是上节提到的一种针对接口编程的例子，另外，它们也都是一种回调的例子。所谓回调是相对于一般的正向调用而言，平时一般都是正向调用，但Arrays.sort中传递的Comparator对象，它的compare方法并不是在写代码的时候被调用的，而是在Arrays.sort的内部某个地方回过头来调用的。Button中的传递的ActionListener对象，它的actionPerformed方法也一样，是在事件发生的时候回过头来调用的。<br>将程序分为保持不变的主体框架，和针对具体情况的可变逻辑，通过回调的方式进行协作，是计算机程序的一种常用实践。匿名内部类是实现回调接口的一种简便方式。</p>
 
-      
-    </div>
-    
-    
-    
+            </div>
+            <hr>
 
-    
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
 
-    
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
 
-    
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/java基础/" rel="tag"># java基础</a>
-          
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff;
+        background-color: #22AB38;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff;
+        background-color: #019FE8;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a class="reward-link btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs">
+                        <li class="tab wechat-tab waves-effect waves-light"><a class="active" href="#wechat">微信</a></li>
+                        <li class="tab alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                    </ul>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                </div>
+            </div>
         </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/12/08/Java Web  Http/" rel="next" title="HTTP协议">
-                <i class="fa fa-chevron-left"></i> HTTP协议
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/02/Java Web  JDBC/" rel="prev" title="JDBC基础">
-                JDBC基础 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
     </div>
-  </div>
+</div>
 
+<script>
+    $(function () {
+        $('#reward .reward-link').on('click', function () {
+            $('#rewardModal').openModal();
+        });
 
-          </div>
-          
+        $('#rewardModal .close').on('click', function () {
+            $('#rewardModal').closeModal();
+        });
+    });
+</script>
+            
 
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
 
-          
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
 
-  
+<script src="/libs/share/js/social-share.min.js"></script>
 
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://yoursite.com" class="b-link-green">migaoyang</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/12/20/Java InnerClass/" class="b-link-green">java内部类</a>
+                </p>
+            </div>
+        </div>
+    </div>
 
+    
 
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/01/02/Java Web  JDBC/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="JDBC基础">
+                        
+                        <span class="card-title">JDBC基础</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">JDBC： JAVA Database Connectivity java 数据库连接。
+JDBC的基本使用步骤：
+注册驱动  DriverManager.registerDriver(DriverManager.registerDrive</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-02
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JDBC/" class="post-category" target="_blank">
+                                    JDBC
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/java基础/" target="_blank">
+                        <span class="chip bg-color">java基础</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
         </div>
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="米高扬">
-            
-              <p class="site-author-name" itemprop="name">米高扬</p>
-              <p class="site-description motion-element" itemprop="description">既然目标是地平线，留给世界的便只能是背影。</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives">
-              
-                  <span class="site-state-item-count">21</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#静态内部类"><span class="nav-number">1.</span> <span class="nav-text">静态内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特征：-带有static关键字。"><span class="nav-number">1.1.</span> <span class="nav-text">特征： 带有static关键字。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#静态内部类使用方式"><span class="nav-number">1.2.</span> <span class="nav-text">静态内部类使用方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#静态内部类细节"><span class="nav-number">1.3.</span> <span class="nav-text">静态内部类细节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#静态内部类的使用场景"><span class="nav-number">1.4.</span> <span class="nav-text">静态内部类的使用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#成员内部类"><span class="nav-number">2.</span> <span class="nav-text">成员内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特点：-相比静态内部类，没有static修饰。"><span class="nav-number">2.1.</span> <span class="nav-text">特点： 相比静态内部类，没有static修饰。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#成员内部类使用方式"><span class="nav-number">2.2.</span> <span class="nav-text">成员内部类使用方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#成员内部类细节"><span class="nav-number">2.3.</span> <span class="nav-text">成员内部类细节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#成员内部类使用场景与源码举例"><span class="nav-number">2.4.</span> <span class="nav-text">成员内部类使用场景与源码举例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法内部类"><span class="nav-number">3.</span> <span class="nav-text">方法内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法内部类特征"><span class="nav-number">3.1.</span> <span class="nav-text">方法内部类特征</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法内部类的使用方式"><span class="nav-number">3.2.</span> <span class="nav-text">方法内部类的使用方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法内部类的思考"><span class="nav-number">3.3.</span> <span class="nav-text">方法内部类的思考</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名内部类"><span class="nav-number">4.</span> <span class="nav-text">匿名内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#匿名内部类的特征"><span class="nav-number">4.1.</span> <span class="nav-text">匿名内部类的特征</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#匿名内部类的使用方式"><span class="nav-number">4.2.</span> <span class="nav-text">匿名内部类的使用方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#匿名内部类实现原理"><span class="nav-number">4.3.</span> <span class="nav-text">匿名内部类实现原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#匿名内部类使用场景"><span class="nav-number">4.4.</span> <span class="nav-text">匿名内部类使用场景</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
         
-      </div>
-    </main>
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/12/08/Java Web  Servlet2/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Servlet（二）">
+                        
+                        <span class="card-title">Servlet（二）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">提要：Servlet配置路径、ServletConfig、ServletContext、
+1. Servlet配置路径（xml或者注解）假设项目名称为a。  
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">xiaomi</span>
+全路径匹配  
 
-  
+以 / 开始　/a/aa/bblocalhost:8080/</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-08
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Servlet/" class="post-category" target="_blank">
+                                    Servlet
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Servlet/" target="_blank">
+                        <span class="chip bg-color">Servlet</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
 </div>
 
 
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
 
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingSelector: 'h2, h3, h4'
+        });
 
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
 
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
 
-
-
-
-        
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
 </script>
+    
 
+</main>
 
 
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
 
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">29k</span>
+            
 
+            
+			
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/migaoyang" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
 
 
 
+    <a href="mailto:xiaomiaichirou@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
 
-  
 
 
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=602479493" class="tooltipped" data-tooltip="QQ联系我: 602479493" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
 
 
 
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
 
+<div class="progress-bar"></div>
 
 
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input" autofocus>
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
 
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
 
 
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
 
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+<!-- Global site tag (gtag.js) - Google Analytics -->
 
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
 
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
 
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
 
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>

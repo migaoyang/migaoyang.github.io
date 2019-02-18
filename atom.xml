@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>migaoyang</title>
+  
+  <subtitle>migaoyang</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2019-02-18T08:42:41.013Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>米高扬</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JVM内存模型</title>
+    <link href="http://yoursite.com/2019/02/18/JVMMemoryModel/"/>
+    <id>http://yoursite.com/2019/02/18/JVMMemoryModel/</id>
+    <published>2019-02-17T16:00:00.000Z</published>
+    <updated>2019-02-18T08:42:41.013Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;JVM内存模型&quot;&gt;&lt;a href=&quot;#JVM内存模型&quot; class=&quot;headerlink&quot; title=&quot;JVM内存模型&quot;&gt;&lt;/a&gt;JVM内存模型&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/images/1.jpg&quot; alt=&quot;Alt
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="java高级" scheme="http://yoursite.com/tags/java%E9%AB%98%E7%BA%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ajax&amp;JQuery</title>
+    <link href="http://yoursite.com/2019/01/12/Java%20Web%20%20Ajax&amp;JQuery/"/>
+    <id>http://yoursite.com/2019/01/12/Java Web  Ajax&amp;JQuery/</id>
+    <published>2019-01-11T16:00:00.000Z</published>
+    <updated>2019-02-18T08:32:30.996Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;Ajax&quot;&gt;&lt;a href=&quot;#Ajax&quot; class=&quot;headerlink&quot; title=&quot;Ajax&quot;&gt;&lt;/a&gt;Ajax&lt;/h3&gt;&lt;p&gt; “Asynchronous Javascript And
+        
+      
+    
+    </summary>
+    
+      <category term="JDBC" scheme="http://yoursite.com/categories/JDBC/"/>
+    
+    
+      <category term="java高级" scheme="http://yoursite.com/tags/java%E9%AB%98%E7%BA%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DBUtils</title>
+    <link href="http://yoursite.com/2019/01/04/Java%20Web%20%20DBUtils/"/>
+    <id>http://yoursite.com/2019/01/04/Java Web  DBUtils/</id>
+    <published>2019-01-03T16:00:00.000Z</published>
+    <updated>2019-01-04T07:45:23.794Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;DBUtils&quot;&gt;&lt;a href=&quot;#DBUtils&quot; class=&quot;headerlink&quot; title=&quot;DBUtils&quot;&gt;&lt;/a&gt;DBUtils&lt;/h3&gt;&lt;p&gt;Commons DbUtils是Apache提供的一个对JDBC进行简单封装的开源工具类库，
+        
+      
+    
+    </summary>
+    
+      <category term="JDBC" scheme="http://yoursite.com/categories/JDBC/"/>
+    
+    
+      <category term="java高级" scheme="http://yoursite.com/tags/java%E9%AB%98%E7%BA%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>事务</title>
+    <link href="http://yoursite.com/2019/01/03/Java%20Web%20%20Transaction/"/>
+    <id>http://yoursite.com/2019/01/03/Java Web  Transaction/</id>
+    <published>2019-01-02T16:00:00.000Z</published>
+    <updated>2019-01-03T13:31:14.833Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;事务&quot;&gt;&lt;a href=&quot;#事务&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="JDBC" scheme="http://yoursite.com/categories/JDBC/"/>
+    
+    
+      <category term="java高级" scheme="http://yoursite.com/tags/java%E9%AB%98%E7%BA%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>连接池</title>
+    <link href="http://yoursite.com/2019/01/03/Java%20Web%20%20ConnectionPool/"/>
+    <id>http://yoursite.com/2019/01/03/Java Web  ConnectionPool/</id>
+    <published>2019-01-02T16:00:00.000Z</published>
+    <updated>2019-01-04T03:22:00.009Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;数据库连接池&quot;&gt;&lt;a href=&quot;#数据库连接池&quot; class=&quot;headerlink&quot; title=&quot;数据库连接池&quot;&gt;&lt;/a&gt;数据库连接池&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;数据库连接的对象创建，比较消耗性能。    
+        
+      
+    
+    </summary>
+    
+      <category term="JDBC" scheme="http://yoursite.com/categories/JDBC/"/>
+    
+    
+      <category term="java高级" scheme="http://yoursite.com/tags/java%E9%AB%98%E7%BA%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JDBC基础</title>
+    <link href="http://yoursite.com/2019/01/02/Java%20Web%20%20JDBC/"/>
+    <id>http://yoursite.com/2019/01/02/Java Web  JDBC/</id>
+    <published>2019-01-01T16:00:00.000Z</published>
+    <updated>2019-01-03T09:21:08.020Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;JDBC：&lt;/strong&gt; JAVA Database Connectivity java 数据库连接。&lt;/p&gt;
+&lt;h3 id=&quot;JDBC的基本使用步骤：&quot;&gt;&lt;a href=&quot;#JDBC的基本使用步骤：&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="JDBC" scheme="http://yoursite.com/categories/JDBC/"/>
+    
+    
+      <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java内部类</title>
+    <link href="http://yoursite.com/2018/12/20/Java%20InnerClass/"/>
+    <id>http://yoursite.com/2018/12/20/Java InnerClass/</id>
+    <published>2018-12-19T16:00:00.000Z</published>
+    <updated>2018-12-21T07:16:32.978Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;众所周知，每一个Java类都生成一个class文件。内部类是在一个类中再定义一个类，被包含着的类就称为内部类，包含内部类的相比之下就称为外部类。内部类与外部类之间有着紧密的联系，而内部类与其它的类关系不大。这也是内部类的一个优点：被完全隐藏起来，有着更好的封装性（可以声明为
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Servlet（二）</title>
+    <link href="http://yoursite.com/2018/12/08/Java%20Web%20%20Servlet2/"/>
+    <id>http://yoursite.com/2018/12/08/Java Web  Servlet2/</id>
+    <published>2018-12-07T16:00:00.000Z</published>
+    <updated>2018-12-14T03:22:05.854Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;提要：Servlet配置路径、ServletConfig、ServletContext、&lt;/p&gt;
+&lt;h3 id=&quot;1-Servlet配置路径（xml或者注解）&quot;&gt;&lt;a href=&quot;#1-Servlet配置路径（xml或者注解）&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Servlet" scheme="http://yoursite.com/categories/Servlet/"/>
+    
+    
+      <category term="Servlet" scheme="http://yoursite.com/tags/Servlet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Servlet（一）</title>
+    <link href="http://yoursite.com/2018/12/08/Java%20Web%20%20Servlet1/"/>
+    <id>http://yoursite.com/2018/12/08/Java Web  Servlet1/</id>
+    <published>2018-12-07T16:00:00.000Z</published>
+    <updated>2018-12-13T13:10:03.539Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;提要：Servlet执行过程、执行周期。  &lt;/p&gt;
+&lt;p&gt;在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 &lt;strong&gt;.class&lt;/strong&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="Servlet" scheme="http://yoursite.com/categories/Servlet/"/>
+    
+    
+      <category term="Servlet" scheme="http://yoursite.com/tags/Servlet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HTTP协议</title>
+    <link href="http://yoursite.com/2018/12/08/Java%20Web%20%20Http/"/>
+    <id>http://yoursite.com/2018/12/08/Java Web  Http/</id>
+    <published>2018-12-07T16:00:00.000Z</published>
+    <updated>2018-12-08T06:30:15.672Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;Http协议&quot;&gt;&lt;a href=&quot;#Http协议&quot; class=&quot;headerlink&quot; title=&quot;Http协议&quot;&gt;&lt;/a&gt;Http协议&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;http协议&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;针对网络上的客户端 与
+        
+      
+    
+    </summary>
+    
+      <category term="Servlet" scheme="http://yoursite.com/categories/Servlet/"/>
+    
+    
+      <category term="Servlet" scheme="http://yoursite.com/tags/Servlet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java源码-剖析HashSet</title>
+    <link href="http://yoursite.com/2018/11/30/Java%20HashSet/"/>
+    <id>http://yoursite.com/2018/11/30/Java HashSet/</id>
+    <published>2018-11-29T16:00:00.000Z</published>
+    <updated>2018-12-13T11:57:27.210Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Map接口中的keySet方法与entrySet方法返回值类型的都是Set。  &lt;/p&gt;
+&lt;h3 id=&quot;HashSet的Set接口&quot;&gt;&lt;a href=&quot;#HashSet的Set接口&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="java源码" scheme="http://yoursite.com/tags/java%E6%BA%90%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java源码-剖析HashMap</title>
+    <link href="http://yoursite.com/2018/11/25/Java%20HashMap/"/>
+    <id>http://yoursite.com/2018/11/25/Java HashMap/</id>
+    <published>2018-11-24T16:00:00.000Z</published>
+    <updated>2018-12-07T04:56:42.059Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;ArrayList与LinkedList的缺点就是按元素内容查找值时，查找元素的时间复杂度都较高，而HashMap查找元素的时间复杂度可以达到O(1)!&lt;br&gt;Map在这里是映射的关系，K-V之间相互映射，计算K的hashCode值，根据这个值去计算（取模
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="java源码" scheme="http://yoursite.com/tags/java%E6%BA%90%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java泛型</title>
+    <link href="http://yoursite.com/2018/11/22/Java%20Generic/"/>
+    <id>http://yoursite.com/2018/11/22/Java Generic/</id>
+    <published>2018-11-21T16:00:00.000Z</published>
+    <updated>2018-12-07T04:56:35.225Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;泛型来源&quot;&gt;&lt;a href=&quot;#泛型来源&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java源码-剖析LinkedList</title>
+    <link href="http://yoursite.com/2018/11/20/Java%20LinkedList/"/>
+    <id>http://yoursite.com/2018/11/20/Java LinkedList/</id>
+    <published>2018-11-19T16:00:00.000Z</published>
+    <updated>2018-12-07T04:58:03.323Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;ArrayLis通过索引值随机访问的效率很高，但是插入与删除的性能比较低；LinkedList也实现了List接口，而LIst接口扩展了Collection接口，Collection接口又扩展了Iterable接口。同时LinkedList还实现了队列接口Queue，就是平
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="java源码" scheme="http://yoursite.com/tags/java%E6%BA%90%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java源码-剖析ArrayList</title>
+    <link href="http://yoursite.com/2018/11/17/Java%20ArrayList/"/>
+    <id>http://yoursite.com/2018/11/17/Java ArrayList/</id>
+    <published>2018-11-16T16:00:00.000Z</published>
+    <updated>2018-12-07T04:56:19.748Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;容器类(集合)，顾名思义就是用来容纳其它数据的类。在泛型的那篇笔记中，实现了一个简单的动态数组的容器类–DynamicArray,本篇主要阐述Java中真正的动态数组（数组列表）容器类ArrayList（Java
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="java源码" scheme="http://yoursite.com/tags/java%E6%BA%90%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java多态（向上转型、动态绑定、instanceof、抽象）</title>
+    <link href="http://yoursite.com/2018/11/14/Java%20Polymorphic/"/>
+    <id>http://yoursite.com/2018/11/14/Java Polymorphic/</id>
+    <published>2018-11-13T16:00:00.000Z</published>
+    <updated>2018-12-07T04:55:56.922Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;多态（向上转型）&quot;&gt;&lt;a href=&quot;#多态（向上转型）&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java的非静态方法调用过程</title>
+    <link href="http://yoursite.com/2018/11/13/Java%20CallFunction/"/>
+    <id>http://yoursite.com/2018/11/13/Java CallFunction/</id>
+    <published>2018-11-12T16:00:00.000Z</published>
+    <updated>2018-12-07T04:56:30.119Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Java中非静态方法的调用过程，即通过对象来调用方法的过程主要有以下几个步骤。&lt;br&gt;假设要调用x.f(args), &lt;strong&gt;隐式参数&lt;/strong&gt; x 声明为类C的一个对象。具体调用流程如下：&lt;/p&gt;
+&lt;h3
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java修饰符的限制范围</title>
+    <link href="http://yoursite.com/2018/11/09/Java%20Modifier/"/>
+    <id>http://yoursite.com/2018/11/09/Java Modifier/</id>
+    <published>2018-11-08T16:00:00.000Z</published>
+    <updated>2018-12-07T04:56:01.909Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;以下为Java控制可见性的四个修饰符的总结  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;仅对本类可见 – private  &lt;/li&gt;
+&lt;li&gt;对本包可见 – 默认（无修饰符）&lt;/li&gt;
+&lt;li&gt;对本包及所有子类可见 – protected&lt;/li&gt;
+&lt;li&gt;对所有类可见 –
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java的引传递用去哪了</title>
+    <link href="http://yoursite.com/2018/11/07/Java%20CallByValueReference/"/>
+    <id>http://yoursite.com/2018/11/07/Java CallByValueReference/</id>
+    <published>2018-11-06T16:00:00.000Z</published>
+    <updated>2018-12-07T04:56:24.448Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;值传递（值调用）（call by value）是指在调用函数式将实际参数&lt;strong&gt;复制&lt;/strong&gt;一份传递到函数中,这样在函数中如果对参数进行修改，将不会影响到实际参数。&lt;br&gt;  引用传递（引用调用）（pass by
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java的Object（equals、hashCode、toString、clone）</title>
+    <link href="http://yoursite.com/2018/11/07/Java%20Object/"/>
+    <id>http://yoursite.com/2018/11/07/Java Object/</id>
+    <published>2018-11-06T16:00:00.000Z</published>
+    <updated>2018-12-07T04:56:06.331Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Object位于java.lang包，是所有java类的父类，不用明确的写 extends Object。    
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+</feed>

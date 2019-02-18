@@ -1,342 +1,397 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<html lang="zh-CN">
 
 
-
-  
-
-
-<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/32.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/16.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="java高级,">
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="Ajax “Asynchronous Javascript And XML”（异步JavaScript和XML），其实ajax并不是新的技术，只是把以下原有的技术，整合到一起而已。1.使用CSS和XHTML来表示。2.使用DOM模型来交互和动态显示。3.使用XMLHttpRequest来和服务器进行异步通信。4.使用javascript来绑定和调用。作用　　未使用Ajax时，如果网页想要刷新局部内">
-<meta name="keywords" content="java高级">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Ajax&amp;JQuery">
-<meta property="og:url" content="http://yoursite.com/2019/01/12/Java Web  Ajax&JQuery/index.html">
-<meta property="og:site_name" content="migaoyang">
-<meta property="og:description" content="Ajax “Asynchronous Javascript And XML”（异步JavaScript和XML），其实ajax并不是新的技术，只是把以下原有的技术，整合到一起而已。1.使用CSS和XHTML来表示。2.使用DOM模型来交互和动态显示。3.使用XMLHttpRequest来和服务器进行异步通信。4.使用javascript来绑定和调用。作用　　未使用Ajax时，如果网页想要刷新局部内">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-15T01:33:48.613Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ajax&amp;JQuery">
-<meta name="twitter:description" content="Ajax “Asynchronous Javascript And XML”（异步JavaScript和XML），其实ajax并不是新的技术，只是把以下原有的技术，整合到一起而已。1.使用CSS和XHTML来表示。2.使用DOM模型来交互和动态显示。3.使用XMLHttpRequest来和服务器进行异步通信。4.使用javascript来绑定和调用。作用　　未使用Ajax时，如果网页想要刷新局部内">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/2019/01/12/Java Web  Ajax&JQuery/">
-
-
-
-
-
-  <title>Ajax&JQuery | migaoyang</title>
-  
-
-
-
-
-
-
-
-
-</head>
-
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
+    <meta charset="utf-8">
+    <meta name="keywords" content="Ajax&amp;JQuery, migaoyang">
+    <meta name="description" content="Ajax “Asynchronous Javascript And XML”（异步JavaScript和XML），其实ajax并不是新的技术，只是把以下原有的技术，整合到一起而已。1.使用CSS和XHTML来表示。2.使用DOM模型来交互和">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Ajax&amp;JQuery | migaoyang</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span">migaoyang</span>
+                    </a>
+                </div>
+                
+
+<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
     
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
     
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
+        </a>
+    </li>
 
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">migaoyang</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">migaoyang</div>
+        <div class="logo-desc">
+            
+            既然目标是地平线，留给世界的便只能是背影。
+            
+        </div>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+    </ul>
+
+    <div class="social-link">
+    <a href="https://github.com/migaoyang" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:xiaomiaichirou@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=602479493" class="tooltipped" data-tooltip="QQ联系我: 602479493" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
 </div>
 
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/12/Java Web  Ajax&JQuery/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="米高扬">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="migaoyang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">Ajax&JQuery</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-12T00:00:00+08:00">
-                2019-01-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/JDBC/" itemprop="url" rel="index">
-                    <span itemprop="name">JDBC</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+            </div>
         </div>
-      </header>
-    
+
+        
+    </nav>
+</header>
+
+
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Ajax&amp;JQuery
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1,
+    #articleContent h2,
+    #articleContent h3,
+    #articleContent h4,
+    #articleContent h5,
+    #articleContent h6 {
+        padding-top: 76px;
+        margin-top: -76px;
+    }
 
-      
-      
+    #articleContent h1 {
+        line-height: 3.5rem;
+    }
 
-      
-        <h3 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h3><p> “Asynchronous Javascript And XML”（异步JavaScript和XML），其实ajax并不是新的技术，只是把以下原有的技术，整合到一起而已。<br>1.使用CSS和XHTML来表示。<br>2.使用DOM模型来交互和动态显示。<br>3.使用XMLHttpRequest来和服务器进行异步通信。<br>4.使用javascript来绑定和调用。<br><strong>作用</strong><br>　　未使用Ajax时，如果网页想要刷新局部内容，那么需要重新载入整个网页，用户体验不好。Ajax就是为了解决局部刷新的问题。保持其他部分不动，只刷新某些地方。</p>
+    #articleContent h2 {
+        line-height: 3.2rem;
+    }
+
+    #articleContent h3 {
+        line-height: 2.8rem;
+    }
+
+    #articleContent h4 {
+        line-height: 2.5rem;
+    }
+
+    #articleContent h5 {
+        line-height: 2.2rem;
+    }
+
+    #articleContent h6 {
+        line-height: 1.9rem;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/java高级/" target="_blank">
+                                <span class="chip bg-color">java高级</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/JDBC/" class="post-category" target="_blank">
+                                JDBC
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-01-12
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        3.3k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        16 分
+                    </div>
+                    
+                
+				
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h3 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h3><p> “Asynchronous Javascript And XML”（异步JavaScript和XML），其实ajax并不是新的技术，只是把以下原有的技术，整合到一起而已。<br>1.使用CSS和XHTML来表示。<br>2.使用DOM模型来交互和动态显示。<br>3.使用XMLHttpRequest来和服务器进行异步通信。<br>4.使用javascript来绑定和调用。<br><strong>作用</strong><br>　　未使用Ajax时，如果网页想要刷新局部内容，那么需要重新载入整个网页，用户体验不好。Ajax就是为了解决局部刷新的问题。保持其他部分不动，只刷新某些地方。</p>
 <h4 id="Get方式请求"><a href="#Get方式请求" class="headerlink" title="Get方式请求"></a>Get方式请求</h4><ol>
-<li>创建ajaxFunction对象的代码　 （写在JSP文件中，直接复制以下代码块即可）<pre><code class="java"><span class="function">function  <span class="title">ajaxFunction</span><span class="params">()</span></span>{
+<li>创建ajaxFunction对象的代码　 （写在JSP文件中，直接复制以下代码块即可）<pre class="line-numbers language-java"><span class="function">function  <span class="title">ajaxFunction</span><span class="params"><code class="language-java"><span class="function">function  <span class="title">ajaxFunction</span><span class="params">()</span></span>{
 <span class="keyword">var</span> xmlHttp;
 <span class="keyword">try</span>{ <span class="comment">// Firefox, Opera 8.0+, Safari</span>
      xmlHttp=<span class="keyword">new</span> XMLHttpRequest();
@@ -354,10 +409,10 @@
  }
  <span class="keyword">return</span> xmlHttp;
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></span></span></pre>
 </li>
 <li><p>发送请求</p>
-<pre><code class="java"> <span class="comment">//执行get请求</span>
+<pre class="line-numbers language-java"> <span class="comment"><code class="language-java"> <span class="comment">//执行get请求</span>
 <span class="function">function <span class="title">get</span><span class="params">()</span> </span>{  <span class="comment">//get()名为自己创建，在input里面的onClick调用get方法  </span>
  <span class="comment">//1. 创建xmlhttprequest 对象</span>
  <span class="keyword">var</span> request = ajaxFunction();
@@ -369,32 +424,32 @@
  request.open(<span class="string">"GET"</span> ,<span class="string">"/day16/DemoServlet01"</span> ,<span class="keyword">true</span> );
  request.send();
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></span></pre>
 <p>如果不仅需要向后端异步传送数据，还需要异步的从后台接受数据，上面的代码可以修改为如下：  </p>
-<pre><code class="java"><span class="comment">//执行get请求</span>
+<pre class="line-numbers language-java"><span class="comment"><code class="language-java"><span class="comment">//执行get请求</span>
 <span class="function">function <span class="title">get</span><span class="params">()</span> </span>{
  <span class="comment">//1. 创建xmlhttprequest 对象</span>
  <span class="keyword">var</span> request = ajaxFunction();
 
  <span class="comment">//2. 发送请求</span>
- request.open(<span class="string">"GET"</span> ,<span class="string">"/day16/DemoServlet01?name=aa&amp;age=18"</span> ,<span class="keyword">true</span> );
+ request.open(<span class="string">"GET"</span> ,<span class="string">"/day16/DemoServlet01?name=aa&age=18"</span> ,<span class="keyword">true</span> );
 
  <span class="comment">//3. 获取响应数据 注册监听的意思。  一会准备的状态发生了改变，那么就执行 = 号右边的方法</span>
  request.onreadystatechange = function(){
      <span class="comment">//前半段表示 已经能够正常处理。  再判断状态码是否是200</span>
-     <span class="keyword">if</span>(request.readyState == <span class="number">4</span> &amp;&amp; request.status == <span class="number">200</span>){
+     <span class="keyword">if</span>(request.readyState == <span class="number">4</span> && request.status == <span class="number">200</span>){
          <span class="comment">//弹出响应的信息</span>
          alert(request.responseText);
      }
  }
  request.send();
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></span></pre>
 </li>
 </ol>
 <h4 id="数据请求-Post"><a href="#数据请求-Post" class="headerlink" title="数据请求 Post"></a>数据请求 Post</h4><ol>
 <li><p>创建ajaxFunction对象的代码　与get方式时的ajaxFunction()代码一样 （写在JSP文件中，直接复制以下代码块即可）</p>
-<pre><code class="java"><span class="function">function  <span class="title">ajaxFunction</span><span class="params">()</span></span>{
+<pre class="line-numbers language-java"><span class="function">function  <span class="title">ajaxFunction</span><span class="params"><code class="language-java"><span class="function">function  <span class="title">ajaxFunction</span><span class="params">()</span></span>{
 <span class="keyword">var</span> xmlHttp;
 <span class="keyword">try</span>{ <span class="comment">// Firefox, Opera 8.0+, Safari</span>
      xmlHttp=<span class="keyword">new</span> XMLHttpRequest();
@@ -413,10 +468,10 @@
 
  <span class="keyword">return</span> xmlHttp;
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></span></span></pre>
 </li>
 <li><p>发送请求</p>
-<pre><code class="java"><span class="function">function <span class="title">post</span><span class="params">()</span> </span>{
+<pre class="line-numbers language-java"><span class="function">function <span class="title">post</span><span class="params"><code class="language-java"><span class="function">function <span class="title">post</span><span class="params">()</span> </span>{
  <span class="comment">//1. 创建对象</span>
  <span class="keyword">var</span> request = ajaxFunction();
 
@@ -430,11 +485,11 @@
  <span class="comment">//如果使用的是post方式带数据，那么 这里要添加头， 说明提交的数据类型是一个经过url编码的form表单数据</span>
  request.setRequestHeader(<span class="string">"Content-type"</span>,<span class="string">"application/x-www-form-urlencoded"</span>);
  <span class="comment">//带数据过去  ， 在send方法里面写表单数据。</span>
- request.send(<span class="string">"name=aobama&amp;age=19"</span>);
+ request.send(<span class="string">"name=aobama&age=19"</span>);
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></span></span></pre>
 <p>上面的一段代码包括发送时是否带数据，同时从后端获取结果为以下代码块：</p>
-<pre><code class="java"><span class="function">function <span class="title">post</span><span class="params">()</span> </span>{
+<pre class="line-numbers language-java"><span class="function">function <span class="title">post</span><span class="params"><code class="language-java"><span class="function">function <span class="title">post</span><span class="params">()</span> </span>{
     <span class="comment">//1. 创建对象</span>
     <span class="keyword">var</span> request = ajaxFunction();
 
@@ -443,7 +498,7 @@
 
     <span class="comment">//想获取服务器传送过来的数据， 加一个状态的监听。</span>
     request.onreadystatechange=function(){
-        <span class="keyword">if</span>(request.readyState==<span class="number">4</span> &amp;&amp; request.status == <span class="number">200</span>){
+        <span class="keyword">if</span>(request.readyState==<span class="number">4</span> && request.status == <span class="number">200</span>){
 
             alert(<span class="string">"post："</span>+request.responseText);
         }
@@ -452,16 +507,16 @@
     <span class="comment">//如果使用的是post方式带数据，那么 这里要添加头， 说明提交的数据类型是一个经过url编码的form表单数据</span>
     request.setRequestHeader(<span class="string">"Content-type"</span>,<span class="string">"application/x-www-form-urlencoded"</span>);
     <span class="comment">//带数据过去  ， 在send方法里面写表单数据。</span>
-    request.send(<span class="string">"name=aobama&amp;age=19"</span>);
+    request.send(<span class="string">"name=aobama&age=19"</span>);
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></span></span></pre>
 <h4 id="Ajax小结"><a href="#Ajax小结" class="headerlink" title="Ajax小结"></a>Ajax小结</h4><p>　　需要区分get方式与post方式请求时所携带数据的方式不同，get方时直接接在servlet的后面接?.参数名.&amp;.值.（均为字符串的形式）即可，例如：DemoServlet01?name=aa&amp;age=18,而post方式需要一行特定的代码： <strong>request.setRequestHeader(“Content-type”,”application/x-www-form-urlencoded”);</strong> 来添加HTTP的一个头，说明提交的数据类型是一个经过url编码的form表单数据。<br>　　无论是get方式还是post方式，上面的代码段应该全部写在下面script标签的中间。  </p>
 <script type="text/javascript"> </script>
 
 </li>
 </ol>
 <h4 id="Ajax例子－－校验用户名是否可用"><a href="#Ajax例子－－校验用户名是否可用" class="headerlink" title="Ajax例子－－校验用户名是否可用"></a>Ajax例子－－校验用户名是否可用</h4><p>jsp的部分代码</p>
-<pre><code class="java">​    <span class="function">function <span class="title">checkUserName</span><span class="params">()</span> </span>{
+<pre class="line-numbers language-java">​    <span class="function">function <span class="title">checkUserName</span><span class="params"><code class="language-java">​    <span class="function">function <span class="title">checkUserName</span><span class="params">()</span> </span>{
     <span class="comment">//获取输入框的值 document 整个网页</span>
     <span class="keyword">var</span> name = document.getElementById(<span class="string">"name"</span>).value; <span class="comment">// value  value() val val()</span>
     <span class="comment">//1. 创建对象</span>
@@ -473,14 +528,14 @@
     <span class="comment">//注册状态改变监听，获取服务器传送过来的数据</span>
     request.onreadystatechange = function(){
 
-        <span class="keyword">if</span>(request.readyState == <span class="number">4</span> &amp;&amp; request.status == <span class="number">200</span>){
+        <span class="keyword">if</span>(request.readyState == <span class="number">4</span> && request.status == <span class="number">200</span>){
             <span class="comment">//alert(request.responseText);</span>
             <span class="keyword">var</span> data = request.responseText;
             <span class="keyword">if</span>(data == <span class="number">1</span>){
                 <span class="comment">//alert("用户名已存在");</span>
-                document.getElementById(<span class="string">"span01"</span>).innerHTML = <span class="string">"&lt;font color='red'&gt;用户名已存在!&lt;/font&gt;"</span>;
+                document.getElementById(<span class="string">"span01"</span>).innerHTML = <span class="string">"<font color="red">用户名已存在!</font>"</span>;
             }<span class="keyword">else</span>{
-                document.getElementById(<span class="string">"span01"</span>).innerHTML = <span class="string">"&lt;font color='green'&gt;用户名可用!&lt;/font&gt;"</span>;
+                document.getElementById(<span class="string">"span01"</span>).innerHTML = <span class="string">"<font color="green">用户名可用!</font>"</span>;
                 <span class="comment">//alert("用户名未存在");</span>
             }
         }
@@ -489,7 +544,7 @@
     request.setRequestHeader(<span class="string">"Content-type"</span>,<span class="string">"application/x-www-form-urlencoded"</span>);
     request.send(<span class="string">"name="</span>+name);
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></span></span></pre>
 <h3 id="JQuery"><a href="#JQuery" class="headerlink" title="JQuery"></a>JQuery</h3><p>jQuery是一个轻量级的”写的少，做的多”的JavaScript库。<br>jQuery库包含以下功能：  </p>
 <ul>
 <li>HTML 元素选取</li>
@@ -502,22 +557,22 @@
 <li>Utilities</li>
 </ul>
 <p>　　JQery中经常使用 <strong>$(“#aaa”)</strong> 这样的写法，和document.getElementById(“aaa”)的作用一样，去找到这个输入框，然后再使用.val(name)去赋值。  </p>
-<h4 id="load"><a href="#load" class="headerlink" title="load"></a>load</h4><pre><code class="java">&lt;a href="" onclick="load()"&gt;使用JQuery执行load方法&lt;/a&gt;
-<span class="comment">/**</span>
-<span class="comment">有两次刷新，  先走 onClick的方法，取到数据回来之后，赋值显示。</span>
-<span class="comment">接着 走 href=""的路径，但是这个属性没有给值，所以会把当前的页</span>
-<span class="comment">面重新再刷新一次。所以导致看不见值。**/</span>
+<h4 id="load"><a href="#load" class="headerlink" title="load"></a>load</h4><pre class="line-numbers language-java"><code class="language-java"><span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token string">""</span> onclick<span class="token operator">=</span><span class="token string">"load()"</span><span class="token operator">></span>使用JQuery执行load方法<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span>
+<span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">/**&lt;/span>
+&lt;span class="comment">有两次刷新，  先走 onClick的方法，取到数据回来之后，赋值显示。&lt;/span>
+&lt;span class="comment">接着 走 href=""的路径，但是这个属性没有给值，所以会把当前的页&lt;/span>
+&lt;span class="comment">面重新再刷新一次。所以导致看不见值。**/</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
 
-<span class="comment">//找到这个元素， 去执行加载的动作， 加载/day16/DemoServlet02 ， 得到的数据，赋值显示</span>
-$(<span class="string">"#aaa"</span>).load(<span class="string">"/day16/DemoServlet02"</span> , function(responseText , statusTXT  , xhr) {
-        <span class="comment">//找到id为text01的元素， 设置它的value属性值为 responseText 对应的值</span>
-        $(<span class="string">"#aaa"</span>).val(responseText);
-    });
-</code></pre>
-<h4 id="Get"><a href="#Get" class="headerlink" title="Get"></a>Get</h4><pre><code class="java">$.get(<span class="string">"/day16/DemoServlet02"</span>  , function(data ,status) {
+<span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">//找到这个元素， 去执行加载的动作， 加载/day16/DemoServlet02 ， 得到的数据，赋值显示&lt;/span></span>
+$<span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"#aaa"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"/day16/DemoServlet02"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span> <span class="token punctuation">,</span> <span class="token function">function</span><span class="token punctuation">(</span>responseText <span class="token punctuation">,</span> statusTXT  <span class="token punctuation">,</span> xhr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">//找到id为text01的元素， 设置它的value属性值为 responseText 对应的值&lt;/span></span>
+        $<span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"#aaa"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span>responseText<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="Get"><a href="#Get" class="headerlink" title="Get"></a>Get</h4><pre class="line-numbers language-java">$.get(<span class="string"><code class="language-java">$.get(<span class="string">"/day16/DemoServlet02"</span>  , function(data ,status) {
         $(<span class="string">"#div01"</span>).text(data);
     });
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></span></pre>
 <p>赋值显示  </p>
 <ul>
 <li><p>val(“aa”);</p>
@@ -535,22 +590,22 @@ $(<span class="string">"#aaa"</span>).load(<span class="string">"/day16/DemoServ
 <h4 id="load-amp-get-amp-post"><a href="#load-amp-get-amp-post" class="headerlink" title="load &amp; get &amp; post"></a>load &amp; get &amp; post</h4><ul>
 <li>load<br>$(“#元素id”).load(url地址);<pre><code>$(&quot;#div1&quot;).load(serlvet); ---&gt; 使用的get请求，回来赋值的时候， 使用text（）;去赋值
 </code></pre></li>
-<li>get<br>语法格式 ： $.get(URL,callback);<br>使用案例：  <pre><code class="java">$.get(<span class="string">"/day16/DemoServlet02"</span>  , function(data ,status) {
+<li>get<br>语法格式 ： $.get(URL,callback);<br>使用案例：  <pre class="line-numbers language-java">$.get(<span class="string"><code class="language-java">$.get(<span class="string">"/day16/DemoServlet02"</span>  , function(data ,status) {
 $(<span class="string">"#div01"</span>).text(data);
   });
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></span></pre>
 </li>
-<li>post<br>语法格式：$.post(URL,data,callback);  <pre><code class="java"><span class="function">function <span class="title">post</span><span class="params">()</span> </span>{
+<li>post<br>语法格式：$.post(URL,data,callback);  <pre class="line-numbers language-java"><span class="function">function <span class="title">post</span><span class="params"><code class="language-java"><span class="function">function <span class="title">post</span><span class="params">()</span> </span>{
   $.post(<span class="string">"/day16/DemoServlet02"</span>, {name:<span class="string">"zhangsan"</span>,age:<span class="number">18</span>},function(data,status) {
       <span class="comment">//想要放数据到div里面去。 --- 找到div</span>
       $(<span class="string">"#div01"</span>).html(data);
   });
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></span></span></pre>
 </li>
 </ul>
 <h4 id="JQuery例子－－实现校验用户名"><a href="#JQuery例子－－实现校验用户名" class="headerlink" title="JQuery例子－－实现校验用户名"></a>JQuery例子－－实现校验用户名</h4><p>jsp的部分代码:  </p>
-<pre><code class="java"><span class="function">function <span class="title">checkUserName</span><span class="params">()</span> </span>{
+<pre class="line-numbers language-java"><span class="function">function <span class="title">checkUserName</span><span class="params"><code class="language-java"><span class="function">function <span class="title">checkUserName</span><span class="params">()</span> </span>{
     <span class="comment">//1. 获取输入框的内容</span>
     <span class="keyword">var</span> name = $(<span class="string">"#name"</span>).val();
 
@@ -559,61 +614,60 @@ $(<span class="string">"#div01"</span>).text(data);
         <span class="comment">//alert(data);</span>
         <span class="keyword">if</span>(data == <span class="number">1</span>){<span class="comment">//用户名存在</span>
             <span class="comment">//alert("用户名存在");</span>
-            $(<span class="string">"#span01"</span>).html(<span class="string">"&lt;font color='red'&gt;用户名已被注册&lt;/font&gt;"</span>);
+            $(<span class="string">"#span01"</span>).html(<span class="string">"<font color="red">用户名已被注册</font>"</span>);
         }<span class="keyword">else</span>{
             <span class="comment">//alert("用户名可用");</span>
-            $(<span class="string">"#span01"</span>).html(<span class="string">"&lt;font color='green'&gt;用户名可以使用&lt;/font&gt;"</span>);
+            $(<span class="string">"#span01"</span>).html(<span class="string">"<font color="green">用户名可以使用</font>"</span>);
         }
     } );
     <span class="comment">//3. 输出响应的数据到页面上。</span>
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></span></span></pre>
 <h4 id="JQuery例子－－实现搜索框的提示"><a href="#JQuery例子－－实现搜索框的提示" class="headerlink" title="JQuery例子－－实现搜索框的提示"></a>JQuery例子－－实现搜索框的提示</h4><p>jsp的部分代码:  </p>
-<p>###搭建环境</p>
 <ol>
 <li><p>定义首页</p>
-<pre><code class="java">&lt;body&gt;
-    &lt;center&gt;
-      &lt;h2&gt;黑马&lt;/h2&gt;
-        &lt;input type=<span class="string">"text"</span> name=<span class="string">"word"</span> id=<span class="string">"word"</span> style=<span class="string">"width: 600px ; height: 50px  ;font-size: 20px;"</span>&gt;
-        &lt;input type=<span class="string">"button"</span> value=<span class="string">"搜索"</span>  style=<span class="string">"height: 55px ; width: 100px ; "</span>&gt;
-        &lt;div id="div01" style="position:relative; left : -54px; width: 600px; height: 200px ; border:  1px solid blue; display: none"&gt;&lt;/div&gt;
-    &lt;/center&gt;
-  &lt;/body&gt;
-</code></pre>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token operator">&lt;</span>body<span class="token operator">></span>
+    <span class="token operator">&lt;</span>center<span class="token operator">></span>
+      <span class="token operator">&lt;</span>h2<span class="token operator">></span>搜索<span class="token operator">&lt;</span><span class="token operator">/</span>h2<span class="token operator">></span>
+        <span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"text"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span> name<span class="token operator">=</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"word"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span> id<span class="token operator">=</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"word"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span> style<span class="token operator">=</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"width: 600px ; height: 50px  ;font-size: 20px;"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">>></span>
+        <span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"button"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span> value<span class="token operator">=</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"搜索"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>  style<span class="token operator">=</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"height: 55px ; width: 100px ; "</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">>></span>
+        <span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"div01"</span> style<span class="token operator">=</span><span class="token string">"position:relative; left : -54px; width: 600px; height: 200px ; border:  1px solid blue; display: none"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>center<span class="token operator">></span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>捕获键盘弹起</p>
-<pre><code class="java">$(function(){
-​    $(<span class="string">"#word"</span>).keyup(function() {
-​        alert(<span class="string">"键盘弹起了.."</span>);
-​    })
-});
-</code></pre>
+<pre class="line-numbers language-java"><code class="language-java">$<span class="token punctuation">(</span><span class="token function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+​    $<span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"#word"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">keyup</span><span class="token punctuation">(</span><span class="token function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+​        <span class="token function">alert</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"键盘弹起了.."</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+​    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>JS请求  </p>
-<pre><code class="java">$(function(){
- $(<span class="string">"#word"</span>).keyup(function() {
-     <span class="comment">//2。 获取输入框的值</span>
-     <span class="comment">//var word = $("#word").val();</span>
-     <span class="comment">//this  对应就是执行这个方法的那个对象， $("#word")</span>
-     <span class="keyword">var</span> word = $(<span class="keyword">this</span>).val();
+<pre class="line-numbers language-java"><code class="language-java">$<span class="token punctuation">(</span><span class="token function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+ $<span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"#word"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">keyup</span><span class="token punctuation">(</span><span class="token function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">//2。 获取输入框的值&lt;/span></span>
+     <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">//var word = $("#word").val();&lt;/span></span>
+     <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">//this  对应就是执行这个方法的那个对象， $("#word")&lt;/span></span>
+     <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"keyword"</span><span class="token operator">></span>var<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span> word <span class="token operator">=</span> $<span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"keyword"</span><span class="token operator">></span><span class="token keyword">this</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-     <span class="keyword">if</span>(word == <span class="string">""</span>){
-         $(<span class="string">"#div01"</span>).hide();
-     }<span class="keyword">else</span>{
-         <span class="comment">//3. 请求数据。</span>
-         $.post(<span class="string">"find"</span>,{word:word} ,function(data , status){
-             <span class="comment">//alert(data);</span>
-             $(<span class="string">"#div01"</span>).show();
-             $(<span class="string">"#div01"</span>).html(data);
-         });
-     }
+     <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"keyword"</span><span class="token operator">></span><span class="token keyword">if</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">(</span>word <span class="token operator">==</span> <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">""</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+         $<span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"#div01"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">hide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"keyword"</span><span class="token operator">></span><span class="token keyword">else</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">{</span>
+         <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">//3. 请求数据。&lt;/span></span>
+         $<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"find"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">,</span><span class="token punctuation">{</span>word<span class="token operator">:</span>word<span class="token punctuation">}</span> <span class="token punctuation">,</span><span class="token function">function</span><span class="token punctuation">(</span>data <span class="token punctuation">,</span> status<span class="token punctuation">)</span><span class="token punctuation">{</span>
+             <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">//alert(data);&lt;/span></span>
+             $<span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"#div01"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+             $<span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"#div01"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
 
- })
-});
-</code></pre>
+ <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Servlet代码</p>
 </li>
 </ol>
-<pre><code class="java"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>{
+<pre class="line-numbers language-java"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword"><code class="language-java"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>{
     request.setCharacterEncoding(<span class="string">"utf-8"</span>);
     <span class="keyword">try</span> {
         <span class="comment">//1. 先获取参数</span>
@@ -622,7 +676,7 @@ $(<span class="string">"#div01"</span>).text(data);
 
         <span class="comment">//2. 让dao执行查询</span>
         WordsDao dao = <span class="keyword">new</span> WordsDaoImpl();
-        List&lt;WordBean&gt; list = dao.findWords(word);
+        List<wordbean> list = dao.findWords(word);
 
         <span class="keyword">for</span> (WordBean wordBean : list) {
             System.out.println(<span class="string">"==="</span>+wordBean.toString());
@@ -638,40 +692,40 @@ $(<span class="string">"#div01"</span>).text(data);
         e.printStackTrace();
     }
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></wordbean></code></span></span></pre>
 <p>list.jsp</p>
-<pre><code class="java">    &lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span>
-        pageEncoding=<span class="string">"UTF-8"</span>%&gt;
-     &lt;%@ taglib uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span>  prefix=<span class="string">"c"</span>%&gt;
+<pre class="line-numbers language-java">    &lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string"><code class="language-java">    &lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span>
+        pageEncoding=<span class="string">"UTF-8"</span>%>
+     <%@ taglib="" uri="<span" class="string">"http://java.sun.com/jsp/jstl/core"</%@></code></span>  prefix=<span class="string">"c"</span>%>
 ​        
 <span class="comment">//......</span>
-&lt;table style=<span class="string">"width: 100%"</span>&gt;
-​            &lt;c:forEach items=<span class="string">"${list }"</span> <span class="keyword">var</span>=<span class="string">"wordBean"</span>&gt;
-​                &lt;tr&gt;
-​                    &lt;td&gt;${wordBean.words}&lt;/td&gt;
-​                &lt;/tr&gt;
-​            &lt;/c:forEach&gt;
-​&lt;/table&gt;
-</code></pre>
-<h4 id="JQuery例子－－省市联动"><a href="#JQuery例子－－省市联动" class="headerlink" title="JQuery例子－－省市联动"></a>JQuery例子－－省市联动</h4><pre><code class="java">    &lt;script type="text/javascript" src="js/jquery-1.11.3.min.js"&gt;&lt;/script&gt;
-        &lt;script type="text/javascript" src="js/city.js"&gt;&lt;/script&gt;
-        &lt;/head&gt;
-&lt;body&gt;
-省份: &lt;select name=<span class="string">"province"</span> id =<span class="string">"province"</span>&gt;
-        &lt;option value=<span class="string">""</span> &gt;-请选择 -
-        &lt;option value=<span class="string">"1"</span> &gt;广东
-        &lt;option value=<span class="string">"2"</span> &gt;湖南
-        &lt;option value=<span class="string">"3"</span> &gt;湖北
-        &lt;option value=<span class="string">"4"</span> &gt;四川
-    &lt;/select&gt;
-城市:
-    &lt;select name=<span class="string">"city"</span> id=<span class="string">"city"</span>&gt;
-        &lt;option value=<span class="string">""</span> &gt;-请选择 -
-    &lt;/select&gt;
-&lt;/body&gt;
-</code></pre>
+<table style="<span" class="string">"width: 100%">
+​            <c:foreach items="<span" class="string">"${list }" <span class="keyword">var</span>=<span class="string">"wordBean"</span>>
+​                <tr>
+​                    <td>${wordBean.words}</td>
+​                </tr>
+​            </c:foreach>
+​</table>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre>
+<h4 id="JQuery例子－－省市联动"><a href="#JQuery例子－－省市联动" class="headerlink" title="JQuery例子－－省市联动"></a>JQuery例子－－省市联动</h4><pre class="line-numbers language-java"><code class="language-java">    <span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span> src<span class="token operator">=</span><span class="token string">"js/jquery-1.11.3.min.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+        <span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span> src<span class="token operator">=</span><span class="token string">"js/city.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">></span>
+<span class="token operator">&lt;</span>body<span class="token operator">></span>
+省份<span class="token operator">:</span> <span class="token operator">&lt;</span>select name<span class="token operator">=</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"province"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span> id <span class="token operator">=</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"province"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">>></span>
+        <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">""</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span> <span class="token operator">></span><span class="token operator">-</span>请选择 <span class="token operator">-</span>
+        <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"1"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span> <span class="token operator">></span>广东
+        <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"2"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span> <span class="token operator">></span>湖南
+        <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"3"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span> <span class="token operator">></span>湖北
+        <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"4"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span> <span class="token operator">></span>四川
+    <span class="token operator">&lt;</span><span class="token operator">/</span>select<span class="token operator">></span>
+城市<span class="token operator">:</span>
+    <span class="token operator">&lt;</span>select name<span class="token operator">=</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"city"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span> id<span class="token operator">=</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"city"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">>></span>
+        <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">""</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span> <span class="token operator">></span><span class="token operator">-</span>请选择 <span class="token operator">-</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>select<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>XStream的使用</p>
-<pre><code class="java"><span class="comment">//3. 返回数据。手动拼  ---&gt; XStream  转化 bean对象成 xml</span>
+<pre class="line-numbers language-java"><span class="comment"><code class="language-java"><span class="comment">//3. 返回数据。手动拼  ---> XStream  转化 bean对象成 xml</span>
     XStream xStream = <span class="keyword">new</span> XStream();
 
     <span class="comment">//想把id做成属性</span>
@@ -682,81 +736,81 @@ $(<span class="string">"#div01"</span>).text(data);
 
     <span class="comment">//转化一个对象成xml字符串</span>
     String xml = xStream.toXML(list);
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></span></pre>
 <p>JS代码  </p>
-<pre><code class="java">    $(function() {
-    <span class="comment">//1。找到省份的元素</span>
-    $(<span class="string">"#province"</span>).change(function() {
-        <span class="comment">//2. 一旦里面的值发生了改变，那么就去请求该省份的城市数据</span>
-        <span class="comment">//$("#province").varl();</span>
-        <span class="keyword">var</span> pid = $(<span class="keyword">this</span>).val();
+<pre class="line-numbers language-java"><code class="language-java">    $<span class="token punctuation">(</span><span class="token function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">//1。找到省份的元素&lt;/span></span>
+    $<span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"#province"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">change</span><span class="token punctuation">(</span><span class="token function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">//2. 一旦里面的值发生了改变，那么就去请求该省份的城市数据&lt;/span></span>
+        <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">//$("#province").varl();&lt;/span></span>
+        <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"keyword"</span><span class="token operator">></span>var<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span> pid <span class="token operator">=</span> $<span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"keyword"</span><span class="token operator">></span><span class="token keyword">this</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="comment">/*&lt;list&gt;</span>
-<span class="comment">            &lt;city&gt;</span>
-<span class="comment">                &lt;id&gt;1&lt;id&gt;</span>
-<span class="comment">                &lt;pid&gt;1&lt;/pid&gt;</span>
-<span class="comment">                &lt;cname&gt;深圳&lt;/cname&gt;</span>
-<span class="comment">            &lt;/city&gt;</span>
-<span class="comment">            &lt;city &gt;</span>
-<span class="comment">                &lt;id&gt;2&lt;id&gt;</span>
-<span class="comment">                &lt;pid&gt;1&lt;/pid&gt;</span>
-<span class="comment">                &lt;cname&gt;东莞&lt;/cname&gt;</span>
-<span class="comment">            &lt;/city&gt;</span>
-<span class="comment">        &lt;/list&gt;*/</span>
+        <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">/*&lt;list>&lt;/span>
+&lt;span class="comment">            &lt;city>&lt;/span>
+&lt;span class="comment">                &lt;id>1&lt;id>&lt;/span>
+&lt;span class="comment">                &lt;pid>1&lt;/pid>&lt;/span>
+&lt;span class="comment">                &lt;cname>深圳&lt;/cname>&lt;/span>
+&lt;span class="comment">            &lt;/city>&lt;/span>
+&lt;span class="comment">            &lt;city >&lt;/span>
+&lt;span class="comment">                &lt;id>2&lt;id>&lt;/span>
+&lt;span class="comment">                &lt;pid>1&lt;/pid>&lt;/span>
+&lt;span class="comment">                &lt;cname>东莞&lt;/cname>&lt;/span>
+&lt;span class="comment">            &lt;/city>&lt;/span>
+&lt;span class="comment">        &lt;/list>*/</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
 
-        $.post( <span class="string">"CityServlet"</span>,{pid:pid} ,function(data,status){
-            <span class="comment">//alert("回来数据了:"+data);</span>
+        $<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span> <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"CityServlet"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">,</span><span class="token punctuation">{</span>pid<span class="token operator">:</span>pid<span class="token punctuation">}</span> <span class="token punctuation">,</span><span class="token function">function</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span>status<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">//alert("回来数据了:"+data);&lt;/span></span>
 
-            <span class="comment">//先清空以前的值：</span>
-            $(<span class="string">"#city"</span>).html(<span class="string">"&lt;option value='' &gt;-请选择-"</span>)
-            <span class="comment">//遍历：</span>
-            <span class="comment">//从data数据里面找出所有的city  ， 然后遍历所有的city。</span>
-            <span class="comment">//遍历一个city，就执行一次function方法</span>
-            $(data).find(<span class="string">"city"</span>).each(function() {
+            <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">//先清空以前的值：&lt;/span></span>
+            $<span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"#city"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"&lt;option value='' >-请选择-"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">)</span>
+            <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">//遍历：&lt;/span></span>
+            <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">//从data数据里面找出所有的city  ， 然后遍历所有的city。&lt;/span></span>
+            <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">//遍历一个city，就执行一次function方法&lt;/span></span>
+            $<span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"city"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">each</span><span class="token punctuation">(</span><span class="token function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-                <span class="comment">//遍历出来的每一个city，取它的孩子。 id , cname</span>
-                <span class="keyword">var</span> id = $(<span class="keyword">this</span>).children(<span class="string">"id"</span>).text();
-                <span class="keyword">var</span> cname = $(<span class="keyword">this</span>).children(<span class="string">"cname"</span>).text();
+                <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">//遍历出来的每一个city，取它的孩子。 id , cname&lt;/span></span>
+                <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"keyword"</span><span class="token operator">></span>var<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span> id <span class="token operator">=</span> $<span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"keyword"</span><span class="token operator">></span><span class="token keyword">this</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">children</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"id"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"keyword"</span><span class="token operator">></span>var<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span> cname <span class="token operator">=</span> $<span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"keyword"</span><span class="token operator">></span><span class="token keyword">this</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">children</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"cname"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-                $(<span class="string">"#city"</span>).append(<span class="string">"&lt;option value='"</span>+id+<span class="string">"' &gt;"</span>+cname)
-            });
-        } );
+                $<span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"#city"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"&lt;option value='"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">+</span>id<span class="token operator">+</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"' >"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">+</span>cname<span class="token punctuation">)</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    });
-});
-</code></pre>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>服务器和客户端数据传输的方式</p>
 <ul>
-<li>xml<pre><code class="java">&lt;list&gt;
-  &lt;city&gt;
-      &lt;id&gt;<span class="number">1</span>&lt;id&gt;
-      &lt;pid&gt;1&lt;/pid&gt;
-      &lt;cname&gt;深圳&lt;/cname&gt;
-  &lt;/city&gt;
-  &lt;city &gt;
-      &lt;id&gt;<span class="number">2</span>&lt;id&gt;
-      &lt;pid&gt;1&lt;/pid&gt;
-      &lt;cname&gt;东莞&lt;/cname&gt;
-  &lt;/city&gt;
-&lt;/list&gt;
-</code></pre>
+<li>xml<pre class="line-numbers language-java"><code class="language-java"><span class="token operator">&lt;</span>list<span class="token operator">></span>
+  <span class="token operator">&lt;</span>city<span class="token operator">></span>
+      <span class="token operator">&lt;</span>id<span class="token operator">></span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"number"</span><span class="token operator">></span><span class="token number">1</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>id<span class="token operator">></span>
+      <span class="token operator">&lt;</span>pid<span class="token operator">></span><span class="token number">1</span><span class="token operator">&lt;</span><span class="token operator">/</span>pid<span class="token operator">></span>
+      <span class="token operator">&lt;</span>cname<span class="token operator">></span>深圳<span class="token operator">&lt;</span><span class="token operator">/</span>cname<span class="token operator">></span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>city<span class="token operator">></span>
+  <span class="token operator">&lt;</span>city <span class="token operator">></span>
+      <span class="token operator">&lt;</span>id<span class="token operator">></span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"number"</span><span class="token operator">></span><span class="token number">2</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>id<span class="token operator">></span>
+      <span class="token operator">&lt;</span>pid<span class="token operator">></span><span class="token number">1</span><span class="token operator">&lt;</span><span class="token operator">/</span>pid<span class="token operator">></span>
+      <span class="token operator">&lt;</span>cname<span class="token operator">></span>东莞<span class="token operator">&lt;</span><span class="token operator">/</span>cname<span class="token operator">></span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>city<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>list<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>json</p>
 <p>阅读性更好 、 容量更小。</p>
 <p>{“name”:”aaa” , “age”:19}</p>
 </li>
 </ul>
-<pre><code class="java">把javaBean转化成 json数据
+<pre class="line-numbers language-java"><code class="language-java">把javaBean转化成 json数据
 
-<span class="comment">//3. 把list ---&gt; json数据</span>
-    <span class="comment">//JSONArray ---&gt; 变成数组 ， 集合  []</span>
-    <span class="comment">//JSONObject ---&gt; 变成简单的数据  { name : zhangsan , age:18}</span>
+<span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">//3. 把list ---> json数据&lt;/span></span>
+    <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">//JSONArray ---> 变成数组 ， 集合  []&lt;/span></span>
+    <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">//JSONObject ---> 变成简单的数据  { name : zhangsan , age:18}&lt;/span></span>
 
-    JSONArray jsonArray = JSONArray.fromObject(list);
-    String json = jsonArray.toString();
-</code></pre>
+    JSONArray jsonArray <span class="token operator">=</span> JSONArray<span class="token punctuation">.</span><span class="token function">fromObject</span><span class="token punctuation">(</span>list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    String json <span class="token operator">=</span> jsonArray<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p> 使用json格式数据显示省市联动效果<br>​    serlvet代码：</p>
-<pre><code class="java"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>{
+<pre class="line-numbers language-java"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword"><code class="language-java"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>{
 
 <span class="keyword">try</span> {
     <span class="comment">//1. 获取参数</span>
@@ -764,440 +818,448 @@ $(<span class="string">"#div01"</span>).text(data);
 
     <span class="comment">//2 找出所有的城市</span>
     CityDao dao = <span class="keyword">new</span> CityDaoImpl();
-    List&lt;CityBean&gt; list = dao.findCity(pid);
+    List<citybean> list = dao.findCity(pid);
 
-    <span class="comment">//3. 把list ---&gt; json数据</span>
-    <span class="comment">//JSONArray ---&gt; 变成数组 ， 集合  []</span>
-    <span class="comment">//JSONObject ---&gt; 变成简单的数据  { name : zhangsan , age:18}</span>
+    <span class="comment">//3. 把list ---> json数据</span>
+    <span class="comment">//JSONArray ---> 变成数组 ， 集合  []</span>
+    <span class="comment">//JSONObject ---> 变成简单的数据  { name : zhangsan , age:18}</span>
 
     JSONArray jsonArray = JSONArray.fromObject(list);
     String json = jsonArray.toString();
-</code></pre>
-<pre><code class="java">response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></citybean></code></span></span></pre>
+<pre class="line-numbers language-java">response.setContentType(<span class="string"><code class="language-java">response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);
 response.getWriter().write(json);
-</code></pre>
-<pre><code class="java">    } <span class="keyword">catch</span> (SQLException e) {
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></span></pre>
+<pre class="line-numbers language-java">    } <span class="keyword"><code class="language-java">    } <span class="keyword">catch</span> (SQLException e) {
         <span class="comment">// TODO Auto-generated catch block</span>
         e.printStackTrace();
     };
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></span></pre>
 <p>js代码</p>
-<pre><code class="java">$(function() {
-    <span class="comment">//1. 找到省份的元素</span>
-    $(<span class="string">"#province"</span>).change(function() {
-        <span class="comment">//2. 一旦里面的值发生了改变，那么就去请求该省份的城市数据</span>
-        <span class="comment">//$("#province").varl();</span>
-        <span class="keyword">var</span> pid = $(<span class="keyword">this</span>).val();
+<pre class="line-numbers language-java"><code class="language-java">$<span class="token punctuation">(</span><span class="token function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">//1. 找到省份的元素&lt;/span></span>
+    $<span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"#province"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">change</span><span class="token punctuation">(</span><span class="token function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">//2. 一旦里面的值发生了改变，那么就去请求该省份的城市数据&lt;/span></span>
+        <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">//$("#province").varl();&lt;/span></span>
+        <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"keyword"</span><span class="token operator">></span>var<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span> pid <span class="token operator">=</span> $<span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"keyword"</span><span class="token operator">></span><span class="token keyword">this</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="comment">/*[</span>
-<span class="comment">            {</span>
-<span class="comment">                "cname": "深圳",</span>
-<span class="comment">                "id": 1,</span>
-<span class="comment">                "pid": 1</span>
-<span class="comment">            },</span>
-<span class="comment">            {</span>
-<span class="comment">                "cname": "东莞",</span>
-<span class="comment">                "id": 2,</span>
-<span class="comment">                "pid": 1</span>
-<span class="comment">            }</span>
-<span class="comment">            ...</span>
-<span class="comment">        ]*/</span>
-        $.post( <span class="string">"CityServlet02"</span>,{pid:pid} ,function(data,status){
+        <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">/*[&lt;/span>
+&lt;span class="comment">            {&lt;/span>
+&lt;span class="comment">                "cname": "深圳",&lt;/span>
+&lt;span class="comment">                "id": 1,&lt;/span>
+&lt;span class="comment">                "pid": 1&lt;/span>
+&lt;span class="comment">            },&lt;/span>
+&lt;span class="comment">            {&lt;/span>
+&lt;span class="comment">                "cname": "东莞",&lt;/span>
+&lt;span class="comment">                "id": 2,&lt;/span>
+&lt;span class="comment">                "pid": 1&lt;/span>
+&lt;span class="comment">            }&lt;/span>
+&lt;span class="comment">            ...&lt;/span>
+&lt;span class="comment">        ]*/</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+        $<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span> <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"CityServlet02"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">,</span><span class="token punctuation">{</span>pid<span class="token operator">:</span>pid<span class="token punctuation">}</span> <span class="token punctuation">,</span><span class="token function">function</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span>status<span class="token punctuation">)</span><span class="token punctuation">{</span>
 
-            <span class="comment">//先清空</span>
-            $(<span class="string">"#city"</span>).html(<span class="string">"&lt;option value='' &gt;-请选择-"</span>);
-            <span class="comment">//再遍历，追加</span>
-            $(data).each(function(index , c) {
-                $(<span class="string">"#city"</span>).append(<span class="string">"&lt;option value='"</span>+c.id+<span class="string">"' &gt;"</span>+c.cname)
-            });
-        },<span class="string">"json"</span> );
+            <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">//先清空&lt;/span></span>
+            $<span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"#city"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"&lt;option value='' >-请选择-"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"comment"</span><span class="token operator">></span><span class="token comment" spellcheck="true">//再遍历，追加&lt;/span></span>
+            $<span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">each</span><span class="token punctuation">(</span><span class="token function">function</span><span class="token punctuation">(</span>index <span class="token punctuation">,</span> c<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                $<span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"#city"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"&lt;option value='"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">+</span>c<span class="token punctuation">.</span>id<span class="token operator">+</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"' >"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">+</span>c<span class="token punctuation">.</span>cname<span class="token punctuation">)</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"string"</span><span class="token operator">></span><span class="token string">"json"</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    });
-});
-</code></pre>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>前后端传送数据的两种方式：  </p>
 <ol>
 <li>服务器返回xml数据  </li>
 <li>服务器返回json数据</li>
 </ol>
 
-      
-    </div>
-    
-    
-    
+            </div>
+            <hr>
 
-    
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
 
-    
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
 
-    
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/java高级/" rel="tag"># java高级</a>
-          
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff;
+        background-color: #22AB38;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff;
+        background-color: #019FE8;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a class="reward-link btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs">
+                        <li class="tab wechat-tab waves-effect waves-light"><a class="active" href="#wechat">微信</a></li>
+                        <li class="tab alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                    </ul>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                </div>
+            </div>
         </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/01/04/Java Web  DBUtils/" rel="next" title="DBUtils">
-                <i class="fa fa-chevron-left"></i> DBUtils
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
     </div>
-  </div>
+</div>
 
+<script>
+    $(function () {
+        $('#reward .reward-link').on('click', function () {
+            $('#rewardModal').openModal();
+        });
 
-          </div>
-          
+        $('#rewardModal .close').on('click', function () {
+            $('#rewardModal').closeModal();
+        });
+    });
+</script>
+            
 
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
 
-          
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
 
-  
+<script src="/libs/share/js/social-share.min.js"></script>
 
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://yoursite.com" class="b-link-green">migaoyang</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2019/01/12/Java Web  Ajax&JQuery/" class="b-link-green">Ajax&amp;JQuery</a>
+                </p>
+            </div>
+        </div>
+    </div>
 
+    
 
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/02/18/JVMMemoryModel/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="JVM内存模型">
+                        
+                        <span class="card-title">JVM内存模型</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">JVM内存模型
+</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-02-18
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/java/" class="post-category" target="_blank">
+                                    java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/java高级/" target="_blank">
+                        <span class="chip bg-color">java高级</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
         </div>
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="米高扬">
-            
-              <p class="site-author-name" itemprop="name">米高扬</p>
-              <p class="site-description motion-element" itemprop="description">既然目标是地平线，留给世界的便只能是背影。</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives">
-              
-                  <span class="site-state-item-count">21</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ajax"><span class="nav-number">1.</span> <span class="nav-text">Ajax</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Get方式请求"><span class="nav-number">1.1.</span> <span class="nav-text">Get方式请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据请求-Post"><span class="nav-number">1.2.</span> <span class="nav-text">数据请求 Post</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ajax小结"><span class="nav-number">1.3.</span> <span class="nav-text">Ajax小结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ajax例子－－校验用户名是否可用"><span class="nav-number">1.4.</span> <span class="nav-text">Ajax例子－－校验用户名是否可用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JQuery"><span class="nav-number">2.</span> <span class="nav-text">JQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#load"><span class="nav-number">2.1.</span> <span class="nav-text">load</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Get"><span class="nav-number">2.2.</span> <span class="nav-text">Get</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#load-amp-get-amp-post"><span class="nav-number">2.3.</span> <span class="nav-text">load &amp; get &amp; post</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JQuery例子－－实现校验用户名"><span class="nav-number">2.4.</span> <span class="nav-text">JQuery例子－－实现校验用户名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JQuery例子－－实现搜索框的提示"><span class="nav-number">2.5.</span> <span class="nav-text">JQuery例子－－实现搜索框的提示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JQuery例子－－省市联动"><span class="nav-number">2.6.</span> <span class="nav-text">JQuery例子－－省市联动</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
         
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">xiaomi</span>
-
-  
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/01/04/Java Web  DBUtils/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="DBUtils">
+                        
+                        <span class="card-title">DBUtils</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">DBUtilsCommons DbUtils是Apache提供的一个对JDBC进行简单封装的开源工具类库， 简化了CRUD，里面定义了通用的CRUD方法。同时也不会影响程序的性能。  
+增删改//dbutils 只是帮我们简化了CRUD 的</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-04
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JDBC/" class="post-category" target="_blank">
+                                    JDBC
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/java高级/" target="_blank">
+                        <span class="chip bg-color">java高级</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
 </div>
 
 
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
 
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingSelector: 'h2, h3, h4'
+        });
 
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
 
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
 
-
-
-
-        
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
 </script>
+    
 
+</main>
 
 
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
 
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">29k</span>
+            
 
+            
+			
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/migaoyang" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
 
 
 
+    <a href="mailto:xiaomiaichirou@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
 
-  
 
 
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=602479493" class="tooltipped" data-tooltip="QQ联系我: 602479493" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
 
 
 
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
 
+<div class="progress-bar"></div>
 
 
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input" autofocus>
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
 
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
 
 
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
 
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+<!-- Global site tag (gtag.js) - Google Analytics -->
 
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
 
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
 
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
 
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>
