@@ -29,14 +29,14 @@
 <meta property="og:site_name" content="migaoyang">
 <meta property="og:description" content="DBUtilsCommons DbUtils是Apache提供的一个对JDBC进行简单封装的开源工具类库， 简化了CRUD，里面定义了通用的CRUD方法。同时也不会影响程序的性能。   增删改//dbutils 只是帮我们简化了CRUD 的代码， 但是连接的创建以及获取工作，不在他的工作范围，还需要我们自己动手。 QueryRunner queryRunner = new QueryRunner(">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-04T07:45:23.794Z">
+<meta property="og:updated_time" content="2019-04-04T08:23:27.926Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DBUtils">
 <meta name="twitter:description" content="DBUtilsCommons DbUtils是Apache提供的一个对JDBC进行简单封装的开源工具类库， 简化了CRUD，里面定义了通用的CRUD方法。同时也不会影响程序的性能。   增删改//dbutils 只是帮我们简化了CRUD 的代码， 但是连接的创建以及获取工作，不在他的工作范围，还需要我们自己动手。 QueryRunner queryRunner = new QueryRunner(">
     
         <link rel="alternate" type="application/atom+xml" title="migaoyang" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/img/1.jpg">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
@@ -63,7 +63,7 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">米高扬</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:mee.gaoyang@Outlook.com" title="mee.gaoyang@Outlook.com" class="mail">mee.gaoyang@Outlook.com</a>
         </hgroup>
       </div>
     </div>
@@ -80,42 +80,28 @@
             <li class="waves-block waves-effect">
               <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
-                Archives
+                时间轴
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
-                Tags
+                标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
-                Categories
+                分类
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/yscoder" target="_blank">
+              <a href="https://github.com/migaoyang" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank">
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/custom">
-                <i class="icon icon-lg icon-link"></i>
-                测试
               </a>
             </li>
         
@@ -235,18 +221,21 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>2. 直接使用框架已经写好的实现类。</strong>    </p>
 <ul>
-<li>查询单个对象    <pre class="line-numbers language-java"><code class="language-java">QueryRunner queryRunner <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">QueryRunner</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ComboPooledDataSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<li>查询单个对象    </li>
+</ul>
+<pre class="line-numbers language-java"><code class="language-java">QueryRunner queryRunner <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">QueryRunner</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ComboPooledDataSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">//查询单个对象</span>
 Account account <span class="token operator">=</span> queryRunner<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token string">"select * from account where id = ?"</span><span class="token punctuation">,</span>
-      <span class="token keyword">new</span> <span class="token class-name">BeanHandler</span><span class="token operator">&lt;</span>Account<span class="token operator">></span><span class="token punctuation">(</span>Account<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">new</span> <span class="token class-name">BeanHandler</span><span class="token operator">&lt;</span>Account<span class="token operator">></span><span class="token punctuation">(</span>Account<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-　　上面的代码段里使用了字节码文件Account.class，目的是与上面的匿名类相比，使用反射技术得到类的字节码相对象的实例，之前是new实现的。new关键字底层应该也是通过反射： 类名.class.newInstance()得到一个实例。</li>
-<li>查询多个对象  <pre class="line-numbers language-java"><code class="language-java">QueryRunner queryRunner <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">QueryRunner</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ComboPooledDataSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-List<span class="token operator">&lt;</span>Account<span class="token operator">></span> list <span class="token operator">=</span> queryRunner<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token string">"select * from account "</span><span class="token punctuation">,</span>
-      <span class="token keyword">new</span> <span class="token class-name">BeanListHandler</span><span class="token operator">&lt;</span>Account<span class="token operator">></span><span class="token punctuation">(</span>Account<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
+<p>　　上面的代码段里使用了字节码文件Account.class，目的是与上面的匿名类相比，使用反射技术得到类的字节码相对象的实例，之前是new实现的。new关键字底层应该也是通过反射： 类名.class.newInstance()得到一个实例。</p>
+<ul>
+<li>查询多个对象  </li>
 </ul>
+<pre class="line-numbers language-java"><code class="language-java">QueryRunner queryRunner <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">QueryRunner</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ComboPooledDataSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+List<span class="token operator">&lt;</span>Account<span class="token operator">></span> list <span class="token operator">=</span> queryRunner<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token string">"select * from account "</span><span class="token punctuation">,</span>
+        <span class="token keyword">new</span> <span class="token class-name">BeanListHandler</span><span class="token operator">&lt;</span>Account<span class="token operator">></span><span class="token punctuation">(</span>Account<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>需要熟练掌握  </p>
 <pre class="line-numbers language-java"><code class="language-java">queryRunner<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 queryRunner<span class="token punctuation">.</span>query
@@ -270,14 +259,6 @@ ScalarHandler
         </div>
 
         <blockquote class="post-copyright">
-    
-    <div class="content">
-        
-
-        
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/01/04/Java Web  DBUtils/" target="_blank" rel="external">http://yoursite.com/2019/01/04/Java Web  DBUtils/</a>
-        
-    </div>
     
     <footer>
         <a href="http://yoursite.com">
@@ -354,9 +335,9 @@ ScalarHandler
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2019/01/12/Java Web  Ajax&JQuery/" id="post-prev" class="post-nav-link">
+      <a href="/2019/02/18/JVMMemoryModel/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Ajax&amp;JQuery</h4>
+        <h4 class="title">JVM内存模型</h4>
       </a>
     </div>
   
@@ -400,7 +381,7 @@ ScalarHandler
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <h3 class="reward-title">
         <i class="icon icon-quote-left"></i>
-        谢谢大爷~
+        谢谢~
         <i class="icon icon-quote-right"></i>
     </h3>
     <div class="reward-content">

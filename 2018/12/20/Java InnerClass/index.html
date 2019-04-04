@@ -29,14 +29,14 @@
 <meta property="og:site_name" content="migaoyang">
 <meta property="og:description" content="众所周知，每一个Java类都生成一个class文件。内部类是在一个类中再定义一个类，被包含着的类就称为内部类，包含内部类的相比之下就称为外部类。内部类与外部类之间有着紧密的联系，而内部类与其它的类关系不大。这也是内部类的一个优点：被完全隐藏起来，有着更好的封装性（可以声明为private对外界完全隐藏），减少了代码量（可轻松访问外部类的私有变量），使其更为简洁。虽然内部类被包含在外部类中，看起来是">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-21T07:16:32.978Z">
+<meta property="og:updated_time" content="2019-04-04T08:22:20.056Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java内部类">
 <meta name="twitter:description" content="众所周知，每一个Java类都生成一个class文件。内部类是在一个类中再定义一个类，被包含着的类就称为内部类，包含内部类的相比之下就称为外部类。内部类与外部类之间有着紧密的联系，而内部类与其它的类关系不大。这也是内部类的一个优点：被完全隐藏起来，有着更好的封装性（可以声明为private对外界完全隐藏），减少了代码量（可轻松访问外部类的私有变量），使其更为简洁。虽然内部类被包含在外部类中，看起来是">
     
         <link rel="alternate" type="application/atom+xml" title="migaoyang" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/img/1.jpg">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
@@ -63,7 +63,7 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">米高扬</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:mee.gaoyang@Outlook.com" title="mee.gaoyang@Outlook.com" class="mail">mee.gaoyang@Outlook.com</a>
         </hgroup>
       </div>
     </div>
@@ -80,42 +80,28 @@
             <li class="waves-block waves-effect">
               <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
-                Archives
+                时间轴
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
-                Tags
+                标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
-                Categories
+                分类
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/yscoder" target="_blank">
+              <a href="https://github.com/migaoyang" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank">
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/custom">
-                <i class="icon icon-lg icon-link"></i>
-                测试
               </a>
             </li>
         
@@ -248,13 +234,14 @@
 <li>与静态内部类不同，一个成员内部类拥有 <strong>成员变量、成员方法、构造方法</strong>    </li>
 <li>在静态内部类中，内部类只能访问外部类的静态变量与静态方法。但是在成员内部类中，除了可以访问外部类的静态变量与静态方法，还可以直接访问外部类的实例变量与实例方法。例如：在Inner类中的innerMethod方法可以直接访问外部类的私有实例变量outInt，在成员内部类Inner中可以通过 <strong>“外部类.this.xxx”</strong> 的方式来使用外部类的实例变量与实例方法，例如 <strong>“Outer.this.action();”</strong> 。既然要用  <strong>“外部类.this.xxx”</strong> 这种形式来访问外部类的实例变量与实例方法，那么在上面的代码中，在Inner类中为什么只用访问外部类的action方法时才用这种方法，而访问实例变量outInt时确直接就访问了呢？因为在不引起异议的前提下，可以省略 <strong>“外部类.this”</strong>  而直接使用外部类的实例变量或实例方法即可，也就是说内部类使用action方法时，其前面的 <strong>“Outer.this”</strong> 也可省略。    </li>
 <li>在外部类里使用内部类的成员时，成员内部类与静态内部类的使用方式是一样， <strong>直接使用即可</strong> 如test（）方法所示。</li>
-<li>与静态内部类所不同的是 <strong>成员内部类对象总是与一个外部类对象相连，在外部使用时（外部类之外），它不能通过 new Outer.Inner() 的方式创建对象，而是要先创建一个Outer对象。</strong>    <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//外部（外部类之外）使用内部类的方式    </span>
+<li>与静态内部类所不同的是 <strong>成员内部类对象总是与一个外部类对象相连，在外部使用时（外部类之外），它不能通过 new Outer.Inner() 的方式创建对象，而是要先创建一个Outer对象。</strong>    </li>
+</ol>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//外部（外部类之外）使用内部类的方式    </span>
 Outer outer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Outer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 Outer<span class="token punctuation">.</span>Inner inner <span class="token operator">=</span> outer<span class="token punctuation">.</span><span class="token keyword">new</span> <span class="token class-name">Inner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 inner<span class="token punctuation">.</span><span class="token function">innerMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-如上面代码段所示，在外部使用成员内部类的方式。  </li>
-</ol>
+<p>如上面代码段所示，在外部使用成员内部类的方式。  </p>
 <h4 id="成员内部类细节"><a href="#成员内部类细节" class="headerlink" title="成员内部类细节"></a>成员内部类细节</h4><p>静态内部类可以定义静态变量与静态方法，但是在成员内部类中不可以定义这两个（final除外，因为它等同于常量）。并且在方法内部类与匿名内部类也不可以定义静态变量与静态方法。我们可以这样理解：之所以不让定义，是因为这些内部类不应该单独使用，不应该定义类的变量与方法。</p>
 <h4 id="成员内部类使用场景与源码举例"><a href="#成员内部类使用场景与源码举例" class="headerlink" title="成员内部类使用场景与源码举例"></a>成员内部类使用场景与源码举例</h4><p>当内部类与外部类关系密切，需要访问外部类的实例变量与实例方法时，可以考虑定义为成员内部类。这个内部类还可以定义为private，对外部完全隐藏。例如LinkedList中的listIterator方法，其返回值为接口Iterator，listIterator内部使用了成员内部类ListItr。<br>LinkedList  </p>
 <hr>
@@ -364,14 +351,6 @@ bt<span class="token punctuation">.</span><span class="token function">addAction
 
         <blockquote class="post-copyright">
     
-    <div class="content">
-        
-
-        
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/12/20/Java InnerClass/" target="_blank" rel="external">http://yoursite.com/2018/12/20/Java InnerClass/</a>
-        
-    </div>
-    
     <footer>
         <a href="http://yoursite.com">
             <img src="/img/avatar.jpg" alt="米高扬">
@@ -456,9 +435,9 @@ bt<span class="token punctuation">.</span><span class="token function">addAction
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/12/08/Java Web  Servlet2/" id="post-next" class="post-nav-link">
+      <a href="/2018/12/08/Java Web  Servlet1/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Servlet（二）</h4>
+        <h4 class="title">Servlet（一）</h4>
       </a>
     </div>
   
@@ -493,7 +472,7 @@ bt<span class="token punctuation">.</span><span class="token function">addAction
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <h3 class="reward-title">
         <i class="icon icon-quote-left"></i>
-        谢谢大爷~
+        谢谢~
         <i class="icon icon-quote-right"></i>
     </h3>
     <div class="reward-content">

@@ -29,14 +29,14 @@
 <meta property="og:site_name" content="migaoyang">
 <meta property="og:description" content="提要：Servlet执行过程、执行周期。   在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 .class 。在Servlet/JSP中，web容器（Container）是Servlet/JSP唯一认识的HTTP服务器。我们需要知道Servlet/JSP与web容器是如何沟通的，web容器如何管理Servlet/JSP的各种对象等问题。   Hello Servlet 新">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-13T13:10:03.539Z">
+<meta property="og:updated_time" content="2019-04-04T08:26:29.431Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Servlet（一）">
 <meta name="twitter:description" content="提要：Servlet执行过程、执行周期。   在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 .class 。在Servlet/JSP中，web容器（Container）是Servlet/JSP唯一认识的HTTP服务器。我们需要知道Servlet/JSP与web容器是如何沟通的，web容器如何管理Servlet/JSP的各种对象等问题。   Hello Servlet 新">
     
         <link rel="alternate" type="application/atom+xml" title="migaoyang" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/img/1.jpg">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
@@ -63,7 +63,7 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">米高扬</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:mee.gaoyang@Outlook.com" title="mee.gaoyang@Outlook.com" class="mail">mee.gaoyang@Outlook.com</a>
         </hgroup>
       </div>
     </div>
@@ -80,42 +80,28 @@
             <li class="waves-block waves-effect">
               <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
-                Archives
+                时间轴
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
-                Tags
+                标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
-                Categories
+                分类
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/yscoder" target="_blank">
+              <a href="https://github.com/migaoyang" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank">
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/custom">
-                <i class="icon icon-lg icon-link"></i>
-                测试
               </a>
             </li>
         
@@ -202,20 +188,21 @@
 <p>在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 <strong>.class</strong> 。<br>在Servlet/JSP中，web容器（Container）是Servlet/JSP唯一认识的HTTP服务器。我们需要知道Servlet/JSP与web容器是如何沟通的，web容器如何管理Servlet/JSP的各种对象等问题。  </p>
 <h3 id="Hello-Servlet"><a href="#Hello-Servlet" class="headerlink" title="Hello Servlet"></a>Hello Servlet</h3><ol>
 <li>新建一个类， 实现Servlet接口</li>
-<li><p>配置Servlet ， 用意： 告诉服务器，我们的应用有这么些个servlet。<br>在webContent/WEB-INF/web.xml里面写上以下内容。    </p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 向tomcat报告， 这个应用里面有这个servlet， 名字叫做HelloServlet <span class="token punctuation">,</span> 具体的路径是com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>HelloServlet <span class="token operator">--</span><span class="token operator">></span>
-<span class="token operator">&lt;</span>servlet<span class="token operator">></span>
-   <span class="token operator">&lt;</span>servlet<span class="token operator">-</span>name<span class="token operator">></span>HelloServlet<span class="token operator">&lt;</span><span class="token operator">/</span>servlet<span class="token operator">-</span>name<span class="token operator">></span>
-   <span class="token operator">&lt;</span>servlet<span class="token operator">-</span><span class="token keyword">class</span><span class="token operator">></span>com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>HelloServlet<span class="token operator">&lt;</span><span class="token operator">/</span>servlet<span class="token operator">-</span><span class="token keyword">class</span><span class="token operator">></span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>servlet<span class="token operator">></span>
+<li>配置Servlet ， 用意： 告诉服务器，我们的应用有这么些个servlet。<br>在webContent/WEB-INF/web.xml里面写上以下内容。  </li>
+</ol>
+<pre class="line-numbers language-java"><code class="language-java">  <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 向tomcat报告， 这个应用里面有这个servlet， 名字叫做HelloServlet <span class="token punctuation">,</span> 具体的路径是com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>HelloServlet <span class="token operator">--</span><span class="token operator">></span>
+  <span class="token operator">&lt;</span>servlet<span class="token operator">></span>
+      <span class="token operator">&lt;</span>servlet<span class="token operator">-</span>name<span class="token operator">></span>HelloServlet<span class="token operator">&lt;</span><span class="token operator">/</span>servlet<span class="token operator">-</span>name<span class="token operator">></span>
+      <span class="token operator">&lt;</span>servlet<span class="token operator">-</span><span class="token keyword">class</span><span class="token operator">></span>com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>HelloServlet<span class="token operator">&lt;</span><span class="token operator">/</span>servlet<span class="token operator">-</span><span class="token keyword">class</span><span class="token operator">></span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>servlet<span class="token operator">></span>
 
-<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 注册servlet的映射。  servletName <span class="token operator">:</span> 找到上面注册的具体servlet，  url<span class="token operator">-</span>pattern<span class="token operator">:</span> 在地址栏上的path 一定要以<span class="token operator">/</span>打头 <span class="token operator">--</span><span class="token operator">></span>
-<span class="token operator">&lt;</span>servlet<span class="token operator">-</span>mapping<span class="token operator">></span>
-   <span class="token operator">&lt;</span>servlet<span class="token operator">-</span>name<span class="token operator">></span>HelloServlet<span class="token operator">&lt;</span><span class="token operator">/</span>servlet<span class="token operator">-</span>name<span class="token operator">></span>
-   <span class="token operator">&lt;</span>url<span class="token operator">-</span>pattern<span class="token operator">></span><span class="token operator">/</span>a<span class="token operator">&lt;</span><span class="token operator">/</span>url<span class="token operator">-</span>pattern<span class="token operator">></span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>servlet<span class="token operator">-</span>mapping<span class="token operator">></span>  
+  <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 注册servlet的映射。  servletName <span class="token operator">:</span> 找到上面注册的具体servlet，  url<span class="token operator">-</span>pattern<span class="token operator">:</span> 在地址栏上的path 一定要以<span class="token operator">/</span>打头 <span class="token operator">--</span><span class="token operator">></span>
+  <span class="token operator">&lt;</span>servlet<span class="token operator">-</span>mapping<span class="token operator">></span>
+      <span class="token operator">&lt;</span>servlet<span class="token operator">-</span>name<span class="token operator">></span>HelloServlet<span class="token operator">&lt;</span><span class="token operator">/</span>servlet<span class="token operator">-</span>name<span class="token operator">></span>
+      <span class="token operator">&lt;</span>url<span class="token operator">-</span>pattern<span class="token operator">></span><span class="token operator">/</span>a<span class="token operator">&lt;</span><span class="token operator">/</span>url<span class="token operator">-</span>pattern<span class="token operator">></span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>servlet<span class="token operator">-</span>mapping<span class="token operator">></span>  
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
+<ol start="3">
 <li>在地址栏上输入 <a href="http://localhost:8080/项目名称/a" target="_blank" rel="noopener">http://localhost:8080/项目名称/a</a></li>
 </ol>
 <h3 id="Servlet执行过程（xml方式）"><a href="#Servlet执行过程（xml方式）" class="headerlink" title="Servlet执行过程（xml方式）"></a>Servlet执行过程（xml方式）</h3><p><a href="http://localhost:8080/HelloServlet/a" target="_blank" rel="noopener">http://localhost:8080/HelloServlet/a</a></p>
@@ -301,14 +288,6 @@
 
         <blockquote class="post-copyright">
     
-    <div class="content">
-        
-
-        
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/12/08/Java Web  Servlet1/" target="_blank" rel="external">http://yoursite.com/2018/12/08/Java Web  Servlet1/</a>
-        
-    </div>
-    
     <footer>
         <a href="http://yoursite.com">
             <img src="/img/avatar.jpg" alt="米高扬">
@@ -384,18 +363,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2018/12/08/Java Web  Servlet2/" id="post-prev" class="post-nav-link">
+      <a href="/2018/12/20/Java InnerClass/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Servlet（二）</h4>
+        <h4 class="title">java内部类</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/12/08/Java Web  Http/" id="post-next" class="post-nav-link">
+      <a href="/2018/12/08/Java Web  Servlet2/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">HTTP协议</h4>
+        <h4 class="title">Servlet（二）</h4>
       </a>
     </div>
   
@@ -430,7 +409,7 @@
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <h3 class="reward-title">
         <i class="icon icon-quote-left"></i>
-        谢谢大爷~
+        谢谢~
         <i class="icon icon-quote-right"></i>
     </h3>
     <div class="reward-content">

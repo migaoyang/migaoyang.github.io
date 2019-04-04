@@ -29,14 +29,14 @@
 <meta property="og:site_name" content="migaoyang">
 <meta property="og:description" content="提要：Servlet配置路径、ServletConfig、ServletContext、 1. Servlet配置路径（xml或者注解）假设项目名称为a。    全路径匹配    以 / 开始　/a/aa/bblocalhost:8080/项目名称/aa/bb     路径匹配 , 前半段匹配      以/ 开始 , 但是以 * 结束 　　   / a / */*符号 * 其实是一个通配符，匹配">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-14T03:22:05.854Z">
+<meta property="og:updated_time" content="2019-04-04T08:25:55.761Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Servlet（二）">
 <meta name="twitter:description" content="提要：Servlet配置路径、ServletConfig、ServletContext、 1. Servlet配置路径（xml或者注解）假设项目名称为a。    全路径匹配    以 / 开始　/a/aa/bblocalhost:8080/项目名称/aa/bb     路径匹配 , 前半段匹配      以/ 开始 , 但是以 * 结束 　　   / a / */*符号 * 其实是一个通配符，匹配">
     
         <link rel="alternate" type="application/atom+xml" title="migaoyang" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/img/1.jpg">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
@@ -63,7 +63,7 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">米高扬</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:mee.gaoyang@Outlook.com" title="mee.gaoyang@Outlook.com" class="mail">mee.gaoyang@Outlook.com</a>
         </hgroup>
       </div>
     </div>
@@ -80,42 +80,28 @@
             <li class="waves-block waves-effect">
               <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
-                Archives
+                时间轴
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
-                Tags
+                标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
-                Categories
+                分类
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/yscoder" target="_blank">
+              <a href="https://github.com/migaoyang" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank">
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/custom">
-                <i class="icon icon-lg icon-link"></i>
-                测试
               </a>
             </li>
         
@@ -268,11 +254,11 @@
 </code></pre></li>
 </ol>
 <ol start="2">
-<li>getResourceAsStream 获取资源流对象。<br>直接给相对的路径，然后获取流对象。  <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//获取web工程下的资源，转化为流对象。</span>
+<li>getResourceAsStream 获取资源流对象。<br>直接给相对的路径，然后获取流对象。  </li>
+</ol>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//获取web工程下的资源，转化为流对象。</span>
 InputStream is <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">getResouceAsStream</span><span class="token punctuation">(</span><span class="token string">"file/config.properties"</span><span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-</ol>
 <h4 id="3-2-ServletContext周期"><a href="#3-2-ServletContext周期" class="headerlink" title="3.2 ServletContext周期"></a>3.2 ServletContext周期</h4><p>服务器启动的时候，会为托管的每一个web应用程序，创建一个ServletContext对象。<br>销毁该对象的方法：从服务器移除托管，或者是关闭服务器。   </p>
 <h4 id="3-3-ServletContext的作用范围"><a href="#3-3-ServletContext的作用范围" class="headerlink" title="3.3 ServletContext的作用范围"></a>3.3 ServletContext的作用范围</h4><p>只要在同一个web项目里面，也就是同一个ServletContext对象，都可以取。</p>
 <h3 id="4-HttpServletRequset"><a href="#4-HttpServletRequset" class="headerlink" title="4. HttpServletRequset"></a>4. HttpServletRequset</h3><p>HttpServletRequset类对象封装了客户端提交的一切数据。  </p>
@@ -306,37 +292,38 @@ Iterator<span class="token operator">&lt;</span>String<span class="token operato
 <ul>
 <li><p><strong>GET方式</strong>  </p>
 <ol>
-<li><p>转码代码</p>
-<pre class="line-numbers language-java"><code class="language-java">     String username <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     String password <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">"password"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"userName="</span><span class="token operator">+</span>username<span class="token operator">+</span><span class="token string">"==password="</span><span class="token operator">+</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token comment" spellcheck="true">//get请求过来的数据，在url地址栏上就已经经过编码了，所以我们取到的就是乱码，</span>
-     <span class="token comment" spellcheck="true">//tomcat收到了这批数据，getParameter 默认使用ISO-8859-1去解码</span>
-
-     <span class="token comment" spellcheck="true">//先让文字回到ISO-8859-1对应的字节数组 ， 然后再按utf-8组拼字符串</span>
-     username <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>username<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token string">"ISO-8859-1"</span><span class="token punctuation">)</span> <span class="token punctuation">,</span> <span class="token string">"UTF-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"userName="</span><span class="token operator">+</span>username<span class="token operator">+</span><span class="token string">"==password="</span><span class="token operator">+</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>可以在tomcat里面做设置处理，以后get请求过来的数据永远都是用UTF-8编码。<br>conf/server.xml 加上URIEncoding=”utf-8”<pre class="line-numbers language-java"><code class="language-java">   <span class="token operator">&lt;</span>Connector connectionTimeout<span class="token operator">=</span><span class="token string">"20000"</span> port<span class="token operator">=</span><span class="token string">"8080"</span> protocol<span class="token operator">=</span><span class="token string">"HTTP/1.1"</span>  redirectPort<span class="token operator">=</span><span class="token string">"8443"</span> URIEncoding<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">/</span><span class="token operator">></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
+<li>转码代码</li>
 </ol>
 </li>
-<li><p><strong>POST方式</strong><br>需要设置请求体里面的文字编码。<br><strong>request.setCharacterEncoding(“UTF-8”);</strong><br>这行设置一定要写在getParameter方法之前之前。  </p>
-</li>
+</ul>
+<pre class="line-numbers language-java"><code class="language-java">            String username <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            String password <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">"password"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"userName="</span><span class="token operator">+</span>username<span class="token operator">+</span><span class="token string">"==password="</span><span class="token operator">+</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//get请求过来的数据，在url地址栏上就已经经过编码了，所以我们取到的就是乱码，</span>
+            <span class="token comment" spellcheck="true">//tomcat收到了这批数据，getParameter 默认使用ISO-8859-1去解码</span>
+
+            <span class="token comment" spellcheck="true">//先让文字回到ISO-8859-1对应的字节数组 ， 然后再按utf-8组拼字符串</span>
+            username <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>username<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token string">"ISO-8859-1"</span><span class="token punctuation">)</span> <span class="token punctuation">,</span> <span class="token string">"UTF-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"userName="</span><span class="token operator">+</span>username<span class="token operator">+</span><span class="token string">"==password="</span><span class="token operator">+</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>2. 可以在tomcat里面做设置处理，以后get请求过来的数据永远都是用UTF-8编码。
+</code></pre><p>  conf/server.xml 加上URIEncoding=”utf-8”</p>
+<pre class="line-numbers language-java"><code class="language-java">          <span class="token operator">&lt;</span>Connector connectionTimeout<span class="token operator">=</span><span class="token string">"20000"</span> port<span class="token operator">=</span><span class="token string">"8080"</span> protocol<span class="token operator">=</span><span class="token string">"HTTP/1.1"</span>  redirectPort<span class="token operator">=</span><span class="token string">"8443"</span> URIEncoding<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">/</span><span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li><strong>POST方式</strong><br>需要设置请求体里面的文字编码。<br><strong>request.setCharacterEncoding(“UTF-8”);</strong><br>这行设置一定要写在getParameter方法之前之前。  </li>
 </ul>
 <h3 id="6-HttpServletResponse"><a href="#6-HttpServletResponse" class="headerlink" title="6. HttpServletResponse"></a>6. HttpServletResponse</h3><p>负责返回数据给客户端。</p>
 <ul>
-<li><p>输出数据到页面上</p>
+<li>输出数据到页面上</li>
+</ul>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//以字符流的方式写数据</span>
 response<span class="token punctuation">.</span><span class="token function">getWriter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"&lt;h1>hello response...&lt;/h1>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">//以字节流的方式写数据</span>
 response<span class="token punctuation">.</span><span class="token function">getOutputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"hello response2222..."</span><span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="响应的数据中有中文，则有可能出现中文乱码情况"><a href="#响应的数据中有中文，则有可能出现中文乱码情况" class="headerlink" title="响应的数据中有中文，则有可能出现中文乱码情况"></a>响应的数据中有中文，则有可能出现中文乱码情况</h4></li>
-<li><p>以字符流输出    </p>
-<blockquote>
+<h4 id="响应的数据中有中文，则有可能出现中文乱码情况"><a href="#响应的数据中有中文，则有可能出现中文乱码情况" class="headerlink" title="响应的数据中有中文，则有可能出现中文乱码情况"></a>响应的数据中有中文，则有可能出现中文乱码情况</h4><ul>
+<li>以字符流输出    <blockquote>
 <p>response.getWriter()<br><code>`</code>java<br>//1. 指定输出到客户端的时候，这些文字使用UTF-8编码<br>response.setCharacterEncoding(“UTF-8”);</p>
 </blockquote>
 </li>
@@ -359,14 +346,6 @@ response.getOutputStream().write(&quot;响应..&quot;.getBytes(&quot;UTF-8&quot;
         </div>
 
         <blockquote class="post-copyright">
-    
-    <div class="content">
-        
-
-        
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/12/08/Java Web  Servlet2/" target="_blank" rel="external">http://yoursite.com/2018/12/08/Java Web  Servlet2/</a>
-        
-    </div>
     
     <footer>
         <a href="http://yoursite.com">
@@ -443,18 +422,18 @@ response.getOutputStream().write(&quot;响应..&quot;.getBytes(&quot;UTF-8&quot;
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2018/12/20/Java InnerClass/" id="post-prev" class="post-nav-link">
+      <a href="/2018/12/08/Java Web  Servlet1/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">java内部类</h4>
+        <h4 class="title">Servlet（一）</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/12/08/Java Web  Servlet1/" id="post-next" class="post-nav-link">
+      <a href="/2018/11/30/Java HashSet/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Servlet（一）</h4>
+        <h4 class="title">java源码-剖析HashSet</h4>
       </a>
     </div>
   
@@ -489,7 +468,7 @@ response.getOutputStream().write(&quot;响应..&quot;.getBytes(&quot;UTF-8&quot;
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <h3 class="reward-title">
         <i class="icon icon-quote-left"></i>
-        谢谢大爷~
+        谢谢~
         <i class="icon icon-quote-right"></i>
     </h3>
     <div class="reward-content">

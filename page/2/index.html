@@ -34,7 +34,7 @@
     
         <link rel="alternate" type="application/atom+xml" title="migaoyang" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/img/1.jpg">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
@@ -61,7 +61,7 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">米高扬</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:mee.gaoyang@Outlook.com" title="mee.gaoyang@Outlook.com" class="mail">mee.gaoyang@Outlook.com</a>
         </hgroup>
       </div>
     </div>
@@ -78,42 +78,28 @@
             <li class="waves-block waves-effect">
               <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
-                Archives
+                时间轴
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
-                Tags
+                标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
-                Categories
+                分类
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/yscoder" target="_blank">
+              <a href="https://github.com/migaoyang" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank">
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/custom">
-                <i class="icon icon-lg icon-link"></i>
-                测试
               </a>
             </li>
         
@@ -168,6 +154,202 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-Java CallFunction" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-11-13 00:00:00" datetime="2018-11-12T16:00:00.000Z" itemprop="datePublished">2018-11-13</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/11/13/Java CallFunction/">java的非静态方法调用过程</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Java中非静态方法的调用过程，即通过对象来调用方法的过程主要有以下几个步骤。假设要调用x.f(args), 隐式参数 x 声明为类C的一个对象。具体调用流程如下：
+1. 编译器得到所有可能被调用的候选方法。编译器查看对象的声明类型与方法名。假设调用x.f(param)，且隐式参数x声明为C类的对象。需要注意的是方法的重载（Overload）即：有可能存在多个名字为f，但是参数类型不一样的方法。例如，可能存在f(int)和f(String)。编译器将会一一列举所有类C和其超类中访问属性为public且名为f的方法（超类的私有方法不可访问）。
+2. 重载解析（编译器得到需要调用的具体的一个...
+    
+
+        <a href="/2018/11/13/Java CallFunction/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java基础/">java基础</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Java Modifier" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-11-09 00:00:00" datetime="2018-11-08T16:00:00.000Z" itemprop="datePublished">2018-11-09</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/11/09/Java Modifier/">java修饰符的限制范围</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        以下为Java控制可见性的四个修饰符的总结  
+
+仅对本类可见 – private  
+对本包可见 – 默认（无修饰符）
+对本包及所有子类可见 – protected
+对所有类可见 – public
+
+
+
+
+访问修饰符
+本类
+同包
+子类
+其它
+
+
+
+
+private
+Y
+
+
+
+
+
+默认
+Y
+Y
+
+
+
+
+protected
+Y
+Y
+Y
+
+
+
+public
+Y
+Y
+Y
+Y
+
+
+
+
+    
+
+        <a href="/2018/11/09/Java Modifier/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java基础/">java基础</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Java CallByValueReference" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-11-07 00:00:00" datetime="2018-11-06T16:00:00.000Z" itemprop="datePublished">2018-11-07</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/11/07/Java CallByValueReference/">java为何没有引用传递？</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+值传递（值调用）（call by value）是指在调用函数式将实际参数复制一份传递到函数中,这样在函数中如果对参数进行修改，将不会影响到实际参数。  引用传递（引用调用）（pass by reference）是指在调用函数时将实际参数的地址直接传递到函数中，那么在函数中对参数所进行的修改，将影响到实际参数。
+
+误解
+错解一：Java有引用传递。
+错解二：区分值传递和引用传递的依据是方法参数的内容，如果方法参数是值，就是值传递。如果方法参数引用，就是引用传递。
+错解三：方法参数如果是普通数据类型，那就是值传递。如果是对象，那就是引用传递。
+
+具体分析  方法参数是基本类型时，方法接收的...
+    
+
+        <a href="/2018/11/07/Java CallByValueReference/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java基础/">java基础</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-hello-world" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
@@ -194,7 +376,12 @@
 
     
         Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Qu...
+Quick StartCreate a new post$ hexo new "My New Post"
+
+More info: Writing
+Run server$ hexo server
+
+More...
     
 
         <a href="/2018/11/06/hello-world/" class="post-more waves-effect waves-button">
@@ -245,7 +432,23 @@ Setext 例:
 This is an H1
 This is an H2atx 例: (1-6级)
 atxatxatxatxatxatx
-区块引用在每行前加 &gt; 区...
+区块引用在每行前加 &gt; 区块引用  支持多重嵌套,只用多加&lt;即可
+
+区块引用
+
+123
+
+
+列表+与-  无序数字接一个英文句点  有序
+
+Red
+Green
+
+
+Red
+Green
+
+代码区块缩进4个字符即可一个代码区...
     
 
         <a href="/2018/10/10/mdyufa/" class="post-more waves-effect waves-button">

@@ -29,14 +29,14 @@
 <meta property="og:site_name" content="migaoyang">
 <meta property="og:description" content="多态（向上转型）多态：意味着允许不同类的对象对同一消息做出不同的响应。在Java中，按照广泛的范围来说，多态  可以分为 编译时多态（也叫设计时多态，一般通过方法的重载来实现） 与 运行时多态（直到ｊａｖａ程序运行时候，系统才能根据调用方法的实例的类型来去决定去具体调用哪个方法）。我们在Java中所说的多态就是运行时多态，在程序运行时动态决定调用哪个方法。两个必要条件：    满足继承关系   父">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-07T04:55:56.922Z">
+<meta property="og:updated_time" content="2019-04-04T08:30:08.417Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java多态（向上转型、动态绑定、instanceof、抽象）">
 <meta name="twitter:description" content="多态（向上转型）多态：意味着允许不同类的对象对同一消息做出不同的响应。在Java中，按照广泛的范围来说，多态  可以分为 编译时多态（也叫设计时多态，一般通过方法的重载来实现） 与 运行时多态（直到ｊａｖａ程序运行时候，系统才能根据调用方法的实例的类型来去决定去具体调用哪个方法）。我们在Java中所说的多态就是运行时多态，在程序运行时动态决定调用哪个方法。两个必要条件：    满足继承关系   父">
     
         <link rel="alternate" type="application/atom+xml" title="migaoyang" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/img/1.jpg">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
@@ -63,7 +63,7 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">米高扬</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:mee.gaoyang@Outlook.com" title="mee.gaoyang@Outlook.com" class="mail">mee.gaoyang@Outlook.com</a>
         </hgroup>
       </div>
     </div>
@@ -80,42 +80,28 @@
             <li class="waves-block waves-effect">
               <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
-                Archives
+                时间轴
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
-                Tags
+                标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
-                Categories
+                分类
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/yscoder" target="_blank">
+              <a href="https://github.com/migaoyang" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank">
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/custom">
-                <i class="icon icon-lg icon-link"></i>
-                测试
               </a>
             </li>
         
@@ -297,22 +283,25 @@
 <p><strong>向上转型应用：</strong>  </p>
 <ol>
 <li>当一个子类对象向上转型父类类型以后,就被当成了父类的对象,所能调用的方法会减少,只能调用子类重写了父类的方法以及父类派生的方法(如set、get方法),而不能调用子类独有的方法。</li>
-<li>父类中的静态方法不允许被子类重写。<br>如父类Pen中含有静态方法draw()<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"笔可以画画"</span><span class="token punctuation">)</span>
+<li>父类中的静态方法不允许被子类重写。<br>如父类Pen中含有静态方法draw()</li>
+</ol>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"笔可以画画"</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-当子类Pencil中也定义同名方法时，此时draw()算做Pencile类自己特有的方法：  <pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"铅笔可以素描"</span><span class="token punctuation">)</span>
+<p>当子类Pencil中也定义同名方法时，此时draw()算做Pencile类自己特有的方法：  </p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"铅笔可以素描"</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-测试类：<pre class="line-numbers language-java"><code class="language-java">Pen pc <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Pencil</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//向上转型</span>
+<p>测试类：</p>
+<pre class="line-numbers language-java"><code class="language-java">Pen pc <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Pencil</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//向上转型</span>
 pc<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-结果如下，也就是实际上调用的是父类的静态方法deaw()<blockquote>
+<p>结果如下，也就是实际上调用的是父类的静态方法deaw()</p>
+<blockquote>
 <p>笔可以画画  </p>
 </blockquote>
-</li>
-</ol>
 <p>下面更改动物例子中测试类Test的编写：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
   <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span> <span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -388,14 +377,6 @@ Human<span class="token punctuation">[</span><span class="token punctuation">]</
         </div>
 
         <blockquote class="post-copyright">
-    
-    <div class="content">
-        
-
-        
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/11/14/Java Polymorphic/" target="_blank" rel="external">http://yoursite.com/2018/11/14/Java Polymorphic/</a>
-        
-    </div>
     
     <footer>
         <a href="http://yoursite.com">
@@ -518,7 +499,7 @@ Human<span class="token punctuation">[</span><span class="token punctuation">]</
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <h3 class="reward-title">
         <i class="icon icon-quote-left"></i>
-        谢谢大爷~
+        谢谢~
         <i class="icon icon-quote-right"></i>
     </h3>
     <div class="reward-content">

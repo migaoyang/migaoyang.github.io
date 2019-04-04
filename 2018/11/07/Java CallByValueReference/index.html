@@ -14,7 +14,7 @@
     
     
     
-    <title>java的引传递用去哪了 | migaoyang | migaoyang</title>
+    <title>java为何没有引用传递？ | migaoyang | migaoyang</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
@@ -24,19 +24,19 @@
     <meta name="description" content="值传递（值调用）（call by value）是指在调用函数式将实际参数复制一份传递到函数中,这样在函数中如果对参数进行修改，将不会影响到实际参数。  引用传递（引用调用）（pass by reference）是指在调用函数时将实际参数的地址直接传递到函数中，那么在函数中对参数所进行的修改，将影响到实际参数。  误解 错解一：Java有引用传递。 错解二：区分值传递和引用传递的依据是方法参数的内">
 <meta name="keywords" content="java基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java的引传递用去哪了">
+<meta property="og:title" content="java为何没有引用传递？">
 <meta property="og:url" content="http://yoursite.com/2018/11/07/Java CallByValueReference/index.html">
 <meta property="og:site_name" content="migaoyang">
 <meta property="og:description" content="值传递（值调用）（call by value）是指在调用函数式将实际参数复制一份传递到函数中,这样在函数中如果对参数进行修改，将不会影响到实际参数。  引用传递（引用调用）（pass by reference）是指在调用函数时将实际参数的地址直接传递到函数中，那么在函数中对参数所进行的修改，将影响到实际参数。  误解 错解一：Java有引用传递。 错解二：区分值传递和引用传递的依据是方法参数的内">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-07T04:56:24.448Z">
+<meta property="og:updated_time" content="2019-04-04T07:56:02.615Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java的引传递用去哪了">
+<meta name="twitter:title" content="java为何没有引用传递？">
 <meta name="twitter:description" content="值传递（值调用）（call by value）是指在调用函数式将实际参数复制一份传递到函数中,这样在函数中如果对参数进行修改，将不会影响到实际参数。  引用传递（引用调用）（pass by reference）是指在调用函数时将实际参数的地址直接传递到函数中，那么在函数中对参数所进行的修改，将影响到实际参数。  误解 错解一：Java有引用传递。 错解二：区分值传递和引用传递的依据是方法参数的内">
     
         <link rel="alternate" type="application/atom+xml" title="migaoyang" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/img/1.jpg">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
@@ -63,7 +63,7 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">米高扬</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:mee.gaoyang@Outlook.com" title="mee.gaoyang@Outlook.com" class="mail">mee.gaoyang@Outlook.com</a>
         </hgroup>
       </div>
     </div>
@@ -80,42 +80,28 @@
             <li class="waves-block waves-effect">
               <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
-                Archives
+                时间轴
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
-                Tags
+                标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
-                Categories
+                分类
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/yscoder" target="_blank">
+              <a href="https://github.com/migaoyang" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank">
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/custom">
-                <i class="icon icon-lg icon-link"></i>
-                测试
               </a>
             </li>
         
@@ -130,7 +116,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">java的引传递用去哪了</div>
+        <div class="flex-col header-title ellipsis">java为何没有引用传递？</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -152,7 +138,7 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">java的引传递用去哪了</h1>
+        <h1 class="title">java为何没有引用传递？</h1>
         <h5 class="subtitle">
             
                 <time datetime="2018-11-06T16:00:00.000Z" itemprop="datePublished" class="page-time">
@@ -185,7 +171,7 @@
 <article id="post-Java CallByValueReference" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">java的引传递用去哪了</h1>
+        <h1 class="post-card-title">java为何没有引用传递？</h1>
         <div class="post-meta">
             <time class="post-time" title="2018-11-07 00:00:00" datetime="2018-11-06T16:00:00.000Z" itemprop="datePublished">2018-11-07</time>
 
@@ -255,14 +241,6 @@ y <span class="token operator">=</span> temp<span class="token punctuation">;</s
 
         <blockquote class="post-copyright">
     
-    <div class="content">
-        
-
-        
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/11/07/Java CallByValueReference/" target="_blank" rel="external">http://yoursite.com/2018/11/07/Java CallByValueReference/</a>
-        
-    </div>
-    
     <footer>
         <a href="http://yoursite.com">
             <img src="/img/avatar.jpg" alt="米高扬">
@@ -290,7 +268,7 @@ y <span class="token operator">=</span> temp<span class="token punctuation">;</s
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/11/07/Java CallByValueReference/&title=《java的引传递用去哪了》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/11/07/Java CallByValueReference/&title=《java为何没有引用传递？》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -300,7 +278,7 @@ y <span class="token operator">=</span> temp<span class="token punctuation">;</s
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/11/07/Java CallByValueReference/&title=《java的引传递用去哪了》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/11/07/Java CallByValueReference/&title=《java为何没有引用传递？》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -310,7 +288,7 @@ y <span class="token operator">=</span> temp<span class="token punctuation">;</s
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《java的引传递用去哪了》 — migaoyang&url=http://yoursite.com/2018/11/07/Java CallByValueReference/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《java为何没有引用传递？》 — migaoyang&url=http://yoursite.com/2018/11/07/Java CallByValueReference/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -338,9 +316,9 @@ y <span class="token operator">=</span> temp<span class="token punctuation">;</s
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2018/11/07/Java Object/" id="post-prev" class="post-nav-link">
+      <a href="/2018/11/09/Java Modifier/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">java的Object（equals、hashCode、toString、clone）</h4>
+        <h4 class="title">java修饰符的限制范围</h4>
       </a>
     </div>
   
@@ -384,7 +362,7 @@ y <span class="token operator">=</span> temp<span class="token punctuation">;</s
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <h3 class="reward-title">
         <i class="icon icon-quote-left"></i>
-        谢谢大爷~
+        谢谢~
         <i class="icon icon-quote-right"></i>
     </h3>
     <div class="reward-content">
@@ -439,7 +417,7 @@ y <span class="token operator">=</span> temp<span class="token punctuation">;</s
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/11/07/Java CallByValueReference/&title=《java的引传递用去哪了》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/11/07/Java CallByValueReference/&title=《java为何没有引用传递？》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -449,7 +427,7 @@ y <span class="token operator">=</span> temp<span class="token punctuation">;</s
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/11/07/Java CallByValueReference/&title=《java的引传递用去哪了》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/11/07/Java CallByValueReference/&title=《java为何没有引用传递？》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -459,7 +437,7 @@ y <span class="token operator">=</span> temp<span class="token punctuation">;</s
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《java的引传递用去哪了》 — migaoyang&url=http://yoursite.com/2018/11/07/Java CallByValueReference/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《java为何没有引用传递？》 — migaoyang&url=http://yoursite.com/2018/11/07/Java CallByValueReference/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>

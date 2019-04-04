@@ -23,9 +23,9 @@
     <meta name="keywords" content="java高级">
     <meta name="description" content="Ajax “Asynchronous Javascript And XML”（异步JavaScript和XML），其实ajax并不是新的技术，只是把以下原有的技术，整合到一起而已。1.使用CSS和XHTML来表示。2.使用DOM模型来交互和动态显示。3.使用XMLHttpRequest来和服务器进行异步通信。4.使用javascript来绑定和调用。作用　　未使用Ajax时，如果网页想要刷新局部内">
 <meta name="keywords" content="java高级">
-<meta property="og:type" content="article">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Ajax&amp;JQuery">
-<meta property="og:url" content="http://yoursite.com/2019/01/12/Java Web  Ajax&JQuery/index.html">
+<meta property="og:url" content="http://yoursite.com/after/Java Web  Ajax&JQuery.html">
 <meta property="og:site_name" content="migaoyang">
 <meta property="og:description" content="Ajax “Asynchronous Javascript And XML”（异步JavaScript和XML），其实ajax并不是新的技术，只是把以下原有的技术，整合到一起而已。1.使用CSS和XHTML来表示。2.使用DOM模型来交互和动态显示。3.使用XMLHttpRequest来和服务器进行异步通信。4.使用javascript来绑定和调用。作用　　未使用Ajax时，如果网页想要刷新局部内">
 <meta property="og:locale" content="zh-CN">
@@ -36,7 +36,7 @@
     
         <link rel="alternate" type="application/atom+xml" title="migaoyang" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/img/1.jpg">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
@@ -63,7 +63,7 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">米高扬</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:mee.gaoyang@Outlook.com" title="mee.gaoyang@Outlook.com" class="mail">mee.gaoyang@Outlook.com</a>
         </hgroup>
       </div>
     </div>
@@ -80,42 +80,28 @@
             <li class="waves-block waves-effect">
               <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
-                Archives
+                时间轴
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
-                Tags
+                标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
-                Categories
+                分类
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/yscoder" target="_blank">
+              <a href="https://github.com/migaoyang" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank">
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/custom">
-                <i class="icon icon-lg icon-link"></i>
-                测试
               </a>
             </li>
         
@@ -149,19 +135,11 @@
         
     </div>
 </header>
-<header class="content-header post-header">
+<header class="content-header page-header">
 
     <div class="container fade-scale">
         <h1 class="title">Ajax&amp;JQuery</h1>
         <h5 class="subtitle">
-            
-                <time datetime="2019-01-11T16:00:00.000Z" itemprop="datePublished" class="page-time">
-  2019-01-12
-</time>
-
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JDBC/">JDBC</a></li></ul>
-
             
         </h5>
     </div>
@@ -173,31 +151,8 @@
 
 
 <div class="container body-wrap">
-    
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Ajax"><span class="post-toc-number">1.</span> <span class="post-toc-text">Ajax</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Get方式请求"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Get方式请求</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据请求-Post"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">数据请求 Post</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Ajax小结"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Ajax小结</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Ajax例子－－校验用户名是否可用"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Ajax例子－－校验用户名是否可用</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#JQuery"><span class="post-toc-number">2.</span> <span class="post-toc-text">JQuery</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#load"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">load</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Get"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">Get</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#load-amp-get-amp-post"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">load &amp; get &amp; post</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#JQuery例子－－实现校验用户名"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">JQuery例子－－实现校验用户名</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#JQuery例子－－实现搜索框的提示"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">JQuery例子－－实现搜索框的提示</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#JQuery例子－－省市联动"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">JQuery例子－－省市联动</span></a></li></ol></li></ol>
-        </nav>
-    </aside>
-
-
-<article id="post-Java Web  Ajax&amp;JQuery" class="post-article article-type-post fade" itemprop="blogPost">
-
-    <div class="post-card">
-        <h1 class="post-card-title">Ajax&JQuery</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2019-01-12 00:00:00" datetime="2019-01-11T16:00:00.000Z" itemprop="datePublished">2019-01-12</time>
-
-            
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JDBC/">JDBC</a></li></ul>
-
-
-
-            
-
-        </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
+    <article class="page-article fade" itemprop="blogPage">
+        <div class="post-content page-content" id="page-content" itemprop="pageContent">
             <h3 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h3><p> “Asynchronous Javascript And XML”（异步JavaScript和XML），其实ajax并不是新的技术，只是把以下原有的技术，整合到一起而已。<br>1.使用CSS和XHTML来表示。<br>2.使用DOM模型来交互和动态显示。<br>3.使用XMLHttpRequest来和服务器进行异步通信。<br>4.使用javascript来绑定和调用。<br><strong>作用</strong><br>　　未使用Ajax时，如果网页想要刷新局部内容，那么需要重新载入整个网页，用户体验不好。Ajax就是为了解决局部刷新的问题。保持其他部分不动，只刷新某些地方。</p>
 <h4 id="Get方式请求"><a href="#Get方式请求" class="headerlink" title="Get方式请求"></a>Get方式请求</h4><ol>
 <li>创建ajaxFunction对象的代码　 （写在JSP文件中，直接复制以下代码块即可）<pre class="line-numbers language-java"><code class="language-java">function  <span class="token function">ajaxFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -687,35 +642,14 @@ $<span class="token punctuation">(</span><span class="token string">"#div01"</sp
 
         </div>
 
-        <blockquote class="post-copyright">
-    
-    <div class="content">
         
-
-        
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/01/12/Java Web  Ajax&amp;JQuery/" target="_blank" rel="external">http://yoursite.com/2019/01/12/Java Web  Ajax&amp;JQuery/</a>
-        
-    </div>
-    
-    <footer>
-        <a href="http://yoursite.com">
-            <img src="/img/avatar.jpg" alt="米高扬">
-            米高扬
-        </a>
-    </footer>
-</blockquote>
-
-        
-<div class="page-reward">
-    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
-</div>
-
-
-
-        <div class="post-footer">
-            
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java高级/">java高级</a></li></ul>
-
+        <div class="card page-about-me flex-row">
+            <a href="/" class="avatar waves-effect waves-circle waves-light"><img src="/img/avatar.jpg"></a>
+            <div class="content flex-col">
+                <p><strong>米高扬</strong></p>
+                <p><em>migaoyang</em></p>
+                <p>用户页面中作者相关的描述性文字，如不需要设为 false</p>
+            </div>
 
             
 <div class="page-share-wrap">
@@ -724,7 +658,7 @@ $<span class="token punctuation">(</span><span class="token string">"#div01"</sp
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/01/12/Java Web  Ajax&JQuery/&title=《Ajax&JQuery》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/after/Java Web  Ajax&JQuery.html&title=《Ajax&JQuery》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -734,22 +668,22 @@ $<span class="token punctuation">(</span><span class="token string">"#div01"</sp
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/01/12/Java Web  Ajax&JQuery/&title=《Ajax&JQuery》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/after/Java Web  Ajax&JQuery.html&title=《Ajax&JQuery》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/01/12/Java Web  Ajax&JQuery/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/after/Java Web  Ajax&JQuery.html" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Ajax&JQuery》 — migaoyang&url=http://yoursite.com/2019/01/12/Java Web  Ajax&JQuery/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Ajax&JQuery》 — migaoyang&url=http://yoursite.com/after/Java Web  Ajax&JQuery.html&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/01/12/Java Web  Ajax&JQuery/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/after/Java Web  Ajax&JQuery.html" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -766,59 +700,43 @@ $<span class="token punctuation">(</span><span class="token string">"#div01"</sp
 
 
         </div>
-    </div>
+        
 
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </article>
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2019/02/18/JVMMemoryModel/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">JVM内存模型</h4>
-      </a>
-    </div>
-  
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2019/01/04/Java Web  DBUtils/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">DBUtils</h4>
-      </a>
-    </div>
-  
-</nav>
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</article>
-
 <div id="reward" class="page-modal reward-lay">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <h3 class="reward-title">
         <i class="icon icon-quote-left"></i>
-        谢谢大爷~
+        谢谢~
         <i class="icon icon-quote-right"></i>
     </h3>
     <div class="reward-content">
@@ -838,7 +756,6 @@ $<span class="token punctuation">(</span><span class="token string">"#div01"</sp
         
     </div>
 </div>
-
 
 
 </div>
@@ -873,7 +790,7 @@ $<span class="token punctuation">(</span><span class="token string">"#div01"</sp
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/01/12/Java Web  Ajax&JQuery/&title=《Ajax&JQuery》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/after/Java Web  Ajax&JQuery.html&title=《Ajax&JQuery》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -883,22 +800,22 @@ $<span class="token punctuation">(</span><span class="token string">"#div01"</sp
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/01/12/Java Web  Ajax&JQuery/&title=《Ajax&JQuery》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/after/Java Web  Ajax&JQuery.html&title=《Ajax&JQuery》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/01/12/Java Web  Ajax&JQuery/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/after/Java Web  Ajax&JQuery.html" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Ajax&JQuery》 — migaoyang&url=http://yoursite.com/2019/01/12/Java Web  Ajax&JQuery/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Ajax&JQuery》 — migaoyang&url=http://yoursite.com/after/Java Web  Ajax&JQuery.html&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/01/12/Java Web  Ajax&JQuery/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/after/Java Web  Ajax&JQuery.html" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -909,7 +826,7 @@ $<span class="token punctuation">(</span><span class="token string">"#div01"</sp
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2019/01/12/Java Web  Ajax&JQuery/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/after/Java Web  Ajax&JQuery.html" alt="微信分享二维码">
 </div>
 
 
