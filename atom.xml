@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-04T08:09:03.588Z</updated>
+  <updated>2019-04-24T11:58:48.868Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JVM垃圾回收</title>
+    <link href="http://yoursite.com/2019/04/15/JVM%20GC/"/>
+    <id>http://yoursite.com/2019/04/15/JVM GC/</id>
+    <published>2019-04-14T16:00:00.000Z</published>
+    <updated>2019-04-24T11:58:48.868Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&amp;emsp;&amp;emsp;茨威格在为路易十六的妻子玛丽·安托瓦内特写传记时曾无比感慨 
+        
+      
+    
+    </summary>
+    
+      <category term="JVM" scheme="http://yoursite.com/categories/JVM/"/>
+    
+    
+      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JVM类加载机制</title>
+    <link href="http://yoursite.com/2019/04/12/JVM%20ClassLoader/"/>
+    <id>http://yoursite.com/2019/04/12/JVM ClassLoader/</id>
+    <published>2019-04-11T16:00:00.000Z</published>
+    <updated>2019-04-24T11:58:56.247Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;从大的方面讲，类加载的结果是把一段字节流变换成Class结构并写方法区，在加载阶段就已经生成class结构了，所以我认为在加载阶段应该已经写入了方法区，只是被标记为未链接而暂不能使用。&lt;/li&gt;
+&lt;li&gt;类的初始化只会发生一次，与new实例的初始化不是一个概念。
+        
+      
+    
+    </summary>
+    
+      <category term="JVM" scheme="http://yoursite.com/categories/JVM/"/>
+    
+    
+      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
+    
+  </entry>
   
   <entry>
     <title>希尔排序</title>
@@ -331,33 +385,6 @@
   </entry>
   
   <entry>
-    <title>Servlet（一）</title>
-    <link href="http://yoursite.com/2018/12/08/Java%20Web%20%20Servlet1/"/>
-    <id>http://yoursite.com/2018/12/08/Java Web  Servlet1/</id>
-    <published>2018-12-07T16:00:00.000Z</published>
-    <updated>2019-04-04T08:26:29.431Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;提要：Servlet执行过程、执行周期。  &lt;/p&gt;
-&lt;p&gt;在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 &lt;strong&gt;.class&lt;/strong&gt;
-        
-      
-    
-    </summary>
-    
-      <category term="Servlet" scheme="http://yoursite.com/categories/Servlet/"/>
-    
-    
-      <category term="Servlet" scheme="http://yoursite.com/tags/Servlet/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Servlet（二）</title>
     <link href="http://yoursite.com/2018/12/08/Java%20Web%20%20Servlet2/"/>
     <id>http://yoursite.com/2018/12/08/Java Web  Servlet2/</id>
@@ -372,6 +399,33 @@
         
           &lt;p&gt;提要：Servlet配置路径、ServletConfig、ServletContext、&lt;/p&gt;
 &lt;h3 id=&quot;1-Servlet配置路径（xml或者注解）&quot;&gt;&lt;a href=&quot;#1-Servlet配置路径（xml或者注解）&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Servlet" scheme="http://yoursite.com/categories/Servlet/"/>
+    
+    
+      <category term="Servlet" scheme="http://yoursite.com/tags/Servlet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Servlet（一）</title>
+    <link href="http://yoursite.com/2018/12/08/Java%20Web%20%20Servlet1/"/>
+    <id>http://yoursite.com/2018/12/08/Java Web  Servlet1/</id>
+    <published>2018-12-07T16:00:00.000Z</published>
+    <updated>2019-04-04T08:26:29.431Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;提要：Servlet执行过程、执行周期。  &lt;/p&gt;
+&lt;p&gt;在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 &lt;strong&gt;.class&lt;/strong&gt;
         
       
     
@@ -492,60 +546,6 @@
       <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
     
       <category term="java源码" scheme="http://yoursite.com/tags/java%E6%BA%90%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java源码-剖析ArrayList</title>
-    <link href="http://yoursite.com/2018/11/17/Java%20ArrayList/"/>
-    <id>http://yoursite.com/2018/11/17/Java ArrayList/</id>
-    <published>2018-11-16T16:00:00.000Z</published>
-    <updated>2018-12-07T04:56:19.748Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;容器类(集合)，顾名思义就是用来容纳其它数据的类。在泛型的那篇笔记中，实现了一个简单的动态数组的容器类–DynamicArray,本篇主要阐述Java中真正的动态数组（数组列表）容器类ArrayList（Java
-        
-      
-    
-    </summary>
-    
-      <category term="java" scheme="http://yoursite.com/categories/java/"/>
-    
-    
-      <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
-    
-      <category term="java源码" scheme="http://yoursite.com/tags/java%E6%BA%90%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java多态（向上转型、动态绑定、instanceof、抽象）</title>
-    <link href="http://yoursite.com/2018/11/14/Java%20Polymorphic/"/>
-    <id>http://yoursite.com/2018/11/14/Java Polymorphic/</id>
-    <published>2018-11-13T16:00:00.000Z</published>
-    <updated>2019-04-04T08:30:08.417Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;多态（向上转型）&quot;&gt;&lt;a href=&quot;#多态（向上转型）&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="java" scheme="http://yoursite.com/categories/java/"/>
-    
-    
-      <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
