@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>The Google File System总结 | migaoyang | migaoyang</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="分布式架构,paper">
+    <meta name="description" content="这篇文章是我阅读Google File System的论文以及相关资料并总结而来。当然也是我自己的理解，如有问题请邮件联系mee.gaoyang@OutLook.com :) GFS的主要设计需求GFS是应用到Google内部的文件系统，针对于其自身的业务场景需求，设计主要基于以下几个需求：  节点失效是常态。系统会构建在大量的普通廉价机器上，这使得节点失效的可能性很高。因此，GFS 必须能有较高">
+<meta name="keywords" content="分布式架构,paper">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Google File System总结">
+<meta property="og:url" content="http://yoursite.com/2019/04/21/Architeture GFS/index.html">
+<meta property="og:site_name" content="migaoyang">
+<meta property="og:description" content="这篇文章是我阅读Google File System的论文以及相关资料并总结而来。当然也是我自己的理解，如有问题请邮件联系mee.gaoyang@OutLook.com :) GFS的主要设计需求GFS是应用到Google内部的文件系统，针对于其自身的业务场景需求，设计主要基于以下几个需求：  节点失效是常态。系统会构建在大量的普通廉价机器上，这使得节点失效的可能性很高。因此，GFS 必须能有较高">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/GFS_consistency-model.png">
+<meta property="og:image" content="http://yoursite.com/images/gfs-architecture.png">
+<meta property="og:image" content="http://yoursite.com/images/gfs-write.png">
+<meta property="og:updated_time" content="2019-04-25T12:53:17.880Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The Google File System总结">
+<meta name="twitter:description" content="这篇文章是我阅读Google File System的论文以及相关资料并总结而来。当然也是我自己的理解，如有问题请邮件联系mee.gaoyang@OutLook.com :) GFS的主要设计需求GFS是应用到Google内部的文件系统，针对于其自身的业务场景需求，设计主要基于以下几个需求：  节点失效是常态。系统会构建在大量的普通廉价机器上，这使得节点失效的可能性很高。因此，GFS 必须能有较高">
+<meta name="twitter:image" content="http://yoursite.com/images/GFS_consistency-model.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="migaoyang" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/1.jpg">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+  <!-- highlight.js代码高亮主题 css 引入-->
+  <link rel="stylesheet" href="/plugins/highlight/styles/dracula.css">
+  <!-- highlight.js代码高亮主题 css 引入-->
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">米高扬</h5>
+          <a href="mailto:mee.gaoyang@Outlook.com" title="mee.gaoyang@Outlook.com" class="mail">mee.gaoyang@Outlook.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                时间轴
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/migaoyang" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">The Google File System总结</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">The Google File System总结</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-04-20T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-04-21
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分布式架构/">分布式架构</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#GFS的主要设计需求"><span class="post-toc-number">1.</span> <span class="post-toc-text">GFS的主要设计需求</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#GFS-集群组成"><span class="post-toc-number">2.</span> <span class="post-toc-text">GFS 集群组成</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#GFS的元数据"><span class="post-toc-number">3.</span> <span class="post-toc-text">GFS的元数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据一致性"><span class="post-toc-number">4.</span> <span class="post-toc-text">数据一致性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#对应用的影响"><span class="post-toc-number">5.</span> <span class="post-toc-text">对应用的影响</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#GFS-集群常见操作流程"><span class="post-toc-number">6.</span> <span class="post-toc-text">GFS 集群常见操作流程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Master-Namespace-管理"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">Master Namespace 管理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#读取文件"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">读取文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Chunk-Lease"><span class="post-toc-number">6.2.1.</span> <span class="post-toc-text">Chunk Lease</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#文件写入"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">文件写入</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Architeture GFS" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">The Google File System总结</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-04-21 00:00:00" datetime="2019-04-20T16:00:00.000Z" itemprop="datePublished">2019-04-21</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分布式架构/">分布式架构</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>这篇文章是我阅读<a href="http://nil.csail.mit.edu/6.824/2017/papers/gfs.pdf" target="_blank" rel="noopener">Google File System</a>的论文以及相关资料并总结而来。当然也是我自己的理解，如有问题请邮件联系<a href="mailto:mee.gaoyang@OutLook.com" target="_blank" rel="noopener">mee.gaoyang@OutLook.com</a> :)</p>
+<h3 id="GFS的主要设计需求"><a href="#GFS的主要设计需求" class="headerlink" title="GFS的主要设计需求"></a>GFS的主要设计需求</h3><p>GFS是应用到Google内部的文件系统，针对于其自身的业务场景需求，设计主要基于以下几个需求：</p>
+<ol>
+<li>节点失效是常态。系统会构建在大量的普通廉价机器上，这使得节点失效的可能性很高。因此，GFS 必须能有较高的容错性、能够持续地监控自身的状态，比如应用程序 bug、操作系统的 bug、人为失误，甚至还有硬盘、内存、连接器、网络以及电源失效等造成的问题。所以，持续的监控、错误侦测、灾难冗余以及自动恢复的机制必须集成在 GFS 中。</li>
+<li>存储内容以大文件为主。系统需要存储的内容在通常情况下由数量不多的大文件构成，每个文件通常有几百 MB 甚至是几 GB 的大小；系统应当支持小文件，但不需要为其做出优化。</li>
+<li>主要负载为大容量连续读、小容量随机读以及追加式的连续写。绝大部分文件的修改是采用在文件尾部追加数据，而不是覆盖原有数据的方式。</li>
+<li>系统应当支持高效且原子的文件追加操作，源于在 Google 的情境中，这些文件多用于生产者-消费者模式或是多路归并。</li>
+<li>当需要做出取舍时，系统应选择高数据吞吐量而不是低延时。  </li>
+</ol>
+<h3 id="GFS-集群组成"><a href="#GFS-集群组成" class="headerlink" title="GFS 集群组成"></a>GFS 集群组成</h3><p>&emsp;&emsp;简单来讲，除了客户端以外，一个 GFS 集群还包括一个 Master 节点和若干个 Chunk Server。它们会作为用户级进程运行在普通的 Linux 机器上。<br>&emsp;&emsp;在存储文件时，GFS 会把文件切分成若干个拥有固定长度的 Chunk（块）并存储。Master 在创建 Chunk 时会为它们赋予一个唯一的 64 位 Handle（句柄），并把它们移交给 Chunk Server，而 Chunk Server 则以Linux系统普通文件的形式将每个 Chunk 存储在自己的本地磁盘上。为了确保 Chunk的可用性，GFS 会把每个 Chunk 备份成若干个 Replica（一般为三个备份）分配到其他 Chunk Server 上。<br>&emsp;&emsp;GFS 的 <strong>Master</strong> 负责维护整个集群的元数据，包括集群的 Namespace（命名空间，即文件元数据）以及 Chunk Lease 管理、无用 Chunk 回收等系统级操作。Chunk Server 除了保存 Chunk 以外也会周期地和 Master 通过心跳信号进行通信，Master 也借此得以收集每个 Chunk Server 当前的状态，并向其发送指令。<br>&emsp;&emsp;鉴于整个集群只有一个 Master，客户端在和 GFS 集群通信时，首先会从 Master 处获取 GFS 的元数据，而实际文件的数据传输则会与 Chunk Server 直接进行，以避免 Master 成为整个系统的数据传输瓶颈；除此以外，客户端也会在一定时间内缓存 Master 返回的集群元数据。</p>
+<h3 id="GFS的元数据"><a href="#GFS的元数据" class="headerlink" title="GFS的元数据"></a>GFS的元数据</h3><p>&emsp;&emsp;GFS 集群的所有元数据都会保存在 Master 的内存中。鉴于整个集群只会有一个 Master，这也使得元数据的管理变得更为简单。GFS 集群的元数据主要包括以下三类信息：</p>
+<ol>
+<li>文件与 Chunk 的 Namespace</li>
+<li>文件与 Chunk 之间的映射关系</li>
+<li>每个 Chunk Replica 所在的位置</li>
+</ol>
+<p>&emsp;&emsp;元数据保存在 Master 的内存中使得 Master 要对元数据做出变更变得极为容易；同时，这也使得 Master 能够更加高效地扫描集群的元数据，以唤起 Chunk 回收、Chunk 均衡等系统级管理操作。唯一的不足在于这使得整个集群所能拥有的 Chunk 数量受限于 Master 的内存大小，不过从论文的内容来看，这样的瓶颈在 Google 中从来没有被触及过，源于对于一个 64MB 大小的 Chunk，Master 只需要维持不到 64 字节的元数据。况且，相比于增加代码的复杂度，提高 Master 内存容量的成本要小得多。<br>&emsp;&emsp;为了保证元数据的可用性，Master 在对元数据做任何操作前对会用先写日志的形式将操作进行记录，日志写入完成后再进行实际操作，而这些日志也会被备份到多个机器上进行保存。不过，Chunk Replica 的位置不会被持久化到日志中，而是由 Master 在启动时询问各个 Chunk Server 其当前所有的 Replica。这可以省去 Master 与 Chunk Server 同步数据的成本，同时进一步简化 Master 日志持久化的工作。这样的设计也是合情合理的，毕竟 Chunk Server 当前实际持有哪些 Replica 也应由 Chunk Server 自己说了算。  </p>
+<h3 id="数据一致性"><a href="#数据一致性" class="headerlink" title="数据一致性"></a>数据一致性</h3><p>&emsp;&emsp;用户在使用 GFS 这类数据存储系统时，首先应当了解其所能提供的数据一致性，而作为学习者我们也应先理解 GFS 对外呈现的数据一致性功能。<br>&emsp;&emsp;首先，命名空间完全由单节点 Master 管理在其内存中，这部分数据的修改可以通过让 Master 为其添加互斥锁来解决并发修改的问题，&emsp;&emsp;因此命名空间的数据修改是可以确保完全原子的。<br>文件的数据修改则相对复杂。在讲述接下来的内容前，首先我们先明确，在文件的某一部分被修改后，它可能进入以下三种状态的其中之一：  </p>
+<ol>
+<li>客户端读取不同的 Replica 时可能会读取到不同的内容，那这部分文件是不一致的（Inconsistent）</li>
+<li>所有客户端无论读取哪个 Replica 都会读取到相同的内容，那这部分文件就是一致的（Consistent）</li>
+<li>所有客户端都能看到上一次修改的所有完整内容，且这部分文件是一致的，那么我们说这部分文件是确定的（Defined）  </li>
+</ol>
+<p>&emsp;&emsp;在修改后，一个文件的当前状态将取决于此次修改的类型以及修改是否成功。具体来说：   </p>
+<ul>
+<li>如果一次写入操作成功且没有与其他并发的写入操作发生重叠，那这部分的文件是确定的（同时也是一致的）</li>
+<li>如果有若干个写入操作并发地执行成功，那么这部分文件会是一致的但会是不确定的：在这种情况下，客户端所能看到的数据通常不能直接体现出其中的任何一次修改</li>
+<li>失败的写入操作会让文件进入不一致的状态</li>
+</ul>
+<p>这之间的关系也被整理为了论文中的表格 1：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/GFS_consistency-model.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>   </p>
+<p>&emsp;&emsp;GFS 支持的文件数据修改数据包括两种：指定偏移值的数据写入（Write）以及数据追加（Record Append）。当写入时，指定的数据会被直接写入到客户端指定的偏移位置中，覆盖原有的数据。GFS 并未为该操作提供太多的一致性保证：如果不同的客户端并发地写入同一块文件区域，操作完成后这块区域的数据可能由各次写入的数据碎片所组成，即进入不确定的状态。<br>&emsp;&emsp;与写入操作不同，GFS 确保即便是在并发时，数据追加操作也是原子且 at least once（至少一次）的。操作完成后，GFS 会把实际写入的偏移值返回给客户端，该偏移值即代表包含所写入数据的确定的文件区域的起始位置。由于数据追加操作是 at least once 的，GFS 有可能会在文件中写入填充（padding）或是重复数据，但出现的概率不高。<br>&emsp;&emsp;在读取数据时，为了避免读入填充数据或是损坏的数据，数据在写入前往往会放入一些如校验和等元信息以用于验证其可用性，如此一来 GFS 的客户端 library 便可以在读取时自动跳过填充和损坏的数据。不过，鉴于数据追加操作的 at lease once 特性，客户端仍有可能读入重复的数据，此时只能由上层应用通过鉴别记录的唯一 ID 等信息来过滤重复数据了。  </p>
+<h3 id="对应用的影响"><a href="#对应用的影响" class="headerlink" title="对应用的影响"></a>对应用的影响</h3><p>&emsp;&emsp;GFS 的一致性模型是相对松散的，这就要求上层应用在使用 GFS 时能够适应 GFS 所提供的一致性语义。简单来讲，上层应用可以通过两种方式来做到这一点：更多使用追加操作而不是覆写操作；写入包含校验信息的数据。<br>&emsp;&emsp;青睐追加操作而不是覆写操作的原因是明显的：GFS 针对追加操作做出了显著的优化，这使得这种数据写入方式的性能更高，而且也能提供更强的一致性语义。尽管如此，追加操作 at least once 的特性仍使得客户端可能读取到填充或是重复数据，这要求客户端能够容忍这部分无效数据。一种可行的做法是在写入的同时为所有记录写入各自的校验和，并在读取时进行校验，以剔除无效的数据；如果客户端无法容忍重复数据，客户端也可以在写入时为每条记录写入唯一的标识符，以便在读取时通过标识符去除重复的数据。</p>
+<h3 id="GFS-集群常见操作流程"><a href="#GFS-集群常见操作流程" class="headerlink" title="GFS 集群常见操作流程"></a>GFS 集群常见操作流程</h3><h4 id="Master-Namespace-管理"><a href="#Master-Namespace-管理" class="headerlink" title="Master Namespace 管理"></a>Master Namespace 管理</h4><p>&emsp;&emsp;在前面我们已经了解到，Namespace 作为 GFS 元信息的一部分会被维持在 Master 的内存中，由 Master 负责管理。在逻辑上，GFS Master 并不会根据文件与目录的关系以分层的结构来管理这部分数据，而是单纯地将其表示为从完整路径名到对应文件元数据的映射表，并在路径名上应用前缀压缩以减少内存占用。<br>&emsp;&emsp;为了管理来自不同客户端的并发请求对 Namespace 的修改，Master 会为 Namespace 中的每个文件和目录都分配一个读写锁（Read-Write Lock）。由此，对不同 Namespace 区域的并发请求便可以同时进行。<br>&emsp;&emsp;所有 Master 操作在执行前都会需要先获取一系列的锁：通常，当操作涉及某个路径 /d1/d2/…/dn/leaf 时，Master 会需要先获取从 /d1、/d1/d2 到 /d1/d2/…/dn 的读锁，然后再根据操作的类型获取 /d1/d2/…/dn/lead 的读锁或写锁 —— 获取父目录的读锁是为了避免父目录在此次操作执行的过程中被重命名或删除。<br>&emsp;&emsp;由于大量的读写锁可能会造成较高的内存占用，这些锁会在实际需要时才进行创建，并在不再需要时被销毁。除外，所有的锁获取操作也会按照一个相同的顺序进行，以避免发生死锁：锁首先按 Namespace 树的层级排列，同一层级内则以路径名字典序排列。   </p>
+<h4 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h4><p>&emsp;&emsp;客户端从 GFS 集群中读取文件内容的过程大致如下：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/gfs-architecture.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>   </p>
+<ol>
+<li>对于指定的文件名和读取位置偏移值，客户端可以根据固定的 Chunk 大小来计算出该位置在该文件的哪一个 Chunk 中</li>
+<li>客户端向 Master 发出请求，其中包含要读取的文件名以及 Chunk 索引值</li>
+<li>Master 向客户端响应该 Chunk 的 Handle 以及其所有 Replica 当前所在的位置。客户端会以文件名和 Chunk 索引值为键缓存该数据</li>
+<li>之后，客户端便可以选取其中一个 Replica 所在的 Chunk Server 并向其发起请求，请求中会指定需要读取的 Chunk 的 Handle 以及要读取的范围<br>Chunk Lease<br>在客户端对某个 Chunk 做出修改时，GFS 为了能够处理不同的并发修改，会把该 Chunk 的 Lease 交给某个 Replica，使其成为 Primary：Primary 会负责为这些修改安排一个执行顺序，然后其他 Replica 便按照相同的顺序执行这些修改。  </li>
+</ol>
+<h5 id="Chunk-Lease"><a href="#Chunk-Lease" class="headerlink" title="Chunk Lease"></a>Chunk Lease</h5><p>&emsp;&emsp;在初始时会有 60 秒的超时时间。在未超时前，Primary 可以向 Master 申请延长 Chunk Lease 的时间；必要时 Master 也可以直接撤回已分配的 Chunk Lease。  </p>
+<h4 id="文件写入"><a href="#文件写入" class="headerlink" title="文件写入"></a>文件写入</h4><p>&emsp;&emsp;客户端尝试将数据写入到某个 Chunk 的指定位置的过程大致如下：<br><img src="/images/gfs-write.png" alt="">  </p>
+<ol>
+<li>客户端向 Master 询问目前哪个 Chunk Server 持有该 Chunk 的 Lease</li>
+<li>Master 向客户端返回 Primary 和其他 Replica 的位置</li>
+<li>客户端将数据推送到所有的 Replica 上。Chunk Server 会把这些数据保存在缓冲区中，等待使用</li>
+<li>待所有 Replica 都接收到数据后，客户端发送写请求给 Primary。Primary 为来自各个客户端的修改操作安排连续的执行序列号，并按顺序地应用于其本地存储的数据</li>
+<li>Primary 将写请求转发给其他 Secondary Replica，Replica 们按照相同的顺序应用这些修改</li>
+<li>Secondary Replica 响应 Primary，示意自己已经完成操作</li>
+<li>Primary 响应客户端，并返回该过程中发生的错误（若有）<br>&emsp;&emsp;如果该过程有发生错误，可以认为修改已在 Primary 和部分 Secondary 上成功执行（如果在 Primary 上就出错了，那么写请求不会被转发出去）。此时可以认为此次修改操作没有成功，因为数据会处于不一致的状态。实际上，GFS 所使用的客户端 lib 在此时会重新尝试执行此次操作。<br>&emsp;&emsp;值得注意的是，这个流程特意将数据流与控制流分开：客户端先向 Chunk Server 提交数据，再将写请求发往 Primary。这么做的好处在于 GFS 能够更好地利用网络带宽资源。<br>&emsp;&emsp;从上述步骤可见，控制流借由写请求从客户端流向 Primary，再流向其他 Secondary Replica。实际上，数据流以一条线性数据管道进行传递的：客户端会把数据上传到离自己最近的 Replica，该 Replica 在接收到数据后再转发给离自己最近的另一个 Replica，如此递归直到所有 Replica 都能接收到数据，如此一来便能够利用上每台机器的所有出口带宽。  </li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="米高扬">
+            米高扬
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper/">paper</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分布式架构/">分布式架构</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/04/21/Architeture GFS/&title=《The Google File System总结》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/04/21/Architeture GFS/&title=《The Google File System总结》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/04/21/Architeture GFS/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《The Google File System总结》 — migaoyang&url=http://yoursite.com/2019/04/21/Architeture GFS/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/04/21/Architeture GFS/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/04/18/JVM GC_3/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">JVM垃圾回收（下）（回收器比较）</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>米高扬 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/04/21/Architeture GFS/&title=《The Google File System总结》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/04/21/Architeture GFS/&title=《The Google File System总结》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/04/21/Architeture GFS/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《The Google File System总结》 — migaoyang&url=http://yoursite.com/2019/04/21/Architeture GFS/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/04/21/Architeture GFS/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2019/04/21/Architeture GFS/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '米高扬的博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '米高扬的博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+  <!-- highlight.js代码高亮主题 script 引入-->
+  <script src="/plugins/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- highlight.js代码高亮主题 script 引入-->
+</body>
+</html>

@@ -154,6 +154,53 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-Java HashMap" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-11-25 00:00:00" datetime="2018-11-24T16:00:00.000Z" itemprop="datePublished">2018-11-25</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/11/25/Java HashMap/">java源码-剖析HashMap</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        ArrayList与LinkedList的缺点就是按元素内容查找值时，查找元素的时间复杂度都较高，而HashMap查找元素的时间复杂度可以达到O(1)!Map在这里是映射的关系，K-V之间相互映射，计算K的hashCode值，根据这个值去计算（取模 数组的长度）HashMap内部所维护数组的索引i，当然，这个i值可能会重复，对于重复的值，在java7中使用链表继续存储。数组里存的内容也是一个Entry对象。取值时要通过K来取，若K的hash值所找到的位置发生了hash碰撞（有链表），就使用equal方法比较具体的K值。  
+HashMap所实现的Map接口Map有键（Key）与V（val...
+    
+
+        <a href="/2018/11/25/Java HashMap/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java基础/">java基础</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java源码/">java源码</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-Java Generic" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">

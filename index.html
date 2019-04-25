@@ -154,6 +154,55 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-Architeture GFS" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-04-21 00:00:00" datetime="2019-04-20T16:00:00.000Z" itemprop="datePublished">2019-04-21</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分布式架构/">分布式架构</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/04/21/Architeture GFS/">The Google File System总结</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        这篇文章是我阅读Google File System的论文以及相关资料并总结而来。当然也是我自己的理解，如有问题请邮件联系mee.gaoyang@OutLook.com :)
+GFS的主要设计需求GFS是应用到Google内部的文件系统，针对于其自身的业务场景需求，设计主要基于以下几个需求：
+
+节点失效是常态。系统会构建在大量的普通廉价机器上，这使得节点失效的可能性很高。因此，GFS 必须能有较高的容错性、能够持续地监控自身的状态，比如应用程序 bug、操作系统的 bug、人为失误，甚至还有硬盘、内存、连接器、网络以及电源失效等造成的问题。所以，持续的监控、错误侦测、灾难冗余以及自动恢复...
+    
+
+        <a href="/2019/04/21/Architeture GFS/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper/">paper</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分布式架构/">分布式架构</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-JVM GC_3" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
@@ -181,7 +230,8 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        &emsp;&emsp;针对新生代的垃圾回收器共有三个：Serial，Parallel Scavenge 和 Parallel New。这三个采用的都是 标记 - 复制 算法。其中，Serial 是一个单线程的，Parallel New 可以看成 Serial 的多线程版本。Parallel Scavenge 和 Parallel New 类似，但更加注重吞吐率。此外，Parallel Scavenge 不能与 CMS 一起使用。&emsp;&emsp;针对老年代的垃圾回收器也有三个：Serial Old 和 Parallel Old，以及 CMS。Serial Old 和 Parall...
+        &emsp;&emsp;我个人认为应该把注意力放在前两篇文章中，例如 寻找失活对象的方法、安全点的建立、分代回收的思想、Thread Local Allocation Buffer、卡表。 所以本篇主要记录了各种各种收集器的使用场景与他们的比较。更详细的描绘可浏览Oracle的官方说明：https://blogs.oracle.com/jonthecollector/our-collectors     
+&emsp;&emsp;上图中的 ‘?’ 就是目前的G1回收器。&emsp;&emsp;针对新生代的垃圾回收器共有三个：Serial，Parallel Scavenge 和 Paral...
     
 
         <a href="/2019/04/18/JVM GC_3/" class="post-more waves-effect waves-button">
@@ -756,60 +806,6 @@ queryRunner.update("insert into account values (null , ? , ? ...
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Java Web  Transaction" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-01-03 00:00:00" datetime="2019-01-02T16:00:00.000Z" itemprop="datePublished">2019-01-03</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JDBC/">JDBC</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/01/03/Java Web  Transaction/">事务</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        事务事务指一组操作，要么全部执行，要么全都不执行。也就是最小的执行单位是定义的这一组事务。事务的作用　为了确保逻辑的成功执行。 例如：银行的转账。  
- 事务的特性 ACID  
-
-原子性  Atomicity事务中包含的逻辑，不可分割。   
-一致性  Consistency事务执行前后。数据完整性  
-隔离性  Isolation事务在执行期间不应该受到其他事务的影响,两个事务的结果不应该相互影响。    
-持久性  Durability事务执行成功，那么数据应该持久保存到磁盘上。  
-
-事务安全问题读问题在读操作时可能会出现以下三种等级的错误 1.脏读 2.不可重读读 3.幻读  ...
-    
-
-        <a href="/2019/01/03/Java Web  Transaction/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java高级/">java高级</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
             <article id="post-Java Web  ConnectionPool" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
@@ -852,6 +848,60 @@ public void testDBCP01(){
     
 
         <a href="/2019/01/03/Java Web  ConnectionPool/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java高级/">java高级</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Java Web  Transaction" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-01-03 00:00:00" datetime="2019-01-02T16:00:00.000Z" itemprop="datePublished">2019-01-03</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JDBC/">JDBC</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/01/03/Java Web  Transaction/">事务</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        事务事务指一组操作，要么全部执行，要么全都不执行。也就是最小的执行单位是定义的这一组事务。事务的作用　为了确保逻辑的成功执行。 例如：银行的转账。  
+ 事务的特性 ACID  
+
+原子性  Atomicity事务中包含的逻辑，不可分割。   
+一致性  Consistency事务执行前后。数据完整性  
+隔离性  Isolation事务在执行期间不应该受到其他事务的影响,两个事务的结果不应该相互影响。    
+持久性  Durability事务执行成功，那么数据应该持久保存到磁盘上。  
+
+事务安全问题读问题在读操作时可能会出现以下三种等级的错误 1.脏读 2.不可重读读 3.幻读  ...
+    
+
+        <a href="/2019/01/03/Java Web  Transaction/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
@@ -971,57 +1021,6 @@ Class.forName("com.mysql.jdbc.Driver");
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Java Web  Servlet1" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-12-08 00:00:00" datetime="2018-12-07T16:00:00.000Z" itemprop="datePublished">2018-12-08</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Servlet/">Servlet</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/12/08/Java Web  Servlet1/">Servlet（一）</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        提要：Servlet执行过程、执行周期。  
-在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 .class 。在Servlet/JSP中，web容器（Container）是Servlet/JSP唯一认识的HTTP服务器。我们需要知道Servlet/JSP与web容器是如何沟通的，web容器如何管理Servlet/JSP的各种对象等问题。  
-Hello Servlet
-新建一个类， 实现Servlet接口
-配置Servlet ， 用意： 告诉服务器，我们的应用有这么些个servlet。在webContent/WEB-INF/web.xml里面写上以下内容。  
-...
-    
-
-        <a href="/2018/12/08/Java Web  Servlet1/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Servlet/">Servlet</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
             <article id="post-Java Web  Servlet2" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
@@ -1087,6 +1086,57 @@ Hello Servlet
         </li>
     
         <li class="post-list-item fade">
+            <article id="post-Java Web  Servlet1" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-12-08 00:00:00" datetime="2018-12-07T16:00:00.000Z" itemprop="datePublished">2018-12-08</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Servlet/">Servlet</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/12/08/Java Web  Servlet1/">Servlet（一）</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        提要：Servlet执行过程、执行周期。  
+在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 .class 。在Servlet/JSP中，web容器（Container）是Servlet/JSP唯一认识的HTTP服务器。我们需要知道Servlet/JSP与web容器是如何沟通的，web容器如何管理Servlet/JSP的各种对象等问题。  
+Hello Servlet
+新建一个类， 实现Servlet接口
+配置Servlet ， 用意： 告诉服务器，我们的应用有这么些个servlet。在webContent/WEB-INF/web.xml里面写上以下内容。  
+...
+    
+
+        <a href="/2018/12/08/Java Web  Servlet1/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Servlet/">Servlet</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-Java HashSet" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
@@ -1124,53 +1174,6 @@ public interface Set&lt;E> extends Collection&lt;E> {
     
 
         <a href="/2018/11/30/Java HashSet/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java基础/">java基础</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java源码/">java源码</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Java HashMap" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-11-25 00:00:00" datetime="2018-11-24T16:00:00.000Z" itemprop="datePublished">2018-11-25</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/11/25/Java HashMap/">java源码-剖析HashMap</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        ArrayList与LinkedList的缺点就是按元素内容查找值时，查找元素的时间复杂度都较高，而HashMap查找元素的时间复杂度可以达到O(1)!Map在这里是映射的关系，K-V之间相互映射，计算K的hashCode值，根据这个值去计算（取模 数组的长度）HashMap内部所维护数组的索引i，当然，这个i值可能会重复，对于重复的值，在java7中使用链表继续存储。数组里存的内容也是一个Entry对象。取值时要通过K来取，若K的hash值所找到的位置发生了hash碰撞（有链表），就使用equal方法比较具体的K值。  
-HashMap所实现的Map接口Map有键（Key）与V（val...
-    
-
-        <a href="/2018/11/25/Java HashMap/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>

@@ -21,18 +21,20 @@
     
     
     <meta name="keywords" content="JVM">
-    <meta name="description" content="&amp;emsp;&amp;emsp;针对新生代的垃圾回收器共有三个：Serial，Parallel Scavenge 和 Parallel New。这三个采用的都是 标记 - 复制 算法。其中，Serial 是一个单线程的，Parallel New 可以看成 Serial 的多线程版本。Parallel Scavenge 和 Parallel New 类似，但更加注重吞吐率。此外，Parallel Scave">
+    <meta name="description" content="&amp;emsp;&amp;emsp;我个人认为应该把注意力放在前两篇文章中，例如 寻找失活对象的方法、安全点的建立、分代回收的思想、Thread Local Allocation Buffer、卡表。 所以本篇主要记录了各种各种收集器的使用场景与他们的比较。更详细的描绘可浏览Oracle的官方说明：https://blogs.oracle.com/jonthecollector/our-collectors">
 <meta name="keywords" content="JVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM垃圾回收（下）（回收器比较）">
 <meta property="og:url" content="http://yoursite.com/2019/04/18/JVM GC_3/index.html">
 <meta property="og:site_name" content="migaoyang">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;针对新生代的垃圾回收器共有三个：Serial，Parallel Scavenge 和 Parallel New。这三个采用的都是 标记 - 复制 算法。其中，Serial 是一个单线程的，Parallel New 可以看成 Serial 的多线程版本。Parallel Scavenge 和 Parallel New 类似，但更加注重吞吐率。此外，Parallel Scave">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;我个人认为应该把注意力放在前两篇文章中，例如 寻找失活对象的方法、安全点的建立、分代回收的思想、Thread Local Allocation Buffer、卡表。 所以本篇主要记录了各种各种收集器的使用场景与他们的比较。更详细的描绘可浏览Oracle的官方说明：https://blogs.oracle.com/jonthecollector/our-collectors">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-25T05:48:27.812Z">
+<meta property="og:image" content="http://yoursite.com/images/JVM_GCCollections.jpg">
+<meta property="og:updated_time" content="2019-04-25T07:44:01.388Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM垃圾回收（下）（回收器比较）">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp;针对新生代的垃圾回收器共有三个：Serial，Parallel Scavenge 和 Parallel New。这三个采用的都是 标记 - 复制 算法。其中，Serial 是一个单线程的，Parallel New 可以看成 Serial 的多线程版本。Parallel Scavenge 和 Parallel New 类似，但更加注重吞吐率。此外，Parallel Scave">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;我个人认为应该把注意力放在前两篇文章中，例如 寻找失活对象的方法、安全点的建立、分代回收的思想、Thread Local Allocation Buffer、卡表。 所以本篇主要记录了各种各种收集器的使用场景与他们的比较。更详细的描绘可浏览Oracle的官方说明：https://blogs.oracle.com/jonthecollector/our-collectors">
+<meta name="twitter:image" content="http://yoursite.com/images/JVM_GCCollections.jpg">
     
         <link rel="alternate" type="application/atom+xml" title="migaoyang" href="/atom.xml">
     
@@ -184,12 +186,13 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>&emsp;&emsp;针对新生代的垃圾回收器共有三个：Serial，Parallel Scavenge 和 Parallel New。这三个采用的都是 <strong>标记 - 复制</strong> 算法。其中，Serial 是一个单线程的，Parallel New 可以看成 Serial 的多线程版本。Parallel Scavenge 和 Parallel New 类似，但更加注重吞吐率。此外，Parallel Scavenge 不能与 CMS 一起使用。<br>&emsp;&emsp;针对老年代的垃圾回收器也有三个：Serial Old 和 Parallel Old，以及 CMS。Serial Old 和 Parallel Old 都是 <strong>标记 - 压缩</strong> 算法。同样，前者是单线程的，而后者可以看成前者的多线程版本。  </p>
+            <p>&emsp;&emsp;我个人认为应该把注意力放在前两篇文章中，例如 <strong>寻找失活对象的方法、安全点的建立、分代回收的思想、Thread Local Allocation Buffer、卡表。</strong> 所以本篇主要记录了各种各种收集器的使用场景与他们的比较。更详细的描绘可浏览Oracle的官方说明：<a href="https://blogs.oracle.com/jonthecollector/our-collectors" target="_blank" rel="noopener">https://blogs.oracle.com/jonthecollector/our-collectors</a>     </p>
+<p><img src="/images/JVM_GCCollections.jpg" alt="Alt text"><br>&emsp;&emsp;<strong>上图中的 ‘?’ 就是目前的G1回收器。</strong><br>&emsp;&emsp;针对新生代的垃圾回收器共有三个：Serial，Parallel Scavenge 和 Parallel New。这三个采用的都是 <strong>标记 - 复制</strong> 算法。其中，Serial 是一个单线程的，Parallel New 可以看成 Serial 的多线程版本。Parallel Scavenge 和 Parallel New 类似，但更加注重吞吐率。此外，Parallel Scavenge 不能与 CMS 一起使用。<br>&emsp;&emsp;针对老年代的垃圾回收器也有三个：Serial Old 和 Parallel Old，以及 CMS。Serial Old 和 Parallel Old 都是 <strong>标记 - 压缩</strong> 算法。同样，前者是单线程的，而后者可以看成前者的多线程版本。  </p>
 <p>&emsp;&emsp;CMS 采用的是标记 - 清除算法，并且是并发的。除了少数几个操作需要 Stop-the-world 之外，它可以在应用程序运行过程中进行垃圾回收。在并发收集失败的情况下，Java 虚拟机会使用其他两个压缩型垃圾回收器进行一次垃圾回收。由于 G1 的出现，CMS 在 Java 9 中已被废弃 [1]。</p>
 <p>&emsp;&emsp;G1（Garbage First）是一个横跨新生代和老年代的垃圾回收器。实际上，它已经打乱了前面所说的堆结构，直接将堆分成极其多个区域。每个区域都可以充当 Eden 区、Survivor 区或者老年代中的一个。它采用的是标记 - 压缩算法，而且和 CMS 一样都能够在应用程序运行过程中并发地进行垃圾回收。   </p>
 <p>&emsp;&emsp;G1 能够针对每个细分的区域来进行垃圾回收。在选择进行垃圾回收的区域时，它会优先回收死亡对象较多的区域。这也是 G1 名字的由来。</p>
-<p>&emsp;&emsp;即将到来的 Java 11 引入了 ZGC，宣称暂停时间不超过 10ms。如果你感兴趣的话，可参考 R 大的这篇文章 [2]。</p>
-<h3 id="参考Blog"><a href="#参考Blog" class="headerlink" title="参考Blog"></a>参考Blog</h3><p>[2]<a href="http://openjdk.java.net/jeps/291" target="_blank" rel="noopener">http://openjdk.java.net/jeps/291</a><br>[3]<a href="https://www.zhihu.com/question/287945354/answer/458761494" target="_blank" rel="noopener">https://www.zhihu.com/question/287945354/answer/458761494</a></p>
+<p>&emsp;&emsp;即将到来的 Java 11 引入了 ZGC，宣称暂停时间不超过 10ms。如果感兴趣的话，可参考 R 大的这篇文章 [2]。</p>
+<h3 id="参考Blog"><a href="#参考Blog" class="headerlink" title="参考Blog"></a>参考Blog</h3><p>[1]<a href="http://openjdk.java.net/jeps/291" target="_blank" rel="noopener">http://openjdk.java.net/jeps/291</a><br>[2]<a href="https://www.zhihu.com/question/287945354/answer/458761494" target="_blank" rel="noopener">https://www.zhihu.com/question/287945354/answer/458761494</a></p>
 
         </div>
 
@@ -267,7 +270,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/04/21/Architeture GFS/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">The Google File System总结</h4>
+      </a>
+    </div>
   
 
   
