@@ -14,25 +14,25 @@
     
     
     
-    <title>起泡排序 | migaoyang | migaoyang</title>
+    <title>JVM垃圾回收（下）（回收器比较） | migaoyang | migaoyang</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="java">
-    <meta name="description" content="BubbleSort起泡排序就是两两交换排序，可以将最大值或最小值放在一端，然后再从下个依次两两比较，将第二大或者第二小的放在一端第二个。   实现public static int[] bubble(int [] data) {     int length = data.length;     for(int i = 0 ; i &amp;lt; length ; i ++) {         fo">
-<meta name="keywords" content="java">
+    <meta name="keywords" content="JVM">
+    <meta name="description" content="&amp;emsp;&amp;emsp;针对新生代的垃圾回收器共有三个：Serial，Parallel Scavenge 和 Parallel New。这三个采用的都是 标记 - 复制 算法。其中，Serial 是一个单线程的，Parallel New 可以看成 Serial 的多线程版本。Parallel Scavenge 和 Parallel New 类似，但更加注重吞吐率。此外，Parallel Scave">
+<meta name="keywords" content="JVM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="起泡排序">
-<meta property="og:url" content="http://yoursite.com/2019/03/08/Java SortBubble/index.html">
+<meta property="og:title" content="JVM垃圾回收（下）（回收器比较）">
+<meta property="og:url" content="http://yoursite.com/2019/04/18/JVM GC_3/index.html">
 <meta property="og:site_name" content="migaoyang">
-<meta property="og:description" content="BubbleSort起泡排序就是两两交换排序，可以将最大值或最小值放在一端，然后再从下个依次两两比较，将第二大或者第二小的放在一端第二个。   实现public static int[] bubble(int [] data) {     int length = data.length;     for(int i = 0 ; i &amp;lt; length ; i ++) {         fo">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;针对新生代的垃圾回收器共有三个：Serial，Parallel Scavenge 和 Parallel New。这三个采用的都是 标记 - 复制 算法。其中，Serial 是一个单线程的，Parallel New 可以看成 Serial 的多线程版本。Parallel Scavenge 和 Parallel New 类似，但更加注重吞吐率。此外，Parallel Scave">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-04T08:11:43.124Z">
+<meta property="og:updated_time" content="2019-04-25T05:48:27.812Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="起泡排序">
-<meta name="twitter:description" content="BubbleSort起泡排序就是两两交换排序，可以将最大值或最小值放在一端，然后再从下个依次两两比较，将第二大或者第二小的放在一端第二个。   实现public static int[] bubble(int [] data) {     int length = data.length;     for(int i = 0 ; i &amp;lt; length ; i ++) {         fo">
+<meta name="twitter:title" content="JVM垃圾回收（下）（回收器比较）">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;针对新生代的垃圾回收器共有三个：Serial，Parallel Scavenge 和 Parallel New。这三个采用的都是 标记 - 复制 算法。其中，Serial 是一个单线程的，Parallel New 可以看成 Serial 的多线程版本。Parallel Scavenge 和 Parallel New 类似，但更加注重吞吐率。此外，Parallel Scave">
     
         <link rel="alternate" type="application/atom+xml" title="migaoyang" href="/atom.xml">
     
@@ -116,7 +116,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">起泡排序</div>
+        <div class="flex-col header-title ellipsis">JVM垃圾回收（下）（回收器比较）</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -138,15 +138,15 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">起泡排序</h1>
+        <h1 class="title">JVM垃圾回收（下）（回收器比较）</h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-03-07T16:00:00.000Z" itemprop="datePublished" class="page-time">
-  2019-03-08
+                <time datetime="2019-04-17T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-04-18
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Sort/">Sort</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/">JVM</a></li></ul>
 
             
         </h5>
@@ -163,20 +163,20 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#BubbleSort"><span class="post-toc-number">1.</span> <span class="post-toc-text">BubbleSort</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实现"><span class="post-toc-number">2.</span> <span class="post-toc-text">实现</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考Blog"><span class="post-toc-number">1.</span> <span class="post-toc-text">参考Blog</span></a></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-Java SortBubble" class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-JVM GC_3" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">起泡排序</h1>
+        <h1 class="post-card-title">JVM垃圾回收（下）（回收器比较）</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-03-08 00:00:00" datetime="2019-03-07T16:00:00.000Z" itemprop="datePublished">2019-03-08</time>
+            <time class="post-time" title="2019-04-18 00:00:00" datetime="2019-04-17T16:00:00.000Z" itemprop="datePublished">2019-04-18</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Sort/">Sort</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/">JVM</a></li></ul>
 
 
 
@@ -184,21 +184,12 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="BubbleSort"><a href="#BubbleSort" class="headerlink" title="BubbleSort"></a>BubbleSort</h2><p>起泡排序就是两两交换排序，可以将最大值或最小值放在一端，然后再从下个依次两两比较，将第二大或者第二小的放在一端第二个。  </p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">bubble</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">int</span> length <span class="token operator">=</span> data<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span> <span class="token punctuation">;</span> i <span class="token operator">&lt;</span> length <span class="token punctuation">;</span> i <span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span> <span class="token punctuation">;</span> j <span class="token operator">&lt;</span> length<span class="token operator">-</span>i<span class="token operator">-</span><span class="token number">1</span> <span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>data<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">></span> data<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">int</span> temp <span class="token operator">=</span> data<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
-                data<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-                data<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> data<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+            <p>&emsp;&emsp;针对新生代的垃圾回收器共有三个：Serial，Parallel Scavenge 和 Parallel New。这三个采用的都是 <strong>标记 - 复制</strong> 算法。其中，Serial 是一个单线程的，Parallel New 可以看成 Serial 的多线程版本。Parallel Scavenge 和 Parallel New 类似，但更加注重吞吐率。此外，Parallel Scavenge 不能与 CMS 一起使用。<br>&emsp;&emsp;针对老年代的垃圾回收器也有三个：Serial Old 和 Parallel Old，以及 CMS。Serial Old 和 Parallel Old 都是 <strong>标记 - 压缩</strong> 算法。同样，前者是单线程的，而后者可以看成前者的多线程版本。  </p>
+<p>&emsp;&emsp;CMS 采用的是标记 - 清除算法，并且是并发的。除了少数几个操作需要 Stop-the-world 之外，它可以在应用程序运行过程中进行垃圾回收。在并发收集失败的情况下，Java 虚拟机会使用其他两个压缩型垃圾回收器进行一次垃圾回收。由于 G1 的出现，CMS 在 Java 9 中已被废弃 [1]。</p>
+<p>&emsp;&emsp;G1（Garbage First）是一个横跨新生代和老年代的垃圾回收器。实际上，它已经打乱了前面所说的堆结构，直接将堆分成极其多个区域。每个区域都可以充当 Eden 区、Survivor 区或者老年代中的一个。它采用的是标记 - 压缩算法，而且和 CMS 一样都能够在应用程序运行过程中并发地进行垃圾回收。   </p>
+<p>&emsp;&emsp;G1 能够针对每个细分的区域来进行垃圾回收。在选择进行垃圾回收的区域时，它会优先回收死亡对象较多的区域。这也是 G1 名字的由来。</p>
+<p>&emsp;&emsp;即将到来的 Java 11 引入了 ZGC，宣称暂停时间不超过 10ms。如果你感兴趣的话，可参考 R 大的这篇文章 [2]。</p>
+<h3 id="参考Blog"><a href="#参考Blog" class="headerlink" title="参考Blog"></a>参考Blog</h3><p>[2]<a href="http://openjdk.java.net/jeps/291" target="_blank" rel="noopener">http://openjdk.java.net/jeps/291</a><br>[3]<a href="https://www.zhihu.com/question/287945354/answer/458761494" target="_blank" rel="noopener">https://www.zhihu.com/question/287945354/answer/458761494</a></p>
 
         </div>
 
@@ -221,7 +212,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
 
 
             
@@ -231,7 +222,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/03/08/Java SortBubble/&title=《起泡排序》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/04/18/JVM GC_3/&title=《JVM垃圾回收（下）（回收器比较）》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -241,22 +232,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/03/08/Java SortBubble/&title=《起泡排序》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/04/18/JVM GC_3/&title=《JVM垃圾回收（下）（回收器比较）》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/03/08/Java SortBubble/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/04/18/JVM GC_3/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《起泡排序》 — migaoyang&url=http://yoursite.com/2019/03/08/Java SortBubble/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JVM垃圾回收（下）（回收器比较）》 — migaoyang&url=http://yoursite.com/2019/04/18/JVM GC_3/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/03/08/Java SortBubble/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/04/18/JVM GC_3/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -276,21 +267,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2019/03/10/Java SortQuick/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">快速排序</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2019/02/18/JVM MemoryModel/" id="post-next" class="post-nav-link">
+      <a href="/2019/04/16/JVM GC_2/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">JVM内存模型</h4>
+        <h4 class="title">JVM垃圾回收（中）</h4>
       </a>
     </div>
   
@@ -380,7 +364,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/03/08/Java SortBubble/&title=《起泡排序》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/04/18/JVM GC_3/&title=《JVM垃圾回收（下）（回收器比较）》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -390,22 +374,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/03/08/Java SortBubble/&title=《起泡排序》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/04/18/JVM GC_3/&title=《JVM垃圾回收（下）（回收器比较）》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/03/08/Java SortBubble/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/04/18/JVM GC_3/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《起泡排序》 — migaoyang&url=http://yoursite.com/2019/03/08/Java SortBubble/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JVM垃圾回收（下）（回收器比较）》 — migaoyang&url=http://yoursite.com/2019/04/18/JVM GC_3/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/03/08/Java SortBubble/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/04/18/JVM GC_3/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -416,7 +400,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2019/03/08/Java SortBubble/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2019/04/18/JVM GC_3/" alt="微信分享二维码">
 </div>
 
 

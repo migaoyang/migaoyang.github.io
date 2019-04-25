@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-24T11:58:48.868Z</updated>
+  <updated>2019-04-25T05:48:27.812Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,63 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>JVM垃圾回收</title>
-    <link href="http://yoursite.com/2019/04/15/JVM%20GC/"/>
-    <id>http://yoursite.com/2019/04/15/JVM GC/</id>
+    <title>JVM垃圾回收（下）（回收器比较）</title>
+    <link href="http://yoursite.com/2019/04/18/JVM%20GC_3/"/>
+    <id>http://yoursite.com/2019/04/18/JVM GC_3/</id>
+    <published>2019-04-17T16:00:00.000Z</published>
+    <updated>2019-04-25T05:48:27.812Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&amp;emsp;&amp;emsp;针对新生代的垃圾回收器共有三个：Serial，Parallel Scavenge 和 Parallel New。这三个采用的都是 &lt;strong&gt;标记 - 复制&lt;/strong&gt; 算法。其中，Serial 是一个单线程的，Parallel New
+        
+      
+    
+    </summary>
+    
+      <category term="JVM" scheme="http://yoursite.com/categories/JVM/"/>
+    
+    
+      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JVM垃圾回收（中）</title>
+    <link href="http://yoursite.com/2019/04/16/JVM%20GC_2/"/>
+    <id>http://yoursite.com/2019/04/16/JVM GC_2/</id>
+    <published>2019-04-15T16:00:00.000Z</published>
+    <updated>2019-04-25T05:49:52.407Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;繁华声 遁入空门 折煞了世人&lt;br&gt;梦偏冷 辗转一生 情债又几本&lt;br&gt;如你默认 生死枯等&lt;br&gt;枯等一圈 又一圈的 年轮&lt;br&gt;浮屠塔 断了几层 断了谁的魂&lt;br&gt;痛直奔 一盏残灯 倾塌的山门&lt;br&gt;容我再等 历史转身&lt;br&gt;等酒香醇 等你弹 一曲古筝&lt;br&gt;雨纷纷
+        
+      
+    
+    </summary>
+    
+      <category term="JVM" scheme="http://yoursite.com/categories/JVM/"/>
+    
+    
+      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JVM垃圾回收(上)</title>
+    <link href="http://yoursite.com/2019/04/15/JVM%20GC_1/"/>
+    <id>http://yoursite.com/2019/04/15/JVM GC_1/</id>
     <published>2019-04-14T16:00:00.000Z</published>
-    <updated>2019-04-24T11:58:48.868Z</updated>
+    <updated>2019-04-25T05:35:16.984Z</updated>
     
     <summary type="html">
     
@@ -228,10 +280,10 @@
   
   <entry>
     <title>JVM内存模型</title>
-    <link href="http://yoursite.com/2019/02/18/JVMMemoryModel/"/>
-    <id>http://yoursite.com/2019/02/18/JVMMemoryModel/</id>
+    <link href="http://yoursite.com/2019/02/18/JVM%20MemoryModel/"/>
+    <id>http://yoursite.com/2019/02/18/JVM MemoryModel/</id>
     <published>2019-02-17T16:00:00.000Z</published>
-    <updated>2019-03-20T09:20:32.557Z</updated>
+    <updated>2019-04-25T02:12:07.254Z</updated>
     
     <summary type="html">
     
@@ -385,33 +437,6 @@
   </entry>
   
   <entry>
-    <title>Servlet（二）</title>
-    <link href="http://yoursite.com/2018/12/08/Java%20Web%20%20Servlet2/"/>
-    <id>http://yoursite.com/2018/12/08/Java Web  Servlet2/</id>
-    <published>2018-12-07T16:00:00.000Z</published>
-    <updated>2019-04-04T08:25:55.761Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;提要：Servlet配置路径、ServletConfig、ServletContext、&lt;/p&gt;
-&lt;h3 id=&quot;1-Servlet配置路径（xml或者注解）&quot;&gt;&lt;a href=&quot;#1-Servlet配置路径（xml或者注解）&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Servlet" scheme="http://yoursite.com/categories/Servlet/"/>
-    
-    
-      <category term="Servlet" scheme="http://yoursite.com/tags/Servlet/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Servlet（一）</title>
     <link href="http://yoursite.com/2018/12/08/Java%20Web%20%20Servlet1/"/>
     <id>http://yoursite.com/2018/12/08/Java Web  Servlet1/</id>
@@ -426,6 +451,33 @@
         
           &lt;p&gt;提要：Servlet执行过程、执行周期。  &lt;/p&gt;
 &lt;p&gt;在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 &lt;strong&gt;.class&lt;/strong&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="Servlet" scheme="http://yoursite.com/categories/Servlet/"/>
+    
+    
+      <category term="Servlet" scheme="http://yoursite.com/tags/Servlet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Servlet（二）</title>
+    <link href="http://yoursite.com/2018/12/08/Java%20Web%20%20Servlet2/"/>
+    <id>http://yoursite.com/2018/12/08/Java Web  Servlet2/</id>
+    <published>2018-12-07T16:00:00.000Z</published>
+    <updated>2019-04-04T08:25:55.761Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;提要：Servlet配置路径、ServletConfig、ServletContext、&lt;/p&gt;
+&lt;h3 id=&quot;1-Servlet配置路径（xml或者注解）&quot;&gt;&lt;a href=&quot;#1-Servlet配置路径（xml或者注解）&quot; class=&quot;headerlink&quot;
         
       
     
@@ -481,60 +533,6 @@
         
         
           &lt;p&gt;ArrayList与LinkedList的缺点就是按元素内容查找值时，查找元素的时间复杂度都较高，而HashMap查找元素的时间复杂度可以达到O(1)!&lt;br&gt;Map在这里是映射的关系，K-V之间相互映射，计算K的hashCode值，根据这个值去计算（取模
-        
-      
-    
-    </summary>
-    
-      <category term="java" scheme="http://yoursite.com/categories/java/"/>
-    
-    
-      <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
-    
-      <category term="java源码" scheme="http://yoursite.com/tags/java%E6%BA%90%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java泛型</title>
-    <link href="http://yoursite.com/2018/11/22/Java%20Generic/"/>
-    <id>http://yoursite.com/2018/11/22/Java Generic/</id>
-    <published>2018-11-21T16:00:00.000Z</published>
-    <updated>2018-12-07T04:56:35.225Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;泛型来源&quot;&gt;&lt;a href=&quot;#泛型来源&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="java" scheme="http://yoursite.com/categories/java/"/>
-    
-    
-      <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java源码-剖析LinkedList</title>
-    <link href="http://yoursite.com/2018/11/20/Java%20LinkedList/"/>
-    <id>http://yoursite.com/2018/11/20/Java LinkedList/</id>
-    <published>2018-11-19T16:00:00.000Z</published>
-    <updated>2018-12-07T04:58:03.323Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;ArrayLis通过索引值随机访问的效率很高，但是插入与删除的性能比较低；LinkedList也实现了List接口，而LIst接口扩展了Collection接口，Collection接口又扩展了Iterable接口。同时LinkedList还实现了队列接口Queue，就是平
         
       
     

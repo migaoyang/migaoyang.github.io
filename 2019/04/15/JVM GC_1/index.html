@@ -14,7 +14,7 @@
     
     
     
-    <title>JVM垃圾回收 | migaoyang | migaoyang</title>
+    <title>JVM垃圾回收(上) | migaoyang | migaoyang</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
@@ -24,14 +24,14 @@
     <meta name="description" content="&amp;emsp;&amp;emsp;茨威格在为路易十六的妻子玛丽·安托瓦内特写传记时曾无比感慨  “她那时候还太年轻，不知道所有命运馈赠的礼物，早已在暗中标好了价格”。&amp;emsp;&amp;emsp;JVM的内存管理，将原本由开发人员手动管理的内存，交给垃圾回收器来自动的回收管理。虽然极大的减轻了开发者的负担，但既然是自定机制，肯定不会像手动回收那样精准，同时还带来了不少与垃圾回收相关的问题。   引用计数法与可达性">
 <meta name="keywords" content="JVM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JVM垃圾回收">
-<meta property="og:url" content="http://yoursite.com/2019/04/15/JVM GC/index.html">
+<meta property="og:title" content="JVM垃圾回收(上)">
+<meta property="og:url" content="http://yoursite.com/2019/04/15/JVM GC_1/index.html">
 <meta property="og:site_name" content="migaoyang">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;茨威格在为路易十六的妻子玛丽·安托瓦内特写传记时曾无比感慨  “她那时候还太年轻，不知道所有命运馈赠的礼物，早已在暗中标好了价格”。&amp;emsp;&amp;emsp;JVM的内存管理，将原本由开发人员手动管理的内存，交给垃圾回收器来自动的回收管理。虽然极大的减轻了开发者的负担，但既然是自定机制，肯定不会像手动回收那样精准，同时还带来了不少与垃圾回收相关的问题。   引用计数法与可达性">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-24T11:58:48.868Z">
+<meta property="og:updated_time" content="2019-04-25T05:35:16.984Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JVM垃圾回收">
+<meta name="twitter:title" content="JVM垃圾回收(上)">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;茨威格在为路易十六的妻子玛丽·安托瓦内特写传记时曾无比感慨  “她那时候还太年轻，不知道所有命运馈赠的礼物，早已在暗中标好了价格”。&amp;emsp;&amp;emsp;JVM的内存管理，将原本由开发人员手动管理的内存，交给垃圾回收器来自动的回收管理。虽然极大的减轻了开发者的负担，但既然是自定机制，肯定不会像手动回收那样精准，同时还带来了不少与垃圾回收相关的问题。   引用计数法与可达性">
     
         <link rel="alternate" type="application/atom+xml" title="migaoyang" href="/atom.xml">
@@ -116,7 +116,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">JVM垃圾回收</div>
+        <div class="flex-col header-title ellipsis">JVM垃圾回收(上)</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -138,7 +138,7 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">JVM垃圾回收</h1>
+        <h1 class="title">JVM垃圾回收(上)</h1>
         <h5 class="subtitle">
             
                 <time datetime="2019-04-14T16:00:00.000Z" itemprop="datePublished" class="page-time">
@@ -168,10 +168,10 @@
     </aside>
 
 
-<article id="post-JVM GC" class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-JVM GC_1" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">JVM垃圾回收</h1>
+        <h1 class="post-card-title">JVM垃圾回收(上)</h1>
         <div class="post-meta">
             <time class="post-time" title="2019-04-15 00:00:00" datetime="2019-04-14T16:00:00.000Z" itemprop="datePublished">2019-04-15</time>
 
@@ -227,7 +227,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/04/15/JVM GC/&title=《JVM垃圾回收》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/04/15/JVM GC_1/&title=《JVM垃圾回收(上)》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -237,22 +237,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/04/15/JVM GC/&title=《JVM垃圾回收》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/04/15/JVM GC_1/&title=《JVM垃圾回收(上)》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/04/15/JVM GC/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/04/15/JVM GC_1/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JVM垃圾回收》 — migaoyang&url=http://yoursite.com/2019/04/15/JVM GC/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JVM垃圾回收(上)》 — migaoyang&url=http://yoursite.com/2019/04/15/JVM GC_1/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/04/15/JVM GC/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/04/15/JVM GC_1/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -272,7 +272,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/04/16/JVM GC_2/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">JVM垃圾回收（中）</h4>
+      </a>
+    </div>
   
 
   
@@ -369,7 +376,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/04/15/JVM GC/&title=《JVM垃圾回收》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/04/15/JVM GC_1/&title=《JVM垃圾回收(上)》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -379,22 +386,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/04/15/JVM GC/&title=《JVM垃圾回收》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/04/15/JVM GC_1/&title=《JVM垃圾回收(上)》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/04/15/JVM GC/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/04/15/JVM GC_1/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JVM垃圾回收》 — migaoyang&url=http://yoursite.com/2019/04/15/JVM GC/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JVM垃圾回收(上)》 — migaoyang&url=http://yoursite.com/2019/04/15/JVM GC_1/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/04/15/JVM GC/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/04/15/JVM GC_1/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -405,7 +412,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2019/04/15/JVM GC/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2019/04/15/JVM GC_1/" alt="微信分享二维码">
 </div>
 
 
