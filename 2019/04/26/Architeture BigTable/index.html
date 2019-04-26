@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Bigtable总结(上) | migaoyang | migaoyang</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="分布式架构,paper">
+    <meta name="description" content="&amp;emsp;&amp;emsp;既然目标是地平线&amp;emsp;留给世界的只能是背影&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;——汪国真&amp;emsp;&amp;emsp;本篇博客是我阅读Bigtable: A Distributed Storage">
+<meta name="keywords" content="分布式架构,paper">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bigtable总结(上)">
+<meta property="og:url" content="http://yoursite.com/2019/04/26/Architeture BigTable/index.html">
+<meta property="og:site_name" content="migaoyang">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;既然目标是地平线&amp;emsp;留给世界的只能是背影&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;——汪国真&amp;emsp;&amp;emsp;本篇博客是我阅读Bigtable: A Distributed Storage">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/Bigtable%20model.jpg">
+<meta property="og:image" content="http://yoursite.com/images/Bigtable%20tablet-hierarchy.jpg">
+<meta property="og:updated_time" content="2019-04-26T06:09:34.099Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bigtable总结(上)">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;既然目标是地平线&amp;emsp;留给世界的只能是背影&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;——汪国真&amp;emsp;&amp;emsp;本篇博客是我阅读Bigtable: A Distributed Storage">
+<meta name="twitter:image" content="http://yoursite.com/images/Bigtable%20model.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="migaoyang" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/1.jpg">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+  <!-- highlight.js代码高亮主题 css 引入-->
+  <link rel="stylesheet" href="/plugins/highlight/styles/dracula.css">
+  <!-- highlight.js代码高亮主题 css 引入-->
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">米高扬</h5>
+          <a href="mailto:mee.gaoyang@Outlook.com" title="mee.gaoyang@Outlook.com" class="mail">mee.gaoyang@Outlook.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                时间轴
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/migaoyang" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Bigtable总结(上)</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Bigtable总结(上)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-04-25T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-04-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分布式架构/">分布式架构</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据模型"><span class="post-toc-number">1.</span> <span class="post-toc-text">数据模型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#系统架构"><span class="post-toc-number">2.</span> <span class="post-toc-text">系统架构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Tablet-定位"><span class="post-toc-number">3.</span> <span class="post-toc-text">Tablet 定位</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Architeture BigTable" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Bigtable总结(上)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-04-26 00:00:00" datetime="2019-04-25T16:00:00.000Z" itemprop="datePublished">2019-04-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分布式架构/">分布式架构</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>&emsp;&emsp;<em>既然目标是地平线&emsp;留给世界的只能是背影<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——汪国真</em><br>&emsp;&emsp;本篇博客是我阅读<a href="http://static.usenix.org/events/osdi06/tech/chang/chang_html/?em_x=22" target="_blank" rel="noopener">Bigtable: A Distributed Storage System for Structured Data</a>的论文以及<a href="">相关资料</a>总结而来(我认为阅读原文还有很有必要的)。当然也是我自己的理解，如有问题请邮件联系<a href="mailto:mee.gaoyang@OutLook.com" target="_blank" rel="noopener">mee.gaoyang@OutLook.com</a> 期待能进行相互讨论 :)<br>&emsp;&emsp;Bigtable是一种分布式的管理、组织结构化数据（Structured Data 因为它实际存储的都是字符串）的存储系统，当然他最终的存储仍然使用的是GFS。Bigtable已经实现了以下几个目标wide applicability, scalability, high performance, and high availability。<br>&emsp;&emsp;许多人把Bigtable直接理解为是像SQL这样的数据库再加上一个分布式的特点，我认为他们的差距还是很大的，甚至Bigtable不应该简单的称作数据库，而更应该是一种数据存储系统。以下是Bigtable的几个特点：</p>
+<ol>
+<li>Bigtable没有SQL数据库中像实体完整性、参照完整性、用户定义的完整性这样的关于数据完整性的约束。  </li>
+<li>与之相反Bigtable提供了一个简单的数据模型，利用这个数据模型clients是可以动态的去控制 <strong>数据的存储位置与格式</strong> 。clients也可以自己去推测需要 <strong>数据的位置相关性</strong>（clients to reason about the locality properties of the data represented in the underlying storage.）  </li>
+<li>存储数据的下标是行与列的名字，而这些名字都是字符串的形式。Bigtable不去解析这些字符串，仅仅去存储已经被串行化为字符串的各种结构化数据或者半结构化的数据。  <h3 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h3>&emsp;&emsp;Bigtable是一个稀疏的、分布式的、持久化存储的多维度排序 Map（A Bigtable is a sparse, distributed, persistent multidimensional sorted map. The map is indexed by a row<br>key, column key, and a timestamp; each value in the map<br>is an uninterpreted array of bytes），我们可以使用行关键字、列关键字与时间戳可以定位到一个我们希望得到的数据。就像下面显示的定位数据的方式：  <pre><code>(row:string,  column:string,  time:int64)  →  string
+</code></pre><img src="/images/Bigtable model.jpg" alt="">   </li>
+</ol>
+<p>&emsp;&emsp;Row Key指的是行关键字，Cell 指的是一个数据项。<br>&emsp;&emsp;Bigtable在存储数据时会按照 Cell 的 Row Key 对 Table 进行字典排序（也就是先按Row Key关键字去分为一小组，然后对于这一小组根据其版本号进行一个排序，前面提到的 <strong>位置相关性</strong> 也是基于此），Bigtable提供行级事务的支持，，不支持跨行事务。存储的时候，Bigtable 会把一个 Table 按 Row 切分成若干个相邻的 <strong>Tablet</strong> ，并将划分的 Tablet 分配到不同的 Tablet Server 上存储。因此，clients查询较为接近的 Row Key 时 Cell 落在同一个 Tablet 上的概念也会更大，查询的效率也会更高。<br>&emsp;&emsp;针对于数据权限上的控制，Bigtable 会按照由若干个 Column 组成的 Column Family（列族，如上图中红框里的两列就是一个列簇）对 Table 的访问权限控制。<strong>Column Key</strong> 由 <strong>family:qualifier</strong> 的形式组成，用户在使用前必须首先声明 Table 中有哪些 Column Family，声明后即可在该 Column Family 中创建任意 Column。由于同一个 Column Family 中存储的数据通常属于同一类型，Bigtable 还会对属于同一 Column Family 的数据进行合并压缩（因为Bigtable是稀疏的）。由于 Bigtable 允许用户以 Column Family 为单位为其他用户设定数据访问权限，数据统计作业有时也会从一个 Column Family 中读出数据后，将统计结果写入到另一个 Column Family 中。<br>&emsp;&emsp;Table 中的不同 Cell 可以保存同一份数据的多个版本，以时间戳进行区分。时间戳本质上为 64 位整数，可由 Bigtable 自动设定为数据写入的当前时间（微秒），也可由应用自行设定，但应用需要自行确保 Cell 间不会出现冲突。对于拥有相同 Row Key 和 Column Key 的 Cell，Bigtable 会按照时间戳降序进行排序，如此一来最新的数据便会被首先读取。在此基础上，用户还可以设定让 Bigtable 只保存最近若干个版本的数据或是时间戳在指定时间范围内的数据。  </p>
+<h3 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h3><p>&emsp;&emsp;一个完整的 Bigtable 集群由两类节点组成：Master 和 Tablet Server。<br>&emsp;&emsp;Master 负责检测集群中的 Tablet Server 组成以及它们的加入和退出事件，会将 Tablet 分配至 Tablet Server，并负责均衡 Tablet Server 间的存储负载以及从 GFS 上回收无用的文件。除外，Master 还负责管理如 Table、Column Family 的创建和删除等 Schema 修改操作。<br>&emsp;&emsp;每个 Tablet Server 会负责管理若干个由 Master 指定的 Tablet，负责处理针对这些 Tablet 的读写请求，并负责在 Tablet 变得过大时对其进行切分。<br>&emsp;&emsp;Bigtable 集群会管理若干个 Table，每个 Table 由若干个 Tablet 组成，每个 Tablet 都会关联一个指定的 Row Key 范围，那么这个 Tablet 就包含了该 Table 在该范围内的所有数据。初始时，Table 会只有一个 Tablet，随着 Tablet 增大被 Tablet Server 自动切分，Table 就会包含越来越多的 Tablet。  </p>
+<h3 id="Tablet-定位"><a href="#Tablet-定位" class="headerlink" title="Tablet 定位"></a>Tablet 定位</h3><p>&emsp;&emsp;Bigtable 的 Tablet 之间会形成一个三层结构，具体如下：</p>
+<ol>
+<li>在 Chubby（一种分布式锁） 中的一个 File 保存着 Root Tablet 的位置</li>
+<li>Root Tablet 保存着 METADATA Table 所有 Tablet 的位置</li>
+<li>METADATA Table 中保存着其他所有 Table 的 Tablet 的位置   </li>
+</ol>
+<p><img src="/images/Bigtable tablet-hierarchy.jpg" alt=""><br>&emsp;&emsp;Root Tablet 是特殊的：无论它的体积如何增长都不会被切分，保证唯一。METADATA 中的每一行都代表 Bigtable 中其他 Table 的一个 Tablet，其 Row Key 由该 Tablet 的 Table 名及 Row Key 上限编码而成。除了 Tablet 的位置信息外，METADATA 表也会保存一些其他有用的元信息，例如 Tablet 的事件日志等。<br>&emsp;&emsp;客户端想要定位某个 Tablet 时，便会递归地安装上述层次向下求得位置，并把中间获得的结果缓存在自己的内存中。如果某一时刻客户端发现缓存在内存中的地址已不再有效，它便会再次递归地沿着上述层次向上，最终再次向下求得所需 Tablet 的位置。  </p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="米高扬">
+            米高扬
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper/">paper</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分布式架构/">分布式架构</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/04/26/Architeture BigTable/&title=《Bigtable总结(上)》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/04/26/Architeture BigTable/&title=《Bigtable总结(上)》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/04/26/Architeture BigTable/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Bigtable总结(上)》 — migaoyang&url=http://yoursite.com/2019/04/26/Architeture BigTable/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/04/26/Architeture BigTable/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/04/21/Architeture GFS/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">The Google File System总结</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>米高扬 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/04/26/Architeture BigTable/&title=《Bigtable总结(上)》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/04/26/Architeture BigTable/&title=《Bigtable总结(上)》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/04/26/Architeture BigTable/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Bigtable总结(上)》 — migaoyang&url=http://yoursite.com/2019/04/26/Architeture BigTable/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/04/26/Architeture BigTable/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2019/04/26/Architeture BigTable/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '米高扬的博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '米高扬的博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+  <!-- highlight.js代码高亮主题 script 引入-->
+  <script src="/plugins/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- highlight.js代码高亮主题 script 引入-->
+</body>
+</html>

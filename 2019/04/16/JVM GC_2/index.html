@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/JVM_GC.png">
 <meta property="og:image" content="http://yoursite.com/images/JVM_GCFromTo.png">
-<meta property="og:updated_time" content="2019-04-25T05:49:52.407Z">
+<meta property="og:updated_time" content="2019-04-26T06:11:35.019Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM垃圾回收（中）">
 <meta name="twitter:description" content="繁华声 遁入空门 折煞了世人梦偏冷 辗转一生 情债又几本如你默认 生死枯等枯等一圈 又一圈的 年轮浮屠塔 断了几层 断了谁的魂痛直奔 一盏残灯 倾塌的山门容我再等 历史转身等酒香醇 等你弹 一曲古筝雨纷纷 旧故里草木深我听闻 你始终一个人斑驳的城门 盘踞着老树根石板上回荡的是 再等&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;——方文山">
@@ -187,7 +187,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>繁华声 遁入空门 折煞了世人<br>梦偏冷 辗转一生 情债又几本<br>如你默认 生死枯等<br>枯等一圈 又一圈的 年轮<br>浮屠塔 断了几层 断了谁的魂<br>痛直奔 一盏残灯 倾塌的山门<br>容我再等 历史转身<br>等酒香醇 等你弹 一曲古筝<br>雨纷纷 旧故里草木深<br>我听闻 你始终一个人<br>斑驳的城门 盘踞着老树根<br>石板上回荡的是 再等<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——方文山</p>
+            <p><em>繁华声 遁入空门 折煞了世人<br>梦偏冷 辗转一生 情债又几本<br>如你默认 生死枯等<br>枯等一圈 又一圈的 年轮<br>浮屠塔 断了几层 断了谁的魂<br>痛直奔 一盏残灯 倾塌的山门<br>容我再等 历史转身<br>等酒香醇 等你弹 一曲古筝<br>雨纷纷 旧故里草木深<br>我听闻 你始终一个人<br>斑驳的城门 盘踞着老树根<br>石板上回荡的是 再等<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——方文山</em>  </p>
 <p>&emsp;&emsp;烟花易冷，珍惜当下。大部分的 Java 对象只存活一小段时间，而存活下来的小部分 Java 对象则会存活很长一段时间。下图（Java 对象生命周期的直方图，红色的表示被逃逸分析优化掉的对象）是一些研究者对Java对象生命周期的动态分析的结果。<br><img src="/images/JVM_GC.png" alt="Alt text"><br>&emsp;&emsp;Java 虚拟机的分代回收思想。简单来说，就是将堆空间划分为两代，分别叫做新生代和老年代。新生代用来存储新建的对象。当对象存活时间够长时，则将其移动到老年代。<br>&emsp;&emsp;Java 虚拟机可以给不同代使用不同的回收算法。对于 <strong>于新生代</strong>，我们猜测大部分的 Java 对象只存活一小段时间，那么便可以频繁地采用耗时较短的垃圾回收算法，让大部分的垃圾都能够在新生代被回收掉。<br>&emsp;&emsp;对于 <strong>老年代</strong>，我们猜测大部分的垃圾已经在新生代中被回收了，而在老年代中的对象有大概率会继续存活。当真正触发针对老年代的回收时，则代表这个假设出错了，或者堆的空间已经耗尽了。<br>&emsp;&emsp;这时候，Java 虚拟机往往需要做一次全堆扫描，耗时也将不计成本。（当然，现代的垃圾回收器都在并发收集的道路上发展，来避免这种全堆扫描的情况。）<br>&emsp;&emsp;本文我们会首先关注一下针对新生代的 Minor GC。以下我们先探讨下Java 虚拟机中的堆具体是咋划分的。  </p>
 <h3 id="Java-虚拟机的堆划分"><a href="#Java-虚拟机的堆划分" class="headerlink" title="Java 虚拟机的堆划分"></a>Java 虚拟机的堆划分</h3><p>&emsp;&emsp;众所周知，Java 虚拟机将堆划分为新生代和老年代。其中，新生代又被划分为 Eden 区，以及两个大小相同的 Survivor 区。<br>&emsp;&emsp;默认情况下，Java 虚拟机采取的是一种动态分配的策略（对应 Java 虚拟机参数 <strong>-XX:+UsePSAdaptiveSurvivorSizePolicy</strong>），根据生成对象的速率，以及 Survivor 区的使用情况动态调整 Eden 区和 Survivor 区的比例。<br>&emsp;&emsp;当然，我们也可以通过参数 <strong>-XX:SurvivorRatio</strong> 来固定这个比例。但是需要注意的是，其中一个 Survivor 区会一直为空，因此比例越低浪费的堆空间将越高。<br><img src="/images/JVM_GCFromTo.png" alt="Alt text"><br>&emsp;&emsp;通常来说，当我们调用 new 指令时，它会在 Eden 区中划出一块作为存储对象的内存。由于堆空间是线程共享的，因此直接在这里边划空间是需要进行同步的。<br>&emsp;&emsp;否则，将有可能出现两个对象共用一段内存的事故。这里就相当于两个司机（线程）同时将车停入同一个停车位，因而发生剐蹭事故。<br>&emsp;&emsp;Java 虚拟机的解决方法是为每个司机预先申请多个停车位，并且只允许该司机停在自己的停车位上。那么当司机的停车位用完了该怎么办呢（假设这个司机代客泊车）？<br>&emsp;&emsp;答案是：再申请多个停车位便可以了。这项技术被称之为 TLAB（Thread Local Allocation Buffer，对应虚拟机参数 -XX:+UseTLAB，默认开启）。<br>&emsp;&emsp;具体来说，每个线程可以向 Java 虚拟机申请一段连续的内存，比如 2048 字节，作为线程私有的 TLAB。<br>&emsp;&emsp;这个操作需要加锁，线程需要维护两个指针（实际上可能更多，但重要也就两个），一个指向 TLAB 中空余内存的起始位置，一个则指向 TLAB 末尾。<br>&emsp;&emsp;接下来的 new 指令，便可以直接通过指针加法（bump the pointer）来实现，即把指向空余内存位置的指针加上所请求的字节数。   </p>
 <blockquote>

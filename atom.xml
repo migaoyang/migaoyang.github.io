@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-25T14:00:58.118Z</updated>
+  <updated>2019-04-26T06:09:34.099Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>The Google File System总结</title>
-    <link href="http://yoursite.com/2019/04/21/Architeture%20GFS/"/>
-    <id>http://yoursite.com/2019/04/21/Architeture GFS/</id>
-    <published>2019-04-20T16:00:00.000Z</published>
-    <updated>2019-04-25T14:00:58.118Z</updated>
+    <title>Bigtable总结(上)</title>
+    <link href="http://yoursite.com/2019/04/26/Architeture%20BigTable/"/>
+    <id>http://yoursite.com/2019/04/26/Architeture BigTable/</id>
+    <published>2019-04-25T16:00:00.000Z</published>
+    <updated>2019-04-26T06:09:34.099Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,35 @@
       
         
         
-          &lt;p&gt;&amp;emsp;&amp;emsp;做你应该做的&amp;emsp;追你喜欢的&lt;br&gt;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;——xiaomi&lt;br&gt;这篇文章是我阅读&lt;a
+          &lt;p&gt;&amp;emsp;&amp;emsp;&lt;em&gt;既然目标是地平线&amp;emsp;留给世界的只能是背影&lt;br&gt;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;em
+        
+      
+    
+    </summary>
+    
+      <category term="分布式架构" scheme="http://yoursite.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="分布式架构" scheme="http://yoursite.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84/"/>
+    
+      <category term="paper" scheme="http://yoursite.com/tags/paper/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>The Google File System总结</title>
+    <link href="http://yoursite.com/2019/04/21/Architeture%20GFS/"/>
+    <id>http://yoursite.com/2019/04/21/Architeture GFS/</id>
+    <published>2019-04-20T16:00:00.000Z</published>
+    <updated>2019-04-26T06:10:22.927Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&amp;emsp;&amp;emsp;&lt;em&gt;做你该做的&amp;emsp;追你喜欢的&lt;br&gt;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;——xiaomi&lt;/em&gt;&lt;br&gt;&amp;emsp;&amp;emsp;
         
       
     
@@ -75,7 +103,7 @@
     <link href="http://yoursite.com/2019/04/16/JVM%20GC_2/"/>
     <id>http://yoursite.com/2019/04/16/JVM GC_2/</id>
     <published>2019-04-15T16:00:00.000Z</published>
-    <updated>2019-04-25T05:49:52.407Z</updated>
+    <updated>2019-04-26T06:11:35.019Z</updated>
     
     <summary type="html">
     
@@ -83,7 +111,7 @@
       
         
         
-          &lt;p&gt;繁华声 遁入空门 折煞了世人&lt;br&gt;梦偏冷 辗转一生 情债又几本&lt;br&gt;如你默认 生死枯等&lt;br&gt;枯等一圈 又一圈的 年轮&lt;br&gt;浮屠塔 断了几层 断了谁的魂&lt;br&gt;痛直奔 一盏残灯 倾塌的山门&lt;br&gt;容我再等 历史转身&lt;br&gt;等酒香醇 等你弹 一曲古筝&lt;br&gt;雨纷纷
+          &lt;p&gt;&lt;em&gt;繁华声 遁入空门 折煞了世人&lt;br&gt;梦偏冷 辗转一生 情债又几本&lt;br&gt;如你默认 生死枯等&lt;br&gt;枯等一圈 又一圈的 年轮&lt;br&gt;浮屠塔 断了几层 断了谁的魂&lt;br&gt;痛直奔 一盏残灯 倾塌的山门&lt;br&gt;容我再等 历史转身&lt;br&gt;等酒香醇 等你弹
         
       
     
@@ -101,7 +129,7 @@
     <link href="http://yoursite.com/2019/04/15/JVM%20GC_1/"/>
     <id>http://yoursite.com/2019/04/15/JVM GC_1/</id>
     <published>2019-04-14T16:00:00.000Z</published>
-    <updated>2019-04-25T05:35:16.984Z</updated>
+    <updated>2019-04-26T06:14:29.051Z</updated>
     
     <summary type="html">
     
@@ -109,7 +137,7 @@
       
         
         
-          &lt;p&gt;&amp;emsp;&amp;emsp;茨威格在为路易十六的妻子玛丽·安托瓦内特写传记时曾无比感慨 
+          &lt;p&gt;&amp;emsp;&amp;emsp;&lt;em&gt;茨威格在为路易十六的妻子玛丽·安托瓦内特写传记时曾无比感慨
         
       
     
@@ -359,32 +387,6 @@
   </entry>
   
   <entry>
-    <title>事务</title>
-    <link href="http://yoursite.com/2019/01/03/Java%20Web%20%20Transaction/"/>
-    <id>http://yoursite.com/2019/01/03/Java Web  Transaction/</id>
-    <published>2019-01-02T16:00:00.000Z</published>
-    <updated>2019-01-03T13:31:14.833Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;事务&quot;&gt;&lt;a href=&quot;#事务&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="JDBC" scheme="http://yoursite.com/categories/JDBC/"/>
-    
-    
-      <category term="java高级" scheme="http://yoursite.com/tags/java%E9%AB%98%E7%BA%A7/"/>
-    
-  </entry>
-  
-  <entry>
     <title>连接池</title>
     <link href="http://yoursite.com/2019/01/03/Java%20Web%20%20ConnectionPool/"/>
     <id>http://yoursite.com/2019/01/03/Java Web  ConnectionPool/</id>
@@ -399,6 +401,32 @@
         
           &lt;h3 id=&quot;数据库连接池&quot;&gt;&lt;a href=&quot;#数据库连接池&quot; class=&quot;headerlink&quot; title=&quot;数据库连接池&quot;&gt;&lt;/a&gt;数据库连接池&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;数据库连接的对象创建，比较消耗性能。    
+        
+      
+    
+    </summary>
+    
+      <category term="JDBC" scheme="http://yoursite.com/categories/JDBC/"/>
+    
+    
+      <category term="java高级" scheme="http://yoursite.com/tags/java%E9%AB%98%E7%BA%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>事务</title>
+    <link href="http://yoursite.com/2019/01/03/Java%20Web%20%20Transaction/"/>
+    <id>http://yoursite.com/2019/01/03/Java Web  Transaction/</id>
+    <published>2019-01-02T16:00:00.000Z</published>
+    <updated>2019-01-03T13:31:14.833Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;事务&quot;&gt;&lt;a href=&quot;#事务&quot; class=&quot;headerlink&quot;
         
       
     
@@ -465,33 +493,6 @@
   </entry>
   
   <entry>
-    <title>Servlet（二）</title>
-    <link href="http://yoursite.com/2018/12/08/Java%20Web%20%20Servlet2/"/>
-    <id>http://yoursite.com/2018/12/08/Java Web  Servlet2/</id>
-    <published>2018-12-07T16:00:00.000Z</published>
-    <updated>2019-04-04T08:25:55.761Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;提要：Servlet配置路径、ServletConfig、ServletContext、&lt;/p&gt;
-&lt;h3 id=&quot;1-Servlet配置路径（xml或者注解）&quot;&gt;&lt;a href=&quot;#1-Servlet配置路径（xml或者注解）&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Servlet" scheme="http://yoursite.com/categories/Servlet/"/>
-    
-    
-      <category term="Servlet" scheme="http://yoursite.com/tags/Servlet/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Servlet（一）</title>
     <link href="http://yoursite.com/2018/12/08/Java%20Web%20%20Servlet1/"/>
     <id>http://yoursite.com/2018/12/08/Java Web  Servlet1/</id>
@@ -519,11 +520,11 @@
   </entry>
   
   <entry>
-    <title>java源码-剖析HashSet</title>
-    <link href="http://yoursite.com/2018/11/30/Java%20HashSet/"/>
-    <id>http://yoursite.com/2018/11/30/Java HashSet/</id>
-    <published>2018-11-29T16:00:00.000Z</published>
-    <updated>2018-12-13T11:57:27.210Z</updated>
+    <title>Servlet（二）</title>
+    <link href="http://yoursite.com/2018/12/08/Java%20Web%20%20Servlet2/"/>
+    <id>http://yoursite.com/2018/12/08/Java Web  Servlet2/</id>
+    <published>2018-12-07T16:00:00.000Z</published>
+    <updated>2019-04-04T08:25:55.761Z</updated>
     
     <summary type="html">
     
@@ -531,19 +532,17 @@
       
         
         
-          &lt;p&gt;Map接口中的keySet方法与entrySet方法返回值类型的都是Set。  &lt;/p&gt;
-&lt;h3 id=&quot;HashSet的Set接口&quot;&gt;&lt;a href=&quot;#HashSet的Set接口&quot; class=&quot;headerlink&quot;
+          &lt;p&gt;提要：Servlet配置路径、ServletConfig、ServletContext、&lt;/p&gt;
+&lt;h3 id=&quot;1-Servlet配置路径（xml或者注解）&quot;&gt;&lt;a href=&quot;#1-Servlet配置路径（xml或者注解）&quot; class=&quot;headerlink&quot;
         
       
     
     </summary>
     
-      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+      <category term="Servlet" scheme="http://yoursite.com/categories/Servlet/"/>
     
     
-      <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
-    
-      <category term="java源码" scheme="http://yoursite.com/tags/java%E6%BA%90%E7%A0%81/"/>
+      <category term="Servlet" scheme="http://yoursite.com/tags/Servlet/"/>
     
   </entry>
   
