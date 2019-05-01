@@ -21,19 +21,19 @@
     
     
     <meta name="keywords" content="JVM">
-    <meta name="description" content="&amp;emsp;&amp;emsp;我个人认为应该把注意力放在前两篇文章中，例如 寻找失活对象的方法、安全点的建立、分代回收的思想、Thread Local Allocation Buffer、卡表。 所以本篇主要记录了各种各种收集器的使用场景与他们的比较。更详细的描绘可浏览Oracle的官方说明：https://blogs.oracle.com/jonthecollector/our-collectors">
+    <meta name="description" content="&amp;emsp;&amp;emsp;人们真正注意到你的时候，不是第一眼看到你站在那里，而是发现过了那么久你居然还在那里 :)&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;">
 <meta name="keywords" content="JVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM垃圾回收（下）（回收器比较）">
 <meta property="og:url" content="http://yoursite.com/2019/04/18/JVM GC_3/index.html">
 <meta property="og:site_name" content="migaoyang">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;我个人认为应该把注意力放在前两篇文章中，例如 寻找失活对象的方法、安全点的建立、分代回收的思想、Thread Local Allocation Buffer、卡表。 所以本篇主要记录了各种各种收集器的使用场景与他们的比较。更详细的描绘可浏览Oracle的官方说明：https://blogs.oracle.com/jonthecollector/our-collectors">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;人们真正注意到你的时候，不是第一眼看到你站在那里，而是发现过了那么久你居然还在那里 :)&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/JVM_GCCollections.jpg">
-<meta property="og:updated_time" content="2019-04-25T07:44:01.388Z">
+<meta property="og:updated_time" content="2019-05-01T07:55:45.674Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM垃圾回收（下）（回收器比较）">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp;我个人认为应该把注意力放在前两篇文章中，例如 寻找失活对象的方法、安全点的建立、分代回收的思想、Thread Local Allocation Buffer、卡表。 所以本篇主要记录了各种各种收集器的使用场景与他们的比较。更详细的描绘可浏览Oracle的官方说明：https://blogs.oracle.com/jonthecollector/our-collectors">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;人们真正注意到你的时候，不是第一眼看到你站在那里，而是发现过了那么久你居然还在那里 :)&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;">
 <meta name="twitter:image" content="http://yoursite.com/images/JVM_GCCollections.jpg">
     
         <link rel="alternate" type="application/atom+xml" title="migaoyang" href="/atom.xml">
@@ -186,7 +186,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>&emsp;&emsp;我个人认为应该把注意力放在前两篇文章中，例如 <strong>寻找失活对象的方法、安全点的建立、分代回收的思想、Thread Local Allocation Buffer、卡表。</strong> 所以本篇主要记录了各种各种收集器的使用场景与他们的比较。更详细的描绘可浏览Oracle的官方说明：<a href="https://blogs.oracle.com/jonthecollector/our-collectors" target="_blank" rel="noopener">https://blogs.oracle.com/jonthecollector/our-collectors</a>     </p>
+            <p>&emsp;&emsp;<em>人们真正注意到你的时候，不是第一眼看到你站在那里，而是发现过了那么久你居然还在那里 :)<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——黑客与画家</em><br>&emsp;&emsp;我个人认为应该把注意力放在前两篇文章中，例如 <strong>寻找失活对象的方法、安全点的建立、分代回收的思想、Thread Local Allocation Buffer、卡表。</strong> 所以本篇主要记录了各种各种收集器的使用场景与他们的比较。更详细的描绘可浏览Oracle的官方说明：<a href="https://blogs.oracle.com/jonthecollector/our-collectors" target="_blank" rel="noopener">https://blogs.oracle.com/jonthecollector/our-collectors</a>     </p>
 <p><img src="/images/JVM_GCCollections.jpg" alt="Alt text"><br>&emsp;&emsp;<strong>上图中的 ‘?’ 就是目前的G1回收器。</strong><br>&emsp;&emsp;针对新生代的垃圾回收器共有三个：Serial，Parallel Scavenge 和 Parallel New。这三个采用的都是 <strong>标记 - 复制</strong> 算法。其中，Serial 是一个单线程的，Parallel New 可以看成 Serial 的多线程版本。Parallel Scavenge 和 Parallel New 类似，但更加注重吞吐率。此外，Parallel Scavenge 不能与 CMS 一起使用。<br>&emsp;&emsp;针对老年代的垃圾回收器也有三个：Serial Old 和 Parallel Old，以及 CMS。Serial Old 和 Parallel Old 都是 <strong>标记 - 压缩</strong> 算法。同样，前者是单线程的，而后者可以看成前者的多线程版本。  </p>
 <p>&emsp;&emsp;CMS 采用的是标记 - 清除算法，并且是并发的。除了少数几个操作需要 Stop-the-world 之外，它可以在应用程序运行过程中进行垃圾回收。在并发收集失败的情况下，Java 虚拟机会使用其他两个压缩型垃圾回收器进行一次垃圾回收。由于 G1 的出现，CMS 在 Java 9 中已被废弃 [1]。</p>
 <p>&emsp;&emsp;G1（Garbage First）是一个横跨新生代和老年代的垃圾回收器。实际上，它已经打乱了前面所说的堆结构，直接将堆分成极其多个区域。每个区域都可以充当 Eden 区、Survivor 区或者老年代中的一个。它采用的是标记 - 压缩算法，而且和 CMS 一样都能够在应用程序运行过程中并发地进行垃圾回收。   </p>

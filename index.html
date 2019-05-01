@@ -181,7 +181,8 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        &emsp;&emsp;做你该做的&emsp;追你喜欢的事&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——xiaomi&emsp;&emsp;在看了Google关于大数据的几篇开山论文之后，我又看了看Hadoop的架构设计，虽然Hadoop关键组件的设计原本就是Google的GFS、Bigtable、MapReduce但还是在工程实现上有着自己的特点。本篇博客我会写一写我对Hadoop在存储、资源调度、计算方面的理解，以后也可能会具体的针对重要的组件在进行详细记录 :) ,当然如果你发现我...
+        &emsp;&emsp;在看了Google关于大数据的几篇开山论文之后，我又看了看Hadoop的架构设计，虽然Hadoop关键组件的设计原本就是Google的GFS、Bigtable、MapReduce但还是在工程实现上有着自己的特点。本篇博客我会写一写我对Hadoop在存储、资源调度、计算方面的理解，以后也可能会具体的针对重要的组件在进行详细记录 :) ,当然如果你发现我的理解有问题或者有其它问题,我们都可以邮件交流鸭 mee.gaoyang@OutLook.com :)  
+分布式系统&emsp;&emsp;A distributed system is a collection o...
     
 
         <a href="/2019/05/02/Architeture Hadoop/" class="post-more waves-effect waves-button">
@@ -273,10 +274,10 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        &emsp;&emsp;做你该做的&emsp;追你喜欢的事&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——xiaomi&emsp;&emsp;这篇博客是我阅读Google File System的论文以及相关资料并总结而来。当然也是我自己的理解，如有问题请邮件联系mee.gaoyang@OutLook.com :)
+        &emsp;&emsp;做你该做的&emsp;追你喜欢的&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——xiaomi&emsp;&emsp;这篇博客是我阅读Google File System的论文以及相关资料并总结而来。当然也是我自己的理解，如有问题请邮件联系mee.gaoyang@OutLook.com :)
 GFS的主要设计需求GFS是应用到Google内部的文件系统，针对于其自身的业务场景需求，设计主要基于以下几个需求：
 
-节点失效是常态。系统会构建在大量的普通廉价机器上，这使得...
+节点失效是常态。系统会构建在大量的普通廉价机器上，这使得节...
     
 
         <a href="/2019/04/21/Architeture GFS/" class="post-more waves-effect waves-button">
@@ -322,8 +323,7 @@ GFS的主要设计需求GFS是应用到Google内部的文件系统，针对于�
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        &emsp;&emsp;我个人认为应该把注意力放在前两篇文章中，例如 寻找失活对象的方法、安全点的建立、分代回收的思想、Thread Local Allocation Buffer、卡表。 所以本篇主要记录了各种各种收集器的使用场景与他们的比较。更详细的描绘可浏览Oracle的官方说明：https://blogs.oracle.com/jonthecollector/our-collectors     
-&emsp;&emsp;上图中的 ‘?’ 就是目前的G1回收器。&emsp;&emsp;针对新生代的垃圾回收器共有三个：Serial，Parallel Scavenge 和 Paral...
+        &emsp;&emsp;人们真正注意到你的时候，不是第一眼看到你站在那里，而是发现过了那么久你居然还在那里 :)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——黑客与画家&emsp;&emsp;我个人认为应该把注意力放在前两篇文章中，例如 寻找失活对象的方法、安全点的建立、分代...
     
 
         <a href="/2019/04/18/JVM GC_3/" class="post-more waves-effect waves-button">
@@ -1113,7 +1113,7 @@ Class.forName("com.mysql.jdbc.Driver");
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Java Web  Servlet2" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-Java Web  Servlet1" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
         <time class="post-time" title="2018-12-08 00:00:00" datetime="2018-12-07T16:00:00.000Z" itemprop="datePublished">2018-12-08</time>
@@ -1130,7 +1130,7 @@ Class.forName("com.mysql.jdbc.Driver");
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/12/08/Java Web  Servlet2/">Servlet（二）</a>
+      <a class="post-title-link" href="/2018/12/08/Java Web  Servlet1/">Servlet（一）</a>
     </h3>
   
 
@@ -1140,29 +1140,15 @@ Class.forName("com.mysql.jdbc.Driver");
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        提要：Servlet配置路径、ServletConfig、ServletContext、
-1. Servlet配置路径（xml或者注解）假设项目名称为a。  
-
-全路径匹配  
-
-以 / 开始　/a/aa/bblocalhost:8080/项目名称/aa/bb  
-
-
-路径匹配 , 前半段匹配   
-
- 以/ 开始 , 但是以 * 结束 　　   / a / */*符号 * 其实是一个通配符，匹配任意文字localhost:8080/项目名称/aa/bb
-
-
-以扩展名匹配    
-
-写法： 没有/　以 * 开始　　*.扩展名　　*.aa　　*.bb
-
-
-
-2. ServletConfig...
+        提要：Servlet执行过程、执行周期。  
+在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 .class 。在Servlet/JSP中，web容器（Container）是Servlet/JSP唯一认识的HTTP服务器。我们需要知道Servlet/JSP与web容器是如何沟通的，web容器如何管理Servlet/JSP的各种对象等问题。  
+Hello Servlet
+新建一个类， 实现Servlet接口
+配置Servlet ， 用意： 告诉服务器，我们的应用有这么些个servlet。在webContent/WEB-INF/web.xml里面写上以下内容。  
+...
     
 
-        <a href="/2018/12/08/Java Web  Servlet2/" class="post-more waves-effect waves-button">
+        <a href="/2018/12/08/Java Web  Servlet1/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>

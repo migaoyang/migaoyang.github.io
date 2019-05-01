@@ -154,7 +154,7 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-Java Web  Servlet1" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-Java Web  Servlet2" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
         <time class="post-time" title="2018-12-08 00:00:00" datetime="2018-12-07T16:00:00.000Z" itemprop="datePublished">2018-12-08</time>
@@ -171,7 +171,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/12/08/Java Web  Servlet1/">Servlet（一）</a>
+      <a class="post-title-link" href="/2018/12/08/Java Web  Servlet2/">Servlet（二）</a>
     </h3>
   
 
@@ -181,15 +181,29 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        提要：Servlet执行过程、执行周期。  
-在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 .class 。在Servlet/JSP中，web容器（Container）是Servlet/JSP唯一认识的HTTP服务器。我们需要知道Servlet/JSP与web容器是如何沟通的，web容器如何管理Servlet/JSP的各种对象等问题。  
-Hello Servlet
-新建一个类， 实现Servlet接口
-配置Servlet ， 用意： 告诉服务器，我们的应用有这么些个servlet。在webContent/WEB-INF/web.xml里面写上以下内容。  
-...
+        提要：Servlet配置路径、ServletConfig、ServletContext、
+1. Servlet配置路径（xml或者注解）假设项目名称为a。  
+
+全路径匹配  
+
+以 / 开始　/a/aa/bblocalhost:8080/项目名称/aa/bb  
+
+
+路径匹配 , 前半段匹配   
+
+ 以/ 开始 , 但是以 * 结束 　　   / a / */*符号 * 其实是一个通配符，匹配任意文字localhost:8080/项目名称/aa/bb
+
+
+以扩展名匹配    
+
+写法： 没有/　以 * 开始　　*.扩展名　　*.aa　　*.bb
+
+
+
+2. ServletConfig...
     
 
-        <a href="/2018/12/08/Java Web  Servlet1/" class="post-more waves-effect waves-button">
+        <a href="/2018/12/08/Java Web  Servlet2/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>

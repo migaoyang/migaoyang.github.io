@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-01T07:03:13.618Z</updated>
+  <updated>2019-05-01T08:08:57.713Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2019/05/02/Architeture%20Hadoop/"/>
     <id>http://yoursite.com/2019/05/02/Architeture Hadoop/</id>
     <published>2019-05-01T16:00:00.000Z</published>
-    <updated>2019-05-01T07:03:13.618Z</updated>
+    <updated>2019-05-01T08:08:57.713Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,7 @@
       
         
         
-          &lt;p&gt;&amp;emsp;&amp;emsp;&lt;em&gt;做你该做的&amp;emsp;追你喜欢的事&lt;br&gt;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;——xiaomi&lt;/em&gt;&lt;br&gt;&amp;emsp;&amp;emsp
+          &lt;p&gt;&amp;emsp;&amp;emsp;在看了Google关于大数据的几篇开山论文之后，我又看了看Hadoop的架构设计，虽然Hadoop关键组件的设计原本就是Google的GFS、Bigtable、MapReduce但还是在工程实现上有着自己的特点。本篇博客我会写一写我对Hadoop在存
         
       
     
@@ -77,7 +77,7 @@
     <link href="http://yoursite.com/2019/04/21/Architeture%20GFS/"/>
     <id>http://yoursite.com/2019/04/21/Architeture GFS/</id>
     <published>2019-04-20T16:00:00.000Z</published>
-    <updated>2019-04-26T14:08:39.454Z</updated>
+    <updated>2019-05-01T07:48:18.980Z</updated>
     
     <summary type="html">
     
@@ -85,7 +85,7 @@
       
         
         
-          &lt;p&gt;&amp;emsp;&amp;emsp;&lt;em&gt;做你该做的&amp;emsp;追你喜欢的事&lt;br&gt;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;——xiaomi&lt;/em&gt;&lt;br&gt;&amp;emsp;&amp;emsp
+          &lt;p&gt;&amp;emsp;&amp;emsp;&lt;em&gt;做你该做的&amp;emsp;追你喜欢的&lt;br&gt;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;——xiaomi&lt;/em&gt;&lt;br&gt;&amp;emsp;&amp;emsp;
         
       
     
@@ -105,7 +105,7 @@
     <link href="http://yoursite.com/2019/04/18/JVM%20GC_3/"/>
     <id>http://yoursite.com/2019/04/18/JVM GC_3/</id>
     <published>2019-04-17T16:00:00.000Z</published>
-    <updated>2019-04-25T07:44:01.388Z</updated>
+    <updated>2019-05-01T07:55:45.674Z</updated>
     
     <summary type="html">
     
@@ -113,7 +113,7 @@
       
         
         
-          &lt;p&gt;&amp;emsp;&amp;emsp;我个人认为应该把注意力放在前两篇文章中，例如 &lt;strong&gt;寻找失活对象的方法、安全点的建立、分代回收的思想、Thread Local Allocation Buffer、卡表。&lt;/strong&gt;
+          &lt;p&gt;&amp;emsp;&amp;emsp;&lt;em&gt;人们真正注意到你的时候，不是第一眼看到你站在那里，而是发现过了那么久你居然还在那里
         
       
     
@@ -521,11 +521,11 @@
   </entry>
   
   <entry>
-    <title>Servlet（二）</title>
-    <link href="http://yoursite.com/2018/12/08/Java%20Web%20%20Servlet2/"/>
-    <id>http://yoursite.com/2018/12/08/Java Web  Servlet2/</id>
+    <title>Servlet（一）</title>
+    <link href="http://yoursite.com/2018/12/08/Java%20Web%20%20Servlet1/"/>
+    <id>http://yoursite.com/2018/12/08/Java Web  Servlet1/</id>
     <published>2018-12-07T16:00:00.000Z</published>
-    <updated>2019-04-04T08:25:55.761Z</updated>
+    <updated>2019-04-04T08:26:29.431Z</updated>
     
     <summary type="html">
     
@@ -533,8 +533,8 @@
       
         
         
-          &lt;p&gt;提要：Servlet配置路径、ServletConfig、ServletContext、&lt;/p&gt;
-&lt;h3 id=&quot;1-Servlet配置路径（xml或者注解）&quot;&gt;&lt;a href=&quot;#1-Servlet配置路径（xml或者注解）&quot; class=&quot;headerlink&quot;
+          &lt;p&gt;提要：Servlet执行过程、执行周期。  &lt;/p&gt;
+&lt;p&gt;在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 &lt;strong&gt;.class&lt;/strong&gt;
         
       
     

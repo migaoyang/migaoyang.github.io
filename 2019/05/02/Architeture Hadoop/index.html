@@ -21,13 +21,13 @@
     
     
     <meta name="keywords" content="分布式架构,paper">
-    <meta name="description" content="&amp;emsp;&amp;emsp;做你该做的&amp;emsp;追你喜欢的事&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;——xiaomi&amp;emsp;&amp;emsp;在看了Google关于大数据的几篇开山论文之后，我又看了看Hadoop的架构设计，虽然Hadoop关键组件的设计原本就是Google的GFS、Bigtable">
+    <meta name="description" content="&amp;emsp;&amp;emsp;在看了Google关于大数据的几篇开山论文之后，我又看了看Hadoop的架构设计，虽然Hadoop关键组件的设计原本就是Google的GFS、Bigtable、MapReduce但还是在工程实现上有着自己的特点。本篇博客我会写一写我对Hadoop在存储、资源调度、计算方面的理解，以后也可能会具体的针对重要的组件在进行详细记录 :) ,当然如果你发现我的理解有问题或者有其它问">
 <meta name="keywords" content="分布式架构,paper">
 <meta property="og:type" content="article">
 <meta property="og:title" content="我对Hadoop的理解：存储、资源调度、计算">
 <meta property="og:url" content="http://yoursite.com/2019/05/02/Architeture Hadoop/index.html">
 <meta property="og:site_name" content="migaoyang">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;做你该做的&amp;emsp;追你喜欢的事&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;——xiaomi&amp;emsp;&amp;emsp;在看了Google关于大数据的几篇开山论文之后，我又看了看Hadoop的架构设计，虽然Hadoop关键组件的设计原本就是Google的GFS、Bigtable">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;在看了Google关于大数据的几篇开山论文之后，我又看了看Hadoop的架构设计，虽然Hadoop关键组件的设计原本就是Google的GFS、Bigtable、MapReduce但还是在工程实现上有着自己的特点。本篇博客我会写一写我对Hadoop在存储、资源调度、计算方面的理解，以后也可能会具体的针对重要的组件在进行详细记录 :) ,当然如果你发现我的理解有问题或者有其它问">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/Hadoop%2001.png">
 <meta property="og:image" content="http://yoursite.com/images/Hadoop%20HDFS%20Architecture.png">
@@ -35,10 +35,10 @@
 <meta property="og:image" content="http://yoursite.com/images/Hadoop%20YArn.png">
 <meta property="og:image" content="http://yoursite.com/images/Hadoop%20MapReduce%201.0.png">
 <meta property="og:image" content="http://yoursite.com/images/Hadoop%20YArn01.png">
-<meta property="og:updated_time" content="2019-05-01T07:03:13.618Z">
+<meta property="og:updated_time" content="2019-05-01T08:08:57.713Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我对Hadoop的理解：存储、资源调度、计算">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp;做你该做的&amp;emsp;追你喜欢的事&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;——xiaomi&amp;emsp;&amp;emsp;在看了Google关于大数据的几篇开山论文之后，我又看了看Hadoop的架构设计，虽然Hadoop关键组件的设计原本就是Google的GFS、Bigtable">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;在看了Google关于大数据的几篇开山论文之后，我又看了看Hadoop的架构设计，虽然Hadoop关键组件的设计原本就是Google的GFS、Bigtable、MapReduce但还是在工程实现上有着自己的特点。本篇博客我会写一写我对Hadoop在存储、资源调度、计算方面的理解，以后也可能会具体的针对重要的组件在进行详细记录 :) ,当然如果你发现我的理解有问题或者有其它问">
 <meta name="twitter:image" content="http://yoursite.com/images/Hadoop%2001.png">
     
         <link rel="alternate" type="application/atom+xml" title="migaoyang" href="/atom.xml">
@@ -191,7 +191,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>&emsp;&emsp;<em>做你该做的&emsp;追你喜欢的事<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——xiaomi</em><br>&emsp;&emsp;在看了Google关于大数据的几篇开山论文之后，我又看了看Hadoop的架构设计，虽然Hadoop关键组件的设计原本就是Google的GFS、Bigtable、MapReduce但还是在工程实现上有着自己的特点。本篇博客我会写一写我对Hadoop在存储、资源调度、计算方面的理解，以后也可能会具体的针对重要的组件在进行详细记录 :) ,当然如果你发现我的理解有问题或者有其它问题,我们都可以邮件交流鸭 <a href="mailto:mee.gaoyang@OutLook.com" target="_blank" rel="noopener">mee.gaoyang@OutLook.com</a> :)  </p>
+            <p>&emsp;&emsp;在看了Google关于大数据的几篇开山论文之后，我又看了看Hadoop的架构设计，虽然Hadoop关键组件的设计原本就是Google的GFS、Bigtable、MapReduce但还是在工程实现上有着自己的特点。本篇博客我会写一写我对Hadoop在存储、资源调度、计算方面的理解，以后也可能会具体的针对重要的组件在进行详细记录 :) ,当然如果你发现我的理解有问题或者有其它问题,我们都可以邮件交流鸭 <a href="mailto:mee.gaoyang@OutLook.com" target="_blank" rel="noopener">mee.gaoyang@OutLook.com</a> :)  </p>
 <h3 id="分布式系统"><a href="#分布式系统" class="headerlink" title="分布式系统"></a>分布式系统</h3><p>&emsp;&emsp;<em>A distributed system is a collection of independent computter that appears to user as a single coherent system. –分布式原理与泛型</em><br>&emsp;&emsp;简而言之，分布式系统就是让众多的计算设备针对于使用者来说就像是一台设备来使用。<br>&emsp;&emsp;其实对于使用者来说确实是很简单，但分布式系统背后仍是一个个复杂的理论与设计实现，主要包括CAP理论、分布式存储、分布式事务与分布式锁，并且分布式还涉及到许多技术、协议等等。<br>&emsp;&emsp;分布式系统是由一组通过网络进行通信、为了完成共同的任务而协调工作的计算机节点组成的系统。分布式系统的出现是为了用廉价的、普通的机器完成单个计算机无法完成的存储、计算任务。其目的是利用更多的机器，处理更多的数据。<br>&emsp;&emsp;只有当单个节点的处理能力无法满足日益增长的计算、存储任务的时候，且硬件的提升（加内存、加磁盘、使用更好的CPU）高昂到得不偿失的时候，应用程序也不能进一步优化的时候，我们才需要考虑分布式系统。因为，分布式系统要解决的问题本身就是和单机系统一样的，而由于分布式系统多节点、通过网络通信的拓扑结构，会引入很多单机系统没有的问题，为了解决这些问题又会引入更多的机制、协议，带来更多的问题。。。<br>&emsp;&emsp;分布式系统中有大量的节点，且通过网络通信。单个节点的故障（进程crash、断电、磁盘损坏）是个小概率事件，但整个系统的故障率会随节点的增加而指数级增加，网络通信也可能出现断网、高延迟的情况。在这种一定会出现的“异常”情况下，分布式系统还是需要继续稳定的对外提供服务，即需要较强的容错性。最简单的办法，就是冗余或者复制集（Replication），即多个节点负责同一个任务，最为常见的就是分布式存储中，多个节点复杂存储同一份数据，以此增强可用性与可靠性。同时，Replication也会带来性能的提升，比如数据的locality可以减少用户的等待时间。<br>以下是整理的一些组件：  </p>
 <ul>
 <li>负载均衡：<br>　　　　Nginx：高性能、高并发的web服务器；功能包括负载均衡、反向代理、静态内容缓存、访问控制；工作在应用层<br>　　　　LVS： Linux virtual server，基于集群技术和Linux操作系统实现一个高性能、高可用的服务器；工作在网络层  </li>
