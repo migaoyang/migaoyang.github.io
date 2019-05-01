@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-26T06:09:34.099Z</updated>
+  <updated>2019-05-01T07:03:13.618Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我对Hadoop的理解：存储、资源调度、计算</title>
+    <link href="http://yoursite.com/2019/05/02/Architeture%20Hadoop/"/>
+    <id>http://yoursite.com/2019/05/02/Architeture Hadoop/</id>
+    <published>2019-05-01T16:00:00.000Z</published>
+    <updated>2019-05-01T07:03:13.618Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&amp;emsp;&amp;emsp;&lt;em&gt;做你该做的&amp;emsp;追你喜欢的事&lt;br&gt;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;——xiaomi&lt;/em&gt;&lt;br&gt;&amp;emsp;&amp;emsp
+        
+      
+    
+    </summary>
+    
+      <category term="分布式架构" scheme="http://yoursite.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="分布式架构" scheme="http://yoursite.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84/"/>
+    
+      <category term="paper" scheme="http://yoursite.com/tags/paper/"/>
+    
+  </entry>
   
   <entry>
     <title>Bigtable总结(上)</title>
@@ -489,33 +517,6 @@
     
     
       <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Servlet（一）</title>
-    <link href="http://yoursite.com/2018/12/08/Java%20Web%20%20Servlet1/"/>
-    <id>http://yoursite.com/2018/12/08/Java Web  Servlet1/</id>
-    <published>2018-12-07T16:00:00.000Z</published>
-    <updated>2019-04-04T08:26:29.431Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;提要：Servlet执行过程、执行周期。  &lt;/p&gt;
-&lt;p&gt;在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 &lt;strong&gt;.class&lt;/strong&gt;
-        
-      
-    
-    </summary>
-    
-      <category term="Servlet" scheme="http://yoursite.com/categories/Servlet/"/>
-    
-    
-      <category term="Servlet" scheme="http://yoursite.com/tags/Servlet/"/>
     
   </entry>
   
