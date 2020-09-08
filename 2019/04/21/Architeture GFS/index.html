@@ -21,21 +21,21 @@
     
     
     <meta name="keywords" content="分布式架构,paper">
-    <meta name="description" content="&amp;emsp;&amp;emsp;做你该做的&amp;emsp;追你喜欢的&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;——xiaomi&amp;emsp;&amp;emsp;这篇博客是我阅读Google File System的论文以及相关资料并总结而来。当然也是我自己的理解，如有问题请邮件联系mee.gaoyang@OutLook">
+    <meta name="description" content="&amp;emsp;&amp;emsp;这篇博客是我阅读Google File System的论文以及相关资料并总结而来。当然也是我自己的理解，如有问题请邮件联系mee.gaoyang@foxmail.com :) GFS的主要设计需求GFS是应用到Google内部的文件系统，针对于其自身的业务场景需求，设计主要基于以下几个需求：  节点失效是常态。系统会构建在大量的普通廉价机器上，这使得节点失效的可能性很高。因">
 <meta name="keywords" content="分布式架构,paper">
 <meta property="og:type" content="article">
 <meta property="og:title" content="The Google File System总结">
 <meta property="og:url" content="http://yoursite.com/2019/04/21/Architeture GFS/index.html">
 <meta property="og:site_name" content="migaoyang">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;做你该做的&amp;emsp;追你喜欢的&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;——xiaomi&amp;emsp;&amp;emsp;这篇博客是我阅读Google File System的论文以及相关资料并总结而来。当然也是我自己的理解，如有问题请邮件联系mee.gaoyang@OutLook">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;这篇博客是我阅读Google File System的论文以及相关资料并总结而来。当然也是我自己的理解，如有问题请邮件联系mee.gaoyang@foxmail.com :) GFS的主要设计需求GFS是应用到Google内部的文件系统，针对于其自身的业务场景需求，设计主要基于以下几个需求：  节点失效是常态。系统会构建在大量的普通廉价机器上，这使得节点失效的可能性很高。因">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/GFS_consistency-model.png">
 <meta property="og:image" content="http://yoursite.com/images/gfs-architecture.png">
 <meta property="og:image" content="http://yoursite.com/images/gfs-write.png">
-<meta property="og:updated_time" content="2019-05-01T07:48:18.980Z">
+<meta property="og:updated_time" content="2020-09-08T11:14:27.232Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="The Google File System总结">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp;做你该做的&amp;emsp;追你喜欢的&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;——xiaomi&amp;emsp;&amp;emsp;这篇博客是我阅读Google File System的论文以及相关资料并总结而来。当然也是我自己的理解，如有问题请邮件联系mee.gaoyang@OutLook">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;这篇博客是我阅读Google File System的论文以及相关资料并总结而来。当然也是我自己的理解，如有问题请邮件联系mee.gaoyang@foxmail.com :) GFS的主要设计需求GFS是应用到Google内部的文件系统，针对于其自身的业务场景需求，设计主要基于以下几个需求：  节点失效是常态。系统会构建在大量的普通廉价机器上，这使得节点失效的可能性很高。因">
 <meta name="twitter:image" content="http://yoursite.com/images/GFS_consistency-model.png">
     
         <link rel="alternate" type="application/atom+xml" title="migaoyang" href="/atom.xml">
@@ -188,7 +188,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>&emsp;&emsp;<em>做你该做的&emsp;追你喜欢的<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——xiaomi</em><br>&emsp;&emsp;这篇博客是我阅读<a href="http://nil.csail.mit.edu/6.824/2017/papers/gfs.pdf" target="_blank" rel="noopener">Google File System</a>的论文以及<a href="https://mr-dai.github.io/gfs/" target="_blank" rel="noopener">相关资料</a>并总结而来。当然也是我自己的理解，如有问题请邮件联系<a href="mailto:mee.gaoyang@OutLook.com" target="_blank" rel="noopener">mee.gaoyang@OutLook.com</a> :)</p>
+            <p>&emsp;&emsp;这篇博客是我阅读<a href="http://nil.csail.mit.edu/6.824/2017/papers/gfs.pdf" target="_blank" rel="noopener">Google File System</a>的论文以及<a href="https://mr-dai.github.io/gfs/" target="_blank" rel="noopener">相关资料</a>并总结而来。当然也是我自己的理解，如有问题请邮件联系<a href="mailto:mee.gaoyang@foxmail.com" target="_blank" rel="noopener">mee.gaoyang@foxmail.com</a> :)</p>
 <h3 id="GFS的主要设计需求"><a href="#GFS的主要设计需求" class="headerlink" title="GFS的主要设计需求"></a>GFS的主要设计需求</h3><p>GFS是应用到Google内部的文件系统，针对于其自身的业务场景需求，设计主要基于以下几个需求：</p>
 <ol>
 <li>节点失效是常态。系统会构建在大量的普通廉价机器上，这使得节点失效的可能性很高。因此，GFS 必须能有较高的容错性、能够持续地监控自身的状态，比如应用程序 bug、操作系统的 bug、人为失误，甚至还有硬盘、内存、连接器、网络以及电源失效等造成的问题。所以，持续的监控、错误侦测、灾难冗余以及自动恢复的机制必须集成在 GFS 中。</li>
@@ -414,7 +414,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>米高扬 &copy; 2018 - 2019</span>
+        <p><span>米高扬 &copy; 2018 - 2020</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

@@ -274,10 +274,10 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        &emsp;&emsp;做你该做的&emsp;追你喜欢的&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——xiaomi&emsp;&emsp;这篇博客是我阅读Google File System的论文以及相关资料并总结而来。当然也是我自己的理解，如有问题请邮件联系mee.gaoyang@OutLook.com :)
+        &emsp;&emsp;这篇博客是我阅读Google File System的论文以及相关资料并总结而来。当然也是我自己的理解，如有问题请邮件联系mee.gaoyang@foxmail.com :)
 GFS的主要设计需求GFS是应用到Google内部的文件系统，针对于其自身的业务场景需求，设计主要基于以下几个需求：
 
-节点失效是常态。系统会构建在大量的普通廉价机器上，这使得节...
+节点失效是常态。系统会构建在大量的普通廉价机器上，这使得节点失效的可能性很高。因此，GFS 必须能有较高的容错性、能够持续地监控自身的状态，比如应用程序 bug、操作系统的 bug、人为失误，甚至还有硬盘、内存、连接器、网络以及电源失效等造成的问题。所以，持续的监控、错误侦...
     
 
         <a href="/2019/04/21/Architeture GFS/" class="post-more waves-effect waves-button">
@@ -1113,7 +1113,7 @@ Class.forName("com.mysql.jdbc.Driver");
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Java Web  Servlet1" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-Java Web  Servlet2" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
         <time class="post-time" title="2018-12-08 00:00:00" datetime="2018-12-07T16:00:00.000Z" itemprop="datePublished">2018-12-08</time>
@@ -1130,7 +1130,7 @@ Class.forName("com.mysql.jdbc.Driver");
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/12/08/Java Web  Servlet1/">Servlet（一）</a>
+      <a class="post-title-link" href="/2018/12/08/Java Web  Servlet2/">Servlet（二）</a>
     </h3>
   
 
@@ -1140,15 +1140,29 @@ Class.forName("com.mysql.jdbc.Driver");
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        提要：Servlet执行过程、执行周期。  
-在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 .class 。在Servlet/JSP中，web容器（Container）是Servlet/JSP唯一认识的HTTP服务器。我们需要知道Servlet/JSP与web容器是如何沟通的，web容器如何管理Servlet/JSP的各种对象等问题。  
-Hello Servlet
-新建一个类， 实现Servlet接口
-配置Servlet ， 用意： 告诉服务器，我们的应用有这么些个servlet。在webContent/WEB-INF/web.xml里面写上以下内容。  
-...
+        提要：Servlet配置路径、ServletConfig、ServletContext、
+1. Servlet配置路径（xml或者注解）假设项目名称为a。  
+
+全路径匹配  
+
+以 / 开始　/a/aa/bblocalhost:8080/项目名称/aa/bb  
+
+
+路径匹配 , 前半段匹配   
+
+ 以/ 开始 , 但是以 * 结束 　　   / a / */*符号 * 其实是一个通配符，匹配任意文字localhost:8080/项目名称/aa/bb
+
+
+以扩展名匹配    
+
+写法： 没有/　以 * 开始　　*.扩展名　　*.aa　　*.bb
+
+
+
+2. ServletConfig...
     
 
-        <a href="/2018/12/08/Java Web  Servlet1/" class="post-more waves-effect waves-button">
+        <a href="/2018/12/08/Java Web  Servlet2/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
@@ -1187,7 +1201,7 @@ Hello Servlet
         </p>
     </div>
     <div class="bottom">
-        <p><span>米高扬 &copy; 2018 - 2019</span>
+        <p><span>米高扬 &copy; 2018 - 2020</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
