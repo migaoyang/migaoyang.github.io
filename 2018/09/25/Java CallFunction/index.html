@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>java的非静态方法调用过程 | migaoyang | migaoyang</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="java基础">
+    <meta name="description" content="Java中非静态方法的调用过程，即通过对象来调用方法的过程主要有以下几个步骤。假设要调用x.f(args), 隐式参数 x 声明为类C的一个对象。具体调用流程如下： 1. 编译器得到所有可能被调用的候选方法。编译器查看对象的声明类型与方法名。假设调用x.f(param)，且隐式参数x声明为C类的对象。需要注意的是方法的重载（Overload）即：有可能存在多个名字为f，但是参数类型不一样的方法。例">
+<meta name="keywords" content="java基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java的非静态方法调用过程">
+<meta property="og:url" content="http://yoursite.com/2018/09/25/Java CallFunction/index.html">
+<meta property="og:site_name" content="migaoyang">
+<meta property="og:description" content="Java中非静态方法的调用过程，即通过对象来调用方法的过程主要有以下几个步骤。假设要调用x.f(args), 隐式参数 x 声明为类C的一个对象。具体调用流程如下： 1. 编译器得到所有可能被调用的候选方法。编译器查看对象的声明类型与方法名。假设调用x.f(param)，且隐式参数x声明为C类的对象。需要注意的是方法的重载（Overload）即：有可能存在多个名字为f，但是参数类型不一样的方法。例">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-09-08T11:52:06.396Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java的非静态方法调用过程">
+<meta name="twitter:description" content="Java中非静态方法的调用过程，即通过对象来调用方法的过程主要有以下几个步骤。假设要调用x.f(args), 隐式参数 x 声明为类C的一个对象。具体调用流程如下： 1. 编译器得到所有可能被调用的候选方法。编译器查看对象的声明类型与方法名。假设调用x.f(param)，且隐式参数x声明为C类的对象。需要注意的是方法的重载（Overload）即：有可能存在多个名字为f，但是参数类型不一样的方法。例">
+    
+        <link rel="alternate" type="application/atom+xml" title="migaoyang" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/1.jpg">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+  <!-- highlight.js代码高亮主题 css 引入-->
+  <link rel="stylesheet" href="/plugins/highlight/styles/dracula.css">
+  <!-- highlight.js代码高亮主题 css 引入-->
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">米高扬</h5>
+          <a href="mailto:mee.gaoyang@Outlook.com" title="mee.gaoyang@Outlook.com" class="mail">mee.gaoyang@Outlook.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                时间轴
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/migaoyang" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">java的非静态方法调用过程</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">java的非静态方法调用过程</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-09-24T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2018-09-25
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-编译器得到所有可能被调用的候选方法。"><span class="post-toc-number">1.</span> <span class="post-toc-text">1. 编译器得到所有可能被调用的候选方法。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-重载解析（编译器得到需要调用的具体的一个方法）"><span class="post-toc-number">2.</span> <span class="post-toc-text">2. 重载解析（编译器得到需要调用的具体的一个方法）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-静态绑定与动态绑定"><span class="post-toc-number">3.</span> <span class="post-toc-text">3. 静态绑定与动态绑定</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-使用动态绑定调用方法"><span class="post-toc-number">4.</span> <span class="post-toc-text">4. 使用动态绑定调用方法</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Java CallFunction" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">java的非静态方法调用过程</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-09-25 00:00:00" datetime="2018-09-24T16:00:00.000Z" itemprop="datePublished">2018-09-25</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>Java中非静态方法的调用过程，即通过对象来调用方法的过程主要有以下几个步骤。<br>假设要调用x.f(args), <strong>隐式参数</strong> x 声明为类C的一个对象。具体调用流程如下：</p>
+<h3 id="1-编译器得到所有可能被调用的候选方法。"><a href="#1-编译器得到所有可能被调用的候选方法。" class="headerlink" title="1. 编译器得到所有可能被调用的候选方法。"></a>1. 编译器得到所有可能被调用的候选方法。</h3><p>编译器查看对象的声明类型与方法名。假设调用x.f(param)，且隐式参数x声明为C类的对象。需要注意的是方法的<strong>重载</strong>（Overload）即：有可能存在多个名字为f，但是<strong>参数类型不一样</strong>的方法。例如，可能存在f(int)和f(String)。编译器将会一一列举所有类C和其超类中访问属性为public且名为f的方法（超类的私有方法不可访问）。</p>
+<h3 id="2-重载解析（编译器得到需要调用的具体的一个方法）"><a href="#2-重载解析（编译器得到需要调用的具体的一个方法）" class="headerlink" title="2. 重载解析（编译器得到需要调用的具体的一个方法）"></a>2. 重载解析（编译器得到需要调用的具体的一个方法）</h3><p>接下来，编译器将查看调用方法时提供的参数类型。如果在所有名为f的方法中存在一个与提供的参数类型完全匹配，就选择这个方法。这个过程称为重载解析。如果编译器没有找到与参数类型匹配的方法，或者发现经过类型转换后有多个方法与之匹配，就会报告一个错误。<br>需要注意的是int可以转换为double，子类可以转换为父类，</p>
+<h3 id="3-静态绑定与动态绑定"><a href="#3-静态绑定与动态绑定" class="headerlink" title="3. 静态绑定与动态绑定"></a>3. 静态绑定与动态绑定</h3><p>如果是private方法、static方法、final方法或者构造器，那么编译器将可以准确地知道应该调用哪个方法，我们将这种调用方式称为静态绑定。与此对应的是，调用的方法依赖于隐式参数的实际类型，并且在运行时实现动态绑定。</p>
+<h3 id="4-使用动态绑定调用方法"><a href="#4-使用动态绑定调用方法" class="headerlink" title="4. 使用动态绑定调用方法"></a>4. 使用动态绑定调用方法</h3><p>当程序运行，并且采用动态绑定调用方法时，虚拟机一定调用与x所引用对象的实例类型最合适的那个类的方法。假设 x 的实际类型是D（子类），它是C类的子类，我们要调用f(String)。如果D类定义了方法f(String)，就直接调用它；否则将在D类的超类中寻找f(String)，以此类推。<br>每次调用方法都要进行方法搜索，时间开销相当大。因此，虚拟机预先为每个类创建一个方法表，其中列举了所有方法的签名和实际调用的方法。这样一来，在真正调用方法的时候，虚拟机仅查找这个表就行了。  </p>
+<blockquote>
+<p>动态绑定有一个很重要的特性：无需对现存的代码进行修改，就可以对程序进行扩展。假设新增一个类E，并且变量e可能引用这个类的对象，我们不需要对包含调用e.f()方法进行重新编译。如果e引用了一个E类的对象，就会自动地调用E.f()方法。  </p>
+</blockquote>
+<blockquote>
+<p>需要注意的是：在 <strong>覆盖</strong>（Override）一个方法的时候，子类方法的可见性不能低于超类方法的可见性。<strong>特别</strong>是如果超类的方法时public，那么子类方法一定要声明为public，否则编译器解释为默认的就会出错。  </p>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="米高扬">
+            米高扬
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java基础/">java基础</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/09/25/Java CallFunction/&title=《java的非静态方法调用过程》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/09/25/Java CallFunction/&title=《java的非静态方法调用过程》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/09/25/Java CallFunction/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《java的非静态方法调用过程》 — migaoyang&url=http://yoursite.com/2018/09/25/Java CallFunction/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/09/25/Java CallFunction/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/10/10/mdyufa/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">MarkDown常用语法</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>米高扬 &copy; 2018 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/09/25/Java CallFunction/&title=《java的非静态方法调用过程》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/09/25/Java CallFunction/&title=《java的非静态方法调用过程》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/09/25/Java CallFunction/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《java的非静态方法调用过程》 — migaoyang&url=http://yoursite.com/2018/09/25/Java CallFunction/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/09/25/Java CallFunction/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2018/09/25/Java CallFunction/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '米高扬的博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '米高扬的博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+  <!-- highlight.js代码高亮主题 script 引入-->
+  <script src="/plugins/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- highlight.js代码高亮主题 script 引入-->
+</body>
+</html>

@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Servlet（一） | migaoyang | migaoyang</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Servlet">
+    <meta name="description" content="提要：Servlet执行过程、执行周期。   在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 .class 。在Servlet/JSP中，web容器（Container）是Servlet/JSP唯一认识的HTTP服务器。我们需要知道Servlet/JSP与web容器是如何沟通的，web容器如何管理Servlet/JSP的各种对象等问题。   Hello Servlet 新">
+<meta name="keywords" content="Servlet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Servlet（一）">
+<meta property="og:url" content="http://yoursite.com/2019/06/16/Java Web  Servlet1/index.html">
+<meta property="og:site_name" content="migaoyang">
+<meta property="og:description" content="提要：Servlet执行过程、执行周期。   在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 .class 。在Servlet/JSP中，web容器（Container）是Servlet/JSP唯一认识的HTTP服务器。我们需要知道Servlet/JSP与web容器是如何沟通的，web容器如何管理Servlet/JSP的各种对象等问题。   Hello Servlet 新">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-09-08T11:48:36.126Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Servlet（一）">
+<meta name="twitter:description" content="提要：Servlet执行过程、执行周期。   在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 .class 。在Servlet/JSP中，web容器（Container）是Servlet/JSP唯一认识的HTTP服务器。我们需要知道Servlet/JSP与web容器是如何沟通的，web容器如何管理Servlet/JSP的各种对象等问题。   Hello Servlet 新">
+    
+        <link rel="alternate" type="application/atom+xml" title="migaoyang" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/1.jpg">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+  <!-- highlight.js代码高亮主题 css 引入-->
+  <link rel="stylesheet" href="/plugins/highlight/styles/dracula.css">
+  <!-- highlight.js代码高亮主题 css 引入-->
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">米高扬</h5>
+          <a href="mailto:mee.gaoyang@Outlook.com" title="mee.gaoyang@Outlook.com" class="mail">mee.gaoyang@Outlook.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                时间轴
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/migaoyang" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Servlet（一）</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Servlet（一）</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-06-15T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-06-16
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Servlet/">Servlet</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Hello-Servlet"><span class="post-toc-number">1.</span> <span class="post-toc-text">Hello Servlet</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Servlet执行过程（xml方式）"><span class="post-toc-number">2.</span> <span class="post-toc-text">Servlet执行过程（xml方式）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Servlet的通用写法"><span class="post-toc-number">3.</span> <span class="post-toc-text">Servlet的通用写法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Servlet的生命周期"><span class="post-toc-number">4.</span> <span class="post-toc-text">Servlet的生命周期</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#让Servlet创建实例的时机提前。"><span class="post-toc-number">5.</span> <span class="post-toc-text">让Servlet创建实例的时机提前。</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Java Web  Servlet1" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Servlet（一）</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-06-16 00:00:00" datetime="2019-06-15T16:00:00.000Z" itemprop="datePublished">2019-06-16</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Servlet/">Servlet</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>提要：Servlet执行过程、执行周期。  </p>
+<p>在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 <strong>.class</strong> 。<br>在Servlet/JSP中，web容器（Container）是Servlet/JSP唯一认识的HTTP服务器。我们需要知道Servlet/JSP与web容器是如何沟通的，web容器如何管理Servlet/JSP的各种对象等问题。  </p>
+<h3 id="Hello-Servlet"><a href="#Hello-Servlet" class="headerlink" title="Hello Servlet"></a>Hello Servlet</h3><ol>
+<li>新建一个类， 实现Servlet接口</li>
+<li>配置Servlet ， 用意： 告诉服务器，我们的应用有这么些个servlet。<br>在webContent/WEB-INF/web.xml里面写上以下内容。  </li>
+</ol>
+<pre class="line-numbers language-java"><code class="language-java">  <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 向tomcat报告， 这个应用里面有这个servlet， 名字叫做HelloServlet <span class="token punctuation">,</span> 具体的路径是com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>HelloServlet <span class="token operator">--</span><span class="token operator">></span>
+  <span class="token operator">&lt;</span>servlet<span class="token operator">></span>
+      <span class="token operator">&lt;</span>servlet<span class="token operator">-</span>name<span class="token operator">></span>HelloServlet<span class="token operator">&lt;</span><span class="token operator">/</span>servlet<span class="token operator">-</span>name<span class="token operator">></span>
+      <span class="token operator">&lt;</span>servlet<span class="token operator">-</span><span class="token keyword">class</span><span class="token operator">></span>com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>HelloServlet<span class="token operator">&lt;</span><span class="token operator">/</span>servlet<span class="token operator">-</span><span class="token keyword">class</span><span class="token operator">></span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>servlet<span class="token operator">></span>
+
+  <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 注册servlet的映射。  servletName <span class="token operator">:</span> 找到上面注册的具体servlet，  url<span class="token operator">-</span>pattern<span class="token operator">:</span> 在地址栏上的path 一定要以<span class="token operator">/</span>打头 <span class="token operator">--</span><span class="token operator">></span>
+  <span class="token operator">&lt;</span>servlet<span class="token operator">-</span>mapping<span class="token operator">></span>
+      <span class="token operator">&lt;</span>servlet<span class="token operator">-</span>name<span class="token operator">></span>HelloServlet<span class="token operator">&lt;</span><span class="token operator">/</span>servlet<span class="token operator">-</span>name<span class="token operator">></span>
+      <span class="token operator">&lt;</span>url<span class="token operator">-</span>pattern<span class="token operator">></span><span class="token operator">/</span>a<span class="token operator">&lt;</span><span class="token operator">/</span>url<span class="token operator">-</span>pattern<span class="token operator">></span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>servlet<span class="token operator">-</span>mapping<span class="token operator">></span>  
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>在地址栏上输入 <a href="http://localhost:8080/项目名称/a" target="_blank" rel="noopener">http://localhost:8080/项目名称/a</a></li>
+</ol>
+<h3 id="Servlet执行过程（xml方式）"><a href="#Servlet执行过程（xml方式）" class="headerlink" title="Servlet执行过程（xml方式）"></a>Servlet执行过程（xml方式）</h3><p><a href="http://localhost:8080/HelloServlet/a" target="_blank" rel="noopener">http://localhost:8080/HelloServlet/a</a></p>
+<ol>
+<li>tomcat应用</li>
+<li>找到具体项目</li>
+<li>找到web.xml，在Servlet-mapping部分找url-pattern与a相对应的servlet-name。</li>
+<li>在servlet部分找到servlet-name相对应的servlet-class</li>
+<li>找到具体的类后创建该类实例</li>
+<li>执行Servlet中的service方法  </li>
+</ol>
+<h3 id="Servlet的通用写法"><a href="#Servlet的通用写法" class="headerlink" title="Servlet的通用写法"></a>Servlet的通用写法</h3><blockquote>
+<pre><code>   Servlet (接口)
+        |
+        |
+    GenericServlet
+        |
+        |
+    HttpServlet （用于处理http的请求）  
+</code></pre></blockquote>
+<p>例如： 定义一个类，继承HttpServlet 复写doGet 和 doPost</p>
+<pre class="line-numbers language-java"><code class="language-java"> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloServlet02</span> <span class="token keyword">extends</span> <span class="token class-name">HttpServlet</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//Get请求会来这个方法</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doGet</span><span class="token punctuation">(</span>HttpServletRequest req<span class="token punctuation">,</span> HttpServletResponse resp<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException<span class="token punctuation">,</span> IOException <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"get---"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">//POST请求会来这个方法</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doPost</span><span class="token punctuation">(</span>HttpServletRequest req<span class="token punctuation">,</span> HttpServletResponse resp<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException<span class="token punctuation">,</span> IOException <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"post----"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在service方法中的主要工作是判断是该使用doGet方法、doPost方法或者其他方法。  </p>
+<h3 id="Servlet的生命周期"><a href="#Servlet的生命周期" class="headerlink" title="Servlet的生命周期"></a>Servlet的生命周期</h3><ul>
+<li>生命周期</li>
+</ul>
+<blockquote>
+<p>从创建到销毁的一段时间</p>
+</blockquote>
+<ul>
+<li>生命周期方法</li>
+</ul>
+<blockquote>
+<p>从创建到销毁，所调用的那些方法。</p>
+</blockquote>
+<ul>
+<li><p>init方法</p>
+<pre><code>  在创建该servlet的实例时，就执行该方法。
+  一个servlet只会初始化一次， init方法只会执行一次
+  默认情况下是 ： 初次访问该servlet，才会创建实例。
+</code></pre></li>
+<li><p>service方法</p>
+<pre><code>  只要客户端来了一个请求，那么就执行这个方法了。
+    该方法可以被执行很多次。 一次请求，对应一次service方法的调用
+</code></pre></li>
+<li><p>destroy方法<br>servlet销毁的时候，就会执行该方法</p>
+<pre><code>1. 该项目从tomcat的里面移除。
+2. 正常关闭tomcat就会执行 shutdown.bat
+</code></pre></li>
+</ul>
+<blockquote>
+<p>doGet 和 doPost不算生命周期方法，所谓的生命周期方法是指，从对象的创建到销毁一定会执行的方法， 但是这两个方法，不一定会执行。</p>
+</blockquote>
+<h3 id="让Servlet创建实例的时机提前。"><a href="#让Servlet创建实例的时机提前。" class="headerlink" title="让Servlet创建实例的时机提前。"></a>让Servlet创建实例的时机提前。</h3><ol>
+<li><p>默认情况下，只有在初次访问servlet的时候，才会执行init方法。 有的时候，我们可能需要在这个方法里面执行一些初始化工作，甚至是做一些比较耗时的逻辑。</p>
+</li>
+<li><p>那么这个时候，初次访问，可能会在init方法中逗留太久的时间。 那么改变思路，使用其他办法可以让这个初始化的时机提前一点。</p>
+</li>
+<li><p>在配置的时候， 使用load-on-startup元素来指定， 给定的数字越小，启动的时机就越早。 一般不写负数， 从2开始即可。</p>
+</li>
+</ol>
+<pre class="line-numbers language-java"><code class="language-java">        <span class="token operator">&lt;</span>servlet<span class="token operator">></span>
+              <span class="token operator">&lt;</span>servlet<span class="token operator">-</span>name<span class="token operator">></span>HelloServlet04<span class="token operator">&lt;</span><span class="token operator">/</span>servlet<span class="token operator">-</span>name<span class="token operator">></span>
+              <span class="token operator">&lt;</span>servlet<span class="token operator">-</span><span class="token keyword">class</span><span class="token operator">></span>com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>HelloServlet04<span class="token operator">&lt;</span><span class="token operator">/</span>servlet<span class="token operator">-</span><span class="token keyword">class</span><span class="token operator">></span>
+              <span class="token operator">&lt;</span>load<span class="token operator">-</span>on<span class="token operator">-</span>startup<span class="token operator">></span><span class="token number">2</span><span class="token operator">&lt;</span><span class="token operator">/</span>load<span class="token operator">-</span>on<span class="token operator">-</span>startup<span class="token operator">></span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>servlet<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="米高扬">
+            米高扬
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Servlet/">Servlet</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/06/16/Java Web  Servlet1/&title=《Servlet（一）》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/06/16/Java Web  Servlet1/&title=《Servlet（一）》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/06/16/Java Web  Servlet1/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Servlet（一）》 — migaoyang&url=http://yoursite.com/2019/06/16/Java Web  Servlet1/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/06/16/Java Web  Servlet1/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/06/29/Java Web  Servlet2/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Servlet（二）</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/06/01/Java Sort/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">常用排序算法的java实现</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>米高扬 &copy; 2018 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/06/16/Java Web  Servlet1/&title=《Servlet（一）》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/06/16/Java Web  Servlet1/&title=《Servlet（一）》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/06/16/Java Web  Servlet1/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Servlet（一）》 — migaoyang&url=http://yoursite.com/2019/06/16/Java Web  Servlet1/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/06/16/Java Web  Servlet1/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2019/06/16/Java Web  Servlet1/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '米高扬的博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '米高扬的博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+  <!-- highlight.js代码高亮主题 script 引入-->
+  <script src="/plugins/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- highlight.js代码高亮主题 script 引入-->
+</body>
+</html>

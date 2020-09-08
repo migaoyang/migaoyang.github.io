@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>java源码-剖析LinkedList | migaoyang | migaoyang</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="java基础,java源码">
+    <meta name="description" content="ArrayLis通过索引值随机访问的效率很高，但是插入与删除的性能比较低；LinkedList也实现了List接口，而LIst接口扩展了Collection接口，Collection接口又扩展了Iterable接口。同时LinkedList还实现了队列接口Queue，就是平时说的队列，两个操作点，尾部加元素，头部删元素，先进先出。但是LinkedList与ArrayList的特点几乎刚好相反。">
+<meta name="keywords" content="java基础,java源码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java源码-剖析LinkedList">
+<meta property="og:url" content="http://yoursite.com/2019/10/20/Java LinkedList/index.html">
+<meta property="og:site_name" content="migaoyang">
+<meta property="og:description" content="ArrayLis通过索引值随机访问的效率很高，但是插入与删除的性能比较低；LinkedList也实现了List接口，而LIst接口扩展了Collection接口，Collection接口又扩展了Iterable接口。同时LinkedList还实现了队列接口Queue，就是平时说的队列，两个操作点，尾部加元素，头部删元素，先进先出。但是LinkedList与ArrayList的特点几乎刚好相反。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-09-08T11:53:12.794Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java源码-剖析LinkedList">
+<meta name="twitter:description" content="ArrayLis通过索引值随机访问的效率很高，但是插入与删除的性能比较低；LinkedList也实现了List接口，而LIst接口扩展了Collection接口，Collection接口又扩展了Iterable接口。同时LinkedList还实现了队列接口Queue，就是平时说的队列，两个操作点，尾部加元素，头部删元素，先进先出。但是LinkedList与ArrayList的特点几乎刚好相反。">
+    
+        <link rel="alternate" type="application/atom+xml" title="migaoyang" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/1.jpg">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+  <!-- highlight.js代码高亮主题 css 引入-->
+  <link rel="stylesheet" href="/plugins/highlight/styles/dracula.css">
+  <!-- highlight.js代码高亮主题 css 引入-->
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">米高扬</h5>
+          <a href="mailto:mee.gaoyang@Outlook.com" title="mee.gaoyang@Outlook.com" class="mail">mee.gaoyang@Outlook.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                时间轴
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/migaoyang" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">java源码-剖析LinkedList</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">java源码-剖析LinkedList</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-10-19T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-10-20
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#用法"><span class="post-toc-number">1.</span> <span class="post-toc-text">用法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实现原理（java7）"><span class="post-toc-number">2.</span> <span class="post-toc-text">实现原理（java7）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#内部组成"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">内部组成</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#特点分析"><span class="post-toc-number">3.</span> <span class="post-toc-text">特点分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#总结"><span class="post-toc-number">4.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Java LinkedList" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">java源码-剖析LinkedList</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-10-20 00:00:00" datetime="2019-10-19T16:00:00.000Z" itemprop="datePublished">2019-10-20</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>ArrayLis通过索引值随机访问的效率很高，但是插入与删除的性能比较低；LinkedList也实现了List接口，而LIst接口扩展了Collection接口，Collection接口又扩展了Iterable接口。同时LinkedList还实现了队列接口Queue，就是平时说的队列，两个操作点，尾部加元素，头部删元素，先进先出。<br>但是LinkedList与ArrayList的特点几乎刚好相反。  </p>
+<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><p>LinkedList的构造方法有两个，与ArrayList类似。</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token function">LinkedList</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token function">LinkedList</span><span class="token punctuation">(</span>Collection<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">E</span><span class="token operator">></span> c<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>Queue接口：  </p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Queue</span><span class="token operator">&lt;</span>E<span class="token operator">></span> <span class="token keyword">extends</span> <span class="token class-name">Collection</span><span class="token operator">&lt;</span>E<span class="token operator">></span><span class="token punctuation">{</span>
+  <span class="token keyword">boolean</span> <span class="token function">add</span><span class="token punctuation">(</span>E e<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//尾部添加元素  队满 抛出异常</span>
+  <span class="token keyword">boolean</span> <span class="token function">offer</span><span class="token punctuation">(</span>E e<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//尾部添加元素  队满 返回false</span>
+  E <span class="token function">romove</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//删除头部元素  队为空 抛出异常</span>
+  E <span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token comment" spellcheck="true">//删除头部元素  队为空 返回null</span>
+  E <span class="token function">element</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">//查看头部元素  队为空 抛出异常</span>
+  E <span class="token function">peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token comment" spellcheck="true">//查看头部元素  队为空 返回null</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>因此，LinkedList可以使用上面Queue的接口去当做栈使用。<br>其实，LinkedList是直接实现了Deque<e>接口，而Deque接口扩展了Queue接口。Deque接口有着更为通用的方法，包含了栈的操作方法。<br>Deque接口：  </e></p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Deque</span><span class="token operator">&lt;</span>E<span class="token operator">></span> <span class="token keyword">extends</span> <span class="token class-name">Queue</span><span class="token operator">&lt;</span>E<span class="token operator">></span><span class="token punctuation">{</span>
+  <span class="token keyword">void</span> <span class="token function">addFirst</span><span class="token punctuation">(</span>E e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">void</span> <span class="token function">addLast</span><span class="token punctuation">(</span>E e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">boolean</span> <span class="token function">offerFirst</span><span class="token punctuation">(</span>E e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">boolean</span> <span class="token function">offerLast</span><span class="token punctuation">(</span>E e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  E <span class="token function">removeFirst</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  E <span class="token function">removeLast</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  E <span class="token function">pollFirst</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  E <span class="token function">pollLast</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  E <span class="token function">getFirst</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  E <span class="token function">getLast</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  E <span class="token function">peekFirst</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  E <span class="token function">peekLast</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>xxxFirst操作头部，xxxLast操作尾部。每种操作两种方法，也是因为队满或者队空时处理方法不同。addXXX/getXXX/removeXXX抛异常，peekXXX/pollXXX返回null，offerXXX返回false。<br>综上，LinkedList由于实现了Duque接口，所以可以把它看做队列、栈、双端队列。  </p>
+<h3 id="实现原理（java7）"><a href="#实现原理（java7）" class="headerlink" title="实现原理（java7）"></a>实现原理（java7）</h3><h4 id="内部组成"><a href="#内部组成" class="headerlink" title="内部组成"></a>内部组成</h4><p>ArrayList内部是数组，元素在内存中是连续存放的。但是LinkedList的内部实现是 <strong>双向链表</strong> ，其每个元素在内存中都是单独存放的，元素之间通过链接连在一起。<br>数据结构链表中的节点Node在java中由静态内部类实现。  </p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Node</span><span class="token operator">&lt;</span>E<span class="token operator">></span><span class="token punctuation">{</span>
+  E item<span class="token punctuation">;</span>
+  Node<span class="token operator">&lt;</span>E<span class="token operator">></span> next<span class="token punctuation">;</span>
+  Node<span class="token operator">&lt;</span>E<span class="token operator">></span> prev<span class="token punctuation">;</span>
+  <span class="token function">Node</span><span class="token punctuation">(</span>Node<span class="token operator">&lt;</span>E<span class="token operator">></span>prev<span class="token punctuation">,</span>E element<span class="token punctuation">,</span>Node<span class="token operator">&lt;</span>E<span class="token operator">></span> next<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>item <span class="token operator">=</span> element<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>next <span class="token operator">=</span> next<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>prev <span class="token operator">=</span> prev<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>LinkedList主要就是操作以下三个成员变量。  </p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">transient</span> <span class="token keyword">int</span> size <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">transient</span> Node<span class="token operator">&lt;</span>E<span class="token operator">></span> first<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//头结点</span>
+<span class="token keyword">transient</span> Node<span class="token operator">&lt;</span>E<span class="token operator">></span> last<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//尾节点</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>add（）方法的主要步骤：  </p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">final</span> Node<span class="token operator">&lt;</span>E<span class="token operator">></span> l <span class="token operator">=</span> last<span class="token punctuation">;</span>
+<span class="token keyword">final</span> Node<span class="token operator">&lt;</span>E<span class="token operator">></span> newNode <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span>l<span class="token punctuation">,</span> e<span class="token punctuation">,</span> null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+last <span class="token operator">=</span> newNode<span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>l <span class="token operator">==</span> null<span class="token punctuation">)</span> first <span class="token operator">=</span> newNode<span class="token punctuation">;</span>
+<span class="token keyword">else</span> l<span class="token punctuation">.</span>next <span class="token operator">=</span> newNode<span class="token punctuation">;</span>
+size<span class="token operator">++</span><span class="token punctuation">;</span>
+modCount<span class="token operator">++</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>1)  创建一个新的节点newNode。l与last指向原来的尾节点，如果原来链表为空，则为null。<br>2） 修改尾节点last，指向最新的最后节点newNode。<br>3） 修改前节点的向后链接，如果原来链表为空，则让头结点指向新节点，否则让前一个节点next指向新节点。<br>4） 增加链表大小。<br>注意：modCount++的目的与在ArrayList中是一样的，记录修改次数，便于迭代过程中检测结构性变化。<br><strong>LinkedList的内存是按需分配的。</strong><br>add（）方法是在尾部插入，当然也可以在头部或者中间插入元素 public void add(int index, E element)。具体过程如下：  </p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">int</span> index<span class="token punctuation">,</span> E element<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">checkPositionIndex</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">==</span> size<span class="token punctuation">)</span>
+        <span class="token function">linkLast</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span>
+        <span class="token function">linkBefore</span><span class="token punctuation">(</span>element<span class="token punctuation">,</span> <span class="token function">node</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">void</span> <span class="token function">linkBefore</span><span class="token punctuation">(</span>E e<span class="token punctuation">,</span> Node<span class="token operator">&lt;</span>E<span class="token operator">></span> succ<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// assert succ != null;</span>
+    <span class="token keyword">final</span> Node<span class="token operator">&lt;</span>E<span class="token operator">></span> pred <span class="token operator">=</span> succ<span class="token punctuation">.</span>prev<span class="token punctuation">;</span>
+    <span class="token keyword">final</span> Node<span class="token operator">&lt;</span>E<span class="token operator">></span> newNode <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span>pred<span class="token punctuation">,</span> e<span class="token punctuation">,</span> succ<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    succ<span class="token punctuation">.</span>prev <span class="token operator">=</span> newNode<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>pred <span class="token operator">==</span> null<span class="token punctuation">)</span>
+        first <span class="token operator">=</span> newNode<span class="token punctuation">;</span>
+    <span class="token keyword">else</span>
+        pred<span class="token punctuation">.</span>next <span class="token operator">=</span> newNode<span class="token punctuation">;</span>
+    size<span class="token operator">++</span><span class="token punctuation">;</span>
+    modCount<span class="token operator">++</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>succ：后继节点，pred：前驱节点。在这两个节点中间插入一个节点。步骤如下：<br>1）创建一个newNode节点。<br>2) succ的前驱指向新节点newNode。<br>3) pred的前驱指向新节点newNode，若前驱为null，将头结点first指向新节点newNode。<br>4）增加长度。<br>通过索引删除元素的主要过程如下：  </p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//通过Node（）方法找到节点后，调用unlink（Node&lt;E> x）方法</span>
+E <span class="token function">unlink</span><span class="token punctuation">(</span>Node<span class="token operator">&lt;</span>E<span class="token operator">></span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// assert x != null;</span>
+    <span class="token keyword">final</span> E element <span class="token operator">=</span> x<span class="token punctuation">.</span>item<span class="token punctuation">;</span>
+    <span class="token keyword">final</span> Node<span class="token operator">&lt;</span>E<span class="token operator">></span> next <span class="token operator">=</span> x<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+    <span class="token keyword">final</span> Node<span class="token operator">&lt;</span>E<span class="token operator">></span> prev <span class="token operator">=</span> x<span class="token punctuation">.</span>prev<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>prev <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        first <span class="token operator">=</span> next<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        prev<span class="token punctuation">.</span>next <span class="token operator">=</span> next<span class="token punctuation">;</span>
+        x<span class="token punctuation">.</span>prev <span class="token operator">=</span> null<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>next <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        last <span class="token operator">=</span> prev<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        next<span class="token punctuation">.</span>prev <span class="token operator">=</span> prev<span class="token punctuation">;</span>
+        x<span class="token punctuation">.</span>next <span class="token operator">=</span> null<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    x<span class="token punctuation">.</span>item <span class="token operator">=</span> null<span class="token punctuation">;</span>
+    size<span class="token operator">--</span><span class="token punctuation">;</span>
+    modCount<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> element<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>基本思路就是让x的前驱和后继直接链接起来，next是x的后继，prev是x的前驱，具体分为两步：  </p>
+<ol>
+<li>让x的前驱的后继指向x的后继。如果x没有前驱，说明删除的是头节点，则修改头节点指向x的后继。</li>
+<li>让x的后继的前驱指向x的前驱。如果x没有后继，说明删除的是尾节点，则修改尾节点指向x的前驱。  </li>
+</ol>
+</blockquote>
+<p>其它常用方法还有按索引值访问元素get（int i）与按内容查找元素indexOf（Object o）。其中get方法主要调用node方法返回第i个节点，节点的item变量就是其元素值。 indexOf方法直接从first开始查找，若要查找的内容不是null，则使用equal方法进行比较。   </p>
+<h3 id="特点分析"><a href="#特点分析" class="headerlink" title="特点分析"></a>特点分析</h3><p>LinkedList内部是用双向链表实现的，维护了长度、头节点和尾节点，这决定了它有如下特点：</p>
+<ol>
+<li>按需分配空间，不需要预先分配很多空间。</li>
+<li>不可以随机访问，<strong>按照索引位置访问</strong>效率比较低，必须从头或尾顺着链接找，效率为O(N/2)[如果索引位置在前部分：<strong>index&lt;(size&gt;&gt;1)</strong> ，则从first节点开始，否则从last节点开始]。  </li>
+<li>只要是按照内容查找元素，不管LinkedList的列表是否已排序，效率都比较低，因为必须逐个的进行比较，时间复杂度为O(N)。  </li>
+<li>由于有first与last节点所以在两端添加、删除元素的效率很高，时间复杂度为O(1)。  </li>
+<li>在中间插入、删除元素，要先定位，效率比较低，为O(N)，但修改本身的效率很高，效率为O(1)。   </li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>用法上，LinkedList是一个List，但也实现了Deque接口，可以作为队列、栈和双端队列使用。实现原理上，内部是一个双向链表，并维护了长度、头节点和尾节点。<br>根据LinkedList和ArrayList的特点，我们就可以根据实际情况进行选择，如果列表长度未知，添加、删除操作比较多，尤其经常从两端进行操作，而按照索引位置访问相对比较少，则LinkedList是比较理想的选择。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="米高扬">
+            米高扬
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java基础/">java基础</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java源码/">java源码</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/10/20/Java LinkedList/&title=《java源码-剖析LinkedList》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/10/20/Java LinkedList/&title=《java源码-剖析LinkedList》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/10/20/Java LinkedList/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《java源码-剖析LinkedList》 — migaoyang&url=http://yoursite.com/2019/10/20/Java LinkedList/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/10/20/Java LinkedList/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/10/22/Java Generic/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">java泛型</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/09/07/Java CallByValueReference/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">java为何没有引用传递？</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>米高扬 &copy; 2018 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/10/20/Java LinkedList/&title=《java源码-剖析LinkedList》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/10/20/Java LinkedList/&title=《java源码-剖析LinkedList》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/10/20/Java LinkedList/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《java源码-剖析LinkedList》 — migaoyang&url=http://yoursite.com/2019/10/20/Java LinkedList/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/10/20/Java LinkedList/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2019/10/20/Java LinkedList/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '米高扬的博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '米高扬的博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+  <!-- highlight.js代码高亮主题 script 引入-->
+  <script src="/plugins/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- highlight.js代码高亮主题 script 引入-->
+</body>
+</html>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-01T08:08:57.713Z</updated>
+  <updated>2020-09-08T11:54:44.909Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,173 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>我对Hadoop的理解：存储、资源调度、计算</title>
-    <link href="http://yoursite.com/2019/05/02/Architeture%20Hadoop/"/>
-    <id>http://yoursite.com/2019/05/02/Architeture Hadoop/</id>
-    <published>2019-05-01T16:00:00.000Z</published>
-    <updated>2019-05-01T08:08:57.713Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&amp;emsp;&amp;emsp;在看了Google关于大数据的几篇开山论文之后，我又看了看Hadoop的架构设计，虽然Hadoop关键组件的设计原本就是Google的GFS、Bigtable、MapReduce但还是在工程实现上有着自己的特点。本篇博客我会写一写我对Hadoop在存
-        
-      
-    
-    </summary>
-    
-      <category term="分布式架构" scheme="http://yoursite.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="分布式架构" scheme="http://yoursite.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84/"/>
-    
-      <category term="paper" scheme="http://yoursite.com/tags/paper/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Bigtable总结(上)</title>
-    <link href="http://yoursite.com/2019/04/26/Architeture%20BigTable/"/>
-    <id>http://yoursite.com/2019/04/26/Architeture BigTable/</id>
-    <published>2019-04-25T16:00:00.000Z</published>
-    <updated>2019-04-26T06:09:34.099Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&amp;emsp;&amp;emsp;&lt;em&gt;既然目标是地平线&amp;emsp;留给世界的只能是背影&lt;br&gt;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;em
-        
-      
-    
-    </summary>
-    
-      <category term="分布式架构" scheme="http://yoursite.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="分布式架构" scheme="http://yoursite.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84/"/>
-    
-      <category term="paper" scheme="http://yoursite.com/tags/paper/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>The Google File System总结</title>
-    <link href="http://yoursite.com/2019/04/21/Architeture%20GFS/"/>
-    <id>http://yoursite.com/2019/04/21/Architeture GFS/</id>
-    <published>2019-04-20T16:00:00.000Z</published>
-    <updated>2020-09-08T11:14:27.232Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&amp;emsp;&amp;emsp;这篇博客是我阅读&lt;a href=&quot;http://nil.csail.mit.edu/6.824/2017/papers/gfs.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Google File
-        
-      
-    
-    </summary>
-    
-      <category term="分布式架构" scheme="http://yoursite.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="分布式架构" scheme="http://yoursite.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84/"/>
-    
-      <category term="paper" scheme="http://yoursite.com/tags/paper/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JVM垃圾回收（下）（回收器比较）</title>
-    <link href="http://yoursite.com/2019/04/18/JVM%20GC_3/"/>
-    <id>http://yoursite.com/2019/04/18/JVM GC_3/</id>
-    <published>2019-04-17T16:00:00.000Z</published>
-    <updated>2019-05-01T07:55:45.674Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&amp;emsp;&amp;emsp;&lt;em&gt;人们真正注意到你的时候，不是第一眼看到你站在那里，而是发现过了那么久你居然还在那里
-        
-      
-    
-    </summary>
-    
-      <category term="JVM" scheme="http://yoursite.com/categories/JVM/"/>
-    
-    
-      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JVM垃圾回收（中）</title>
-    <link href="http://yoursite.com/2019/04/16/JVM%20GC_2/"/>
-    <id>http://yoursite.com/2019/04/16/JVM GC_2/</id>
-    <published>2019-04-15T16:00:00.000Z</published>
-    <updated>2019-04-26T06:11:35.019Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;em&gt;繁华声 遁入空门 折煞了世人&lt;br&gt;梦偏冷 辗转一生 情债又几本&lt;br&gt;如你默认 生死枯等&lt;br&gt;枯等一圈 又一圈的 年轮&lt;br&gt;浮屠塔 断了几层 断了谁的魂&lt;br&gt;痛直奔 一盏残灯 倾塌的山门&lt;br&gt;容我再等 历史转身&lt;br&gt;等酒香醇 等你弹
-        
-      
-    
-    </summary>
-    
-      <category term="JVM" scheme="http://yoursite.com/categories/JVM/"/>
-    
-    
-      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JVM垃圾回收(上)</title>
-    <link href="http://yoursite.com/2019/04/15/JVM%20GC_1/"/>
-    <id>http://yoursite.com/2019/04/15/JVM GC_1/</id>
-    <published>2019-04-14T16:00:00.000Z</published>
-    <updated>2019-04-26T06:14:29.051Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&amp;emsp;&amp;emsp;&lt;em&gt;茨威格在为路易十六的妻子玛丽·安托瓦内特写传记时曾无比感慨
-        
-      
-    
-    </summary>
-    
-      <category term="JVM" scheme="http://yoursite.com/categories/JVM/"/>
-    
-    
-      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
-    
-  </entry>
-  
-  <entry>
     <title>JVM类加载机制</title>
-    <link href="http://yoursite.com/2019/04/12/JVM%20ClassLoader/"/>
-    <id>http://yoursite.com/2019/04/12/JVM ClassLoader/</id>
-    <published>2019-04-11T16:00:00.000Z</published>
-    <updated>2019-04-24T11:58:56.247Z</updated>
+    <link href="http://yoursite.com/2019/12/29/JVM%20ClassLoader/"/>
+    <id>http://yoursite.com/2019/12/29/JVM ClassLoader/</id>
+    <published>2019-12-28T16:00:00.000Z</published>
+    <updated>2020-09-08T11:54:44.909Z</updated>
     
     <summary type="html">
     
@@ -207,11 +45,11 @@
   </entry>
   
   <entry>
-    <title>希尔排序</title>
-    <link href="http://yoursite.com/2019/04/01/Java%20SortShell/"/>
-    <id>http://yoursite.com/2019/04/01/Java SortShell/</id>
-    <published>2019-03-31T16:00:00.000Z</published>
-    <updated>2019-04-04T08:09:03.588Z</updated>
+    <title>JVM垃圾回收（中）</title>
+    <link href="http://yoursite.com/2019/12/21/JVM%20GC_2/"/>
+    <id>http://yoursite.com/2019/12/21/JVM GC_2/</id>
+    <published>2019-12-20T16:00:00.000Z</published>
+    <updated>2020-09-08T11:54:10.632Z</updated>
     
     <summary type="html">
     
@@ -219,25 +57,26 @@
       
         
         
-          &lt;h2 id=&quot;ShellSort&quot;&gt;&lt;a href=&quot;#ShellSort&quot; class=&quot;headerlink&quot; title=&quot;ShellSort&quot;&gt;&lt;/a&gt;ShellSort&lt;/h2&gt;&lt;p&gt;希尔排序又称为“缩小增量排序”(Diminishing Increment
+          &lt;p&gt;&amp;emsp;大部分的 Java 对象只存活一小段时间，而存活下来的小部分 Java 对象则会存活很长一段时间。下图（Java 对象生命周期的直方图，红色的表示被逃逸分析优化掉的对象）是一些研究者对Java对象生命周期的动态分析的结果。 &lt;/p&gt;
+&lt;p&gt;&lt;img
         
       
     
     </summary>
     
-      <category term="Sort" scheme="http://yoursite.com/categories/Sort/"/>
+      <category term="JVM" scheme="http://yoursite.com/categories/JVM/"/>
     
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
     
   </entry>
   
   <entry>
-    <title>选择排序</title>
-    <link href="http://yoursite.com/2019/03/25/Java%20SortSelect/"/>
-    <id>http://yoursite.com/2019/03/25/Java SortSelect/</id>
-    <published>2019-03-24T16:00:00.000Z</published>
-    <updated>2019-04-04T08:08:36.781Z</updated>
+    <title>JVM垃圾回收(上)</title>
+    <link href="http://yoursite.com/2019/12/15/JVM%20GC_1/"/>
+    <id>http://yoursite.com/2019/12/15/JVM GC_1/</id>
+    <published>2019-12-14T16:00:00.000Z</published>
+    <updated>2020-09-08T11:53:45.111Z</updated>
     
     <summary type="html">
     
@@ -245,25 +84,25 @@
       
         
         
-          &lt;h2 id=&quot;SelectSort&quot;&gt;&lt;a href=&quot;#SelectSort&quot; class=&quot;headerlink&quot; title=&quot;SelectSort&quot;&gt;&lt;/a&gt;SelectSort&lt;/h2&gt;&lt;p&gt;选择排序的基本思想是：每一趟在 n-i+1
+          &lt;p&gt;&amp;emsp;&amp;emsp;&lt;em&gt;茨威格在为路易十六的妻子玛丽·安托瓦内特写传记时曾无比感慨 “她那时候还太年轻，不知道所有命运馈赠的礼物，早已在暗中标好了价格”。&lt;/em&gt;    
         
       
     
     </summary>
     
-      <category term="Sort" scheme="http://yoursite.com/categories/Sort/"/>
+      <category term="JVM" scheme="http://yoursite.com/categories/JVM/"/>
     
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
     
   </entry>
   
   <entry>
-    <title>插入排序</title>
-    <link href="http://yoursite.com/2019/03/20/Java%20SortInsert/"/>
-    <id>http://yoursite.com/2019/03/20/Java SortInsert/</id>
-    <published>2019-03-19T16:00:00.000Z</published>
-    <updated>2019-04-04T08:08:13.782Z</updated>
+    <title>java内部类</title>
+    <link href="http://yoursite.com/2019/11/20/Java%20InnerClass/"/>
+    <id>http://yoursite.com/2019/11/20/Java InnerClass/</id>
+    <published>2019-11-19T16:00:00.000Z</published>
+    <updated>2020-09-08T11:52:26.875Z</updated>
     
     <summary type="html">
     
@@ -271,111 +110,7 @@
       
         
         
-          &lt;p&gt;InsertSort操作基本操作是将一个记录插入到&lt;strong&gt;已排好的有序表&lt;/strong&gt;中。即对于给定的一组数据，初始时候假设第一个数据自成一个有序序列，其余记录为无序序列。接着从第二个数据开始，按照数据的大小依次将当前将要处理的数据插入到&lt;strong&gt;之前的有
-        
-      
-    
-    </summary>
-    
-      <category term="Sort" scheme="http://yoursite.com/categories/Sort/"/>
-    
-    
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>归并排序</title>
-    <link href="http://yoursite.com/2019/03/15/Java%20SortMerge/"/>
-    <id>http://yoursite.com/2019/03/15/Java SortMerge/</id>
-    <published>2019-03-14T16:00:00.000Z</published>
-    <updated>2019-04-04T08:07:56.747Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;MergingSort&quot;&gt;&lt;a href=&quot;#MergingSort&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Sort" scheme="http://yoursite.com/categories/Sort/"/>
-    
-    
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>快速排序</title>
-    <link href="http://yoursite.com/2019/03/10/Java%20SortQuick/"/>
-    <id>http://yoursite.com/2019/03/10/Java SortQuick/</id>
-    <published>2019-03-09T16:00:00.000Z</published>
-    <updated>2019-04-04T08:07:38.952Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;QuickSort&quot;&gt;&lt;a href=&quot;#QuickSort&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Sort" scheme="http://yoursite.com/categories/Sort/"/>
-    
-    
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>起泡排序</title>
-    <link href="http://yoursite.com/2019/03/08/Java%20SortBubble/"/>
-    <id>http://yoursite.com/2019/03/08/Java SortBubble/</id>
-    <published>2019-03-07T16:00:00.000Z</published>
-    <updated>2019-04-04T08:11:43.124Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;BubbleSort&quot;&gt;&lt;a href=&quot;#BubbleSort&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Sort" scheme="http://yoursite.com/categories/Sort/"/>
-    
-    
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JVM内存模型</title>
-    <link href="http://yoursite.com/2019/02/18/JVM%20MemoryModel/"/>
-    <id>http://yoursite.com/2019/02/18/JVM MemoryModel/</id>
-    <published>2019-02-17T16:00:00.000Z</published>
-    <updated>2019-04-25T02:12:07.254Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;JVM内存模型&quot;&gt;&lt;a href=&quot;#JVM内存模型&quot; class=&quot;headerlink&quot; title=&quot;JVM内存模型&quot;&gt;&lt;/a&gt;JVM内存模型&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/images/1.jpg&quot; alt=&quot;Alt
+          &lt;p&gt;众所周知，每一个Java类都生成一个class文件。内部类是在一个类中再定义一个类，被包含着的类就称为内部类，包含内部类的相比之下就称为外部类。内部类与外部类之间有着紧密的联系，而内部类与其它的类关系不大。这也是内部类的一个优点：被完全隐藏起来，有着更好的封装性（可以声明为
         
       
     
@@ -384,16 +119,16 @@
       <category term="java" scheme="http://yoursite.com/categories/java/"/>
     
     
-      <category term="java高级" scheme="http://yoursite.com/tags/java%E9%AB%98%E7%BA%A7/"/>
+      <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
   <entry>
-    <title>DBUtils</title>
-    <link href="http://yoursite.com/2019/01/04/Java%20Web%20%20DBUtils/"/>
-    <id>http://yoursite.com/2019/01/04/Java Web  DBUtils/</id>
-    <published>2019-01-03T16:00:00.000Z</published>
-    <updated>2019-04-04T08:23:27.926Z</updated>
+    <title>java泛型</title>
+    <link href="http://yoursite.com/2019/10/22/Java%20Generic/"/>
+    <id>http://yoursite.com/2019/10/22/Java Generic/</id>
+    <published>2019-10-21T16:00:00.000Z</published>
+    <updated>2020-09-08T11:51:54.343Z</updated>
     
     <summary type="html">
     
@@ -401,7 +136,116 @@
       
         
         
-          &lt;h3 id=&quot;DBUtils&quot;&gt;&lt;a href=&quot;#DBUtils&quot; class=&quot;headerlink&quot; title=&quot;DBUtils&quot;&gt;&lt;/a&gt;DBUtils&lt;/h3&gt;&lt;p&gt;Commons DbUtils是Apache提供的一个对JDBC进行简单封装的开源工具类库，
+          &lt;h3 id=&quot;泛型来源&quot;&gt;&lt;a href=&quot;#泛型来源&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java源码-剖析LinkedList</title>
+    <link href="http://yoursite.com/2019/10/20/Java%20LinkedList/"/>
+    <id>http://yoursite.com/2019/10/20/Java LinkedList/</id>
+    <published>2019-10-19T16:00:00.000Z</published>
+    <updated>2020-09-08T11:53:12.794Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;ArrayLis通过索引值随机访问的效率很高，但是插入与删除的性能比较低；LinkedList也实现了List接口，而LIst接口扩展了Collection接口，Collection接口又扩展了Iterable接口。同时LinkedList还实现了队列接口Queue，就是平
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="java源码" scheme="http://yoursite.com/tags/java%E6%BA%90%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java为何没有引用传递？</title>
+    <link href="http://yoursite.com/2019/09/07/Java%20CallByValueReference/"/>
+    <id>http://yoursite.com/2019/09/07/Java CallByValueReference/</id>
+    <published>2019-09-06T16:00:00.000Z</published>
+    <updated>2020-09-08T11:52:02.105Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;值传递（值调用）（call by value）是指在调用函数式将实际参数&lt;strong&gt;复制&lt;/strong&gt;一份传递到函数中,这样在函数中如果对参数进行修改，将不会影响到实际参数。&lt;br&gt;  引用传递（引用调用）（pass by
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java源码-剖析HashMap</title>
+    <link href="http://yoursite.com/2019/08/16/Java%20HashMap/"/>
+    <id>http://yoursite.com/2019/08/16/Java HashMap/</id>
+    <published>2019-08-15T16:00:00.000Z</published>
+    <updated>2020-09-08T11:49:55.583Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;ArrayList与LinkedList的缺点就是按元素内容查找值时，查找元素的时间复杂度都较高，而HashMap查找元素的时间复杂度可以达到O(1)!&lt;br&gt;Map在这里是映射的关系，K-V之间相互映射，计算K的hashCode值，根据这个值去计算（取模
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="java源码" scheme="http://yoursite.com/tags/java%E6%BA%90%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL事务</title>
+    <link href="http://yoursite.com/2019/07/15/Java%20Web%20%20Transaction/"/>
+    <id>http://yoursite.com/2019/07/15/Java Web  Transaction/</id>
+    <published>2019-07-14T16:00:00.000Z</published>
+    <updated>2020-09-08T11:49:20.631Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;事务&quot;&gt;&lt;a href=&quot;#事务&quot; class=&quot;headerlink&quot;
         
       
     
@@ -415,11 +259,91 @@
   </entry>
   
   <entry>
+    <title>Servlet（二）</title>
+    <link href="http://yoursite.com/2019/06/29/Java%20Web%20%20Servlet2/"/>
+    <id>http://yoursite.com/2019/06/29/Java Web  Servlet2/</id>
+    <published>2019-06-28T16:00:00.000Z</published>
+    <updated>2020-09-08T11:48:58.602Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;提要：Servlet配置路径、ServletConfig、ServletContext、&lt;/p&gt;
+&lt;h3 id=&quot;1-Servlet配置路径（xml或者注解）&quot;&gt;&lt;a href=&quot;#1-Servlet配置路径（xml或者注解）&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Servlet" scheme="http://yoursite.com/categories/Servlet/"/>
+    
+    
+      <category term="Servlet" scheme="http://yoursite.com/tags/Servlet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Servlet（一）</title>
+    <link href="http://yoursite.com/2019/06/16/Java%20Web%20%20Servlet1/"/>
+    <id>http://yoursite.com/2019/06/16/Java Web  Servlet1/</id>
+    <published>2019-06-15T16:00:00.000Z</published>
+    <updated>2020-09-08T11:48:36.126Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;提要：Servlet执行过程、执行周期。  &lt;/p&gt;
+&lt;p&gt;在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 &lt;strong&gt;.class&lt;/strong&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="Servlet" scheme="http://yoursite.com/categories/Servlet/"/>
+    
+    
+      <category term="Servlet" scheme="http://yoursite.com/tags/Servlet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常用排序算法的java实现</title>
+    <link href="http://yoursite.com/2019/06/01/Java%20Sort/"/>
+    <id>http://yoursite.com/2019/06/01/Java Sort/</id>
+    <published>2019-05-31T16:00:00.000Z</published>
+    <updated>2020-09-08T11:48:13.601Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;BubbleSort&quot;&gt;&lt;a href=&quot;#BubbleSort&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Sort" scheme="http://yoursite.com/categories/Sort/"/>
+    
+    
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
     <title>连接池</title>
-    <link href="http://yoursite.com/2019/01/03/Java%20Web%20%20ConnectionPool/"/>
-    <id>http://yoursite.com/2019/01/03/Java Web  ConnectionPool/</id>
-    <published>2019-01-02T16:00:00.000Z</published>
-    <updated>2019-01-04T03:22:00.009Z</updated>
+    <link href="http://yoursite.com/2019/05/06/Java%20Web%20%20ConnectionPool/"/>
+    <id>http://yoursite.com/2019/05/06/Java Web  ConnectionPool/</id>
+    <published>2019-05-05T16:00:00.000Z</published>
+    <updated>2020-09-08T11:47:56.737Z</updated>
     
     <summary type="html">
     
@@ -442,11 +366,11 @@
   </entry>
   
   <entry>
-    <title>事务</title>
-    <link href="http://yoursite.com/2019/01/03/Java%20Web%20%20Transaction/"/>
-    <id>http://yoursite.com/2019/01/03/Java Web  Transaction/</id>
-    <published>2019-01-02T16:00:00.000Z</published>
-    <updated>2019-01-03T13:31:14.833Z</updated>
+    <title>DBUtils</title>
+    <link href="http://yoursite.com/2019/05/04/Java%20Web%20%20DBUtils/"/>
+    <id>http://yoursite.com/2019/05/04/Java Web  DBUtils/</id>
+    <published>2019-05-03T16:00:00.000Z</published>
+    <updated>2020-09-08T11:47:39.375Z</updated>
     
     <summary type="html">
     
@@ -454,7 +378,7 @@
       
         
         
-          &lt;h3 id=&quot;事务&quot;&gt;&lt;a href=&quot;#事务&quot; class=&quot;headerlink&quot;
+          &lt;h3 id=&quot;DBUtils&quot;&gt;&lt;a href=&quot;#DBUtils&quot; class=&quot;headerlink&quot; title=&quot;DBUtils&quot;&gt;&lt;/a&gt;DBUtils&lt;/h3&gt;&lt;p&gt;Commons DbUtils是Apache提供的一个对JDBC进行简单封装的开源工具类库，
         
       
     
@@ -469,10 +393,10 @@
   
   <entry>
     <title>JDBC基础</title>
-    <link href="http://yoursite.com/2019/01/02/Java%20Web%20%20JDBC/"/>
-    <id>http://yoursite.com/2019/01/02/Java Web  JDBC/</id>
-    <published>2019-01-01T16:00:00.000Z</published>
-    <updated>2019-04-04T08:21:08.186Z</updated>
+    <link href="http://yoursite.com/2019/05/02/Java%20Web%20%20JDBC/"/>
+    <id>http://yoursite.com/2019/05/02/Java Web  JDBC/</id>
+    <published>2019-05-01T16:00:00.000Z</published>
+    <updated>2020-09-08T11:47:25.558Z</updated>
     
     <summary type="html">
     
@@ -495,11 +419,11 @@
   </entry>
   
   <entry>
-    <title>java内部类</title>
-    <link href="http://yoursite.com/2018/12/20/Java%20InnerClass/"/>
-    <id>http://yoursite.com/2018/12/20/Java InnerClass/</id>
-    <published>2018-12-19T16:00:00.000Z</published>
-    <updated>2019-04-04T08:22:20.056Z</updated>
+    <title>JVM垃圾回收（下）（回收器比较）</title>
+    <link href="http://yoursite.com/2019/04/18/%E6%9C%AA%E4%B8%8A%E4%BC%A0/JVM%20GC_3/"/>
+    <id>http://yoursite.com/2019/04/18/未上传/JVM GC_3/</id>
+    <published>2019-04-17T16:00:00.000Z</published>
+    <updated>2020-09-08T11:32:31.942Z</updated>
     
     <summary type="html">
     
@@ -507,7 +431,59 @@
       
         
         
-          &lt;p&gt;众所周知，每一个Java类都生成一个class文件。内部类是在一个类中再定义一个类，被包含着的类就称为内部类，包含内部类的相比之下就称为外部类。内部类与外部类之间有着紧密的联系，而内部类与其它的类关系不大。这也是内部类的一个优点：被完全隐藏起来，有着更好的封装性（可以声明为
+          &lt;p&gt;&amp;emsp;&amp;emsp;我个人认为应该把注意力放在前两篇文章中，例如 &lt;strong&gt;寻找失活对象的方法、安全点的建立、分代回收的思想、Thread Local Allocation Buffer、卡表。&lt;/strong&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="JVM" scheme="http://yoursite.com/categories/JVM/"/>
+    
+    
+      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>希尔排序</title>
+    <link href="http://yoursite.com/2019/04/01/%E6%9C%AA%E4%B8%8A%E4%BC%A0/Java%20SortShell/"/>
+    <id>http://yoursite.com/2019/04/01/未上传/Java SortShell/</id>
+    <published>2019-03-31T16:00:00.000Z</published>
+    <updated>2020-09-08T11:43:18.895Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;ShellSort&quot;&gt;&lt;a href=&quot;#ShellSort&quot; class=&quot;headerlink&quot; title=&quot;ShellSort&quot;&gt;&lt;/a&gt;ShellSort&lt;/h2&gt;&lt;p&gt;希尔排序又称为“缩小增量排序”(Diminishing Increment
+        
+      
+    
+    </summary>
+    
+      <category term="Sort" scheme="http://yoursite.com/categories/Sort/"/>
+    
+    
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java源码-剖析ArrayList</title>
+    <link href="http://yoursite.com/2019/03/28/Java%20ArrayList/"/>
+    <id>http://yoursite.com/2019/03/28/Java ArrayList/</id>
+    <published>2019-03-27T16:00:00.000Z</published>
+    <updated>2020-09-08T11:46:32.830Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;容器类(集合)，顾名思义就是用来容纳其它数据的类。在泛型的那篇笔记中，实现了一个简单的动态数组的容器类–DynamicArray,本篇主要阐述Java中真正的动态数组（数组列表）容器类ArrayList（Java
         
       
     
@@ -518,14 +494,16 @@
     
       <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
     
+      <category term="java源码" scheme="http://yoursite.com/tags/java%E6%BA%90%E7%A0%81/"/>
+    
   </entry>
   
   <entry>
-    <title>Servlet（二）</title>
-    <link href="http://yoursite.com/2018/12/08/Java%20Web%20%20Servlet2/"/>
-    <id>http://yoursite.com/2018/12/08/Java Web  Servlet2/</id>
-    <published>2018-12-07T16:00:00.000Z</published>
-    <updated>2019-04-04T08:25:55.761Z</updated>
+    <title>选择排序</title>
+    <link href="http://yoursite.com/2019/03/25/%E6%9C%AA%E4%B8%8A%E4%BC%A0/Java%20SortSelect/"/>
+    <id>http://yoursite.com/2019/03/25/未上传/Java SortSelect/</id>
+    <published>2019-03-24T16:00:00.000Z</published>
+    <updated>2020-09-08T11:43:22.877Z</updated>
     
     <summary type="html">
     
@@ -533,17 +511,42 @@
       
         
         
-          &lt;p&gt;提要：Servlet配置路径、ServletConfig、ServletContext、&lt;/p&gt;
-&lt;h3 id=&quot;1-Servlet配置路径（xml或者注解）&quot;&gt;&lt;a href=&quot;#1-Servlet配置路径（xml或者注解）&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;SelectSort&quot;&gt;&lt;a href=&quot;#SelectSort&quot; class=&quot;headerlink&quot; title=&quot;SelectSort&quot;&gt;&lt;/a&gt;SelectSort&lt;/h2&gt;&lt;p&gt;选择排序的基本思想是：每一趟在 n-i+1
         
       
     
     </summary>
     
-      <category term="Servlet" scheme="http://yoursite.com/categories/Servlet/"/>
+      <category term="Sort" scheme="http://yoursite.com/categories/Sort/"/>
     
     
-      <category term="Servlet" scheme="http://yoursite.com/tags/Servlet/"/>
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>插入排序</title>
+    <link href="http://yoursite.com/2019/03/20/%E6%9C%AA%E4%B8%8A%E4%BC%A0/Java%20SortInsert/"/>
+    <id>http://yoursite.com/2019/03/20/未上传/Java SortInsert/</id>
+    <published>2019-03-19T16:00:00.000Z</published>
+    <updated>2019-04-04T08:08:13.782Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;InsertSort操作基本操作是将一个记录插入到&lt;strong&gt;已排好的有序表&lt;/strong&gt;中。即对于给定的一组数据，初始时候假设第一个数据自成一个有序序列，其余记录为无序序列。接着从第二个数据开始，按照数据的大小依次将当前将要处理的数据插入到&lt;strong&gt;之前的有
+        
+      
+    
+    </summary>
+    
+      <category term="Sort" scheme="http://yoursite.com/categories/Sort/"/>
+    
+    
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
     
   </entry>
   

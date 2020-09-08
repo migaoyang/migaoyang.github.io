@@ -154,152 +154,10 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-Architeture Hadoop" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-JVM ClassLoader" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2019-05-02 00:00:00" datetime="2019-05-01T16:00:00.000Z" itemprop="datePublished">2019-05-02</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分布式架构/">分布式架构</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/05/02/Architeture Hadoop/">我对Hadoop的理解：存储、资源调度、计算</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        &emsp;&emsp;在看了Google关于大数据的几篇开山论文之后，我又看了看Hadoop的架构设计，虽然Hadoop关键组件的设计原本就是Google的GFS、Bigtable、MapReduce但还是在工程实现上有着自己的特点。本篇博客我会写一写我对Hadoop在存储、资源调度、计算方面的理解，以后也可能会具体的针对重要的组件在进行详细记录 :) ,当然如果你发现我的理解有问题或者有其它问题,我们都可以邮件交流鸭 mee.gaoyang@OutLook.com :)  
-分布式系统&emsp;&emsp;A distributed system is a collection o...
-    
-
-        <a href="/2019/05/02/Architeture Hadoop/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper/">paper</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分布式架构/">分布式架构</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Architeture BigTable" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-04-26 00:00:00" datetime="2019-04-25T16:00:00.000Z" itemprop="datePublished">2019-04-26</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分布式架构/">分布式架构</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/04/26/Architeture BigTable/">Bigtable总结(上)</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        &emsp;&emsp;既然目标是地平线&emsp;留给世界的只能是背影&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——汪国真&emsp;&emsp;本篇博客是我阅读Bigtable: A Distributed Storage System for Structured Data的论文以及相关资料总结而来(我认为阅读原文还有很有必要的)。当然也是我自己的理解，如有问题请邮件联系mee.gaoyang@OutLook....
-    
-
-        <a href="/2019/04/26/Architeture BigTable/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper/">paper</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分布式架构/">分布式架构</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Architeture GFS" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-04-21 00:00:00" datetime="2019-04-20T16:00:00.000Z" itemprop="datePublished">2019-04-21</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分布式架构/">分布式架构</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/04/21/Architeture GFS/">The Google File System总结</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        &emsp;&emsp;这篇博客是我阅读Google File System的论文以及相关资料并总结而来。当然也是我自己的理解，如有问题请邮件联系mee.gaoyang@foxmail.com :)
-GFS的主要设计需求GFS是应用到Google内部的文件系统，针对于其自身的业务场景需求，设计主要基于以下几个需求：
-
-节点失效是常态。系统会构建在大量的普通廉价机器上，这使得节点失效的可能性很高。因此，GFS 必须能有较高的容错性、能够持续地监控自身的状态，比如应用程序 bug、操作系统的 bug、人为失误，甚至还有硬盘、内存、连接器、网络以及电源失效等造成的问题。所以，持续的监控、错误侦...
-    
-
-        <a href="/2019/04/21/Architeture GFS/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper/">paper</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分布式架构/">分布式架构</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-JVM GC_3" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-04-18 00:00:00" datetime="2019-04-17T16:00:00.000Z" itemprop="datePublished">2019-04-18</time>
+        <time class="post-time" title="2019-12-29 00:00:00" datetime="2019-12-28T16:00:00.000Z" itemprop="datePublished">2019-12-29</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/">JVM</a></li></ul>
@@ -313,7 +171,7 @@ GFS的主要设计需求GFS是应用到Google内部的文件系统，针对于�
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/04/18/JVM GC_3/">JVM垃圾回收（下）（回收器比较）</a>
+      <a class="post-title-link" href="/2019/12/29/JVM ClassLoader/">JVM类加载机制</a>
     </h3>
   
 
@@ -323,10 +181,15 @@ GFS的主要设计需求GFS是应用到Google内部的文件系统，针对于�
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        &emsp;&emsp;人们真正注意到你的时候，不是第一眼看到你站在那里，而是发现过了那么久你居然还在那里 :)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——黑客与画家&emsp;&emsp;我个人认为应该把注意力放在前两篇文章中，例如 寻找失活对象的方法、安全点的建立、分代...
+        
+从大的方面讲，类加载的结果是把一段字节流变换成Class结构并写方法区，在加载阶段就已经生成class结构了，所以我认为在加载阶段应该已经写入了方法区，只是被标记为未链接而暂不能使用。
+类的初始化只会发生一次，与new实例的初始化不是一个概念。  
+JVM并不会直接使用.class文件，类加载链接的目的就是在JVM中创建相应的类结构，会存储在元空间（老说法就是方法区）。  
+双亲委派呀，明明只给了父类加载所以应该是单亲的，并且英文中为parent不带s，照理应该翻译为单亲。但既然约定俗成翻译为双亲。
+针对上一点，我认为还有另一种解释：在类加载的过程中，有一个委派模式，这里严格来说应该不...
     
 
-        <a href="/2019/04/18/JVM GC_3/" class="post-more waves-effect waves-button">
+        <a href="/2019/12/29/JVM ClassLoader/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
@@ -345,7 +208,7 @@ GFS的主要设计需求GFS是应用到Google内部的文件系统，针对于�
             <article id="post-JVM GC_2" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2019-04-16 00:00:00" datetime="2019-04-15T16:00:00.000Z" itemprop="datePublished">2019-04-16</time>
+        <time class="post-time" title="2019-12-21 00:00:00" datetime="2019-12-20T16:00:00.000Z" itemprop="datePublished">2019-12-21</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/">JVM</a></li></ul>
@@ -359,7 +222,7 @@ GFS的主要设计需求GFS是应用到Google内部的文件系统，针对于�
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/04/16/JVM GC_2/">JVM垃圾回收（中）</a>
+      <a class="post-title-link" href="/2019/12/21/JVM GC_2/">JVM垃圾回收（中）</a>
     </h3>
   
 
@@ -369,11 +232,12 @@ GFS的主要设计需求GFS是应用到Google内部的文件系统，针对于�
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        繁华声 遁入空门 折煞了世人梦偏冷 辗转一生 情债又几本如你默认 生死枯等枯等一圈 又一圈的 年轮浮屠塔 断了几层 断了谁的魂痛直奔 一盏残灯 倾塌的山门容我再等 历史转身等酒香醇 等你弹 一曲古筝雨纷纷 旧故里草木深我听闻 你始终一个人斑驳的城门 盘踞着老树根石板上回荡的是 再等&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——方文山  
-&emsp;&emsp;烟花易冷，珍惜当下。大部分的 Java 对象只存活一小段时间，而存活下来的小部分 Java 对象则会存活很长一段时间。下图（Java 对象生命周期的直方图，红色的表...
+        &emsp;大部分的 Java 对象只存活一小段时间，而存活下来的小部分 Java 对象则会存活很长一段时间。下图（Java 对象生命周期的直方图，红色的表示被逃逸分析优化掉的对象）是一些研究者对Java对象生命周期的动态分析的结果。 
+    
+&emsp;&emsp;Java 虚拟机的分代回收思想。简单来说，就是将堆空间划分为两代，分别叫做新生代和老年代。新生代用来存储新建的对象。当对象存活时间够长时，则将其移动到老年代。&emsp;&emsp;Java 虚拟机可以给不同代使用不同的回收算法。对于 于新生代，我们猜测大部分的 Java 对象只存活一小段时间，那么便可以频繁地采用耗时较...
     
 
-        <a href="/2019/04/16/JVM GC_2/" class="post-more waves-effect waves-button">
+        <a href="/2019/12/21/JVM GC_2/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
@@ -392,7 +256,7 @@ GFS的主要设计需求GFS是应用到Google内部的文件系统，针对于�
             <article id="post-JVM GC_1" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2019-04-15 00:00:00" datetime="2019-04-14T16:00:00.000Z" itemprop="datePublished">2019-04-15</time>
+        <time class="post-time" title="2019-12-15 00:00:00" datetime="2019-12-14T16:00:00.000Z" itemprop="datePublished">2019-12-15</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/">JVM</a></li></ul>
@@ -406,7 +270,7 @@ GFS的主要设计需求GFS是应用到Google内部的文件系统，针对于�
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/04/15/JVM GC_1/">JVM垃圾回收(上)</a>
+      <a class="post-title-link" href="/2019/12/15/JVM GC_1/">JVM垃圾回收(上)</a>
     </h3>
   
 
@@ -416,11 +280,12 @@ GFS的主要设计需求GFS是应用到Google内部的文件系统，针对于�
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        &emsp;&emsp;茨威格在为路易十六的妻子玛丽·安托瓦内特写传记时曾无比感慨 “她那时候还太年轻，不知道所有命运馈赠的礼物，早已在暗中标好了价格”。&emsp;&emsp;JVM的内存管理，将原本由开发人员手动管理的内存，交给垃圾回收器来自动的回收管理。虽然极大的减轻了开发者的负担，但既然是自定机制，肯定不会像手动回收那样精准，同时还带来了不少与垃圾回收相关的问题，我们所要关注的就是该如何解决、缓解这些问题。  
-引用计数法与可达性分析&emsp;&emsp;垃圾回收，顾名思义，便是将已经分配出去的，但却不再使用的内存回收回来，以便能够再次分配。在 Java 虚拟机的语境下，垃圾指...
+        &emsp;&emsp;茨威格在为路易十六的妻子玛丽·安托瓦内特写传记时曾无比感慨 “她那时候还太年轻，不知道所有命运馈赠的礼物，早已在暗中标好了价格”。     
+&emsp;&emsp;JVM的内存管理，将原本由开发人员手动管理的内存，交给垃圾回收器来自动的回收管理。虽然极大的减轻了开发者的负担，但既然是自定机制，肯定不会像手动回收那样精准，同时还带来了不少与垃圾回收相关的问题，我们所要关注的就是该如何解决、缓解这些问题。  
+引用计数法与可达性分析&emsp;&emsp;垃圾回收，顾名思义，便是将已经分配出去的，但却不再使用的内存回收回来，以便能够再次分配。在 Java 虚拟机的语...
     
 
-        <a href="/2019/04/15/JVM GC_1/" class="post-more waves-effect waves-button">
+        <a href="/2019/12/15/JVM GC_1/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
@@ -436,374 +301,10 @@ GFS的主要设计需求GFS是应用到Google内部的文件系统，针对于�
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-JVM ClassLoader" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-Java InnerClass" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2019-04-12 00:00:00" datetime="2019-04-11T16:00:00.000Z" itemprop="datePublished">2019-04-12</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/">JVM</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/04/12/JVM ClassLoader/">JVM类加载机制</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        
-从大的方面讲，类加载的结果是把一段字节流变换成Class结构并写方法区，在加载阶段就已经生成class结构了，所以我认为在加载阶段应该已经写入了方法区，只是被标记为未链接而暂不能使用。
-类的初始化只会发生一次，与new实例的初始化不是一个概念。  
-JVM并不会直接使用.class文件，类加载链接的目的就是在JVM中创建相应的类结构，会存储在元空间（老说法就是方法区）。  
-双亲委派呀，明明只给了父类加载所以应该是单亲的，并且英文中为parent不带s，照理应该翻译为单亲。但既然约定俗成翻译为双亲。
-针对上一点，我认为还有另一种解释：在类加载的过程中，有一个委派模式，这里严格来说应该不...
-    
-
-        <a href="/2019/04/12/JVM ClassLoader/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Java SortShell" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-04-01 00:00:00" datetime="2019-03-31T16:00:00.000Z" itemprop="datePublished">2019-04-01</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Sort/">Sort</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/04/01/Java SortShell/">希尔排序</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        ShellSort希尔排序又称为“缩小增量排序”(Diminishing Increment Sort),其实希尔排序也是一种属于插入类的方法，但是在时间效率上有着较大的改进。希尔排序的基本思想是：先将整个待排序列分割为若干子序列分别进行直接插入排序，在整个序列中的数据“基本有序”时候，再对全体数据进行一次直接插入排序（即增量为1）。   
-实现public static int[] shell(int [] data) {
-    int length = data.length;
-    int j ;
-    for(int pace = length/2 ; pace > 0 ;...
-    
-
-        <a href="/2019/04/01/Java SortShell/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Java SortSelect" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-03-25 00:00:00" datetime="2019-03-24T16:00:00.000Z" itemprop="datePublished">2019-03-25</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Sort/">Sort</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/03/25/Java SortSelect/">选择排序</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        SelectSort选择排序的基本思想是：每一趟在 n-i+1 个数据中选出数值最小的记录，然后作为有序序列的第i个数据。  
-实现public static void select(int [] data){
-    if (data == null || data.length == 0)
-        return;
-    for (int i = 0 ; i &lt; data.length ; i++ ){  //select min,set first
-        int min = data[i];
-        for (int j = i + 1 ; j &l...
-    
-
-        <a href="/2019/03/25/Java SortSelect/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Java SortInsert" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-03-20 00:00:00" datetime="2019-03-19T16:00:00.000Z" itemprop="datePublished">2019-03-20</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Sort/">Sort</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/03/20/Java SortInsert/">插入排序</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        InsertSort操作基本操作是将一个记录插入到已排好的有序表中。即对于给定的一组数据，初始时候假设第一个数据自成一个有序序列，其余记录为无序序列。接着从第二个数据开始，按照数据的大小依次将当前将要处理的数据插入到之前的有序序列中，直到最后一个记录插入到有序序列中为止。以下为直接插入排序。        
-public class InsertSort {
-    public static int[] insert(int[] data) {
-        if (data == null || data.length == 0) {
-            return data...
-    
-
-        <a href="/2019/03/20/Java SortInsert/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Java SortMerge" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-03-15 00:00:00" datetime="2019-03-14T16:00:00.000Z" itemprop="datePublished">2019-03-15</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Sort/">Sort</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/03/15/Java SortMerge/">归并排序</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        MergingSort归并排序与插入排序与起泡排序不同，“归并”的含义是将两个或两个以上的有序表组合成一个新的有序表。核心操作是将一维数组中前后相邻的两个有序序列归并为一个有序序列。  
-public static void merge(int[] data, int p, int q, int r) {
-    int i, j, k, n1, n2;
-    n1 = q - p + 1;
-    n2 = r - q;
-    int[] lPart = new int[n1];
-    int[] rPart = new int[n2];
-    for (i = 0, k = ...
-    
-
-        <a href="/2019/03/15/Java SortMerge/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Java SortQuick" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-03-10 00:00:00" datetime="2019-03-09T16:00:00.000Z" itemprop="datePublished">2019-03-10</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Sort/">Sort</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/03/10/Java SortQuick/">快速排序</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        QuickSort快速排序其实是对起泡排序的一种改进，其基本思想是：通过一趟排序将待排数据分割成独立的两部分，其中一部分数据的关键字均比另一部分的关键字小，然后就可以对这两部分数据再进行排序，已达到整个序列有序。  
-实现public static void quick(int[] data){
-        sort(data, 0, data.length-1);
-    }
-
-
-
-public static void sort(int[] data , int low , int high){
-    int i , j ;
-    int index ;  //pivot
-  ...
-    
-
-        <a href="/2019/03/10/Java SortQuick/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Java SortBubble" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-03-08 00:00:00" datetime="2019-03-07T16:00:00.000Z" itemprop="datePublished">2019-03-08</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Sort/">Sort</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/03/08/Java SortBubble/">起泡排序</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        BubbleSort起泡排序就是两两交换排序，可以将最大值或最小值放在一端，然后再从下个依次两两比较，将第二大或者第二小的放在一端第二个。  
-实现public static int[] bubble(int [] data) {
-    int length = data.length;
-    for(int i = 0 ; i &lt; length ; i ++) {
-        for(int j = 0 ; j &lt; length-i-1 ; j++) {
-            if (data[j] > data[j+1]) {
-                i...
-    
-
-        <a href="/2019/03/08/Java SortBubble/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-JVM MemoryModel" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-02-18 00:00:00" datetime="2019-02-17T16:00:00.000Z" itemprop="datePublished">2019-02-18</time>
+        <time class="post-time" title="2019-11-20 00:00:00" datetime="2019-11-19T16:00:00.000Z" itemprop="datePublished">2019-11-20</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a></li></ul>
@@ -817,7 +318,7 @@ public static void sort(int[] data , int low , int high){
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/02/18/JVM MemoryModel/">JVM内存模型</a>
+      <a class="post-title-link" href="/2019/11/20/Java InnerClass/">java内部类</a>
     </h3>
   
 
@@ -827,18 +328,17 @@ public static void sort(int[] data , int low , int high){
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        JVM内存模型
-
+        众所周知，每一个Java类都生成一个class文件。内部类是在一个类中再定义一个类，被包含着的类就称为内部类，包含内部类的相比之下就称为外部类。内部类与外部类之间有着紧密的联系，而内部类与其它的类关系不大。这也是内部类的一个优点：被完全隐藏起来，有着更好的封装性（可以声明为private对外界完全隐藏），减少了代码量（可轻松访问外部类的私有变量），使其更为简洁。虽然内部类被包含在外部类中，看起来是一个类，但这只是从java编译器的角度来看的，在java虚拟机层面看到的（与泛型类似）其实还是两个类，也就是说，每个内部类最后都会被编译为一个独立的类，生成一个独立的字节码文件。下面的一段代码中...
     
 
-        <a href="/2019/02/18/JVM MemoryModel/" class="post-more waves-effect waves-button">
+        <a href="/2019/11/20/Java InnerClass/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java高级/">java高级</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java基础/">java基础</a></li></ul>
 
     </div>
     
@@ -847,13 +347,13 @@ public static void sort(int[] data , int low , int high){
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Java Web  DBUtils" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-Java Generic" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2019-01-04 00:00:00" datetime="2019-01-03T16:00:00.000Z" itemprop="datePublished">2019-01-04</time>
+        <time class="post-time" title="2019-10-22 00:00:00" datetime="2019-10-21T16:00:00.000Z" itemprop="datePublished">2019-10-22</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JDBC/">JDBC</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a></li></ul>
 
 
 
@@ -864,7 +364,7 @@ public static void sort(int[] data , int low , int high){
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/01/04/Java Web  DBUtils/">DBUtils</a>
+      <a class="post-title-link" href="/2019/10/22/Java Generic/">java泛型</a>
     </h3>
   
 
@@ -874,22 +374,18 @@ public static void sort(int[] data , int low , int high){
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        DBUtilsCommons DbUtils是Apache提供的一个对JDBC进行简单封装的开源工具类库， 简化了CRUD，里面定义了通用的CRUD方法。同时也不会影响程序的性能。  
-增删改//dbutils 只是帮我们简化了CRUD 的代码， 但是连接的创建以及获取工作，不在他的工作范围，还需要我们自己动手。
-QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());
-
-//增加
-queryRunner.update("insert into account values (null , ? , ? ...
+        泛型来源前面用到了集合，可以存储自定义的对象然后进行遍历操作，由于可存储的对象可以是任意类型的，因此就可能在转换时出现类型转换异常，Java为了解决这个问题，提出了一种机制 – 泛型（Generic）。泛型把明确具体类型的工作提前到了编译时期。集合都是基于泛型的，泛型的基本思想与概念是简单的，但是泛型有一些比较令人费解的语法，细节和局限性。本文主要阐述泛型的基本概念与原理、通配符、泛型需要注意的一些细节与局限性。  
+泛型基本概念与原理泛型的字面意思就是广泛的类型。类、接口与方法都可以应用于很广泛的类型。 代码与他们能够操作的数据类型不再紧密的绑定在一起，同一段代码可以处理不同的数据类型...
     
 
-        <a href="/2019/01/04/Java Web  DBUtils/" class="post-more waves-effect waves-button">
+        <a href="/2019/10/22/Java Generic/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java高级/">java高级</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java基础/">java基础</a></li></ul>
 
     </div>
     
@@ -898,13 +394,13 @@ queryRunner.update("insert into account values (null , ? , ? ...
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Java Web  ConnectionPool" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-Java LinkedList" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2019-01-03 00:00:00" datetime="2019-01-02T16:00:00.000Z" itemprop="datePublished">2019-01-03</time>
+        <time class="post-time" title="2019-10-20 00:00:00" datetime="2019-10-19T16:00:00.000Z" itemprop="datePublished">2019-10-20</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JDBC/">JDBC</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a></li></ul>
 
 
 
@@ -915,7 +411,7 @@ queryRunner.update("insert into account values (null , ? , ? ...
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/01/03/Java Web  ConnectionPool/">连接池</a>
+      <a class="post-title-link" href="/2019/10/20/Java LinkedList/">java源码-剖析LinkedList</a>
     </h3>
   
 
@@ -925,28 +421,121 @@ queryRunner.update("insert into account values (null , ? , ? ...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        数据库连接池
-数据库连接的对象创建，比较消耗性能。     
-一开始现在内存中开辟一块空间（以集合存起来）， 一开先往Pool里面放置多个连接对象。以后需要连接的话，直接从Pool里面取。不需要自己用到时再重头开始建立了。使用完毕，需要归还连接，确保连接对象能循环利用。  
-
-常用的开源连接池有DBCP（Apache）与C3P0  
-DBCP首先导入jar文件。方式一 不使用配置文件：   
-public void testDBCP01(){
-    Connection conn = null;
-    PreparedStatement ps = null;
-    try {
-
- ...
+        ArrayLis通过索引值随机访问的效率很高，但是插入与删除的性能比较低；LinkedList也实现了List接口，而LIst接口扩展了Collection接口，Collection接口又扩展了Iterable接口。同时LinkedList还实现了队列接口Queue，就是平时说的队列，两个操作点，尾部加元素，头部删元素，先进先出。但是LinkedList与ArrayList的特点几乎刚好相反。  
+用法LinkedList的构造方法有两个，与ArrayList类似。
+public LinkedList()
+public LinkedList(Collection&lt;? extends...
     
 
-        <a href="/2019/01/03/Java Web  ConnectionPool/" class="post-more waves-effect waves-button">
+        <a href="/2019/10/20/Java LinkedList/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java高级/">java高级</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java基础/">java基础</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java源码/">java源码</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Java CallByValueReference" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-09-07 00:00:00" datetime="2019-09-06T16:00:00.000Z" itemprop="datePublished">2019-09-07</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/09/07/Java CallByValueReference/">java为何没有引用传递？</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+值传递（值调用）（call by value）是指在调用函数式将实际参数复制一份传递到函数中,这样在函数中如果对参数进行修改，将不会影响到实际参数。  引用传递（引用调用）（pass by reference）是指在调用函数时将实际参数的地址直接传递到函数中，那么在函数中对参数所进行的修改，将影响到实际参数。
+
+误解
+错解一：Java有引用传递。
+错解二：区分值传递和引用传递的依据是方法参数的内容，如果方法参数是值，就是值传递。如果方法参数引用，就是引用传递。
+错解三：方法参数如果是普通数据类型，那就是值传递。如果是对象，那就是引用传递。
+
+具体分析  方法参数是基本类型时，方法接收的...
+    
+
+        <a href="/2019/09/07/Java CallByValueReference/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java基础/">java基础</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Java HashMap" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-08-16 00:00:00" datetime="2019-08-15T16:00:00.000Z" itemprop="datePublished">2019-08-16</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/08/16/Java HashMap/">java源码-剖析HashMap</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        ArrayList与LinkedList的缺点就是按元素内容查找值时，查找元素的时间复杂度都较高，而HashMap查找元素的时间复杂度可以达到O(1)!Map在这里是映射的关系，K-V之间相互映射，计算K的hashCode值，根据这个值去计算（取模 数组的长度）HashMap内部所维护数组的索引i，当然，这个i值可能会重复，对于重复的值，在java7中使用链表继续存储。数组里存的内容也是一个Entry对象。取值时要通过K来取，若K的hash值所找到的位置发生了hash碰撞（有链表），就使用equal方法比较具体的K值。  
+HashMap所实现的Map接口Map有键（Key）与V（val...
+    
+
+        <a href="/2019/08/16/Java HashMap/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java基础/">java基础</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java源码/">java源码</a></li></ul>
 
     </div>
     
@@ -958,7 +547,7 @@ public void testDBCP01(){
             <article id="post-Java Web  Transaction" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2019-01-03 00:00:00" datetime="2019-01-02T16:00:00.000Z" itemprop="datePublished">2019-01-03</time>
+        <time class="post-time" title="2019-07-15 00:00:00" datetime="2019-07-14T16:00:00.000Z" itemprop="datePublished">2019-07-15</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JDBC/">JDBC</a></li></ul>
@@ -972,7 +561,7 @@ public void testDBCP01(){
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/01/03/Java Web  Transaction/">事务</a>
+      <a class="post-title-link" href="/2019/07/15/Java Web  Transaction/">MySQL事务</a>
     </h3>
   
 
@@ -993,7 +582,7 @@ public void testDBCP01(){
 事务安全问题读问题在读操作时可能会出现以下三种等级的错误 1.脏读 2.不可重读读 3.幻读  ...
     
 
-        <a href="/2019/01/03/Java Web  Transaction/" class="post-more waves-effect waves-button">
+        <a href="/2019/07/15/Java Web  Transaction/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
@@ -1009,114 +598,10 @@ public void testDBCP01(){
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Java Web  JDBC" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-01-02 00:00:00" datetime="2019-01-01T16:00:00.000Z" itemprop="datePublished">2019-01-02</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JDBC/">JDBC</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/01/02/Java Web  JDBC/">JDBC基础</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        JDBC： JAVA Database Connectivity java 数据库连接。
-JDBC的基本使用步骤：
-注册驱动
-
-DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-
-Driver类里面有静态代码块，如果使用上面等于注册了两次，实际没有必要也没有影响。可使用以下：  
-Class.forName("com.mysql.jdbc.Driver");
-
-
-建立连接
-
-   //DriverManager.getConnection("jdbc:mysql://localhost/test?user=monty&a...
-    
-
-        <a href="/2019/01/02/Java Web  JDBC/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java基础/">java基础</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Java InnerClass" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-12-20 00:00:00" datetime="2018-12-19T16:00:00.000Z" itemprop="datePublished">2018-12-20</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/12/20/Java InnerClass/">java内部类</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        众所周知，每一个Java类都生成一个class文件。内部类是在一个类中再定义一个类，被包含着的类就称为内部类，包含内部类的相比之下就称为外部类。内部类与外部类之间有着紧密的联系，而内部类与其它的类关系不大。这也是内部类的一个优点：被完全隐藏起来，有着更好的封装性（可以声明为private对外界完全隐藏），减少了代码量（可轻松访问外部类的私有变量），使其更为简洁。虽然内部类被包含在外部类中，看起来是一个类，但这只是从java编译器的角度来看的，在java虚拟机层面看到的（与泛型类似）其实还是两个类，也就是说，每个内部类最后都会被编译为一个独立的类，生成一个独立的字节码文件。下面的一段代码中...
-    
-
-        <a href="/2018/12/20/Java InnerClass/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java基础/">java基础</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
             <article id="post-Java Web  Servlet2" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-12-08 00:00:00" datetime="2018-12-07T16:00:00.000Z" itemprop="datePublished">2018-12-08</time>
+        <time class="post-time" title="2019-06-29 00:00:00" datetime="2019-06-28T16:00:00.000Z" itemprop="datePublished">2019-06-29</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Servlet/">Servlet</a></li></ul>
@@ -1130,7 +615,7 @@ Class.forName("com.mysql.jdbc.Driver");
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/12/08/Java Web  Servlet2/">Servlet（二）</a>
+      <a class="post-title-link" href="/2019/06/29/Java Web  Servlet2/">Servlet（二）</a>
     </h3>
   
 
@@ -1162,7 +647,7 @@ Class.forName("com.mysql.jdbc.Driver");
 2. ServletConfig...
     
 
-        <a href="/2018/12/08/Java Web  Servlet2/" class="post-more waves-effect waves-button">
+        <a href="/2019/06/29/Java Web  Servlet2/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
@@ -1170,6 +655,522 @@ Class.forName("com.mysql.jdbc.Driver");
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Servlet/">Servlet</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Java Web  Servlet1" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-06-16 00:00:00" datetime="2019-06-15T16:00:00.000Z" itemprop="datePublished">2019-06-16</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Servlet/">Servlet</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/06/16/Java Web  Servlet1/">Servlet（一）</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        提要：Servlet执行过程、执行周期。  
+在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 .class 。在Servlet/JSP中，web容器（Container）是Servlet/JSP唯一认识的HTTP服务器。我们需要知道Servlet/JSP与web容器是如何沟通的，web容器如何管理Servlet/JSP的各种对象等问题。  
+Hello Servlet
+新建一个类， 实现Servlet接口
+配置Servlet ， 用意： 告诉服务器，我们的应用有这么些个servlet。在webContent/WEB-INF/web.xml里面写上以下内容。  
+...
+    
+
+        <a href="/2019/06/16/Java Web  Servlet1/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Servlet/">Servlet</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Java Sort" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-06-01 00:00:00" datetime="2019-05-31T16:00:00.000Z" itemprop="datePublished">2019-06-01</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Sort/">Sort</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/06/01/Java Sort/">常用排序算法的java实现</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        BubbleSort起泡排序就是两两交换排序，可以将最大值或最小值放在一端，然后再从下个依次两两比较，将第二大或者第二小的放在一端第二个。  
+实现public static int[] bubble(int [] data) {
+    int length = data.length;
+    for(int i = 0 ; i &lt; length ; i ++) {
+        for(int j = 0 ; j &lt; length-i-1 ; j++) {
+            if (data[j] > data[j+1]) {
+                i...
+    
+
+        <a href="/2019/06/01/Java Sort/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Java Web  ConnectionPool" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-05-06 00:00:00" datetime="2019-05-05T16:00:00.000Z" itemprop="datePublished">2019-05-06</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JDBC/">JDBC</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/05/06/Java Web  ConnectionPool/">连接池</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        数据库连接池
+数据库连接的对象创建，比较消耗性能。     
+一开始现在内存中开辟一块空间（以集合存起来）， 一开先往Pool里面放置多个连接对象。以后需要连接的话，直接从Pool里面取。不需要自己用到时再重头开始建立了。使用完毕，需要归还连接，确保连接对象能循环利用。  
+
+常用的开源连接池有DBCP（Apache）与C3P0  
+DBCP首先导入jar文件。方式一 不使用配置文件：   
+public void testDBCP01(){
+    Connection conn = null;
+    PreparedStatement ps = null;
+    try {
+
+ ...
+    
+
+        <a href="/2019/05/06/Java Web  ConnectionPool/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java高级/">java高级</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Java Web  DBUtils" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-05-04 00:00:00" datetime="2019-05-03T16:00:00.000Z" itemprop="datePublished">2019-05-04</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JDBC/">JDBC</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/05/04/Java Web  DBUtils/">DBUtils</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        DBUtilsCommons DbUtils是Apache提供的一个对JDBC进行简单封装的开源工具类库， 简化了CRUD，里面定义了通用的CRUD方法。同时也不会影响程序的性能。  
+增删改//dbutils 只是帮我们简化了CRUD 的代码， 但是连接的创建以及获取工作，不在他的工作范围，还需要我们自己动手。
+QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());
+
+//增加
+queryRunner.update("insert into account values (null , ? , ? ...
+    
+
+        <a href="/2019/05/04/Java Web  DBUtils/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java高级/">java高级</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Java Web  JDBC" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-05-02 00:00:00" datetime="2019-05-01T16:00:00.000Z" itemprop="datePublished">2019-05-02</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JDBC/">JDBC</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/05/02/Java Web  JDBC/">JDBC基础</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        JDBC： JAVA Database Connectivity java 数据库连接。
+JDBC的基本使用步骤：
+注册驱动
+
+DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+
+Driver类里面有静态代码块，如果使用上面等于注册了两次，实际没有必要也没有影响。可使用以下：  
+Class.forName("com.mysql.jdbc.Driver");
+
+
+建立连接
+
+   //DriverManager.getConnection("jdbc:mysql://localhost/test?user=monty&a...
+    
+
+        <a href="/2019/05/02/Java Web  JDBC/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java基础/">java基础</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-未上传/JVM GC_3" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-04-18 00:00:00" datetime="2019-04-17T16:00:00.000Z" itemprop="datePublished">2019-04-18</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/">JVM</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/04/18/未上传/JVM GC_3/">JVM垃圾回收（下）（回收器比较）</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        &emsp;&emsp;我个人认为应该把注意力放在前两篇文章中，例如 寻找失活对象的方法、安全点的建立、分代回收的思想、Thread Local Allocation Buffer、卡表。 所以本篇主要记录了各种各种收集器的使用场景与他们的比较。更详细的描绘可浏览Oracle的官方说明：https://blogs.oracle.com/jonthecollector/our-collectors     
+&emsp;&emsp;上图中的 ‘?’ 就是目前的G1回收器。&emsp;&emsp;针对新生代的垃圾回收器共有三个：Serial，Parallel Scavenge 和 Paral...
+    
+
+        <a href="/2019/04/18/未上传/JVM GC_3/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-未上传/Java SortShell" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-04-01 00:00:00" datetime="2019-03-31T16:00:00.000Z" itemprop="datePublished">2019-04-01</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Sort/">Sort</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/04/01/未上传/Java SortShell/">希尔排序</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        ShellSort希尔排序又称为“缩小增量排序”(Diminishing Increment Sort),其实希尔排序也是一种属于插入类的方法，但是在时间效率上有着较大的改进。希尔排序的基本思想是：先将整个待排序列分割为若干子序列分别进行直接插入排序，在整个序列中的数据“基本有序”时候，再对全体数据进行一次直接插入排序（即增量为1）。   
+实现public static int[] shell(int [] data) {
+    int length = data.length;
+    int j ;
+    for(int pace = length/2 ; pace > 0 ;...
+    
+
+        <a href="/2019/04/01/未上传/Java SortShell/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Java ArrayList" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-03-28 00:00:00" datetime="2019-03-27T16:00:00.000Z" itemprop="datePublished">2019-03-28</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/03/28/Java ArrayList/">java源码-剖析ArrayList</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        容器类(集合)，顾名思义就是用来容纳其它数据的类。在泛型的那篇笔记中，实现了一个简单的动态数组的容器类–DynamicArray,本篇主要阐述Java中真正的动态数组（数组列表）容器类ArrayList（Java 7）的基本用法、迭代操作、实现的一些Interface（Collection、List与RandAccess）、特点与应用场景。  
+基本用法ArrayList是一个泛型类，使用时需要实例化泛型参数，比如  
+ArrayList&lt;Integer> intList = new ArrayList&lt;Integer>(); //new ArrayList&lt;Integ...
+    
+
+        <a href="/2019/03/28/Java ArrayList/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java基础/">java基础</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java源码/">java源码</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-未上传/Java SortSelect" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-03-25 00:00:00" datetime="2019-03-24T16:00:00.000Z" itemprop="datePublished">2019-03-25</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Sort/">Sort</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/03/25/未上传/Java SortSelect/">选择排序</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        SelectSort选择排序的基本思想是：每一趟在 n-i+1 个数据中选出数值最小的记录，然后作为有序序列的第i个数据。  
+实现public static void select(int [] data){
+    if (data == null || data.length == 0)
+        return;
+    for (int i = 0 ; i &lt; data.length ; i++ ){  //select min,set first
+        int min = data[i];
+        for (int j = i + 1 ; j &l...
+    
+
+        <a href="/2019/03/25/未上传/Java SortSelect/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-未上传/Java SortInsert" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-03-20 00:00:00" datetime="2019-03-19T16:00:00.000Z" itemprop="datePublished">2019-03-20</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Sort/">Sort</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/03/20/未上传/Java SortInsert/">插入排序</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        InsertSort操作基本操作是将一个记录插入到已排好的有序表中。即对于给定的一组数据，初始时候假设第一个数据自成一个有序序列，其余记录为无序序列。接着从第二个数据开始，按照数据的大小依次将当前将要处理的数据插入到之前的有序序列中，直到最后一个记录插入到有序序列中为止。以下为直接插入排序。        
+public class InsertSort {
+    public static int[] insert(int[] data) {
+        if (data == null || data.length == 0) {
+            return data...
+    
+
+        <a href="/2019/03/20/未上传/Java SortInsert/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
 
     </div>
     
