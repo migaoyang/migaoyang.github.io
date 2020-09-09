@@ -298,7 +298,7 @@
             <article id="post-JVM ClassLoader" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2020-03-20 00:00:00" datetime="2020-03-19T16:00:00.000Z" itemprop="datePublished">2020-03-20</time>
+        <time class="post-time" title="2020-04-01 00:00:00" datetime="2020-03-31T16:00:00.000Z" itemprop="datePublished">2020-04-01</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/">JVM</a></li></ul>
@@ -312,7 +312,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2020/03/20/JVM ClassLoader/">JVM类加载机制</a>
+      <a class="post-title-link" href="/2020/04/01/JVM ClassLoader/">JVM类加载机制</a>
     </h3>
   
 
@@ -330,7 +330,7 @@ JVM并不会直接使用.class文件，类加载链接的目的就是在JVM中�
 针对上一点，我认为还有另一种解释：在类加载的过程中，有一个委派模式，这里严格来说应该不...
     
 
-        <a href="/2020/03/20/JVM ClassLoader/" class="post-more waves-effect waves-button">
+        <a href="/2020/04/01/JVM ClassLoader/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
@@ -349,7 +349,7 @@ JVM并不会直接使用.class文件，类加载链接的目的就是在JVM中�
             <article id="post-JVM GC_2" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2020-02-16 00:00:00" datetime="2020-02-15T16:00:00.000Z" itemprop="datePublished">2020-02-16</time>
+        <time class="post-time" title="2020-03-16 00:00:00" datetime="2020-03-15T16:00:00.000Z" itemprop="datePublished">2020-03-16</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/">JVM</a></li></ul>
@@ -363,7 +363,7 @@ JVM并不会直接使用.class文件，类加载链接的目的就是在JVM中�
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2020/02/16/JVM GC_2/">JVM垃圾回收（中）</a>
+      <a class="post-title-link" href="/2020/03/16/JVM GC_2/">JVM垃圾回收（中）</a>
     </h3>
   
 
@@ -378,7 +378,55 @@ JVM并不会直接使用.class文件，类加载链接的目的就是在JVM中�
 &emsp;&emsp;Java 虚拟机的分代回收思想。简单来说，就是将堆空间划分为两代，分别叫做新生代和老年代。新生代用来存储新建的对象。当对象存活时间够长时，则将其移动到老年代。&emsp;&emsp;Java 虚拟机可以给不同代使用不同的回收算法。对于 于新生代，我们猜测大部分的 Java 对象只存活一小段时间，那么便可以频繁地采用耗时较...
     
 
-        <a href="/2020/02/16/JVM GC_2/" class="post-more waves-effect waves-button">
+        <a href="/2020/03/16/JVM GC_2/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-JVM GC_1" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2020-03-09 00:00:00" datetime="2020-03-08T16:00:00.000Z" itemprop="datePublished">2020-03-09</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/">JVM</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2020/03/09/JVM GC_1/">JVM垃圾回收(上)</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        &emsp;&emsp;茨威格在为路易十六的妻子玛丽·安托瓦内特写传记时曾无比感慨 “她那时候还太年轻，不知道所有命运馈赠的礼物，早已在暗中标好了价格”。     
+&emsp;&emsp;JVM的内存管理，将原本由开发人员手动管理的内存，交给垃圾回收器来自动的回收管理。虽然极大的减轻了开发者的负担，但既然是自定机制，肯定不会像手动回收那样精准，同时还带来了不少与垃圾回收相关的问题，我们所要关注的就是该如何解决、缓解这些问题。  
+引用计数法与可达性分析&emsp;&emsp;垃圾回收，顾名思义，便是将已经分配出去的，但却不再使用的内存回收回来，以便能够再次分配。在 Java 虚拟机的语...
+    
+
+        <a href="/2020/03/09/JVM GC_1/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
@@ -445,54 +493,6 @@ JVM并不会直接使用.class文件，类加载链接的目的就是在JVM中�
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java-web/">java web</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-JVM GC_1" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2020-02-15 00:00:00" datetime="2020-02-14T16:00:00.000Z" itemprop="datePublished">2020-02-15</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/">JVM</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2020/02/15/JVM GC_1/">JVM垃圾回收(上)</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        &emsp;&emsp;茨威格在为路易十六的妻子玛丽·安托瓦内特写传记时曾无比感慨 “她那时候还太年轻，不知道所有命运馈赠的礼物，早已在暗中标好了价格”。     
-&emsp;&emsp;JVM的内存管理，将原本由开发人员手动管理的内存，交给垃圾回收器来自动的回收管理。虽然极大的减轻了开发者的负担，但既然是自定机制，肯定不会像手动回收那样精准，同时还带来了不少与垃圾回收相关的问题，我们所要关注的就是该如何解决、缓解这些问题。  
-引用计数法与可达性分析&emsp;&emsp;垃圾回收，顾名思义，便是将已经分配出去的，但却不再使用的内存回收回来，以便能够再次分配。在 Java 虚拟机的语...
-    
-
-        <a href="/2020/02/15/JVM GC_1/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
 
     </div>
     

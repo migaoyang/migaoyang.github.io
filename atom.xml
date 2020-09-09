@@ -97,10 +97,10 @@
   
   <entry>
     <title>JVM类加载机制</title>
-    <link href="http://yoursite.com/2020/03/20/JVM%20ClassLoader/"/>
-    <id>http://yoursite.com/2020/03/20/JVM ClassLoader/</id>
-    <published>2020-03-19T16:00:00.000Z</published>
-    <updated>2020-09-09T11:40:55.014Z</updated>
+    <link href="http://yoursite.com/2020/04/01/JVM%20ClassLoader/"/>
+    <id>http://yoursite.com/2020/04/01/JVM ClassLoader/</id>
+    <published>2020-03-31T16:00:00.000Z</published>
+    <updated>2020-09-09T11:56:23.555Z</updated>
     
     <summary type="html">
     
@@ -125,10 +125,10 @@
   
   <entry>
     <title>JVM垃圾回收（中）</title>
-    <link href="http://yoursite.com/2020/02/16/JVM%20GC_2/"/>
-    <id>http://yoursite.com/2020/02/16/JVM GC_2/</id>
-    <published>2020-02-15T16:00:00.000Z</published>
-    <updated>2020-09-09T11:39:59.425Z</updated>
+    <link href="http://yoursite.com/2020/03/16/JVM%20GC_2/"/>
+    <id>http://yoursite.com/2020/03/16/JVM GC_2/</id>
+    <published>2020-03-15T16:00:00.000Z</published>
+    <updated>2020-09-09T11:55:47.300Z</updated>
     
     <summary type="html">
     
@@ -138,6 +138,32 @@
         
           &lt;p&gt;&amp;emsp;大部分的 Java 对象只存活一小段时间，而存活下来的小部分 Java 对象则会存活很长一段时间。下图（Java 对象生命周期的直方图，红色的表示被逃逸分析优化掉的对象）是一些研究者对Java对象生命周期的动态分析的结果。 &lt;/p&gt;
 &lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+      <category term="JVM" scheme="http://yoursite.com/categories/JVM/"/>
+    
+    
+      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JVM垃圾回收(上)</title>
+    <link href="http://yoursite.com/2020/03/09/JVM%20GC_1/"/>
+    <id>http://yoursite.com/2020/03/09/JVM GC_1/</id>
+    <published>2020-03-08T16:00:00.000Z</published>
+    <updated>2020-09-09T11:55:32.883Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&amp;emsp;&amp;emsp;&lt;em&gt;茨威格在为路易十六的妻子玛丽·安托瓦内特写传记时曾无比感慨 “她那时候还太年轻，不知道所有命运馈赠的礼物，早已在暗中标好了价格”。&lt;/em&gt;    
         
       
     
@@ -181,37 +207,11 @@
   </entry>
   
   <entry>
-    <title>JVM垃圾回收(上)</title>
-    <link href="http://yoursite.com/2020/02/15/JVM%20GC_1/"/>
-    <id>http://yoursite.com/2020/02/15/JVM GC_1/</id>
-    <published>2020-02-14T16:00:00.000Z</published>
-    <updated>2020-09-09T11:39:34.937Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&amp;emsp;&amp;emsp;&lt;em&gt;茨威格在为路易十六的妻子玛丽·安托瓦内特写传记时曾无比感慨 “她那时候还太年轻，不知道所有命运馈赠的礼物，早已在暗中标好了价格”。&lt;/em&gt;    
-        
-      
-    
-    </summary>
-    
-      <category term="JVM" scheme="http://yoursite.com/categories/JVM/"/>
-    
-    
-      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
-    
-  </entry>
-  
-  <entry>
     <title>MyBatis使用总结</title>
     <link href="http://yoursite.com/2019/12/09/mybatis/"/>
     <id>http://yoursite.com/2019/12/09/mybatis/</id>
     <published>2019-12-08T16:00:00.000Z</published>
-    <updated>2020-09-09T11:48:18.320Z</updated>
+    <updated>2020-09-09T12:04:14.006Z</updated>
     
     <summary type="html">
     

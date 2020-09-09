@@ -30,7 +30,7 @@
 <meta property="og:description" content="1. MyBatis 编程步骤 创建 SqlSessionFactory 对象。构建者模式 通过 SqlSessionFactory 获取 SqlSession 对象。工厂模式 通过 SqlSession 获得 Mapper 代理对象。代理模式 通过 Mapper 代理对象，执行数据库操作。 执行成功，则使用 SqlSession 提交事务。 执行失败，则使用 SqlSession 回滚事务。 最">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://static2.iocoder.cn/images/MyBatis/2020_03_15/02.png">
-<meta property="og:updated_time" content="2020-09-09T11:48:18.320Z">
+<meta property="og:updated_time" content="2020-09-09T12:04:14.006Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MyBatis使用总结">
 <meta name="twitter:description" content="1. MyBatis 编程步骤 创建 SqlSessionFactory 对象。构建者模式 通过 SqlSessionFactory 获取 SqlSession 对象。工厂模式 通过 SqlSession 获得 Mapper 代理对象。代理模式 通过 Mapper 代理对象，执行数据库操作。 执行成功，则使用 SqlSession 提交事务。 执行失败，则使用 SqlSession 回滚事务。 最">
@@ -165,7 +165,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-MyBatis-编程步骤"><span class="post-toc-number">1.</span> <span class="post-toc-text">1. MyBatis 编程步骤</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#和-的区别"><span class="post-toc-number">2.</span> <span class="post-toc-text">#{} 和 ${} 的区别</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实体类中的属性名和表中的字段名不一样-解决方法"><span class="post-toc-number">3.</span> <span class="post-toc-text">实体类中的属性名和表中的字段名不一样 解决方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#XML-映射文件中，除了常见的-select-insert-update-delete标-签之外，还有哪些标签？"><span class="post-toc-number">4.</span> <span class="post-toc-text">XML 映射文件中，除了常见的 select | insert | update | delete标 签之外，还有哪些标签？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mybatis-动态-SQL-是做什么的？都有哪些动态-SQL-？能简述一下动态-SQL-的执行原理吗？"><span class="post-toc-number">5.</span> <span class="post-toc-text">Mybatis 动态 SQL 是做什么的？都有哪些动态 SQL ？能简述一下动态 SQL 的执行原理吗？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#最佳实践中，通常一个-XML-映射文件，都会写一个-Mapper（Dao）-接口与之对应。请问，这个-Mapper-接口的工作原理是什么？Mapper-接口里的方法，参数不同时，方法能重载吗？"><span class="post-toc-number">6.</span> <span class="post-toc-text">最佳实践中，通常一个 XML 映射文件，都会写一个 Mapper（Dao） 接口与之对应。请问，这个 Mapper 接口的工作原理是什么？Mapper 接口里的方法，参数不同时，方法能重载吗？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mapper-接口绑定有几种实现方式-分别是怎么实现的"><span class="post-toc-number">7.</span> <span class="post-toc-text">Mapper 接口绑定有几种实现方式,分别是怎么实现的?</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mybatis-的-XML-Mapper文件中，不同的-XML-映射文件，id-是否可以重复？"><span class="post-toc-number">8.</span> <span class="post-toc-text">Mybatis 的 XML Mapper文件中，不同的 XML 映射文件，id 是否可以重复？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#如何获取自动生成的-主-键值"><span class="post-toc-number">9.</span> <span class="post-toc-text">如何获取自动生成的(主)键值?</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mybatis-执行批量插入，能返回数据库主键列表吗？"><span class="post-toc-number">10.</span> <span class="post-toc-text">Mybatis 执行批量插入，能返回数据库主键列表吗？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在-Mapper-中如何传递多个参数"><span class="post-toc-number">11.</span> <span class="post-toc-text">在 Mapper 中如何传递多个参数?</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mybatis-是否可以映射-Enum-枚举类？"><span class="post-toc-number">12.</span> <span class="post-toc-text">Mybatis 是否可以映射 Enum 枚举类？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mybatis-都有哪些-Executor-执行器？它们之间的区别是什么？"><span class="post-toc-number">13.</span> <span class="post-toc-text">Mybatis 都有哪些 Executor 执行器？它们之间的区别是什么？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#MyBatis-如何执行批量插入"><span class="post-toc-number">14.</span> <span class="post-toc-text">MyBatis 如何执行批量插入?</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#介绍-MyBatis-的一级缓存和二级缓存的概念和实现原理？"><span class="post-toc-number">15.</span> <span class="post-toc-text">介绍 MyBatis 的一级缓存和二级缓存的概念和实现原理？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#什么是延迟加载？-Mybatis-是否支持延迟加载？如果支持，它的实现原理是什么？"><span class="post-toc-number">16.</span> <span class="post-toc-text">什么是延迟加载？ Mybatis 是否支持延迟加载？如果支持，它的实现原理是什么？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mybatis-能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。"><span class="post-toc-number">17.</span> <span class="post-toc-text">Mybatis 能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#简述-Mybatis-的插件运行原理？以及如何编写一个插件？"><span class="post-toc-number">18.</span> <span class="post-toc-text">简述 Mybatis 的插件运行原理？以及如何编写一个插件？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mybatis-是如何进行分页的？分页插件的原理是什么？"><span class="post-toc-number">19.</span> <span class="post-toc-text">Mybatis 是如何进行分页的？分页插件的原理是什么？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#MyBatis-与-Hibernate-有哪些不同？"><span class="post-toc-number">20.</span> <span class="post-toc-text">MyBatis 与 Hibernate 有哪些不同？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#JDBC-编程有哪些不足之处（问题），MyBatis是如何解决这些问题的？"><span class="post-toc-number">21.</span> <span class="post-toc-text">JDBC 编程有哪些不足之处（问题），MyBatis是如何解决这些问题的？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mybatis-比-IBatis-比较大的几个改进是什么？"><span class="post-toc-number">22.</span> <span class="post-toc-text">Mybatis 比 IBatis 比较大的几个改进是什么？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mybatis-映射文件中，如果-A-标签通过-include-引用了B标签的内容，请问，B-标签能否定义在-A-标签的后面，还是说必须定义在A标签的前面？"><span class="post-toc-number">23.</span> <span class="post-toc-text">Mybatis 映射文件中，如果 A 标签通过 include 引用了B标签的内容，请问，B 标签能否定义在 A 标签的后面，还是说必须定义在A标签的前面？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#简述-Mybatis-的-XML-映射文件和-Mybatis-内部数据结构之间的映射关系？"><span class="post-toc-number">24.</span> <span class="post-toc-text">简述 Mybatis 的 XML 映射文件和 Mybatis 内部数据结构之间的映射关系？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#为什么说Mybatis是半自动ORM映射工具？它与全自动的区别在哪里？"><span class="post-toc-number">25.</span> <span class="post-toc-text">为什么说Mybatis是半自动ORM映射工具？它与全自动的区别在哪里？</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-MyBatis-编程步骤"><span class="post-toc-number">1.</span> <span class="post-toc-text">1. MyBatis 编程步骤</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#和-的区别"><span class="post-toc-number">2.</span> <span class="post-toc-text">{} 和 ${} 的区别</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实体类中的属性名和表中的字段名不一样-解决方法"><span class="post-toc-number">3.</span> <span class="post-toc-text">实体类中的属性名和表中的字段名不一样 解决方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#XML-映射文件中，除了常见的-select-insert-update-delete标-签之外，还有哪些标签？"><span class="post-toc-number">4.</span> <span class="post-toc-text">XML 映射文件中，除了常见的 select | insert | update | delete标 签之外，还有哪些标签？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mybatis-动态-SQL-是做什么的？都有哪些动态-SQL-？能简述一下动态-SQL-的执行原理吗？"><span class="post-toc-number">5.</span> <span class="post-toc-text">Mybatis 动态 SQL 是做什么的？都有哪些动态 SQL ？能简述一下动态 SQL 的执行原理吗？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#最佳实践中，通常一个-XML-映射文件，都会写一个-Mapper（Dao）-接口与之对应。请问，这个-Mapper-接口的工作原理是什么？Mapper-接口里的方法，参数不同时，方法能重载吗？"><span class="post-toc-number">6.</span> <span class="post-toc-text">最佳实践中，通常一个 XML 映射文件，都会写一个 Mapper（Dao） 接口与之对应。请问，这个 Mapper 接口的工作原理是什么？Mapper 接口里的方法，参数不同时，方法能重载吗？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mapper-接口绑定有几种实现方式-分别是怎么实现的"><span class="post-toc-number">7.</span> <span class="post-toc-text">Mapper 接口绑定有几种实现方式,分别是怎么实现的?</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mybatis-的-XML-Mapper文件中，不同的-XML-映射文件，id-是否可以重复？"><span class="post-toc-number">8.</span> <span class="post-toc-text">Mybatis 的 XML Mapper文件中，不同的 XML 映射文件，id 是否可以重复？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#如何获取自动生成的-主-键值"><span class="post-toc-number">9.</span> <span class="post-toc-text">如何获取自动生成的(主)键值?</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mybatis-执行批量插入，能返回数据库主键列表吗？"><span class="post-toc-number">10.</span> <span class="post-toc-text">Mybatis 执行批量插入，能返回数据库主键列表吗？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在-Mapper-中如何传递多个参数"><span class="post-toc-number">11.</span> <span class="post-toc-text">在 Mapper 中如何传递多个参数?</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mybatis-是否可以映射-Enum-枚举类？"><span class="post-toc-number">12.</span> <span class="post-toc-text">Mybatis 是否可以映射 Enum 枚举类？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mybatis-都有哪些-Executor-执行器？它们之间的区别是什么？"><span class="post-toc-number">13.</span> <span class="post-toc-text">Mybatis 都有哪些 Executor 执行器？它们之间的区别是什么？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#MyBatis-如何执行批量插入"><span class="post-toc-number">14.</span> <span class="post-toc-text">MyBatis 如何执行批量插入?</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#介绍-MyBatis-的一级缓存和二级缓存的概念和实现原理？"><span class="post-toc-number">15.</span> <span class="post-toc-text">介绍 MyBatis 的一级缓存和二级缓存的概念和实现原理？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#什么是延迟加载？-Mybatis-是否支持延迟加载？如果支持，它的实现原理是什么？"><span class="post-toc-number">16.</span> <span class="post-toc-text">什么是延迟加载？ Mybatis 是否支持延迟加载？如果支持，它的实现原理是什么？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mybatis-能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。"><span class="post-toc-number">17.</span> <span class="post-toc-text">Mybatis 能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mybatis-的插件运行原理是什么？以及如何编写一个插件？"><span class="post-toc-number">18.</span> <span class="post-toc-text">Mybatis 的插件运行原理是什么？以及如何编写一个插件？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mybatis-是如何进行分页的？分页插件的原理是什么？"><span class="post-toc-number">19.</span> <span class="post-toc-text">Mybatis 是如何进行分页的？分页插件的原理是什么？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#MyBatis-与-Hibernate-有哪些不同？"><span class="post-toc-number">20.</span> <span class="post-toc-text">MyBatis 与 Hibernate 有哪些不同？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#JDBC-编程有哪些不足之处（问题），MyBatis是如何解决这些问题的？"><span class="post-toc-number">21.</span> <span class="post-toc-text">JDBC 编程有哪些不足之处（问题），MyBatis是如何解决这些问题的？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mybatis-比-IBatis-比较大的几个改进是什么？"><span class="post-toc-number">22.</span> <span class="post-toc-text">Mybatis 比 IBatis 比较大的几个改进是什么？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mybatis-映射文件中，如果-A-标签通过-include-引用了B标签的内容，请问，B-标签能否定义在-A-标签的后面，还是说必须定义在A标签的前面？"><span class="post-toc-number">23.</span> <span class="post-toc-text">Mybatis 映射文件中，如果 A 标签通过 include 引用了B标签的内容，请问，B 标签能否定义在 A 标签的后面，还是说必须定义在A标签的前面？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#简述-Mybatis-的-XML-映射文件和-Mybatis-内部数据结构之间的映射关系？"><span class="post-toc-number">24.</span> <span class="post-toc-text">简述 Mybatis 的 XML 映射文件和 Mybatis 内部数据结构之间的映射关系？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#为什么说Mybatis是半自动ORM映射工具？它与全自动的区别在哪里？"><span class="post-toc-number">25.</span> <span class="post-toc-text">为什么说Mybatis是半自动ORM映射工具？它与全自动的区别在哪里？</span></a></li></ol>
         </nav>
     </aside>
 
@@ -211,8 +211,7 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ol>
-<p>#### </p>
-<h4 id="和-的区别"><a href="#和-的区别" class="headerlink" title="#{} 和 ${} 的区别"></a><code>#{}</code> 和 <code>${}</code> 的区别</h4><p>&ensp;&ensp;&ensp;&ensp;  <code>${}</code> 是 Properties 文件中的变量占位符，它可以用于 XML 标签属性值和 SQL 内部，属于<strong>字符串替换</strong>。例如将 <code>${driver}</code> 会被静态替换为 <code>com.mysql.jdbc.Driver</code> ：  </p>
+<h4 id="和-的区别"><a href="#和-的区别" class="headerlink" title="{} 和 ${} 的区别"></a><code>{}</code> 和 <code>${}</code> 的区别</h4><p>&ensp;&ensp;&ensp;&ensp;  <code>${}</code> 是 Properties 文件中的变量占位符，它可以用于 XML 标签属性值和 SQL 内部，属于<strong>字符串替换</strong>。例如将 <code>${driver}</code> 会被静态替换为 <code>com.mysql.jdbc.Driver</code> ：  </p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">--</span>用于xml标签，进行属性值（字符串）替换<span class="token operator">--</span><span class="token operator">></span>
   <span class="token operator">&lt;</span>dataSource type<span class="token operator">=</span><span class="token string">"UNPOOLED"</span><span class="token operator">></span>  <span class="token operator">&lt;</span><span class="token operator">--</span>未使用连接池<span class="token operator">--</span><span class="token operator">></span>
      <span class="token operator">&lt;</span>property name<span class="token operator">=</span><span class="token string">"driver"</span> value<span class="token operator">=</span><span class="token string">"${driver}"</span><span class="token operator">/</span><span class="token operator">></span>    
@@ -229,7 +228,8 @@
 <li>实际场景不应该使用 <code>${id}</code> ,因为直接拼接字符串可能有 SQL 注入的风险。  </li>
 </ul>
 <p>&ensp;&ensp;&ensp;&ensp;  <code>#{}</code> 是 SQL 的<code>参数占位符</code>，Mybatis 会将 SQL语句中的 <code>#{}</code> 替换为 <code>?</code> 号，在 SQL 执行前会使用 PreparedStatement 的参数设置方法，按序给 SQL 的 <code>?</code> 号占位符设置参数值，比如 <code>ps.setInt(0, parameterValue)</code> 。 所以，<code>#{}</code>是 <strong>预编译处理</strong> ，可以有效防止 SQL 注入，提高系统安全性。<br>&ensp;&ensp;&ensp;&ensp;  另外，由于mybatis采用了OGNL表达式的标准，可直接以<code>.</code>的形式进行属性的取值，<code>#{}</code> 和 <code>${}</code> 的取值方式非常方便。例如：<code>#{item.name}</code> 的取值方式，使用反射从参数对象中，获取 <code>item</code> 对象的 <code>name</code> 属性值，相当于 <code>param.getItem().getName()</code> 代替了<code>bject.getName()</code>。</p>
-<h4 id="实体类中的属性名和表中的字段名不一样-解决方法"><a href="#实体类中的属性名和表中的字段名不一样-解决方法" class="headerlink" title="实体类中的属性名和表中的字段名不一样 解决方法"></a>实体类中的属性名和表中的字段名不一样 解决方法</h4><p>&ensp;&ensp;&ensp;&ensp;  一般有三种方法：<br>&ensp;&ensp;&ensp;&ensp;  <strong>方法一</strong>  SQL语句起别名，让字段名的别名和实体类的属性名一致。</p>
+<h4 id="实体类中的属性名和表中的字段名不一样-解决方法"><a href="#实体类中的属性名和表中的字段名不一样-解决方法" class="headerlink" title="实体类中的属性名和表中的字段名不一样 解决方法"></a>实体类中的属性名和表中的字段名不一样 解决方法</h4><p>&ensp;&ensp;&ensp;&ensp;  一般有三种方法：  </p>
+<p>&ensp;&ensp;&ensp;&ensp;  <strong>方法一</strong>  SQL语句起别名，让字段名的别名和实体类的属性名一致。</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">--</span>SQL起别名<span class="token operator">--</span><span class="token operator">></span>
 <span class="token operator">&lt;</span>select id<span class="token operator">=</span><span class="token string">"selectOrder"</span> parameterType<span class="token operator">=</span><span class="token string">"Integer"</span> resultType<span class="token operator">=</span><span class="token string">"Order"</span><span class="token operator">></span>    
     SELECT order_id AS id<span class="token punctuation">,</span> order_no AS orderno<span class="token punctuation">,</span> order_price AS price   
@@ -237,30 +237,28 @@
 <span class="token operator">&lt;</span><span class="token operator">/</span>select<span class="token operator">></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>&ensp;&ensp;&ensp;&ensp;  <strong>方法二</strong>  <code>约定大于配置</code>。大多数场景下，数据库字段名和实体类中的属性名之间的差别，主要是<strong>下划线风格</strong>与<strong>驼峰风格</strong>的差距。</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript"><settings>
-    <setting name="logImpl" value="LOG4J">   
-    <setting name="mapUnderscoreToCamelCase" value="true">
-</setting></setting></settings>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token operator">&lt;</span>settings<span class="token operator">></span>
+    <span class="token operator">&lt;</span>setting name<span class="token operator">=</span><span class="token string">"logImpl"</span> value<span class="token operator">=</span><span class="token string">"LOG4J"</span><span class="token operator">/</span><span class="token operator">></span>   
+    <span class="token operator">&lt;</span>setting name<span class="token operator">=</span><span class="token string">"mapUnderscoreToCamelCase"</span> value<span class="token operator">=</span><span class="token string">"true"</span> <span class="token operator">/</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>settings<span class="token operator">></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>&ensp;&ensp;&ensp;&ensp;  <strong>方法三</strong>  映射。将字段名和实体类属性名一一映射对应。代码如下：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript"><!-- 定义封装account和user的resultMap -->
-<resultmap id="accountUserMap" type="account">
-    <id property="id" column="aid"></id>        <!–- 用 id 属性来映射主键字段。 property 为实体类属性名，column 为数据表中的属性 -–>
-    <result property="uid" column="uid"></result>   <!–- 用 result 属性来映射非主键字段-–>
-    <result property="money" column="money"></result>
-    <!-- 一对一的关系映射：配置封装user的内容-->
-    <association property="user" column="uid" javatype="user">
-        <id property="id" column="id"></id>
-        <result column="username" property="username"></result>
-        <result column="address" property="address"></result>
-        <result column="sex" property="sex"></result>
-        <result column="birthday" property="birthday"></result>
-    </association>
-</resultmap>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 定义封装account和user的resultMap <span class="token operator">--</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>resultMap id<span class="token operator">=</span><span class="token string">"accountUserMap"</span> type<span class="token operator">=</span><span class="token string">"account"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>id property<span class="token operator">=</span><span class="token string">"id"</span> column<span class="token operator">=</span><span class="token string">"aid"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>id<span class="token operator">></span>        <span class="token operator">&lt;</span><span class="token operator">!</span>–<span class="token operator">-</span> 用 id 属性来映射主键字段。 property 为实体类属性名，column 为数据表中的属性 <span class="token operator">-</span>–<span class="token operator">></span>
+    <span class="token operator">&lt;</span>result property<span class="token operator">=</span><span class="token string">"uid"</span> column<span class="token operator">=</span><span class="token string">"uid"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>result<span class="token operator">></span>   <span class="token operator">&lt;</span><span class="token operator">!</span>–<span class="token operator">-</span> 用 result 属性来映射非主键字段<span class="token operator">-</span>–<span class="token operator">></span>
+    <span class="token operator">&lt;</span>result property<span class="token operator">=</span><span class="token string">"money"</span> column<span class="token operator">=</span><span class="token string">"money"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>result<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 一对一的关系映射：配置封装user的内容<span class="token operator">--</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>association property<span class="token operator">=</span><span class="token string">"user"</span> column<span class="token operator">=</span><span class="token string">"uid"</span> javaType<span class="token operator">=</span><span class="token string">"user"</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>id property<span class="token operator">=</span><span class="token string">"id"</span> column<span class="token operator">=</span><span class="token string">"id"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>id<span class="token operator">></span>
+        <span class="token operator">&lt;</span>result column<span class="token operator">=</span><span class="token string">"username"</span> property<span class="token operator">=</span><span class="token string">"username"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>result<span class="token operator">></span>
+        <span class="token operator">&lt;</span>result column<span class="token operator">=</span><span class="token string">"address"</span> property<span class="token operator">=</span><span class="token string">"address"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>result<span class="token operator">></span>
+        <span class="token operator">&lt;</span>result column<span class="token operator">=</span><span class="token string">"sex"</span> property<span class="token operator">=</span><span class="token string">"sex"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>result<span class="token operator">></span>
+        <span class="token operator">&lt;</span>result column<span class="token operator">=</span><span class="token string">"birthday"</span> property<span class="token operator">=</span><span class="token string">"birthday"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>result<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>association<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>resultMap<span class="token operator">></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul>
-<li>我认为，应该尽量避免使用别名，因为没有<code>可重用性</code>，尽量考虑使用<code>约定大于配置</code>这一思想。</li>
-</ul>
+<p>我认为，应该尽量避免使用别名，因为没有<code>可重用性</code>，尽量考虑使用<code>约定大于配置</code>这一思想。</p>
 <h4 id="XML-映射文件中，除了常见的-select-insert-update-delete标-签之外，还有哪些标签？"><a href="#XML-映射文件中，除了常见的-select-insert-update-delete标-签之外，还有哪些标签？" class="headerlink" title="XML 映射文件中，除了常见的 select | insert | update | delete标 签之外，还有哪些标签？"></a>XML 映射文件中，除了常见的 select | insert | update | delete标 签之外，还有哪些标签？</h4><pre class="line-numbers language-JavaScript"><code class="language-JavaScript"><--mapper 相关标签--="">
     <cache> 标签， 给定命名空间的缓存配置。
     <cache-ref> 标签，其他命名空间缓存配置的引用。
@@ -319,7 +317,7 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
-<p>&ensp;&ensp;&ensp;&ensp; Mapper 接口里的方法，是不能重载的，因为是<strong>全限名 + 方法名</strong>的保存和寻找策略。😈 所以有时，想个 Mapper 接口里的方法名，还是蛮闹心的，嘿嘿。</p>
+<p>&ensp;&ensp;&ensp;&ensp; Mapper 接口里的方法，是不能重载的，因为是<strong>全限名 + 方法名</strong>的保存和寻找策略。 所以有时，想个 Mapper 接口里的方法名，还是蛮闹心的。</p>
 <h4 id="Mapper-接口绑定有几种实现方式-分别是怎么实现的"><a href="#Mapper-接口绑定有几种实现方式-分别是怎么实现的" class="headerlink" title="Mapper 接口绑定有几种实现方式,分别是怎么实现的?"></a>Mapper 接口绑定有几种实现方式,分别是怎么实现的?</h4><p>&ensp;&ensp;&ensp;&ensp;接口绑定有三种实现方式：</p>
 <p>第一种，通过 <strong>XML Mapper</strong> 里面写 SQL 来绑定。在这种情况下，要指定 XML 映射文件里面的 <code>&quot;namespace&quot;</code> 必须为接口的全路径名。</p>
 <p>第二种，通过<strong>注解</strong>绑定，就是在接口的方法上面加上 <code>@Select</code>、<code>@Update</code>、<code>@Insert</code>、<code>@Delete</code> 注解，里面包含 SQL 语句来绑定。</p>
@@ -400,6 +398,7 @@ List<student> selectStudents(Integer start, Integer end);
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></student></code></pre>
 <ul>
 <li>其中，按照参数在方法方法中的位置，从 1 开始，逐个为 <code>#{param1}</code>、<code>#{param2}</code>、<code>#{param3}</code> 不断向下。</li>
+<li></li>
 </ul>
 <h4 id="Mybatis-是否可以映射-Enum-枚举类？"><a href="#Mybatis-是否可以映射-Enum-枚举类？" class="headerlink" title="Mybatis 是否可以映射 Enum 枚举类？"></a>Mybatis 是否可以映射 Enum 枚举类？</h4><p>Mybatis 可以映射枚举类，对应的实现类为 EnumTypeHandler 或 EnumOrdinalTypeHandler 。</p>
 <ul>
@@ -478,10 +477,9 @@ VALUES
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>对于这种方式，需要保证单条 SQL 不超过语句的最大限制 <code>max_allowed_packet</code> 大小，默认为 1 M 。</li>
+<li></li>
 </ul>
 <h4 id="介绍-MyBatis-的一级缓存和二级缓存的概念和实现原理？"><a href="#介绍-MyBatis-的一级缓存和二级缓存的概念和实现原理？" class="headerlink" title="介绍 MyBatis 的一级缓存和二级缓存的概念和实现原理？"></a>介绍 MyBatis 的一级缓存和二级缓存的概念和实现原理？</h4><p>内容有些长，直接参见 <a href="https://tech.meituan.com/mybatis_cache.html" target="_blank" rel="noopener">《聊聊 MyBatis 缓存机制》</a> 一文。</p>
-<hr>
-<p>这块的源码解析，可见 <a href="http://svip.iocoder.cn/MyBatis/cache-package" target="_blank" rel="noopener">《精尽 MyBatis 源码分析 —— 缓存模块》</a> 。</p>
 <h4 id="什么是延迟加载？-Mybatis-是否支持延迟加载？如果支持，它的实现原理是什么？"><a href="#什么是延迟加载？-Mybatis-是否支持延迟加载？如果支持，它的实现原理是什么？" class="headerlink" title="什么是延迟加载？ Mybatis 是否支持延迟加载？如果支持，它的实现原理是什么？"></a>什么是延迟加载？ Mybatis 是否支持延迟加载？如果支持，它的实现原理是什么？</h4><p>在一对多中，当我们有一个用户，它有100个账户。那么  </p>
 <ol>
 <li>在查询用户的时候，要不要把关联的账户查出来？  </li>
@@ -498,9 +496,8 @@ VALUES
 <h4 id="Mybatis-能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。"><a href="#Mybatis-能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。" class="headerlink" title="Mybatis 能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。"></a>Mybatis 能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。</h4><p>能，Mybatis 不仅可以执行一对一、一对多的关联查询，还可以执行多对一，多对多的关联查询。</p>
 <ul>
 <li>多对一查询，其实就是一对一查询，只需要把 <code>selectOne(...)</code> 修改为 <code>selectList(...)</code> 即可。案例可见 <a href="https://blog.csdn.net/xzm_rainbow/article/details/15336959" target="_blank" rel="noopener">《MyBatis：多对一表关系详解》</a> 。</li>
-<li>多对多查询，其实就是一对多查询，只需要把 <code>#selectOne(...)</code> 修改为 <code>selectList(...)</code> 即可。案例可见 <a href="https://blog.csdn.net/eson_15/article/details/51655188" target="_blank" rel="noopener">《【MyBatis学习10】高级映射之多对多查询》</a> 。</li>
+<li>多对多查询，其实就是一对多查询，只需要把 <code>#selectOne(...)</code> 修改为 <code>selectList(...)</code> 即可。案例可见 <a href="https://blog.csdn.net/eson_15/article/details/51655188" target="_blank" rel="noopener">《【MyBatis学习10】高级映射之多对多查询》</a> </li>
 </ul>
-<hr>
 <p>关联对象查询，有两种实现方式：</p>
 <ul>
 <li>一种是单独发送一个 SQL 去查询关联对象，赋给主对象，然后返回主对象。好处是多条 SQL 分开，相对简单，坏处是发起的 SQL 可能会比较多。</li>
@@ -549,7 +546,7 @@ VALUES
 </tr>
 </tbody>
 </table>
-<h4 id="简述-Mybatis-的插件运行原理？以及如何编写一个插件？"><a href="#简述-Mybatis-的插件运行原理？以及如何编写一个插件？" class="headerlink" title="简述 Mybatis 的插件运行原理？以及如何编写一个插件？"></a>简述 Mybatis 的插件运行原理？以及如何编写一个插件？</h4><p>Mybatis 仅可以编写针对 ParameterHandler、ResultSetHandler、StatementHandler、Executor 这 4 种接口的插件。</p>
+<h4 id="Mybatis-的插件运行原理是什么？以及如何编写一个插件？"><a href="#Mybatis-的插件运行原理是什么？以及如何编写一个插件？" class="headerlink" title="Mybatis 的插件运行原理是什么？以及如何编写一个插件？"></a>Mybatis 的插件运行原理是什么？以及如何编写一个插件？</h4><p>Mybatis 仅可以编写针对 ParameterHandler、ResultSetHandler、StatementHandler、Executor 这 4 种接口的插件。</p>
 <p>Mybatis 使用 JDK 的动态代理，为需要拦截的接口生成代理对象以实现接口方法拦截功能，每当执行这 4 种接口对象的方法时，就会进入拦截方法，具体就是 InvocationHandler 的 <code>#invoke(...)</code>方法。当然，只会拦截那些你指定需要拦截的方法。</p>
 <p>编写一个 MyBatis 插件的步骤如下：</p>
 <ol>
@@ -586,10 +583,8 @@ VALUES
 <p>解决方式：将 SQL 语句配置在 Mapper XML 文件中，与 Java 代码分离。</p>
 <p>问题二：根据参数不同，拼接不同的 SQL 语句非常麻烦。例如 SQL 语句的 WHERE 条件不一定，可能多也可能少，占位符需要和参数一一对应。</p>
 <p>解决方式：MyBatis 提供 <code>&lt;where /&gt;</code>、<code>&lt;if /&gt;</code> 等等动态语句所需要的标签，并支持 OGNL 表达式，简化了动态 SQL 拼接的代码，提升了开发效率。</p>
-<hr>
 <p>问题三，对结果集解析麻烦，SQL 变化可能导致解析代码变化，且解析前需要遍历。</p>
 <p>解决方式：Mybatis 自动将 SQL 执行结果映射成 Java 对象。</p>
-<hr>
 <p>问题四，数据库链接创建、释放频繁造成系统资源浪费从而影响系统性能，如果使用数据库链接池可解决此问题。</p>
 <p>解决方式：在 <code>mybatis-config.xml</code> 中，配置数据链接池，使用连接池管理数据库链接。</p>
 <p>当然，即使不使用 MyBatis ，也可以使用数据库连接池。<br>另外，MyBatis 默认提供了数据库连接池的实现，只是说，因为其它开源的数据库连接池性能更好，所以一般很少使用 MyBatis 自带的连接池实现。</p>
@@ -688,9 +683,9 @@ VALUES
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2020/02/15/JVM GC_1/" id="post-prev" class="post-nav-link">
+      <a href="/2020/02/15/mmall_user/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">JVM垃圾回收(上)</h4>
+        <h4 class="title">微商城项目用户管理模块总结</h4>
       </a>
     </div>
   
