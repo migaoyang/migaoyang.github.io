@@ -154,6 +154,166 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-Java Web  Servlet1" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-06-16 00:00:00" datetime="2019-06-15T16:00:00.000Z" itemprop="datePublished">2019-06-16</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Servlet/">Servlet</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/06/16/Java Web  Servlet1/">Servlet（一）</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        提要：Servlet执行过程、执行周期。  
+在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 .class 。在Servlet/JSP中，web容器（Container）是Servlet/JSP唯一认识的HTTP服务器。我们需要知道Servlet/JSP与web容器是如何沟通的，web容器如何管理Servlet/JSP的各种对象等问题。  
+Hello Servlet
+新建一个类， 实现Servlet接口
+配置Servlet ， 用意： 告诉服务器，我们的应用有这么些个servlet。在webContent/WEB-INF/web.xml里面写上以下内容。  
+...
+    
+
+        <a href="/2019/06/16/Java Web  Servlet1/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Servlet/">Servlet</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Java Sort" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-06-01 00:00:00" datetime="2019-05-31T16:00:00.000Z" itemprop="datePublished">2019-06-01</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Sort/">Sort</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/06/01/Java Sort/">常用排序算法的java实现</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        BubbleSort起泡排序就是两两交换排序，可以将最大值或最小值放在一端，然后再从下个依次两两比较，将第二大或者第二小的放在一端第二个。  
+实现public static int[] bubble(int [] data) {
+    int length = data.length;
+    for(int i = 0 ; i &lt; length ; i ++) {
+        for(int j = 0 ; j &lt; length-i-1 ; j++) {
+            if (data[j] > data[j+1]) {
+                i...
+    
+
+        <a href="/2019/06/01/Java Sort/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Java Web  ConnectionPool" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-05-06 00:00:00" datetime="2019-05-05T16:00:00.000Z" itemprop="datePublished">2019-05-06</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JDBC/">JDBC</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/05/06/Java Web  ConnectionPool/">连接池</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        数据库连接池
+数据库连接的对象创建，比较消耗性能。     
+一开始现在内存中开辟一块空间（以集合存起来）， 一开先往Pool里面放置多个连接对象。以后需要连接的话，直接从Pool里面取。不需要自己用到时再重头开始建立了。使用完毕，需要归还连接，确保连接对象能循环利用。  
+
+常用的开源连接池有DBCP（Apache）与C3P0  
+DBCP首先导入jar文件。方式一 不使用配置文件：   
+public void testDBCP01(){
+    Connection conn = null;
+    PreparedStatement ps = null;
+    try {
+
+ ...
+    
+
+        <a href="/2019/05/06/Java Web  ConnectionPool/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java高级/">java高级</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-Java Web  DBUtils" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">

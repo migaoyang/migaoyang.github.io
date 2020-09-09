@@ -234,6 +234,33 @@
   </entry>
   
   <entry>
+    <title>MyBatis使用总结</title>
+    <link href="http://yoursite.com/2019/12/09/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/mybatis/"/>
+    <id>http://yoursite.com/2019/12/09/新建文件夹/mybatis/</id>
+    <published>2019-12-08T16:00:00.000Z</published>
+    <updated>2020-09-09T11:34:23.917Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;1-MyBatis-编程步骤&quot;&gt;&lt;a href=&quot;#1-MyBatis-编程步骤&quot; class=&quot;headerlink&quot; title=&quot;1. MyBatis 编程步骤&quot;&gt;&lt;/a&gt;1. MyBatis 编程步骤&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;创建
+        
+      
+    
+    </summary>
+    
+      <category term="java web" scheme="http://yoursite.com/categories/java-web/"/>
+    
+    
+      <category term="java web" scheme="http://yoursite.com/tags/java-web/"/>
+    
+  </entry>
+  
+  <entry>
     <title>java内部类</title>
     <link href="http://yoursite.com/2019/11/20/Java%20InnerClass/"/>
     <id>http://yoursite.com/2019/11/20/Java InnerClass/</id>
@@ -256,6 +283,32 @@
     
     
       <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>spring总结</title>
+    <link href="http://yoursite.com/2019/11/15/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/Spring%20AOP/"/>
+    <id>http://yoursite.com/2019/11/15/新建文件夹/Spring AOP/</id>
+    <published>2019-11-14T16:00:00.000Z</published>
+    <updated>2020-09-09T11:34:25.631Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;Spring-注解&quot;&gt;&lt;a href=&quot;#Spring-注解&quot; class=&quot;headerlink&quot; title=&quot;Spring 注解&quot;&gt;&lt;/a&gt;Spring 注解&lt;/h3&gt;&lt;h4 id=&quot;什么是基于注解的容器配置？&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="java web" scheme="http://yoursite.com/categories/java-web/"/>
+    
+    
+      <category term="java web" scheme="http://yoursite.com/tags/java-web/"/>
     
   </entry>
   
@@ -291,6 +344,32 @@
     <id>http://yoursite.com/2019/11/11/spring/</id>
     <published>2019-11-10T16:00:00.000Z</published>
     <updated>2020-09-09T11:28:39.486Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;spring中的IoC是一种软件开发的思想，用来降低程序间耦合的问题。在未采用IoC的开发中，上层依赖下层，某个对象需要另一个对象，只能自己采用new的方式进行创建，那么会产生以下的问题： 
+        
+      
+    
+    </summary>
+    
+      <category term="java web" scheme="http://yoursite.com/categories/java-web/"/>
+    
+    
+      <category term="java web" scheme="http://yoursite.com/tags/java-web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>spring--IoC</title>
+    <link href="http://yoursite.com/2019/11/11/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/spring/"/>
+    <id>http://yoursite.com/2019/11/11/新建文件夹/spring/</id>
+    <published>2019-11-10T16:00:00.000Z</published>
+    <updated>2020-09-09T11:34:27.424Z</updated>
     
     <summary type="html">
     
@@ -470,86 +549,6 @@
     
     
       <category term="Servlet" scheme="http://yoursite.com/tags/Servlet/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Servlet（一）</title>
-    <link href="http://yoursite.com/2019/06/16/Java%20Web%20%20Servlet1/"/>
-    <id>http://yoursite.com/2019/06/16/Java Web  Servlet1/</id>
-    <published>2019-06-15T16:00:00.000Z</published>
-    <updated>2020-09-08T11:48:36.126Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;提要：Servlet执行过程、执行周期。  &lt;/p&gt;
-&lt;p&gt;在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 &lt;strong&gt;.class&lt;/strong&gt;
-        
-      
-    
-    </summary>
-    
-      <category term="Servlet" scheme="http://yoursite.com/categories/Servlet/"/>
-    
-    
-      <category term="Servlet" scheme="http://yoursite.com/tags/Servlet/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>常用排序算法的java实现</title>
-    <link href="http://yoursite.com/2019/06/01/Java%20Sort/"/>
-    <id>http://yoursite.com/2019/06/01/Java Sort/</id>
-    <published>2019-05-31T16:00:00.000Z</published>
-    <updated>2020-09-08T11:48:13.601Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;BubbleSort&quot;&gt;&lt;a href=&quot;#BubbleSort&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Sort" scheme="http://yoursite.com/categories/Sort/"/>
-    
-    
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>连接池</title>
-    <link href="http://yoursite.com/2019/05/06/Java%20Web%20%20ConnectionPool/"/>
-    <id>http://yoursite.com/2019/05/06/Java Web  ConnectionPool/</id>
-    <published>2019-05-05T16:00:00.000Z</published>
-    <updated>2020-09-08T11:47:56.737Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;数据库连接池&quot;&gt;&lt;a href=&quot;#数据库连接池&quot; class=&quot;headerlink&quot; title=&quot;数据库连接池&quot;&gt;&lt;/a&gt;数据库连接池&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;数据库连接的对象创建，比较消耗性能。    
-        
-      
-    
-    </summary>
-    
-      <category term="JDBC" scheme="http://yoursite.com/categories/JDBC/"/>
-    
-    
-      <category term="java高级" scheme="http://yoursite.com/tags/java%E9%AB%98%E7%BA%A7/"/>
     
   </entry>
   
