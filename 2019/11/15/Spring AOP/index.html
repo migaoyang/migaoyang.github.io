@@ -30,7 +30,7 @@
 <meta property="og:description" content="Spring 注解什么是基于注解的容器配置？不使用 XML 来描述 Bean 装配，开发人员通过在相关的类，方法或字段声明上使用注解将配置移动到组件类本身。它可以作为 XML 设置的替代方案。例如： Spring 的 Java 配置是通过使用 @Bean 和 @Configuration 来实现。  @Bean 注解，与 &amp;lt;bean /&amp;gt; 元素相同。 @Configuration 注解">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://static2.iocoder.cn/images/Spring/2018-12-24/05.jpg">
-<meta property="og:updated_time" content="2020-09-09T11:30:11.000Z">
+<meta property="og:updated_time" content="2020-09-09T11:44:50.038Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring总结">
 <meta name="twitter:description" content="Spring 注解什么是基于注解的容器配置？不使用 XML 来描述 Bean 装配，开发人员通过在相关的类，方法或字段声明上使用注解将配置移动到组件类本身。它可以作为 XML 设置的替代方案。例如： Spring 的 Java 配置是通过使用 @Bean 和 @Configuration 来实现。  @Bean 注解，与 &amp;lt;bean /&amp;gt; 元素相同。 @Configuration 注解">
@@ -193,13 +193,13 @@
 <li><code>@Configuration</code> 注解的类，允许通过简单地调用同一个类中的其他 <code>@Bean</code> 方法来定义 Bean 间依赖关系。</li>
 </ul>
 <p>示例如下：</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">@Configuration
-public class StudentConfig {
-    @Bean
-    public StudentBean myStudent() {
-        return new StudentBean();
-    }
-}
+<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">StudentConfig</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> StudentBean <span class="token function">myStudent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">StudentBean</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="如何在-Spring-中启动注解装配？"><a href="#如何在-Spring-中启动注解装配？" class="headerlink" title="如何在 Spring 中启动注解装配？"></a>如何在 Spring 中启动注解装配？</h4><p>默认情况下，Spring 容器中未打开注解装配。因此，要使用基于注解装配，我们必须通过配置 <code>&lt;context：annotation-config /&gt;</code> 元素在 Spring 配置文件中启用它。</p>
 <p>当然，如果是使用 Spring Boot ，默认情况下已经开启。</p>
@@ -682,9 +682,9 @@ int ISOLATION_SERIALIZABLE = Connection.TRANSACTION_SERIALIZABLE;
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2019/11/15/新建文件夹/Spring AOP/" id="post-prev" class="post-nav-link">
+      <a href="/2019/11/20/Java InnerClass/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">spring总结</h4>
+        <h4 class="title">java内部类</h4>
       </a>
     </div>
   

@@ -30,7 +30,7 @@
 <meta property="og:description" content="1. MyBatis 编程步骤 创建 SqlSessionFactory 对象。构建者模式 通过 SqlSessionFactory 获取 SqlSession 对象。工厂模式 通过 SqlSession 获得 Mapper 代理对象。代理模式 通过 Mapper 代理对象，执行数据库操作。 执行成功，则使用 SqlSession 提交事务。 执行失败，则使用 SqlSession 回滚事务。 最">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://static2.iocoder.cn/images/MyBatis/2020_03_15/02.png">
-<meta property="og:updated_time" content="2020-09-09T11:31:05.389Z">
+<meta property="og:updated_time" content="2020-09-09T11:48:18.320Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MyBatis使用总结">
 <meta name="twitter:description" content="1. MyBatis 编程步骤 创建 SqlSessionFactory 对象。构建者模式 通过 SqlSessionFactory 获取 SqlSession 对象。工厂模式 通过 SqlSession 获得 Mapper 代理对象。代理模式 通过 Mapper 代理对象，执行数据库操作。 执行成功，则使用 SqlSession 提交事务。 执行失败，则使用 SqlSession 回滚事务。 最">
@@ -211,15 +211,16 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ol>
+<p>#### </p>
 <h4 id="和-的区别"><a href="#和-的区别" class="headerlink" title="#{} 和 ${} 的区别"></a><code>#{}</code> 和 <code>${}</code> 的区别</h4><p>&ensp;&ensp;&ensp;&ensp;  <code>${}</code> 是 Properties 文件中的变量占位符，它可以用于 XML 标签属性值和 SQL 内部，属于<strong>字符串替换</strong>。例如将 <code>${driver}</code> 会被静态替换为 <code>com.mysql.jdbc.Driver</code> ：  </p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">--</span>用于xml标签，进行属性值（字符串）替换<span class="token operator">--</span><span class="token operator">></span>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">--</span>用于xml标签，进行属性值（字符串）替换<span class="token operator">--</span><span class="token operator">></span>
   <span class="token operator">&lt;</span>dataSource type<span class="token operator">=</span><span class="token string">"UNPOOLED"</span><span class="token operator">></span>  <span class="token operator">&lt;</span><span class="token operator">--</span>未使用连接池<span class="token operator">--</span><span class="token operator">></span>
      <span class="token operator">&lt;</span>property name<span class="token operator">=</span><span class="token string">"driver"</span> value<span class="token operator">=</span><span class="token string">"${driver}"</span><span class="token operator">/</span><span class="token operator">></span>    
      <span class="token operator">&lt;</span>property name<span class="token operator">=</span><span class="token string">"url"</span> value<span class="token operator">=</span><span class="token string">"${url}"</span><span class="token operator">/</span><span class="token operator">></span>  
      <span class="token operator">&lt;</span>property name<span class="token operator">=</span><span class="token string">"username"</span> value<span class="token operator">=</span><span class="token string">"${username}"</span><span class="token operator">/</span><span class="token operator">></span>
   <span class="token operator">&lt;</span><span class="token operator">/</span>dataSource<span class="token operator">></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">--</span>用于SQL拼接 ，直接字符串拼接<span class="token operator">--</span><span class="token operator">></span>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">--</span>用于SQL拼接 ，直接字符串拼接<span class="token operator">--</span><span class="token operator">></span>
 <span class="token operator">&lt;</span>select id<span class="token operator">=</span><span class="token string">"getSubject"</span> parameterType<span class="token operator">=</span><span class="token string">"Integer"</span> resultType<span class="token operator">=</span><span class="token string">"Subject"</span><span class="token operator">></span>    
   SELECT <span class="token operator">*</span> FROM subject  WHERE id <span class="token operator">=</span> $<span class="token punctuation">{</span>id<span class="token punctuation">}</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>select<span class="token operator">></span>   
@@ -229,12 +230,12 @@
 </ul>
 <p>&ensp;&ensp;&ensp;&ensp;  <code>#{}</code> 是 SQL 的<code>参数占位符</code>，Mybatis 会将 SQL语句中的 <code>#{}</code> 替换为 <code>?</code> 号，在 SQL 执行前会使用 PreparedStatement 的参数设置方法，按序给 SQL 的 <code>?</code> 号占位符设置参数值，比如 <code>ps.setInt(0, parameterValue)</code> 。 所以，<code>#{}</code>是 <strong>预编译处理</strong> ，可以有效防止 SQL 注入，提高系统安全性。<br>&ensp;&ensp;&ensp;&ensp;  另外，由于mybatis采用了OGNL表达式的标准，可直接以<code>.</code>的形式进行属性的取值，<code>#{}</code> 和 <code>${}</code> 的取值方式非常方便。例如：<code>#{item.name}</code> 的取值方式，使用反射从参数对象中，获取 <code>item</code> 对象的 <code>name</code> 属性值，相当于 <code>param.getItem().getName()</code> 代替了<code>bject.getName()</code>。</p>
 <h4 id="实体类中的属性名和表中的字段名不一样-解决方法"><a href="#实体类中的属性名和表中的字段名不一样-解决方法" class="headerlink" title="实体类中的属性名和表中的字段名不一样 解决方法"></a>实体类中的属性名和表中的字段名不一样 解决方法</h4><p>&ensp;&ensp;&ensp;&ensp;  一般有三种方法：<br>&ensp;&ensp;&ensp;&ensp;  <strong>方法一</strong>  SQL语句起别名，让字段名的别名和实体类的属性名一致。</p>
-<pre class="line-numbers language-JavaScript"><code class="language-JavaScript"><--sql起别名-->
-<select id="selectOrder" parametertype="Integer" resulttype="Order">    
-    SELECT order_id AS id, order_no AS orderno, order_price AS price   
-    FROM orders   WHERE order_id = #{id}
-</select>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></--sql起别名--></code></pre>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">--</span>SQL起别名<span class="token operator">--</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>select id<span class="token operator">=</span><span class="token string">"selectOrder"</span> parameterType<span class="token operator">=</span><span class="token string">"Integer"</span> resultType<span class="token operator">=</span><span class="token string">"Order"</span><span class="token operator">></span>    
+    SELECT order_id AS id<span class="token punctuation">,</span> order_no AS orderno<span class="token punctuation">,</span> order_price AS price   
+    FROM orders   WHERE order_id <span class="token operator">=</span> #<span class="token punctuation">{</span>id<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>select<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>&ensp;&ensp;&ensp;&ensp;  <strong>方法二</strong>  <code>约定大于配置</code>。大多数场景下，数据库字段名和实体类中的属性名之间的差别，主要是<strong>下划线风格</strong>与<strong>驼峰风格</strong>的差距。</p>
 <pre class="line-numbers language-JavaScript"><code class="language-JavaScript"><settings>
     <setting name="logImpl" value="LOG4J">   
@@ -405,7 +406,7 @@ List<student> selectStudents(Integer start, Integer end);
 <li>EnumTypeHandler ，基于 <code>Enum.name</code> 属性( String )。<strong>默认</strong>。</li>
 <li>EnumOrdinalTypeHandler ，基于 <code>Enum.ordinal</code> 属性( <code>int</code> )。可通过 <code>&lt;setting name=&quot;defaultEnumTypeHandler&quot; value=&quot;EnumOrdinalTypeHandler&quot; /&gt;</code> 来设置。</li>
 </ul>
-<p>😈 当然，实际开发场景，我们很少使用 Enum 类型，更加的方式是，代码如下：</p>
+<p>当然，实际开发场景，我们很少使用 Enum 类型，更加的方式是，代码如下：</p>
 <pre class="line-numbers language-Java"><code class="language-Java">public class Dog {
 
     public static final int STATUS_GOOD = 1;
@@ -495,18 +496,12 @@ VALUES
 <p>在 Mybatis 配置文件中，可以配置 <code>&lt;setting name=&quot;lazyLoadingEnabled&quot; value=&quot;true&quot; /&gt;</code> 来启用延迟加载的功能。默认情况下，延迟加载的功能是<strong>关闭</strong>的。<br>它的原理是，使用 CGLIB 或 Javassist( 默认 ) 创建目标对象的代理对象。当调用代理对象的延迟加载属性的 getter 方法时，进入拦截器方法。比如调用 <code>a.getB().getName()</code> 方法，进入拦截器的 <code>invoke(...)</code> 方法，发现 <code>a.getB()</code>需要延迟加载时，那么就会单独发送事先保存好的查询关联 B 对象的 SQL ，把 B 查询上来，然后调用<code>a.setB(b)</code> 方法，于是 <code>a</code> 对象 <code>b</code> 属性就有值了，接着完成<code>a.getB().getName()</code> 方法的调用。这就是延迟加载的基本原理。</p>
 <p>当然了，不光是 Mybatis，几乎所有的包括 Hibernate 在内，支持延迟加载的原理都是一样的。</p>
 <h4 id="Mybatis-能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。"><a href="#Mybatis-能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。" class="headerlink" title="Mybatis 能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。"></a>Mybatis 能否执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。</h4><p>能，Mybatis 不仅可以执行一对一、一对多的关联查询，还可以执行多对一，多对多的关联查询。</p>
-<blockquote>
-<p>艿艿：不过貌似，我自己实际开发中，还是比较喜欢自己去查询和拼接映射的数据。😈</p>
-</blockquote>
 <ul>
 <li>多对一查询，其实就是一对一查询，只需要把 <code>selectOne(...)</code> 修改为 <code>selectList(...)</code> 即可。案例可见 <a href="https://blog.csdn.net/xzm_rainbow/article/details/15336959" target="_blank" rel="noopener">《MyBatis：多对一表关系详解》</a> 。</li>
 <li>多对多查询，其实就是一对多查询，只需要把 <code>#selectOne(...)</code> 修改为 <code>selectList(...)</code> 即可。案例可见 <a href="https://blog.csdn.net/eson_15/article/details/51655188" target="_blank" rel="noopener">《【MyBatis学习10】高级映射之多对多查询》</a> 。</li>
 </ul>
 <hr>
 <p>关联对象查询，有两种实现方式：</p>
-<blockquote>
-<p>艿艿：所有的技术方案，即会有好处，又会有坏处。很难出现，一个完美的银弹方案。</p>
-</blockquote>
 <ul>
 <li>一种是单独发送一个 SQL 去查询关联对象，赋给主对象，然后返回主对象。好处是多条 SQL 分开，相对简单，坏处是发起的 SQL 可能会比较多。</li>
 <li>另一种是使用嵌套查询，嵌套查询的含义为使用 <code>join</code> 查询，一部分列是 A 对象的属性值，另外一部分列是关联对象 B 的属性值。好处是只发一个 SQL 查询，就可以把主对象和其关联对象查出来，坏处是 SQL 可能比较复杂。</li>
@@ -562,7 +557,6 @@ VALUES
 <li>然后，在给插件编写注解，指定要拦截哪一个接口的哪些方法即可</li>
 <li>最后，在配置文件中配置你编写的插件。</li>
 </ol>
-<p>具体的，可以参考 <a href="http://www.mybatis.org/mybatis-3/zh/configuration.html#plugins" target="_blank" rel="noopener">《MyBatis 官方文档 —— 插件》</a> 。</p>
 <h4 id="Mybatis-是如何进行分页的？分页插件的原理是什么？"><a href="#Mybatis-是如何进行分页的？分页插件的原理是什么？" class="headerlink" title="Mybatis 是如何进行分页的？分页插件的原理是什么？"></a>Mybatis 是如何进行分页的？分页插件的原理是什么？</h4><p>Mybatis 使用 RowBounds 对象进行分页，它是针对 ResultSet 结果集执行的<strong>内存分页</strong>，而非<strong>数据库分页</strong>。</p>
 <p>所以，实际场景下，不适合直接使用 MyBatis 原有的 RowBounds 对象进行分页。而是使用如下两种方案：</p>
 <ul>
@@ -599,10 +593,7 @@ VALUES
 <p>问题四，数据库链接创建、释放频繁造成系统资源浪费从而影响系统性能，如果使用数据库链接池可解决此问题。</p>
 <p>解决方式：在 <code>mybatis-config.xml</code> 中，配置数据链接池，使用连接池管理数据库链接。</p>
 <p>当然，即使不使用 MyBatis ，也可以使用数据库连接池。<br>另外，MyBatis 默认提供了数据库连接池的实现，只是说，因为其它开源的数据库连接池性能更好，所以一般很少使用 MyBatis 自带的连接池实现。</p>
-<h4 id="Mybatis-比-IBatis-比较大的几个改进是什么？"><a href="#Mybatis-比-IBatis-比较大的几个改进是什么？" class="headerlink" title="Mybatis 比 IBatis 比较大的几个改进是什么？"></a>Mybatis 比 IBatis 比较大的几个改进是什么？</h4><blockquote>
-<p>这是一个选择性了解的问题，因为可能现在很多面试官，都没用过 IBatis 框架。</p>
-</blockquote>
-<ol>
+<h4 id="Mybatis-比-IBatis-比较大的几个改进是什么？"><a href="#Mybatis-比-IBatis-比较大的几个改进是什么？" class="headerlink" title="Mybatis 比 IBatis 比较大的几个改进是什么？"></a>Mybatis 比 IBatis 比较大的几个改进是什么？</h4><ol>
 <li>有接口绑定，包括注解绑定 SQL 和 XML 绑定 SQL 。</li>
 <li>动态 SQL 由原来的节点配置变成 OGNL 表达式。</li>
 <li>在一对一或一对多的时候，引进了 <code>association</code> ，在一对多的时候，引入了 <code>collection</code>节点，不过都是在 <code></code> 里面配置。</li>
@@ -697,7 +688,7 @@ VALUES
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2019/12/15/JVM GC_1/" id="post-prev" class="post-nav-link">
+      <a href="/2020/02/15/JVM GC_1/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">JVM垃圾回收(上)</h4>
       </a>
@@ -706,9 +697,9 @@ VALUES
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2019/12/09/新建文件夹/mybatis/" id="post-next" class="post-nav-link">
+      <a href="/2019/11/20/Java InnerClass/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">MyBatis使用总结</h4>
+        <h4 class="title">java内部类</h4>
       </a>
     </div>
   

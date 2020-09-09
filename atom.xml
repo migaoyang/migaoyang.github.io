@@ -45,10 +45,10 @@
   
   <entry>
     <title>Java内存模型：看Java如何解决可见性和有序性问题</title>
-    <link href="http://yoursite.com/2020/04/01/JMM%20Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%EF%BC%9A%E7%9C%8BJava%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%8F%AF%E8%A7%81%E6%80%A7%E5%92%8C%E6%9C%89%E5%BA%8F%E6%80%A7%E9%97%AE%E9%A2%98/"/>
-    <id>http://yoursite.com/2020/04/01/JMM Java内存模型：看Java如何解决可见性和有序性问题/</id>
-    <published>2020-03-31T16:00:00.000Z</published>
-    <updated>2020-09-09T11:24:14.865Z</updated>
+    <link href="http://yoursite.com/2020/05/03/JMM%20Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%EF%BC%9A%E7%9C%8BJava%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%8F%AF%E8%A7%81%E6%80%A7%E5%92%8C%E6%9C%89%E5%BA%8F%E6%80%A7%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2020/05/03/JMM Java内存模型：看Java如何解决可见性和有序性问题/</id>
+    <published>2020-05-02T16:00:00.000Z</published>
+    <updated>2020-09-09T11:42:15.333Z</updated>
     
     <summary type="html">
     
@@ -71,10 +71,10 @@
   
   <entry>
     <title>可见性、原子性和有序性问题：并发编程Bug的源头</title>
-    <link href="http://yoursite.com/2020/03/15/JMM%20%E5%8F%AF%E8%A7%81%E6%80%A7%E3%80%81%E5%8E%9F%E5%AD%90%E6%80%A7%E5%92%8C%E6%9C%89%E5%BA%8F%E6%80%A7%E9%97%AE%E9%A2%98%EF%BC%9A%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8BBug%E7%9A%84%E6%BA%90%E5%A4%B4/"/>
-    <id>http://yoursite.com/2020/03/15/JMM 可见性、原子性和有序性问题：并发编程Bug的源头/</id>
-    <published>2020-03-14T16:00:00.000Z</published>
-    <updated>2020-09-09T11:19:52.439Z</updated>
+    <link href="http://yoursite.com/2020/05/01/JMM%20%E5%8F%AF%E8%A7%81%E6%80%A7%E3%80%81%E5%8E%9F%E5%AD%90%E6%80%A7%E5%92%8C%E6%9C%89%E5%BA%8F%E6%80%A7%E9%97%AE%E9%A2%98%EF%BC%9A%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8BBug%E7%9A%84%E6%BA%90%E5%A4%B4/"/>
+    <id>http://yoursite.com/2020/05/01/JMM 可见性、原子性和有序性问题：并发编程Bug的源头/</id>
+    <published>2020-04-30T16:00:00.000Z</published>
+    <updated>2020-09-09T11:41:55.320Z</updated>
     
     <summary type="html">
     
@@ -83,6 +83,61 @@
         
         
           &lt;h3 id=&quot;可见性、原子性和有序性问题：并发编程Bug的源头&quot;&gt;&lt;a href=&quot;#可见性、原子性和有序性问题：并发编程Bug的源头&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="JVM" scheme="http://yoursite.com/categories/JVM/"/>
+    
+    
+      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JVM类加载机制</title>
+    <link href="http://yoursite.com/2020/03/20/JVM%20ClassLoader/"/>
+    <id>http://yoursite.com/2020/03/20/JVM ClassLoader/</id>
+    <published>2020-03-19T16:00:00.000Z</published>
+    <updated>2020-09-09T11:40:55.014Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;从大的方面讲，类加载的结果是把一段字节流变换成Class结构并写方法区，在加载阶段就已经生成class结构了，所以我认为在加载阶段应该已经写入了方法区，只是被标记为未链接而暂不能使用。&lt;/li&gt;
+&lt;li&gt;类的初始化只会发生一次，与new实例的初始化不是一个概念。
+        
+      
+    
+    </summary>
+    
+      <category term="JVM" scheme="http://yoursite.com/categories/JVM/"/>
+    
+    
+      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JVM垃圾回收（中）</title>
+    <link href="http://yoursite.com/2020/02/16/JVM%20GC_2/"/>
+    <id>http://yoursite.com/2020/02/16/JVM GC_2/</id>
+    <published>2020-02-15T16:00:00.000Z</published>
+    <updated>2020-09-09T11:39:59.425Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&amp;emsp;大部分的 Java 对象只存活一小段时间，而存活下来的小部分 Java 对象则会存活很长一段时间。下图（Java 对象生命周期的直方图，红色的表示被逃逸分析优化掉的对象）是一些研究者对Java对象生命周期的动态分析的结果。 &lt;/p&gt;
+&lt;p&gt;&lt;img
         
       
     
@@ -126,66 +181,11 @@
   </entry>
   
   <entry>
-    <title>JVM类加载机制</title>
-    <link href="http://yoursite.com/2019/12/29/JVM%20ClassLoader/"/>
-    <id>http://yoursite.com/2019/12/29/JVM ClassLoader/</id>
-    <published>2019-12-28T16:00:00.000Z</published>
-    <updated>2020-09-08T11:54:44.909Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;ul&gt;
-&lt;li&gt;从大的方面讲，类加载的结果是把一段字节流变换成Class结构并写方法区，在加载阶段就已经生成class结构了，所以我认为在加载阶段应该已经写入了方法区，只是被标记为未链接而暂不能使用。&lt;/li&gt;
-&lt;li&gt;类的初始化只会发生一次，与new实例的初始化不是一个概念。
-        
-      
-    
-    </summary>
-    
-      <category term="JVM" scheme="http://yoursite.com/categories/JVM/"/>
-    
-    
-      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JVM垃圾回收（中）</title>
-    <link href="http://yoursite.com/2019/12/21/JVM%20GC_2/"/>
-    <id>http://yoursite.com/2019/12/21/JVM GC_2/</id>
-    <published>2019-12-20T16:00:00.000Z</published>
-    <updated>2020-09-08T11:54:10.632Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&amp;emsp;大部分的 Java 对象只存活一小段时间，而存活下来的小部分 Java 对象则会存活很长一段时间。下图（Java 对象生命周期的直方图，红色的表示被逃逸分析优化掉的对象）是一些研究者对Java对象生命周期的动态分析的结果。 &lt;/p&gt;
-&lt;p&gt;&lt;img
-        
-      
-    
-    </summary>
-    
-      <category term="JVM" scheme="http://yoursite.com/categories/JVM/"/>
-    
-    
-      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
-    
-  </entry>
-  
-  <entry>
     <title>JVM垃圾回收(上)</title>
-    <link href="http://yoursite.com/2019/12/15/JVM%20GC_1/"/>
-    <id>http://yoursite.com/2019/12/15/JVM GC_1/</id>
-    <published>2019-12-14T16:00:00.000Z</published>
-    <updated>2020-09-08T11:53:45.111Z</updated>
+    <link href="http://yoursite.com/2020/02/15/JVM%20GC_1/"/>
+    <id>http://yoursite.com/2020/02/15/JVM GC_1/</id>
+    <published>2020-02-14T16:00:00.000Z</published>
+    <updated>2020-09-09T11:39:34.937Z</updated>
     
     <summary type="html">
     
@@ -211,34 +211,7 @@
     <link href="http://yoursite.com/2019/12/09/mybatis/"/>
     <id>http://yoursite.com/2019/12/09/mybatis/</id>
     <published>2019-12-08T16:00:00.000Z</published>
-    <updated>2020-09-09T11:31:05.389Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h4 id=&quot;1-MyBatis-编程步骤&quot;&gt;&lt;a href=&quot;#1-MyBatis-编程步骤&quot; class=&quot;headerlink&quot; title=&quot;1. MyBatis 编程步骤&quot;&gt;&lt;/a&gt;1. MyBatis 编程步骤&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;创建
-        
-      
-    
-    </summary>
-    
-      <category term="java web" scheme="http://yoursite.com/categories/java-web/"/>
-    
-    
-      <category term="java web" scheme="http://yoursite.com/tags/java-web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MyBatis使用总结</title>
-    <link href="http://yoursite.com/2019/12/09/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/mybatis/"/>
-    <id>http://yoursite.com/2019/12/09/新建文件夹/mybatis/</id>
-    <published>2019-12-08T16:00:00.000Z</published>
-    <updated>2020-09-09T11:34:23.917Z</updated>
+    <updated>2020-09-09T11:48:18.320Z</updated>
     
     <summary type="html">
     
@@ -288,36 +261,10 @@
   
   <entry>
     <title>spring总结</title>
-    <link href="http://yoursite.com/2019/11/15/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/Spring%20AOP/"/>
-    <id>http://yoursite.com/2019/11/15/新建文件夹/Spring AOP/</id>
-    <published>2019-11-14T16:00:00.000Z</published>
-    <updated>2020-09-09T11:34:25.631Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;Spring-注解&quot;&gt;&lt;a href=&quot;#Spring-注解&quot; class=&quot;headerlink&quot; title=&quot;Spring 注解&quot;&gt;&lt;/a&gt;Spring 注解&lt;/h3&gt;&lt;h4 id=&quot;什么是基于注解的容器配置？&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="java web" scheme="http://yoursite.com/categories/java-web/"/>
-    
-    
-      <category term="java web" scheme="http://yoursite.com/tags/java-web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>spring总结</title>
     <link href="http://yoursite.com/2019/11/15/Spring%20AOP/"/>
     <id>http://yoursite.com/2019/11/15/Spring AOP/</id>
     <published>2019-11-14T16:00:00.000Z</published>
-    <updated>2020-09-09T11:30:11.000Z</updated>
+    <updated>2020-09-09T11:44:50.038Z</updated>
     
     <summary type="html">
     
@@ -344,32 +291,6 @@
     <id>http://yoursite.com/2019/11/11/spring/</id>
     <published>2019-11-10T16:00:00.000Z</published>
     <updated>2020-09-09T11:28:39.486Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;spring中的IoC是一种软件开发的思想，用来降低程序间耦合的问题。在未采用IoC的开发中，上层依赖下层，某个对象需要另一个对象，只能自己采用new的方式进行创建，那么会产生以下的问题： 
-        
-      
-    
-    </summary>
-    
-      <category term="java web" scheme="http://yoursite.com/categories/java-web/"/>
-    
-    
-      <category term="java web" scheme="http://yoursite.com/tags/java-web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>spring--IoC</title>
-    <link href="http://yoursite.com/2019/11/11/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/spring/"/>
-    <id>http://yoursite.com/2019/11/11/新建文件夹/spring/</id>
-    <published>2019-11-10T16:00:00.000Z</published>
-    <updated>2020-09-09T11:34:27.424Z</updated>
     
     <summary type="html">
     
@@ -441,6 +362,33 @@
       <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
     
       <category term="java源码" scheme="http://yoursite.com/tags/java%E6%BA%90%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java的非静态方法调用过程</title>
+    <link href="http://yoursite.com/2019/10/11/Java%20CallFunction/"/>
+    <id>http://yoursite.com/2019/10/11/Java CallFunction/</id>
+    <published>2019-10-10T16:00:00.000Z</published>
+    <updated>2020-09-09T11:38:04.539Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Java中非静态方法的调用过程，即通过对象来调用方法的过程主要有以下几个步骤。&lt;br&gt;假设要调用x.f(args), &lt;strong&gt;隐式参数&lt;/strong&gt; x 声明为类C的一个对象。具体调用流程如下：&lt;/p&gt;
+&lt;h3
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
@@ -549,6 +497,59 @@
     
     
       <category term="Servlet" scheme="http://yoursite.com/tags/Servlet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Servlet（一）</title>
+    <link href="http://yoursite.com/2019/06/16/Java%20Web%20%20Servlet1/"/>
+    <id>http://yoursite.com/2019/06/16/Java Web  Servlet1/</id>
+    <published>2019-06-15T16:00:00.000Z</published>
+    <updated>2020-09-08T11:48:36.126Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;提要：Servlet执行过程、执行周期。  &lt;/p&gt;
+&lt;p&gt;在java中，JVM是java程序唯一认识的“操作系统”，其可执行文件为 &lt;strong&gt;.class&lt;/strong&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="Servlet" scheme="http://yoursite.com/categories/Servlet/"/>
+    
+    
+      <category term="Servlet" scheme="http://yoursite.com/tags/Servlet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常用排序算法的java实现</title>
+    <link href="http://yoursite.com/2019/06/01/Java%20Sort/"/>
+    <id>http://yoursite.com/2019/06/01/Java Sort/</id>
+    <published>2019-05-31T16:00:00.000Z</published>
+    <updated>2020-09-08T11:48:13.601Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;BubbleSort&quot;&gt;&lt;a href=&quot;#BubbleSort&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Sort" scheme="http://yoursite.com/categories/Sort/"/>
+    
+    
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
     
   </entry>
   
