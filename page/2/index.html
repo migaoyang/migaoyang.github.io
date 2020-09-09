@@ -154,13 +154,13 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-未上传/Java SortMerge" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-Java Web  ConnectionPool" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2019-03-15 00:00:00" datetime="2019-03-14T16:00:00.000Z" itemprop="datePublished">2019-03-15</time>
+        <time class="post-time" title="2019-05-06 00:00:00" datetime="2019-05-05T16:00:00.000Z" itemprop="datePublished">2019-05-06</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Sort/">Sort</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JDBC/">JDBC</a></li></ul>
 
 
 
@@ -171,7 +171,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/03/15/未上传/Java SortMerge/">归并排序</a>
+      <a class="post-title-link" href="/2019/05/06/Java Web  ConnectionPool/">连接池</a>
     </h3>
   
 
@@ -181,24 +181,28 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        MergingSort归并排序与插入排序与起泡排序不同，“归并”的含义是将两个或两个以上的有序表组合成一个新的有序表。核心操作是将一维数组中前后相邻的两个有序序列归并为一个有序序列。  
-public static void merge(int[] data, int p, int q, int r) {
-    int i, j, k, n1, n2;
-    n1 = q - p + 1;
-    n2 = r - q;
-    int[] lPart = new int[n1];
-    int[] rPart = new int[n2];
-    for (i = 0, k = ...
+        数据库连接池
+数据库连接的对象创建，比较消耗性能。     
+一开始现在内存中开辟一块空间（以集合存起来）， 一开先往Pool里面放置多个连接对象。以后需要连接的话，直接从Pool里面取。不需要自己用到时再重头开始建立了。使用完毕，需要归还连接，确保连接对象能循环利用。  
+
+常用的开源连接池有DBCP（Apache）与C3P0  
+DBCP首先导入jar文件。方式一 不使用配置文件：   
+public void testDBCP01(){
+    Connection conn = null;
+    PreparedStatement ps = null;
+    try {
+
+ ...
     
 
-        <a href="/2019/03/15/未上传/Java SortMerge/" class="post-more waves-effect waves-button">
+        <a href="/2019/05/06/Java Web  ConnectionPool/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java高级/">java高级</a></li></ul>
 
     </div>
     
@@ -207,13 +211,13 @@ public static void merge(int[] data, int p, int q, int r) {
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-未上传/Java SortQuick" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-Java Web  DBUtils" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2019-03-10 00:00:00" datetime="2019-03-09T16:00:00.000Z" itemprop="datePublished">2019-03-10</time>
+        <time class="post-time" title="2019-05-04 00:00:00" datetime="2019-05-03T16:00:00.000Z" itemprop="datePublished">2019-05-04</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Sort/">Sort</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JDBC/">JDBC</a></li></ul>
 
 
 
@@ -224,7 +228,7 @@ public static void merge(int[] data, int p, int q, int r) {
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/03/10/未上传/Java SortQuick/">快速排序</a>
+      <a class="post-title-link" href="/2019/05/04/Java Web  DBUtils/">DBUtils</a>
     </h3>
   
 
@@ -234,27 +238,22 @@ public static void merge(int[] data, int p, int q, int r) {
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        QuickSort快速排序其实是对起泡排序的一种改进，其基本思想是：通过一趟排序将待排数据分割成独立的两部分，其中一部分数据的关键字均比另一部分的关键字小，然后就可以对这两部分数据再进行排序，已达到整个序列有序。  
-实现public static void quick(int[] data){
-        sort(data, 0, data.length-1);
-    }
+        DBUtilsCommons DbUtils是Apache提供的一个对JDBC进行简单封装的开源工具类库， 简化了CRUD，里面定义了通用的CRUD方法。同时也不会影响程序的性能。  
+增删改//dbutils 只是帮我们简化了CRUD 的代码， 但是连接的创建以及获取工作，不在他的工作范围，还需要我们自己动手。
+QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());
 
-
-
-public static void sort(int[] data , int low , int high){
-    int i , j ;
-    int index ;  //pivot
-  ...
+//增加
+queryRunner.update("insert into account values (null , ? , ? ...
     
 
-        <a href="/2019/03/10/未上传/Java SortQuick/" class="post-more waves-effect waves-button">
+        <a href="/2019/05/04/Java Web  DBUtils/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java高级/">java高级</a></li></ul>
 
     </div>
     
@@ -263,13 +262,13 @@ public static void sort(int[] data , int low , int high){
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-未上传/Java SortBubble" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-Java Web  JDBC" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2019-03-08 00:00:00" datetime="2019-03-07T16:00:00.000Z" itemprop="datePublished">2019-03-08</time>
+        <time class="post-time" title="2019-05-02 00:00:00" datetime="2019-05-01T16:00:00.000Z" itemprop="datePublished">2019-05-02</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Sort/">Sort</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JDBC/">JDBC</a></li></ul>
 
 
 
@@ -280,7 +279,7 @@ public static void sort(int[] data , int low , int high){
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/03/08/未上传/Java SortBubble/">常用排序算法的java实现</a>
+      <a class="post-title-link" href="/2019/05/02/Java Web  JDBC/">JDBC基础</a>
     </h3>
   
 
@@ -290,23 +289,77 @@ public static void sort(int[] data , int low , int high){
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        BubbleSort起泡排序就是两两交换排序，可以将最大值或最小值放在一端，然后再从下个依次两两比较，将第二大或者第二小的放在一端第二个。  
-实现public static int[] bubble(int [] data) {
-    int length = data.length;
-    for(int i = 0 ; i &lt; length ; i ++) {
-        for(int j = 0 ; j &lt; length-i-1 ; j++) {
-            if (data[j] > data[j+1]) {
-                i...
+        JDBC： JAVA Database Connectivity java 数据库连接。
+JDBC的基本使用步骤：
+注册驱动
+
+DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+
+Driver类里面有静态代码块，如果使用上面等于注册了两次，实际没有必要也没有影响。可使用以下：  
+Class.forName("com.mysql.jdbc.Driver");
+
+
+建立连接
+
+   //DriverManager.getConnection("jdbc:mysql://localhost/test?user=monty&a...
     
 
-        <a href="/2019/03/08/未上传/Java SortBubble/" class="post-more waves-effect waves-button">
+        <a href="/2019/05/02/Java Web  JDBC/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java基础/">java基础</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Java ArrayList" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-03-28 00:00:00" datetime="2019-03-27T16:00:00.000Z" itemprop="datePublished">2019-03-28</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/03/28/Java ArrayList/">java源码-剖析ArrayList</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        容器类(集合)，顾名思义就是用来容纳其它数据的类。在泛型的那篇笔记中，实现了一个简单的动态数组的容器类–DynamicArray,本篇主要阐述Java中真正的动态数组（数组列表）容器类ArrayList（Java 7）的基本用法、迭代操作、实现的一些Interface（Collection、List与RandAccess）、特点与应用场景。  
+基本用法ArrayList是一个泛型类，使用时需要实例化泛型参数，比如  
+ArrayList&lt;Integer> intList = new ArrayList&lt;Integer>(); //new ArrayList&lt;Integ...
+    
+
+        <a href="/2019/03/28/Java ArrayList/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java基础/">java基础</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java源码/">java源码</a></li></ul>
 
     </div>
     
@@ -651,50 +704,6 @@ Y
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java基础/">java基础</a></li></ul>
 
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-未上传/hello-world" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-11-06 14:47:20" datetime="2018-11-06T06:47:20.028Z" itemprop="datePublished">2018-11-06</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/11/06/未上传/hello-world/">Hello World</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post$ hexo new "My New Post"
-
-More info: Writing
-Run server$ hexo server
-
-More...
-    
-
-        <a href="/2018/11/06/未上传/hello-world/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
     </div>
     
 </article>

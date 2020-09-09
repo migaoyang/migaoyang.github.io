@@ -14,27 +14,24 @@
     
     
     
-    <title>JVM垃圾回收（下）（回收器比较） | migaoyang | migaoyang</title>
+    <title>No title | migaoyang | migaoyang</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="JVM">
-    <meta name="description" content="&amp;emsp;&amp;emsp;我个人认为应该把注意力放在前两篇文章中，例如 寻找失活对象的方法、安全点的建立、分代回收的思想、Thread Local Allocation Buffer、卡表。 所以本篇主要记录了各种各种收集器的使用场景与他们的比较。更详细的描绘可浏览Oracle的官方说明：https://blogs.oracle.com/jonthecollector/our-collectors">
-<meta name="keywords" content="JVM">
+    <meta name="keywords" content="">
+    <meta name="description" content="Java内存模型：看Java如何解决可见性和有序性问题&amp;emsp; 导致可见性的原因是缓存，导致有序性的原因是编译优化 ，那解决可见性、有序性最直接的办法就是禁用缓存和编译优化，但是这样问题虽然解决了，我们程序的性能可就堪忧了。合理的方案应该是按需禁用缓存以及编译优化。那么，如何做到“按需禁用”呢？对于并发程序，何时禁用缓存以及编译优化只有程序员知道，那所谓“按需禁用”其实就是指按照程序员的要求来">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JVM垃圾回收（下）（回收器比较）">
-<meta property="og:url" content="http://yoursite.com/2019/04/18/未上传/JVM GC_3/index.html">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://yoursite.com/2020/09/06/新建文件夹/thread3 Java内存模型：看Java如何解决可见性和有序性问题/index.html">
 <meta property="og:site_name" content="migaoyang">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;我个人认为应该把注意力放在前两篇文章中，例如 寻找失活对象的方法、安全点的建立、分代回收的思想、Thread Local Allocation Buffer、卡表。 所以本篇主要记录了各种各种收集器的使用场景与他们的比较。更详细的描绘可浏览Oracle的官方说明：https://blogs.oracle.com/jonthecollector/our-collectors">
+<meta property="og:description" content="Java内存模型：看Java如何解决可见性和有序性问题&amp;emsp; 导致可见性的原因是缓存，导致有序性的原因是编译优化 ，那解决可见性、有序性最直接的办法就是禁用缓存和编译优化，但是这样问题虽然解决了，我们程序的性能可就堪忧了。合理的方案应该是按需禁用缓存以及编译优化。那么，如何做到“按需禁用”呢？对于并发程序，何时禁用缓存以及编译优化只有程序员知道，那所谓“按需禁用”其实就是指按照程序员的要求来">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/images/JVM_GCCollections.jpg">
-<meta property="og:updated_time" content="2020-09-08T11:32:31.942Z">
+<meta property="og:updated_time" content="2020-02-10T12:14:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JVM垃圾回收（下）（回收器比较）">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp;我个人认为应该把注意力放在前两篇文章中，例如 寻找失活对象的方法、安全点的建立、分代回收的思想、Thread Local Allocation Buffer、卡表。 所以本篇主要记录了各种各种收集器的使用场景与他们的比较。更详细的描绘可浏览Oracle的官方说明：https://blogs.oracle.com/jonthecollector/our-collectors">
-<meta name="twitter:image" content="http://yoursite.com/images/JVM_GCCollections.jpg">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="Java内存模型：看Java如何解决可见性和有序性问题&amp;emsp; 导致可见性的原因是缓存，导致有序性的原因是编译优化 ，那解决可见性、有序性最直接的办法就是禁用缓存和编译优化，但是这样问题虽然解决了，我们程序的性能可就堪忧了。合理的方案应该是按需禁用缓存以及编译优化。那么，如何做到“按需禁用”呢？对于并发程序，何时禁用缓存以及编译优化只有程序员知道，那所谓“按需禁用”其实就是指按照程序员的要求来">
     
         <link rel="alternate" type="application/atom+xml" title="migaoyang" href="/atom.xml">
     
@@ -118,7 +115,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">JVM垃圾回收（下）（回收器比较）</div>
+        <div class="flex-col header-title ellipsis"></div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -140,15 +137,13 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">JVM垃圾回收（下）（回收器比较）</h1>
+        <h1 class="title"></h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-04-17T16:00:00.000Z" itemprop="datePublished" class="page-time">
-  2019-04-18
+                <time datetime="2020-09-06T11:16:24.000Z" itemprop="datePublished" class="page-time">
+  2020-09-06
 </time>
 
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/">JVM</a></li></ul>
 
             
         </h5>
@@ -165,34 +160,26 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考Blog"><span class="post-toc-number">1.</span> <span class="post-toc-text">参考Blog</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Java内存模型：看Java如何解决可见性和有序性问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">Java内存模型：看Java如何解决可见性和有序性问题</span></a></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-未上传/JVM GC_3" class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-新建文件夹/thread3 Java内存模型：看Java如何解决可见性和有序性问题" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">JVM垃圾回收（下）（回收器比较）</h1>
+        <h1 class="post-card-title"></h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-04-18 00:00:00" datetime="2019-04-17T16:00:00.000Z" itemprop="datePublished">2019-04-18</time>
+            <time class="post-time" title="2020-09-06 19:16:24" datetime="2020-09-06T11:16:24.000Z" itemprop="datePublished">2020-09-06</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/">JVM</a></li></ul>
-
 
 
             
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>&emsp;&emsp;我个人认为应该把注意力放在前两篇文章中，例如 <strong>寻找失活对象的方法、安全点的建立、分代回收的思想、Thread Local Allocation Buffer、卡表。</strong> 所以本篇主要记录了各种各种收集器的使用场景与他们的比较。更详细的描绘可浏览Oracle的官方说明：<a href="https://blogs.oracle.com/jonthecollector/our-collectors" target="_blank" rel="noopener">https://blogs.oracle.com/jonthecollector/our-collectors</a>     </p>
-<p><img src="/images/JVM_GCCollections.jpg" alt="Alt text"><br>&emsp;&emsp;<strong>上图中的 ‘?’ 就是目前的G1回收器。</strong><br>&emsp;&emsp;针对新生代的垃圾回收器共有三个：Serial，Parallel Scavenge 和 Parallel New。这三个采用的都是 <strong>标记 - 复制</strong> 算法。其中，Serial 是一个单线程的，Parallel New 可以看成 Serial 的多线程版本。Parallel Scavenge 和 Parallel New 类似，但更加注重吞吐率。此外，Parallel Scavenge 不能与 CMS 一起使用。<br>&emsp;&emsp;针对老年代的垃圾回收器也有三个：Serial Old 和 Parallel Old，以及 CMS。Serial Old 和 Parallel Old 都是 <strong>标记 - 压缩</strong> 算法。同样，前者是单线程的，而后者可以看成前者的多线程版本。  </p>
-<p>&emsp;&emsp;CMS 采用的是标记 - 清除算法，并且是并发的。除了少数几个操作需要 Stop-the-world 之外，它可以在应用程序运行过程中进行垃圾回收。在并发收集失败的情况下，Java 虚拟机会使用其他两个压缩型垃圾回收器进行一次垃圾回收。由于 G1 的出现，CMS 在 Java 9 中已被废弃 [1]。</p>
-<p>&emsp;&emsp;G1（Garbage First）是一个横跨新生代和老年代的垃圾回收器。实际上，它已经打乱了前面所说的堆结构，直接将堆分成极其多个区域。每个区域都可以充当 Eden 区、Survivor 区或者老年代中的一个。它采用的是标记 - 压缩算法，而且和 CMS 一样都能够在应用程序运行过程中并发地进行垃圾回收。   </p>
-<p>&emsp;&emsp;G1 能够针对每个细分的区域来进行垃圾回收。在选择进行垃圾回收的区域时，它会优先回收死亡对象较多的区域。这也是 G1 名字的由来。</p>
-<p>&emsp;&emsp; Java 11 引入了 ZGC，宣称暂停时间不超过 10ms。如果感兴趣的话，可参考 R 大的这篇文章 [2]。</p>
-<h3 id="参考Blog"><a href="#参考Blog" class="headerlink" title="参考Blog"></a>参考Blog</h3><p>[1]<a href="http://openjdk.java.net/jeps/291" target="_blank" rel="noopener">http://openjdk.java.net/jeps/291</a><br>[2]<a href="https://www.zhihu.com/question/287945354/answer/458761494" target="_blank" rel="noopener">https://www.zhihu.com/question/287945354/answer/458761494</a></p>
+            <h3 id="Java内存模型：看Java如何解决可见性和有序性问题"><a href="#Java内存模型：看Java如何解决可见性和有序性问题" class="headerlink" title="Java内存模型：看Java如何解决可见性和有序性问题"></a>Java内存模型：看Java如何解决可见性和有序性问题</h3><p>&emsp; <strong>导致可见性的原因是缓存，导致有序性的原因是编译优化</strong> ，那解决可见性、有序性最直接的<br>办法就是禁用缓存和编译优化，但是这样问题虽然解决了，我们程序的性能可就堪忧了。<br>合理的方案应该是按需禁用缓存以及编译优化。那么，如何做到“按需禁用”呢？对于并发程序，<br>何时禁用缓存以及编译优化只有程序员知道，那所谓“按需禁用”其实就是指按照程序员的要求来禁用。<br>所以，为了解决可见性和有序性问题，只需要提供给程序员按需禁用缓存和编译优化的方法即可。<br>Java 内存模型是个很复杂的规范，可以从不同的视角来解读，站在我们这些程序员的视角，<br>本质上可以理解为，Java 内存模型规范了 JVM 如何提供按需禁用缓存和编译优化的方法。<br>具体来说，这些方法包括 volatile、synchronized 和 final 三个关键字，以及六项<br> Happens-Before 规则，这也正是本期的重点内容。</p>
 
         </div>
 
@@ -215,8 +202,6 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
-
 
             
 <div class="page-share-wrap">
@@ -225,7 +210,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/04/18/未上传/JVM GC_3/&title=《JVM垃圾回收（下）（回收器比较）》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/09/06/新建文件夹/thread3 Java内存模型：看Java如何解决可见性和有序性问题/&title=migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -235,22 +220,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/04/18/未上传/JVM GC_3/&title=《JVM垃圾回收（下）（回收器比较）》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/09/06/新建文件夹/thread3 Java内存模型：看Java如何解决可见性和有序性问题/&title=migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/04/18/未上传/JVM GC_3/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/09/06/新建文件夹/thread3 Java内存模型：看Java如何解决可见性和有序性问题/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JVM垃圾回收（下）（回收器比较）》 — migaoyang&url=http://yoursite.com/2019/04/18/未上传/JVM GC_3/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=migaoyang&url=http://yoursite.com/2020/09/06/新建文件夹/thread3 Java内存模型：看Java如何解决可见性和有序性问题/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/04/18/未上传/JVM GC_3/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/09/06/新建文件夹/thread3 Java内存模型：看Java如何解决可见性和有序性问题/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -270,21 +255,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2019/05/02/Java Web  JDBC/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">JDBC基础</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2019/04/01/未上传/Java SortShell/" id="post-next" class="post-nav-link">
+      <a href="/2020/09/06/新建文件夹/Spring AOP/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">希尔排序</h4>
+        <h4 class="title">[no title]</h4>
       </a>
     </div>
   
@@ -374,7 +352,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/04/18/未上传/JVM GC_3/&title=《JVM垃圾回收（下）（回收器比较）》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/09/06/新建文件夹/thread3 Java内存模型：看Java如何解决可见性和有序性问题/&title=《No title》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -384,22 +362,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/04/18/未上传/JVM GC_3/&title=《JVM垃圾回收（下）（回收器比较）》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/09/06/新建文件夹/thread3 Java内存模型：看Java如何解决可见性和有序性问题/&title=《No title》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/04/18/未上传/JVM GC_3/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/09/06/新建文件夹/thread3 Java内存模型：看Java如何解决可见性和有序性问题/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JVM垃圾回收（下）（回收器比较）》 — migaoyang&url=http://yoursite.com/2019/04/18/未上传/JVM GC_3/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — migaoyang&url=http://yoursite.com/2020/09/06/新建文件夹/thread3 Java内存模型：看Java如何解决可见性和有序性问题/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/04/18/未上传/JVM GC_3/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/09/06/新建文件夹/thread3 Java内存模型：看Java如何解决可见性和有序性问题/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -410,7 +388,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2019/04/18/未上传/JVM GC_3/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/09/06/新建文件夹/thread3 Java内存模型：看Java如何解决可见性和有序性问题/" alt="微信分享二维码">
 </div>
 
 
