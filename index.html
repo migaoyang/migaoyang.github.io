@@ -154,44 +154,6 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-新建文件夹/thread3 Java内存模型：看Java如何解决可见性和有序性问题" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2020-09-06 19:16:24" datetime="2020-09-06T11:16:24.000Z" itemprop="datePublished">2020-09-06</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2020/09/06/新建文件夹/thread3 Java内存模型：看Java如何解决可见性和有序性问题/">No title</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        Java内存模型：看Java如何解决可见性和有序性问题&emsp; 导致可见性的原因是缓存，导致有序性的原因是编译优化 ，那解决可见性、有序性最直接的办法就是禁用缓存和编译优化，但是这样问题虽然解决了，我们程序的性能可就堪忧了。合理的方案应该是按需禁用缓存以及编译优化。那么，如何做到“按需禁用”呢？对于并发程序，何时禁用缓存以及编译优化只有程序员知道，那所谓“按需禁用”其实就是指按照程序员的要求来禁用。所以，为了解决可见性和有序性问题，只需要提供给程序员按需禁用缓存和编译优化的方法即可。Java 内存模型是个很复杂的规范，可以从不同的视角来解读，站在我们这些程序员的视角，本质上可以理解为...
-    
-
-        <a href="/2020/09/06/新建文件夹/thread3 Java内存模型：看Java如何解决可见性和有序性问题/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
             <article id="post-新建文件夹/Spring AOP" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
@@ -239,7 +201,7 @@ public class StudentConfig {
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-新建文件夹/spring" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-新建文件夹/thread1" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
         <time class="post-time" title="2020-09-06 19:16:24" datetime="2020-09-06T11:16:24.000Z" itemprop="datePublished">2020-09-06</time>
@@ -254,7 +216,7 @@ public class StudentConfig {
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2020/09/06/新建文件夹/spring/">No title</a>
+      <a class="post-title-link" href="/2020/09/06/新建文件夹/thread1/">No title</a>
     </h3>
   
 
@@ -264,54 +226,10 @@ public class StudentConfig {
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        spring中的IoC是一种软件开发的思想，用来降低程序间耦合的问题。在未采用IoC的开发中，上层依赖下层，某个对象需要另一个对象，只能自己采用new的方式进行创建，那么会产生以下的问题：  
-
-new的方式散落在整个工程的各个地方，如果想更换一个所需要的对象，将需要对涉及到所有的new进行修改。  
-许多对象以单例的模式就可以满足业务需求，不需要每次都new一个对象，浪费资源、效率。
-
-针对以上的问题1，我们可以采用工厂模式可以解决。将一个字符串作为一个类对象的标识id，&lt;id=””, class=””&gt;，在程序中使用id进行对象的注入，id与class的关系保存在一个配置...
-    
-
-        <a href="/2020/09/06/新建文件夹/spring/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-新建文件夹/thread2 可见性、原子性和有序性问题：并发编程Bug的源头" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2020-09-06 19:16:24" datetime="2020-09-06T11:16:24.000Z" itemprop="datePublished">2020-09-06</time>
-
         
-
-
-    </div>
-
     
 
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2020/09/06/新建文件夹/thread2 可见性、原子性和有序性问题：并发编程Bug的源头/">No title</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        可见性、原子性和有序性问题：并发编程Bug的源头注：有序性例子应与Java并发编程实战中的竞态条件（检查-执行）相互对比，本文中的有序性例子单例模式是使用synchronized加锁之后仍出现的问题，本质原因是编译器进行了优化。编译器的优化（例如第1行：a=6;  第9999行：a=a*6; 这个时候，把他们放到一起执行，能更好的利用缓存cache了）带来了有序性的问题。  
-&emsp;&emsp;为了解决CPU与I/O设备速度不匹配的问题，引入了内存；为了更高效的利用CPU，又引入了寄存器与缓存（cache），寄存器与cache存在与CPU中，我们平时说的CPU的一级缓存二级缓存就是...
-    
-
-        <a href="/2020/09/06/新建文件夹/thread2 可见性、原子性和有序性问题：并发编程Bug的源头/" class="post-more waves-effect waves-button">
+        <a href="/2020/09/06/新建文件夹/thread1/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
@@ -359,7 +277,7 @@ new的方式散落在整个工程的各个地方，如果想更换一个所需�
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-新建文件夹/MySQLLock" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-新建文件夹/spring" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
         <time class="post-time" title="2020-09-06 19:16:24" datetime="2020-09-06T11:16:24.000Z" itemprop="datePublished">2020-09-06</time>
@@ -374,7 +292,7 @@ new的方式散落在整个工程的各个地方，如果想更换一个所需�
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2020/09/06/新建文件夹/MySQLLock/">No title</a>
+      <a class="post-title-link" href="/2020/09/06/新建文件夹/spring/">No title</a>
     </h3>
   
 
@@ -384,16 +302,15 @@ new的方式散落在整个工程的各个地方，如果想更换一个所需�
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        title: MySQL锁–全局锁、表锁、行锁
-date: 2020-08-26 20:10:33
-tags:
-categories: MySQL
-MySQL提供了不同等级的锁，按限制能力的划分，分为全局锁、表锁、行锁。本文会描述不同锁的应用场景与实现原理。  
-全局锁全局锁就是对整个MySQL数据库加锁，MySQL中的命令是 Flush tables with read lock (FTWRL)。在执行这个命令之后，MySQL进入全局锁的状态，整个数据库会拒绝掉增删改这些请求。    
-为什么需要全局锁全局锁的目标是为我们维护一个数据库的逻辑一致性。如下场景中：在进行逻辑备份（即备份的...
+        spring中的IoC是一种软件开发的思想，用来降低程序间耦合的问题。在未采用IoC的开发中，上层依赖下层，某个对象需要另一个对象，只能自己采用new的方式进行创建，那么会产生以下的问题：  
+
+new的方式散落在整个工程的各个地方，如果想更换一个所需要的对象，将需要对涉及到所有的new进行修改。  
+许多对象以单例的模式就可以满足业务需求，不需要每次都new一个对象，浪费资源、效率。
+
+针对以上的问题1，我们可以采用工厂模式可以解决。将一个字符串作为一个类对象的标识id，&lt;id=””, class=””&gt;，在程序中使用id进行对象的注入，id与class的关系保存在一个配置...
     
 
-        <a href="/2020/09/06/新建文件夹/MySQLLock/" class="post-more waves-effect waves-button">
+        <a href="/2020/09/06/新建文件夹/spring/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
@@ -454,7 +371,7 @@ MySQL提供了不同等级的锁，按限制能力的划分，分为全局锁、
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-新建文件夹/thread1" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-新建文件夹/thread2 可见性、原子性和有序性问题：并发编程Bug的源头" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
         <time class="post-time" title="2020-09-06 19:16:24" datetime="2020-09-06T11:16:24.000Z" itemprop="datePublished">2020-09-06</time>
@@ -469,7 +386,7 @@ MySQL提供了不同等级的锁，按限制能力的划分，分为全局锁、
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2020/09/06/新建文件夹/thread1/">No title</a>
+      <a class="post-title-link" href="/2020/09/06/新建文件夹/thread2 可见性、原子性和有序性问题：并发编程Bug的源头/">No title</a>
     </h3>
   
 
@@ -479,12 +396,99 @@ MySQL提供了不同等级的锁，按限制能力的划分，分为全局锁、
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        
+        可见性、原子性和有序性问题：并发编程Bug的源头注：有序性例子应与Java并发编程实战中的竞态条件（检查-执行）相互对比，本文中的有序性例子单例模式是使用synchronized加锁之后仍出现的问题，本质原因是编译器进行了优化。编译器的优化（例如第1行：a=6;  第9999行：a=a*6; 这个时候，把他们放到一起执行，能更好的利用缓存cache了）带来了有序性的问题。  
+&emsp;&emsp;为了解决CPU与I/O设备速度不匹配的问题，引入了内存；为了更高效的利用CPU，又引入了寄存器与缓存（cache），寄存器与cache存在与CPU中，我们平时说的CPU的一级缓存二级缓存就是...
     
 
-        <a href="/2020/09/06/新建文件夹/thread1/" class="post-more waves-effect waves-button">
+        <a href="/2020/09/06/新建文件夹/thread2 可见性、原子性和有序性问题：并发编程Bug的源头/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-新建文件夹/thread3 Java内存模型：看Java如何解决可见性和有序性问题" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2020-09-06 19:16:24" datetime="2020-09-06T11:16:24.000Z" itemprop="datePublished">2020-09-06</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2020/09/06/新建文件夹/thread3 Java内存模型：看Java如何解决可见性和有序性问题/">No title</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Java内存模型：看Java如何解决可见性和有序性问题&emsp; 导致可见性的原因是缓存，导致有序性的原因是编译优化 ，那解决可见性、有序性最直接的办法就是禁用缓存和编译优化，但是这样问题虽然解决了，我们程序的性能可就堪忧了。合理的方案应该是按需禁用缓存以及编译优化。那么，如何做到“按需禁用”呢？对于并发程序，何时禁用缓存以及编译优化只有程序员知道，那所谓“按需禁用”其实就是指按照程序员的要求来禁用。所以，为了解决可见性和有序性问题，只需要提供给程序员按需禁用缓存和编译优化的方法即可。Java 内存模型是个很复杂的规范，可以从不同的视角来解读，站在我们这些程序员的视角，本质上可以理解为...
+    
+
+        <a href="/2020/09/06/新建文件夹/thread3 Java内存模型：看Java如何解决可见性和有序性问题/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-新建文件夹/MySQLLock" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2020-08-26 20:10:33" datetime="2020-08-26T12:10:33.000Z" itemprop="datePublished">2020-08-26</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/MySQL/">MySQL</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2020/08/26/新建文件夹/MySQLLock/">MySQL锁--全局锁、表锁与行锁</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        MySQL提供了不同等级的锁，按限制能力的划分，分为全局锁、表锁、行锁。本文会描述不同锁的应用场景与实现原理。  
+全局锁全局锁就是对整个MySQL数据库加锁，MySQL中的命令是 Flush tables with read lock (FTWRL)。在执行这个命令之后，MySQL进入全局锁的状态，整个数据库会拒绝掉增删改这些请求。    
+为什么需要全局锁全局锁的目标是为我们维护一个数据库的逻辑一致性。如下场景中：在进行逻辑备份（即备份的数据是SQL语句）的时候，没有开启全局锁，那么很可能会导致出现数据库的逻辑一致性错误，例如两个表，一个余额表、一个订单表，在购物时（减余额、生成订单...
+    
+
+        <a href="/2020/08/26/新建文件夹/MySQLLock/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+
     </div>
     
 </article>
