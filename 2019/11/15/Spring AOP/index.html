@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>spring总结 | migaoyang | migaoyang</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="java web">
+    <meta name="description" content="Spring 注解什么是基于注解的容器配置？不使用 XML 来描述 Bean 装配，开发人员通过在相关的类，方法或字段声明上使用注解将配置移动到组件类本身。它可以作为 XML 设置的替代方案。例如： Spring 的 Java 配置是通过使用 @Bean 和 @Configuration 来实现。  @Bean 注解，与 &amp;lt;bean /&amp;gt; 元素相同。 @Configuration 注解">
+<meta name="keywords" content="java web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring总结">
+<meta property="og:url" content="http://yoursite.com/2019/11/15/Spring AOP/index.html">
+<meta property="og:site_name" content="migaoyang">
+<meta property="og:description" content="Spring 注解什么是基于注解的容器配置？不使用 XML 来描述 Bean 装配，开发人员通过在相关的类，方法或字段声明上使用注解将配置移动到组件类本身。它可以作为 XML 设置的替代方案。例如： Spring 的 Java 配置是通过使用 @Bean 和 @Configuration 来实现。  @Bean 注解，与 &amp;lt;bean /&amp;gt; 元素相同。 @Configuration 注解">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://static2.iocoder.cn/images/Spring/2018-12-24/05.jpg">
+<meta property="og:updated_time" content="2020-09-09T11:30:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="spring总结">
+<meta name="twitter:description" content="Spring 注解什么是基于注解的容器配置？不使用 XML 来描述 Bean 装配，开发人员通过在相关的类，方法或字段声明上使用注解将配置移动到组件类本身。它可以作为 XML 设置的替代方案。例如： Spring 的 Java 配置是通过使用 @Bean 和 @Configuration 来实现。  @Bean 注解，与 &amp;lt;bean /&amp;gt; 元素相同。 @Configuration 注解">
+<meta name="twitter:image" content="http://static2.iocoder.cn/images/Spring/2018-12-24/05.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="migaoyang" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/1.jpg">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+  <!-- highlight.js代码高亮主题 css 引入-->
+  <link rel="stylesheet" href="/plugins/highlight/styles/dracula.css">
+  <!-- highlight.js代码高亮主题 css 引入-->
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">米高扬</h5>
+          <a href="mailto:mee.gaoyang@Outlook.com" title="mee.gaoyang@Outlook.com" class="mail">mee.gaoyang@Outlook.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                时间轴
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/migaoyang" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">spring总结</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">spring总结</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-11-14T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-11-15
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java-web/">java web</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Spring-注解"><span class="post-toc-number">1.</span> <span class="post-toc-text">Spring 注解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#什么是基于注解的容器配置？"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">什么是基于注解的容器配置？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#如何在-Spring-中启动注解装配？"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">如何在 Spring 中启动注解装配？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Component-Controller-Repository-Service-有何区别？"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">@Component, @Controller, @Repository, @Service 有何区别？</span></a></li></ol></li></ol><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Required-注解有什么用？"><span class="post-toc-number"></span> <span class="post-toc-text">@Required 注解有什么用？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Autowired-注解有什么用？"><span class="post-toc-number">0.1.</span> <span class="post-toc-text">@Autowired 注解有什么用？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Qualifier-注解有什么用？"><span class="post-toc-number">0.2.</span> <span class="post-toc-text">@Qualifier 注解有什么用？</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Spring-AOP"><span class="post-toc-number"></span> <span class="post-toc-text">Spring AOP</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#什么是-AOP-？"><span class="post-toc-number">0.1.</span> <span class="post-toc-text">什么是 AOP ？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#什么是-Aspect-？"><span class="post-toc-number">0.2.</span> <span class="post-toc-text">什么是 Aspect ？</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是-JoinPoint"><span class="post-toc-number"></span> <span class="post-toc-text">什么是 JoinPoint ?</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是-PointCut-？"><span class="post-toc-number"></span> <span class="post-toc-text">什么是 PointCut ？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关于-JoinPoint-和-PointCut-的区别"><span class="post-toc-number"></span> <span class="post-toc-text">关于 JoinPoint 和 PointCut 的区别</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是-Advice-？"><span class="post-toc-number"></span> <span class="post-toc-text">什么是 Advice ？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是-Target-？"><span class="post-toc-number"></span> <span class="post-toc-text">什么是 Target ？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#AOP-有哪些实现方式？"><span class="post-toc-number">0.1.</span> <span class="post-toc-text">AOP 有哪些实现方式？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Spring-AOP-and-AspectJ-AOP-有什么区别？"><span class="post-toc-number">0.2.</span> <span class="post-toc-text">Spring AOP and AspectJ AOP 有什么区别？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#什么是编织（Weaving）？"><span class="post-toc-number">0.3.</span> <span class="post-toc-text">什么是编织（Weaving）？</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Spring-如何使用-AOP-切面？"><span class="post-toc-number"></span> <span class="post-toc-text">Spring 如何使用 AOP 切面？</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Spring-Transaction"><span class="post-toc-number"></span> <span class="post-toc-text">Spring Transaction</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#什么是事务？"><span class="post-toc-number">0.1.</span> <span class="post-toc-text">什么是事务？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#事务的特性指的是？"><span class="post-toc-number">0.2.</span> <span class="post-toc-text">事务的特性指的是？</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#列举-Spring-支持的事务管理类型？"><span class="post-toc-number"></span> <span class="post-toc-text">列举 Spring 支持的事务管理类型？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#为什么在-Spring-事务中不能切换数据源？"><span class="post-toc-number">0.1.</span> <span class="post-toc-text">为什么在 Spring 事务中不能切换数据源？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Transactional-注解有哪些属性？如何使用？"><span class="post-toc-number">0.2.</span> <span class="post-toc-text">@Transactional 注解有哪些属性？如何使用？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#什么是事务的隔离级别？分成哪些隔离级别？"><span class="post-toc-number">0.3.</span> <span class="post-toc-text">什么是事务的隔离级别？分成哪些隔离级别？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#什么是事务的传播级别？分成哪些传播级别？"><span class="post-toc-number">0.4.</span> <span class="post-toc-text">什么是事务的传播级别？分成哪些传播级别？</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是事务的超时属性？"><span class="post-toc-number"></span> <span class="post-toc-text">什么是事务的超时属性？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是事务的只读属性？"><span class="post-toc-number"></span> <span class="post-toc-text">什么是事务的只读属性？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是事务的回滚规则？"><span class="post-toc-number"></span> <span class="post-toc-text">什么是事务的回滚规则？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简单介绍-TransactionStatus-？"><span class="post-toc-number"></span> <span class="post-toc-text">简单介绍 TransactionStatus ？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用-Spring-事务有什么优点？"><span class="post-toc-number"></span> <span class="post-toc-text">使用 Spring 事务有什么优点？</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Spring-Data-Access"><span class="post-toc-number"></span> <span class="post-toc-text">Spring Data Access</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Spring-支持哪些-ORM-框架？"><span class="post-toc-number"></span> <span class="post-toc-text">Spring 支持哪些 ORM 框架？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在-Spring-框架中如何更有效地使用-JDBC-？"><span class="post-toc-number"></span> <span class="post-toc-text">在 Spring 框架中如何更有效地使用 JDBC ？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用-Spring-访问-Hibernate-的方法有哪些？。"><span class="post-toc-number"></span> <span class="post-toc-text">使用 Spring 访问 Hibernate 的方法有哪些？。</span></a>
+        </li></ol></li></nav>
+    </aside>
+
+
+<article id="post-Spring AOP" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">spring总结</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-11-15 00:00:00" datetime="2019-11-14T16:00:00.000Z" itemprop="datePublished">2019-11-15</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java-web/">java web</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="Spring-注解"><a href="#Spring-注解" class="headerlink" title="Spring 注解"></a>Spring 注解</h3><h4 id="什么是基于注解的容器配置？"><a href="#什么是基于注解的容器配置？" class="headerlink" title="什么是基于注解的容器配置？"></a>什么是基于注解的容器配置？</h4><p>不使用 XML 来描述 Bean 装配，开发人员通过在相关的类，方法或字段声明上使用<strong>注解</strong>将配置移动到组件类本身。它可以作为 XML 设置的替代方案。例如：</p>
+<p>Spring 的 Java 配置是通过使用 <code>@Bean</code> 和 <code>@Configuration</code> 来实现。</p>
+<ul>
+<li><code>@Bean</code> 注解，与 <code>&lt;bean /&gt;</code> 元素相同。</li>
+<li><code>@Configuration</code> 注解的类，允许通过简单地调用同一个类中的其他 <code>@Bean</code> 方法来定义 Bean 间依赖关系。</li>
+</ul>
+<p>示例如下：</p>
+<pre class="line-numbers language-JavaScript"><code class="language-JavaScript">@Configuration
+public class StudentConfig {
+    @Bean
+    public StudentBean myStudent() {
+        return new StudentBean();
+    }
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="如何在-Spring-中启动注解装配？"><a href="#如何在-Spring-中启动注解装配？" class="headerlink" title="如何在 Spring 中启动注解装配？"></a>如何在 Spring 中启动注解装配？</h4><p>默认情况下，Spring 容器中未打开注解装配。因此，要使用基于注解装配，我们必须通过配置 <code>&lt;context：annotation-config /&gt;</code> 元素在 Spring 配置文件中启用它。</p>
+<p>当然，如果是使用 Spring Boot ，默认情况下已经开启。</p>
+<h4 id="Component-Controller-Repository-Service-有何区别？"><a href="#Component-Controller-Repository-Service-有何区别？" class="headerlink" title="@Component, @Controller, @Repository, @Service 有何区别？"></a>@Component, @Controller, @Repository, @Service 有何区别？</h4><ul>
+<li><code>@Component</code> ：它将 Java 类标记为 Bean 。它是任何 Spring 管理组件的<strong>通用</strong>构造型。</li>
+<li><code>@Controller</code> ：它将一个类标记为 Spring Web MVC <strong>控制器</strong>。</li>
+<li><code>@Service</code> ：此注解是组件注解的特化。它不会对 <code>@Component</code> 注解提供任何其他行为。您可以在<strong>服务层</strong>类中使用 @Service 而不是 <code>@Component</code> ，因为它以更好的方式指定了意图。</li>
+<li><code>@Repository</code> ：这个注解是具有类似用途和功能的 <code>@Component</code> 注解的特化。它为 <strong>DAO</strong> 提供了额外的好处。它将 DAO 导入 IoC 容器，并使未经检查的异常有资格转换为 Spring DataAccessException 。</li>
+</ul>
+<h2 id="Required-注解有什么用？"><a href="#Required-注解有什么用？" class="headerlink" title="@Required 注解有什么用？"></a>@Required 注解有什么用？</h2><p><code>@Required</code> 注解，应用于 Bean 属性 setter 方法。</p>
+<ul>
+<li>此注解仅指示必须在配置时使用 Bean 定义中的显式属性值或使用自动装配填充受影响的 Bean 属性。</li>
+<li>如果尚未填充受影响的 Bean 属性，则容器将抛出 BeanInitializationException 异常。</li>
+</ul>
+<p>示例代码如下：</p>
+<pre class="line-numbers language-Java"><code class="language-Java">public class Employee {
+
+    private String name;
+
+    @Required
+    public void setName(String name){
+        this.name=name;
+    }
+
+    public string getName(){
+        return name;
+    }
+
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="Autowired-注解有什么用？"><a href="#Autowired-注解有什么用？" class="headerlink" title="@Autowired 注解有什么用？"></a>@Autowired 注解有什么用？</h4><p><code>@Autowired</code> 注解，可以更准确地控制应该在何处以及如何进行自动装配。</p>
+<ul>
+<li>此注解用于在 setter 方法，构造函数，具有任意名称或多个参数的属性或方法上自动装配 Bean。</li>
+<li>默认情况下，它是类型驱动的注入。</li>
+</ul>
+<p>示例代码如下：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">EmpAccount</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> Employee emp<span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="Qualifier-注解有什么用？"><a href="#Qualifier-注解有什么用？" class="headerlink" title="@Qualifier 注解有什么用？"></a>@Qualifier 注解有什么用？</h4><p>当你创建多个<strong>相同类型</strong>的 Bean ，并希望仅使用属性装配<strong>其中一个</strong> Bean 时，可以使用 <code>@Qualifier</code> 注解和 <code>@Autowired</code> 注解通过指定 ID 应该装配哪个<strong>确切的</strong> Bean 来消除歧义。</p>
+<p>例如，应用中有两个类型为 Employee(可能实现了同一个接口) 的 Bean ID 为 <code>&quot;emp1&quot;</code> 和 <code>&quot;emp2&quot;</code> ，此处，我们希望 EmployeeAccount Bean 注入 <code>&quot;emp1&quot;</code> 对应的 Bean 对象。代码如下：</p>
+<pre class="line-numbers language-Java"><code class="language-Java">public class EmployeeAccount {
+
+    @Autowired
+    @Qualifier(emp1)
+    private Employee emp;
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="Spring-AOP"><a href="#Spring-AOP" class="headerlink" title="Spring AOP"></a>Spring AOP</h1><blockquote>
+<p>概念点主要有：</p>
+<ul>
+<li>AOP</li>
+<li>Aspect</li>
+<li>JoinPoint</li>
+<li>PointCut</li>
+<li>Advice</li>
+<li>Target</li>
+<li>AOP Proxy</li>
+<li>Weaving</li>
+</ul>
+</blockquote>
+<p>非常推荐阅读如下两篇文章：</p>
+<ul>
+<li><a href="https://segmentfault.com/a/1190000007469968" target="_blank" rel="noopener">《彻底征服 Spring AOP 之理论篇》</a></li>
+<li><a href="https://segmentfault.com/a/1190000007469982" target="_blank" rel="noopener">《彻底征服 Spring AOP 之实战篇》</a></li>
+</ul>
+<h4 id="什么是-AOP-？"><a href="#什么是-AOP-？" class="headerlink" title="什么是 AOP ？"></a>什么是 AOP ？</h4><p>AOP(Aspect-Oriented Programming)，即<strong>面向切面编程</strong>, 它与 OOP( Object-Oriented Programming, 面向对象编程) 相辅相成， 提供了与 OOP 不同的抽象软件结构的视角。</p>
+<ul>
+<li>在 OOP 中，以类( Class )作为基本单元</li>
+<li>在 AOP 中，以<strong>切面( Aspect )</strong>作为基本单元。</li>
+</ul>
+<h4 id="什么是-Aspect-？"><a href="#什么是-Aspect-？" class="headerlink" title="什么是 Aspect ？"></a>什么是 Aspect ？</h4><p>Aspect 由 <strong>PointCut</strong> 和 <strong>Advice</strong> 组成。</p>
+<ul>
+<li>它既包含了横切逻辑的定义，也包括了连接点的定义。</li>
+<li>Spring AOP 就是负责实施切面的框架，它将切面所定义的横切逻辑编织到切面所指定的连接点中。</li>
+</ul>
+<p>AOP 的工作重心在于如何将增强编织目标对象的连接点上, 这里包含两个工作:</p>
+<ol>
+<li>如何通过 PointCut 和 Advice 定位到特定的 <strong>JoinPoint</strong> 上。</li>
+<li>如何在 Advice 中编写切面代码。</li>
+</ol>
+<p><strong>可以简单地认为, 使用 @Aspect 注解的类就是切面</strong></p>
+<h2 id="什么是-JoinPoint"><a href="#什么是-JoinPoint" class="headerlink" title="什么是 JoinPoint ?"></a>什么是 JoinPoint ?</h2><p>JoinPoint ，<strong>切点</strong>，程序运行中的一些时间点, 例如：</p>
+<ul>
+<li>一个方法的执行。</li>
+<li>或者是一个异常的处理。</li>
+</ul>
+<p>在 Spring AOP 中，JoinPoint 总是方法的执行点。</p>
+<h2 id="什么是-PointCut-？"><a href="#什么是-PointCut-？" class="headerlink" title="什么是 PointCut ？"></a>什么是 PointCut ？</h2><p>PointCut ，<strong>匹配</strong> JoinPoint 的谓词(a predicate that matches join points)。</p>
+<blockquote>
+<p>简单来说，PointCut 是匹配 JoinPoint 的条件。</p>
+</blockquote>
+<ul>
+<li>Advice 是和特定的 PointCut 关联的，并且在 PointCut 相匹配的 JoinPoint 中执行。即 <code>Advice =&gt; PointCut =&gt; JoinPoint</code> 。</li>
+<li>在 Spring 中, 所有的方法都可以认为是 JoinPoint ，但是我们并不希望在所有的方法上都添加 Advice 。<strong>而 PointCut 的作用</strong>，就是提供一组规则(使用 AspectJ PointCut expression language 来描述) 来匹配 JoinPoint ，给满足规则的 JoinPoint 添加 Advice 。</li>
+</ul>
+<h2 id="关于-JoinPoint-和-PointCut-的区别"><a href="#关于-JoinPoint-和-PointCut-的区别" class="headerlink" title="关于 JoinPoint 和 PointCut 的区别"></a>关于 JoinPoint 和 PointCut 的区别</h2><p>JoinPoint 和 PointCut 本质上就是<strong>两个不同纬度上</strong>的东西。</p>
+<ul>
+<li>在 Spring AOP 中，所有的方法执行都是 JoinPoint 。而 PointCut 是一个描述信息，它修饰的是 JoinPoint ，通过 PointCut ，我们就可以确定哪些 JoinPoint 可以被织入 Advice 。</li>
+<li>Advice 是在 JoinPoint 上执行的，而 PointCut 规定了哪些 JoinPoint 可以执行哪些 Advice 。</li>
+</ul>
+<p>或者，我们在换一种说法：</p>
+<ol>
+<li>首先，Advice 通过 PointCut 查询需要被织入的 JoinPoint 。</li>
+<li>然后，Advice 在查询到 JoinPoint 上执行逻辑。</li>
+</ol>
+<h2 id="什么是-Advice-？"><a href="#什么是-Advice-？" class="headerlink" title="什么是 Advice ？"></a>什么是 Advice ？</h2><p>Advice ，<strong>通知</strong>。</p>
+<ul>
+<li>特定 JoinPoint 处的 Aspect 所采取的动作称为 Advice 。</li>
+<li>Spring AOP 使用一个 Advice 作为拦截器，在 JoinPoint “周围”维护一系列的<strong>拦截器</strong>。</li>
+</ul>
+<p><strong>有哪些类型的 Advice？</strong></p>
+<ul>
+<li>Before - 这些类型的 Advice 在 JoinPoint 方法之前执行，并使用 <code>@Before</code> 注解标记进行配置。</li>
+<li>After Returning - 这些类型的 Advice 在连接点方法正常执行后执行，并使用 <code>@AfterReturning</code> 注解标记进行配置。</li>
+<li>After Throwing - 这些类型的 Advice 仅在 JoinPoint 方法通过抛出异常退出并使用 <code>@AfterThrowing</code> 注解标记配置时执行。</li>
+<li>After Finally - 这些类型的 Advice 在连接点方法之后执行，无论方法退出是正常还是异常返回，并使用 <code>@After</code> 注解标记进行配置。</li>
+<li>Around - 这些类型的 Advice 在连接点之前和之后执行，并使用 <code>@Around</code> 注解标记进行配置。</li>
+</ul>
+<h2 id="什么是-Target-？"><a href="#什么是-Target-？" class="headerlink" title="什么是 Target ？"></a>什么是 Target ？</h2><p>Target ，织入 Advice 的<strong>目标对象</strong>。目标对象也被称为 <strong>Advised Object</strong> 。</p>
+<ul>
+<li>因为 Spring AOP 使用运行时代理的方式来实现 Aspect ，因此 Advised Object 总是一个代理对象(Proxied Object) 。</li>
+<li><strong>注意, Advised Object 指的不是原来的对象，而是织入 Advice 后所产生的代理对象</strong>。</li>
+<li>Advice + Target Object = Advised Object = Proxy 。</li>
+</ul>
+<h4 id="AOP-有哪些实现方式？"><a href="#AOP-有哪些实现方式？" class="headerlink" title="AOP 有哪些实现方式？"></a>AOP 有哪些实现方式？</h4><p>实现 AOP 的技术，主要分为两大类：</p>
+<ol>
+<li><p><strong>静态代理</strong> - 指使用 AOP 框架提供的命令进行编译，从而在编译阶段就可生成 AOP 代理类，因此也称为编译时增强。</p>
+<ul>
+<li><p>编译时编织（特殊编译器实现）</p>
+</li>
+<li><p>类加载时编织（特殊的类加载器实现）。</p>
+<blockquote>
+<p>例如，SkyWalking 基于 Java Agent 机制，配置上 ByteBuddy 库，实现类加载时编织时增强，从而实现链路追踪的透明埋点。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>动态代理</strong> - 在运行时在内存中“临时”生成 AOP 动态代理类，因此也被称为运行时增强。目前 Spring 中使用了两种动态代理库：</p>
+<ul>
+<li>JDK 动态代理</li>
+<li>CGLIB<br>那么 Spring 什么时候使用 JDK 动态代理，什么时候使用 CGLIB 呢？   </li>
+</ul>
+</li>
+</ol>
+<pre><code>// From 《Spring 源码深度解析》P172
+// Spring AOP 部分使用 JDK 动态代理或者 CGLIB 来为目标对象创建代理。（建议尽量使用 JDK 的动态代理）
+// 如果被代理的目标对象实现了至少一个接口，则会使用 JDK 动态代理。所有该目标类型实现的接口都讲被代理。
+// 若该目标对象没有实现任何接口，则创建一个 CGLIB 代理。
+// 如果你希望强制使用 CGLIB 代理，（例如希望代理目标对象的所有方法，而不只是实现自接口的方法）那也可以。但是需要考虑以下两个方法：
+//      1&gt; 无法通知(advise) Final 方法，因为它们不能被覆盖。
+//      2&gt; 你需要将 CGLIB 二进制发型包放在 classpath 下面。
+// 为什么 Spring 默认使用 JDK 的动态代理呢？笔者猜测原因如下：
+//      1&gt; 使用 JDK 原生支持，减少三方依赖
+//      2&gt; JDK8 开始后，JDK 代理的性能差距 CGLIB 的性能不会太多。可参见：https://www.cnblogs.com/haiq/p/4304615.html
+
+</code></pre><p>Spring AOP 中的动态代理主要有两种方式，</p>
+<ul>
+<li><p>JDK 动态代理</p>
+<p>JDK 动态代理通过反射来接收被代理的类，并且要求被代理的类必须实现一个接口。JDK动态代理的核心是 InvocationHandler 接口和 Proxy 类。</p>
+</li>
+<li><p>CGLIB 动态代理</p>
+<p>如果目标类没有实现接口，那么 Spring AOP 会选择使用 CGLIB 来动态代理目标类。当然，Spring 也支持配置，<strong>强制</strong> 使用 CGLIB 动态代理。<br>CGLIB（Code Generation Library），是一个代码生成的类库，可以在运行时动态的生成某个类的子类，注意，CGLIB 是通过继承的方式做的动态代理，因此如果某个类被标记为 <code>final</code> ，那么它是无法使用 CGLIB 做动态代理的。</p>
+</li>
+</ul>
+<h4 id="Spring-AOP-and-AspectJ-AOP-有什么区别？"><a href="#Spring-AOP-and-AspectJ-AOP-有什么区别？" class="headerlink" title="Spring AOP and AspectJ AOP 有什么区别？"></a>Spring AOP and AspectJ AOP 有什么区别？</h4><ul>
+<li>代理方式不同<ul>
+<li>Spring AOP 基于动态代理方式实现。</li>
+<li>AspectJ AOP 基于静态代理方式实现。</li>
+</ul>
+</li>
+<li>PointCut 支持力度不同<ul>
+<li>Spring AOP <strong>仅</strong> 支持方法级别的 PointCut 。</li>
+<li>AspectJ AOP 提供了完全的 AOP 支持，它还支持属性级别的 PointCut 。</li>
+</ul>
+</li>
+</ul>
+<h4 id="什么是编织（Weaving）？"><a href="#什么是编织（Weaving）？" class="headerlink" title="什么是编织（Weaving）？"></a>什么是编织（Weaving）？</h4><p>Weaving ，<strong>编织</strong>。</p>
+<ul>
+<li>为了创建一个 Advice 对象而链接一个 Aspect 和其它应用类型或对象，称为编织（Weaving）。</li>
+<li>在 Spring AOP 中，编织在运行时执行，即动态代理。请参考下图：[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static2.iocoder.cn/images/Spring/2018-12-24/05.jpg" alt="Proxy](http://static2.iocoder.cn/images/Spring/2018-12-24/05.jpg)" title="">
+                </div>
+                <div class="image-caption">Proxy](http://static2.iocoder.cn/images/Spring/2018-12-24/05.jpg)</div>
+            </figure>Proxy</li>
+</ul>
+<h2 id="Spring-如何使用-AOP-切面？"><a href="#Spring-如何使用-AOP-切面？" class="headerlink" title="Spring 如何使用 AOP 切面？"></a>Spring 如何使用 AOP 切面？</h2><p>在 Spring AOP 中，有两种方式配置 AOP 切面：</p>
+<ul>
+<li>基于 <strong>XML</strong> 方式的切面实现。</li>
+<li>基于 <strong>注解</strong> 方式的切面实现。</li>
+</ul>
+<p>目前，主流喜欢使用 <strong>注解</strong> 方式。</p>
+<h1 id="Spring-Transaction"><a href="#Spring-Transaction" class="headerlink" title="Spring Transaction"></a>Spring Transaction</h1><p>非常推荐阅读如下文章：</p>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MzUzMTA2NTU2Ng==&amp;mid=2247484702&amp;idx=1&amp;sn=c04261d63929db09ff6df7cadc7cca21&amp;chksm=fa497aafcd3ef3b94082da7bca841b5b7b528eb2a52dbc4eb647b97be63a9a1cf38a9e71bf90&amp;token=165108535&amp;lang=zh_CN#rd" target="_blank" rel="noopener">《可能是最漂亮的 Spring 事务管理详解》</a></li>
+</ul>
+<h4 id="什么是事务？"><a href="#什么是事务？" class="headerlink" title="什么是事务？"></a>什么是事务？</h4><p>事务就是对一系列的数据库操作（比如插入多条数据）进行统一的提交或回滚操作，如果插入成功，那么一起成功，如果中间有一条出现异常，那么回滚之前的所有操作。</p>
+<p>这样可以防止出现脏数据，防止数据库数据出现问题。</p>
+<h4 id="事务的特性指的是？"><a href="#事务的特性指的是？" class="headerlink" title="事务的特性指的是？"></a>事务的特性指的是？</h4><p>指的是 <strong>ACID</strong> ，</p>
+<ol>
+<li><strong>原子性</strong> Atomicity ：一个事务（transaction）中的所有操作，或者全部完成，或者全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被恢复（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样。即，事务不可分割、不可约简。</li>
+<li><strong>一致性</strong> Consistency ：在事务开始之前和事务结束以后，数据库的完整性没有被破坏。这表示写入的资料必须完全符合所有的预设<a href="https://zh.wikipedia.org/wiki/数据完整性" target="_blank" rel="noopener">约束</a>、<a href="https://zh.wikipedia.org/wiki/触发器_(数据库" target="_blank" rel="noopener">触发器</a>)、<a href="https://zh.wikipedia.org/w/index.php?title=级联回滚&amp;action=edit&amp;redlink=1" target="_blank" rel="noopener">级联回滚</a>等。</li>
+<li><strong>隔离性</strong> Isolation ：数据库允许多个并发事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事务并发执行时由于交叉执行而导致数据的不一致。事务隔离分为不同级别，包括读未提交（Read uncommitted）、读提交（read committed）、可重复读（repeatable read）和串行化（Serializable）。</li>
+<li><strong>持久性</strong> Durability ：事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。</li>
+</ol>
+<h2 id="列举-Spring-支持的事务管理类型？"><a href="#列举-Spring-支持的事务管理类型？" class="headerlink" title="列举 Spring 支持的事务管理类型？"></a>列举 Spring 支持的事务管理类型？</h2><p>目前 Spring 提供两种类型的事务管理：</p>
+<ul>
+<li><strong>声明式</strong> 事务：通过使用注解或基于 XML 的配置事务，从而事务管理与业务代码分离。</li>
+<li><strong>编程式</strong> 事务：通过编码的方式实现事务管理，需要在代码中显式的调用事务的获得、提交、回滚。它为您提供极大的灵活性，但维护起来非常困难。</li>
+</ul>
+<h4 id="为什么在-Spring-事务中不能切换数据源？"><a href="#为什么在-Spring-事务中不能切换数据源？" class="headerlink" title="为什么在 Spring 事务中不能切换数据源？"></a>为什么在 Spring 事务中不能切换数据源？</h4><p>做 Spring 多数据源都会有个惨痛的经历，为什么在开启事务的 Service 层的方法中，无法切换数据源呢？因为，在 Spring 的事务管理中，<strong>所使用的数据库连接会和当前线程所绑定</strong>，即使我们设置了另外一个数据源，使用的还是当前的数据源连接。</p>
+<p>另外，多个数据源且需要事务的场景，本身会带来<strong>多事务一致性</strong>的问题，暂时没有特别好的解决方案。</p>
+<p>所以一般一个应用，推荐除非了读写分离所带来的多数据源，其它情况下，建议只有一个数据源。并且，随着微服务日益身形，一个服务对应一个 DB 是比较常见的架构选择。</p>
+<h4 id="Transactional-注解有哪些属性？如何使用？"><a href="#Transactional-注解有哪些属性？如何使用？" class="headerlink" title="@Transactional 注解有哪些属性？如何使用？"></a>@Transactional 注解有哪些属性？如何使用？</h4><p><code>@Transactional</code> 注解的<strong>属性</strong>如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">value</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">可选的限定描述符，指定使用的事务管理器</td>
+</tr>
+<tr>
+<td style="text-align:left">propagation</td>
+<td style="text-align:left">enum: Propagation</td>
+<td style="text-align:left">可选的事务传播行为设置</td>
+</tr>
+<tr>
+<td style="text-align:left">isolation</td>
+<td style="text-align:left">enum: Isolation</td>
+<td style="text-align:left">可选的事务隔离级别设置</td>
+</tr>
+<tr>
+<td style="text-align:left">readOnly</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">读写或只读事务，默认读写</td>
+</tr>
+<tr>
+<td style="text-align:left">timeout</td>
+<td style="text-align:left">int (in seconds granularity)</td>
+<td style="text-align:left">事务超时时间设置</td>
+</tr>
+<tr>
+<td style="text-align:left">rollbackFor</td>
+<td style="text-align:left">Class对象数组，必须继承自Throwable</td>
+<td style="text-align:left">导致事务回滚的异常类数组</td>
+</tr>
+<tr>
+<td style="text-align:left">rollbackForClassName</td>
+<td style="text-align:left">类名数组，必须继承自Throwable</td>
+<td style="text-align:left">导致事务回滚的异常类名字数组</td>
+</tr>
+<tr>
+<td style="text-align:left">noRollbackFor</td>
+<td style="text-align:left">Class对象数组，必须继承自Throwable</td>
+<td style="text-align:left">不会导致事务回滚的异常类数组</td>
+</tr>
+<tr>
+<td style="text-align:left">noRollbackForClassName</td>
+<td style="text-align:left">类名数组，必须继承自Throwable</td>
+<td style="text-align:left">不会导致事务回滚的异常类名字数组</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>一般情况下，我们直接使用 <code>@Transactional</code> 的所有属性默认值即可。</li>
+</ul>
+<p>具体<strong>用法</strong>如下：</p>
+<ul>
+<li><code>@Transactional</code> 可以作用于接口、接口方法、类以及类方法上。当作用于类上时，该类的所有 <code>public</code> 方法将都具有该类型的事务属性，同时，我们也可以在方法级别使用该标注来覆盖类级别的定义。</li>
+<li>虽然 <code>@Transactional</code> 注解可以作用于接口、接口方法、类以及类方法上，但是 Spring 建议不要在接口或者接口方法上使用该注解，因为这只有在使用基于接口的代理时它才会生效。另外， <strong><code>@Transactional</code> 注解应该只被应用到 <code>public</code> 方法上，这是由 Spring AOP 的本质决定的</strong>。如果你在 <code>protected</code>、<code>private</code> 或者默认可见性的方法上使用 <code>@Transactional</code> 注解，这将被忽略，也不会抛出任何异常。<strong>这一点，非常需要注意</strong>。  </li>
+</ul>
+<p>下面，我们来简单说下<strong>源码</strong>相关的东西。</p>
+<p><code>@Transactional</code> 注解的属性，会解析成 <code>org.springframework.transaction.TransactionDefinition</code> 对象，即事务定义。TransactionDefinition 代码如下：</p>
+<pre class="line-numbers language-Java"><code class="language-Java">public interface TransactionDefinition {
+
+    int getPropagationBehavior(); // 事务的传播行为
+    int getIsolationLevel(); // 事务的隔离级别
+    int getTimeout(); // 事务的超时时间
+    boolean isReadOnly(); // 事务是否只读
+    @Nullable
+    String getName(); // 事务的名字
+
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>可能会胖友有疑惑，<code>@Transactional</code> 注解的 <code>rollbackFor</code>、<code>rollbackForClassName</code>、<code>noRollbackFor</code>、<code>noRollbackForClassName</code> 属性貌似没体现出来？它们提现在 TransactionDefinition 的实现类 RuleBasedTransactionAttribute 中。</li>
+<li><code>#getPropagationBehavior()</code> 方法，返回事务的<strong>传播行为</strong>，该值是个枚举，在下面来说。</li>
+<li><code>#getIsolationLevel()</code> 方法，返回事务的<strong>隔离级别</strong>，该值是个枚举，在下面来说。</li>
+</ul>
+<h4 id="什么是事务的隔离级别？分成哪些隔离级别？"><a href="#什么是事务的隔离级别？分成哪些隔离级别？" class="headerlink" title="什么是事务的隔离级别？分成哪些隔离级别？"></a>什么是事务的隔离级别？分成哪些隔离级别？</h4><p>另外，有一点非常重要，不同数据库对四个隔离级别的支持和实现略有不同。因为我们目前互联网主要使用 MySQL 为主，所以至少要搞懂 MySQL 对隔离级别的支持和实现情况。</p>
+<p>在 TransactionDefinition 接口中，定义了“<strong>四种</strong>”的隔离级别枚举。代码如下：</p>
+<pre class="line-numbers language-Java"><code class="language-Java">// TransactionDefinition.java
+
+/**
+ * 【Spring 独有】使用后端数据库默认的隔离级别
+ *
+ * MySQL 默认采用的 REPEATABLE_READ隔离级别
+ * Oracle 默认采用的 READ_COMMITTED隔离级别
+ */
+int ISOLATION_DEFAULT = -1;
+
+/**
+ * 最低的隔离级别，允许读取尚未提交的数据变更，可能会导致脏读、幻读或不可重复读
+ */
+int ISOLATION_READ_UNCOMMITTED = Connection.TRANSACTION_READ_UNCOMMITTED;
+
+/**
+ * 允许读取并发事务已经提交的数据，可以阻止脏读，但是幻读或不可重复读仍有可能发生
+ */
+int ISOLATION_READ_COMMITTED = Connection.TRANSACTION_READ_COMMITTED;
+/**
+ * 对同一字段的多次读取结果都是一致的，除非数据是被本身事务自己所修改，可以阻止脏读和不可重复读，但幻读仍有可能发生。
+ */
+int ISOLATION_REPEATABLE_READ = Connection.TRANSACTION_REPEATABLE_READ;
+/**
+ * 最高的隔离级别，完全服从ACID的隔离级别。所有的事务依次逐个执行，这样事务之间就完全不可能产生干扰，也就是说，该级别可以防止脏读、不可重复读以及幻读。
+ *
+ * 但是这将严重影响程序的性能。通常情况下也不会用到该级别。
+ */
+int ISOLATION_SERIALIZABLE = Connection.TRANSACTION_SERIALIZABLE;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="什么是事务的传播级别？分成哪些传播级别？"><a href="#什么是事务的传播级别？分成哪些传播级别？" class="headerlink" title="什么是事务的传播级别？分成哪些传播级别？"></a>什么是事务的传播级别？分成哪些传播级别？</h4><p>事务的<strong>传播行为</strong>，指的是当前带有事务配置的方法，需要怎么处理事务。</p>
+<ul>
+<li><p>例如：方法可能继续在现有事务中运行，也可能开启一个新事务，并在自己的事务中运行。</p>
+</li>
+<li><p>有一点需要注意，事务的传播级别，并不是数据库事务规范中的名词，<strong>而是 Spring 自身所定义的</strong>。通过事务的传播级别，Spring 才知道如何处理事务，是创建一个新事务呢，还是继续使用当前的事务。</p>
+<blockquote>
+<p>艿艿的自我吐槽：是不是有种背概念背的想哭</p>
+</blockquote>
+</li>
+</ul>
+<p>在 TransactionDefinition 接口中，定义了<strong>三类七种</strong>传播级别。代码如下：</p>
+<pre><code>// TransactionDefinition.java// ========== 支持当前事务的情况 ========== /** * 如果当前存在事务，则使用该事务。 * 如果当前没有事务，则创建一个新的事务。 */int PROPAGATION_REQUIRED = 0;/** * 如果当前存在事务，则使用该事务。 * 如果当前没有事务，则以非事务的方式继续运行。 */int PROPAGATION_SUPPORTS = 1;/** * 如果当前存在事务，则使用该事务。 * 如果当前没有事务，则抛出异常。 */int PROPAGATION_MANDATORY = 2;// ========== 不支持当前事务的情况 ========== /** * 创建一个新的事务。 * 如果当前存在事务，则把当前事务挂起。 */int PROPAGATION_REQUIRES_NEW = 3;/** * 以非事务方式运行。 * 如果当前存在事务，则把当前事务挂起。 */int PROPAGATION_NOT_SUPPORTED = 4;/** * 以非事务方式运行。 * 如果当前存在事务，则抛出异常。 */int PROPAGATION_NEVER = 5;// ========== 其他情况 ========== /** * 如果当前存在事务，则创建一个事务作为当前事务的嵌套事务来运行。 * 如果当前没有事务，则等价于 {@link TransactionDefinition#PROPAGATION_REQUIRED} */int PROPAGATION_NESTED = 6;
+</code></pre><ul>
+<li><p>分类之后，其实还是比较好记的。当然，绝大数场景，我们只用 <code>PROPAGATION_REQUIRED</code> 传播级别。</p>
+</li>
+<li><p>这里需要指出的是，前面的六种事务传播行为是 Spring 从 EJB 中引入的，他们共享相同的概念。而</p>
+</li>
+</ul>
+<pre><code>  PROPAGATION_NESTED
+</code></pre><p>  是 Spring 所特有的。</p>
+<ul>
+<li>以 <code>PROPAGATION_NESTED</code> 启动的事务内嵌于外部事务中（如果存在外部事务的话），此时，内嵌事务并不是一个独立的事务，它依赖于外部事务的存在，只有通过外部的事务提交，才能引起内部事务的提交，嵌套的子事务不能单独提交。如果熟悉 JDBC 中的保存点（SavePoint）的概念，那嵌套事务就很容易理解了，其实嵌套的子事务就是保存点的一个应用，一个事务中可以包括多个保存点，每一个嵌套子事务。另外，外部事务的回滚也会导致嵌套子事务的回滚。</li>
+</ul>
+<h2 id="什么是事务的超时属性？"><a href="#什么是事务的超时属性？" class="headerlink" title="什么是事务的超时属性？"></a>什么是事务的超时属性？</h2><p>所谓事务超时，就是指一个事务所允许执行的最长时间，如果超过该时间限制但事务还没有完成，则自动回滚事务。</p>
+<p>在 TransactionDefinition 中以 <code>int</code> 的值来表示超时时间，其单位是秒。</p>
+<h2 id="什么是事务的只读属性？"><a href="#什么是事务的只读属性？" class="headerlink" title="什么是事务的只读属性？"></a>什么是事务的只读属性？</h2><p>事务的只读属性是指，对事务性资源进行只读操作或者是读写操作。</p>
+<ul>
+<li>所谓事务性资源就是指那些被事务管理的资源，比如数据源、JMS 资源，以及自定义的事务性资源等等。</li>
+<li>如果确定只对事务性资源进行只读操作，那么我们可以将事务标志为只读的，以提高事务处理的性能。感兴趣的胖友，可以看看 <a href="https://my.oschina.net/uniquejava/blog/80954" target="_blank" rel="noopener">《不使用事务和使用只读事务的区别 》</a> 。</li>
+</ul>
+<p>在 TransactionDefinition 中以 <code>boolean</code> 类型来表示该事务是否只读。</p>
+<h2 id="什么是事务的回滚规则？"><a href="#什么是事务的回滚规则？" class="headerlink" title="什么是事务的回滚规则？"></a>什么是事务的回滚规则？</h2><p>回滚规则，定义了哪些异常会导致事务回滚而哪些不会。</p>
+<ul>
+<li>默认情况下，事务只有遇到运行期异常时才会回滚，而在遇到检查型异常时不会回滚（这一行为与EJB的回滚行为是一致的）。</li>
+<li>但是你可以声明事务在遇到特定的检查型异常时像遇到运行期异常那样回滚。同样，你还可以声明事务遇到特定的异常不回滚，即使这些异常是运行期异常。</li>
+</ul>
+<p>注意，事务的回滚规则，并不是数据库事务规范中的名词，<strong>而是 Spring 自身所定义的</strong>。</p>
+<h2 id="简单介绍-TransactionStatus-？"><a href="#简单介绍-TransactionStatus-？" class="headerlink" title="简单介绍 TransactionStatus ？"></a>简单介绍 TransactionStatus ？</h2><blockquote>
+<p>艿艿：这个可能不是一个面试题，主要满足下大家的好奇心。</p>
+</blockquote>
+<p>TransactionStatus 接口，记录事务的状态，不仅仅包含事务本身，还包含事务的其它信息。代码如下：</p>
+<pre><code>// TransactionStatus.javapublic interface TransactionStatus extends SavepointManager, Flushable {    /**     * 是否是新创建的事务     */    boolean isNewTransaction();    /**     * 是否有 Savepoint     *     * 在 {@link TransactionDefinition#PROPAGATION_NESTED} 传播级别使用。     */    boolean hasSavepoint();    /**     * 设置为只回滚     */    void setRollbackOnly();    /**     * 是否为只回滚     */    boolean isRollbackOnly();    /**     * 执行 flush 操作     */    @Override    void flush();    /**     * 是否事务已经完成     */    boolean isCompleted();}
+</code></pre><ul>
+<li>为什么没有事务对象呢？在 TransactionStatus 的实现类 DefaultTransactionStatus 中，有个 <code>Object transaction</code> 属性，表示事务对象。</li>
+<li><code>#isNewTransaction()</code> 方法，表示是否是新创建的事务。有什么用呢？我们对 <code>#commit(TransactionStatus status)</code> 方法的解释。通过该方法，我们可以判断，当前事务是否当前方法所创建的，只有创建事务的方法，<strong>才能且应该真正的提交事务</strong>。</li>
+</ul>
+<h2 id="使用-Spring-事务有什么优点？"><a href="#使用-Spring-事务有什么优点？" class="headerlink" title="使用 Spring 事务有什么优点？"></a>使用 Spring 事务有什么优点？</h2><ol>
+<li>通过 PlatformTransactionManager ，为不同的数据层持久框架提供统一的 API ，无需关心到底是原生 JDBC、Spring JDBC、JPA、Hibernate 还是 MyBatis 。</li>
+<li>通过使用声明式事务，使业务代码和事务管理的逻辑分离，更加清晰。</li>
+</ol>
+<h1 id="Spring-Data-Access"><a href="#Spring-Data-Access" class="headerlink" title="Spring Data Access"></a>Spring Data Access</h1><blockquote>
+<p>艿艿：这块的问题，感觉面试问的不多，至少我很少问。哈哈哈。就当做下了解，万一问了呢。</p>
+</blockquote>
+<h2 id="Spring-支持哪些-ORM-框架？"><a href="#Spring-支持哪些-ORM-框架？" class="headerlink" title="Spring 支持哪些 ORM 框架？"></a>Spring 支持哪些 ORM 框架？</h2><ul>
+<li>Hibernate</li>
+<li>JPA</li>
+<li>MyBatis</li>
+<li><a href="https://docs.spring.io/spring/docs/3.0.0.M4/reference/html/ch13s04.html" target="_blank" rel="noopener">JDO</a></li>
+<li><a href="https://db.apache.org/ojb/docu/howtos/howto-use-spring.html" target="_blank" rel="noopener">OJB</a></li>
+</ul>
+<p>可能会有胖友说，不是应该还有 Spring JDBC 吗。注意，Spring JDBC 不是 ORM 框架。</p>
+<h2 id="在-Spring-框架中如何更有效地使用-JDBC-？"><a href="#在-Spring-框架中如何更有效地使用-JDBC-？" class="headerlink" title="在 Spring 框架中如何更有效地使用 JDBC ？"></a>在 Spring 框架中如何更有效地使用 JDBC ？</h2><p>Spring 提供了 Spring JDBC 框架，方便我们使用 JDBC 。</p>
+<p>对于开发者，只需要使用 JdbcTemplate 类，它提供了很多便利的方法解决诸如把数据库数据转变成基本数据类型或对象，执行写好的或可调用的数据库操作语句，提供自定义的数据错误处理。</p>
+<h2 id="使用-Spring-访问-Hibernate-的方法有哪些？。"><a href="#使用-Spring-访问-Hibernate-的方法有哪些？。" class="headerlink" title="使用 Spring 访问 Hibernate 的方法有哪些？。"></a>使用 Spring 访问 Hibernate 的方法有哪些？。</h2><p>我们可以通过两种方式使用 Spring 访问 Hibernate：</p>
+<ul>
+<li>使用 Hibernate 模板和回调进行控制反转。</li>
+<li>扩展 HibernateDAOSupport 并应用 AOP 拦截器节点。</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="米高扬">
+            米高扬
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java-web/">java web</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/11/15/Spring AOP/&title=《spring总结》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/11/15/Spring AOP/&title=《spring总结》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/11/15/Spring AOP/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《spring总结》 — migaoyang&url=http://yoursite.com/2019/11/15/Spring AOP/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/11/15/Spring AOP/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/11/20/Java InnerClass/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">java内部类</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/11/11/spring/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">spring--IoC</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>米高扬 &copy; 2018 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/11/15/Spring AOP/&title=《spring总结》 — migaoyang&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/11/15/Spring AOP/&title=《spring总结》 — migaoyang&source=既然目标是地平线，留给世界的便只能是背影。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/11/15/Spring AOP/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《spring总结》 — migaoyang&url=http://yoursite.com/2019/11/15/Spring AOP/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/11/15/Spring AOP/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2019/11/15/Spring AOP/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '米高扬的博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '米高扬的博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+  <!-- highlight.js代码高亮主题 script 引入-->
+  <script src="/plugins/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- highlight.js代码高亮主题 script 引入-->
+</body>
+</html>
